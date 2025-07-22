@@ -22,7 +22,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.6);
             z-index: 1;
         }
 
@@ -51,7 +51,7 @@
             margin: 10px 0;
             padding: 10px 18px;
             border-radius: 8px;
-            color: #ffffff;
+            /* color: #ffffff; */
             text-decoration: none;
             font-size: 2rem;
             transition: background 0.2s, color 0.2s;
@@ -60,8 +60,30 @@
         }
 
         a:hover {
-            color: #7511a6;
+            color: #1331c5;
             font-weight: bold;
+        }
+
+        .link_host {
+            color: #b6b4c6;
+        }
+
+        .link_git {
+            color: #ff0000;
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                padding: 8px;
+                align-items: stretch;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            a {
+                font-size: 1.1rem;
+                padding: 8px 10px;
+            }
         }
     </style>
 </head>
@@ -71,29 +93,34 @@
     <div class="content">
         <h1>Ссылки заказчикам</h1>
 
-        <a href="http://ekskavator-pogruzchik.рекордика.рф" target="a1">эксковатор-погрузчик.рекордика.рф</a>
+        <a class="link_host" href="http://ekskavator-pogruzchik.рекордика.рф"
+            target="a1">эксковатор-погрузчик.рекордика.рф</a>
 
-        <a href="https://manipuliator.рекордика.рф" target="a2">манипулятор.рекордика.рф</a>
+        <a class="link_host" href="https://manipuliator.рекордика.рф" target="a2">манипулятор.рекордика.рф</a>
 
-        <a href="https://avtokran.рекордика.рф" target="a3">автокран.рекордика.рф</a>
+        <a class="link_host" href="https://avtokran.рекордика.рф" target="a3">автокран.рекордика.рф</a>
 
-        <a href="https://avtovyshka.рекордика.рф" target="a4">автовышка.рекордика.рф</a>
+        <a class="link_host" href="https://avtovyshka.рекордика.рф" target="a4">автовышка.рекордика.рф</a>
 
-        <a href="https://gusenichnyy-ekskavator.рекордика.рф" target="a5">гусеничный эксковатор.рекордика.рф</a>
+        <a class="link_host" href="https://gusenichnyy-ekskavator.рекордика.рф" target="a5">гусеничный
+            эксковатор.рекордика.рф</a>
 
-        <a href="https://kolesnyy-ekskavator.рекордика.рф" target="a6">колесный эксковатор.рекордика.рф</a>
+        <a class="link_host" href="https://kolesnyy-ekskavator.рекордика.рф" target="a6">колесный
+            эксковатор.рекордика.рф</a>
 
-        <a href="public_html/ekskavator-pogruzchik/car.html" target="g1">эксковатор-погрузчик гитхаб</a>
+        <a class="link_git" href="public_html/ekskavator-pogruzchik/car.html" target="g1">эксковатор-погрузчик
+            гитхаб</a>
 
-        <a href="public_html/manipuliator/car.html" target="a2">манипулятор гитхаб</a>
+        <a class="link_git" href="public_html/manipuliator/car.html" target="a2">манипулятор гитхаб</a>
 
-        <a href="public_html/avtokran/car.html" target="a3">автокран гитхаб</a>
+        <a class="link_git" href="public_html/avtokran/car.html" target="a3">автокран гитхаб</a>
 
-        <a href="public_html/avtovyshka/car.html" target="a4">автовышка гитхаб</a>
+        <a class="link_git" href="public_html/avtovyshka/car.html" target="a4">автовышка гитхаб</a>
 
-        <a href="public_html/gusenichnyy-ekskavator/car.html" target="a5">гусеничный эксковатор гитхаб</a>
+        <a class="link_git" href="public_html/gusenichnyy-ekskavator/car.html" target="a5">гусеничный эксковатор
+            гитхаб</a>
 
-        <a href="public_html/kolesnyy-ekskavator/car.html" target="a6">колесный эксковатор гитхаб</a>
+        <a class="link_git" href="public_html/kolesnyy-ekskavator/car.html" target="a6">колесный эксковатор гитхаб</a>
     </div>
 </body>
 
