@@ -80,17 +80,6 @@
 }
 
 @media (max-width: 1400px) {
-    .versionTablet1400 {
-        display: flex;
-    }
-
-    .versionDesktop,
-    .versionTablet1100,
-    .versionMobile,
-    .version450 {
-        display: none;
-    }
-
     body {
         overflow-x: hidden;
     }
@@ -316,18 +305,6 @@
 }
 
 @media (max-width: 1100px) {
-
-    .versionTablet1100 {
-        display: flex;
-    }
-
-    .versionDesktop,
-    .versionTablet1400,
-    .versionMobile,
-    .version450 {
-        display: none;
-    }
-
     .conteiner1800 {
         width: 100%;
         max-width: 1100px;

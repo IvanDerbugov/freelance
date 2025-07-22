@@ -43,10 +43,6 @@
     transform: translateY(-1px);
 }
 
-/* .top .phoneNumber {
-    margin: 0 0 0 0;
-} */
-
 .phone-icon {
     width: 42px;
     height: 42px;
@@ -114,7 +110,7 @@
     fill: #DF6417;
 }
 
-header .bottom {
+/* header .bottom {
     background-color: #EAF5FD;
 
 }
@@ -205,9 +201,9 @@ header .bottom .container1240 {
 
 .bottom-right a:hover svg {
     transform: scale(1.1);
-}
+} */
 
-.dropdown {
+/* .dropdown {
     position: relative;
 }
 
@@ -241,7 +237,7 @@ header .bottom .container1240 {
     padding: 8px 0;
     border: 1px solid #e0e0e0;
     animation: fadeInDown 0.3s ease;
-}
+} */
 
 @keyframes fadeInDown {
     from {
@@ -255,7 +251,7 @@ header .bottom .container1240 {
     }
 }
 
-.dropdown-menu.show {
+/* .dropdown-menu.show {
     display: flex;
 }
 
@@ -304,7 +300,7 @@ header .bottom .container1240 {
 
 .dropdown-menu a:hover img {
     transform: scale(1.1);
-}
+} */
 
 /* Бургер скрыт на десктопе */
 .burger-menu {
@@ -569,7 +565,7 @@ header .bottom .container1240 {
         font-size: 15px;
     }
 
-    .bottom-right {
+    /* .bottom-right {
         display: flex;
         gap: 6px;
     }
@@ -578,5 +574,5 @@ header .bottom .container1240 {
         display: flex;
         flex-direction: column;
         gap: 2px;
-    }
+    } */
 }
