@@ -51,11 +51,10 @@ document.addEventListener('DOMContentLoaded', function () {
     modalWindow.innerHTML = `
         <button class="modal-close" title="Закрыть">&times;</button>
         <h2>Оставьте свои контакты и зафиксируйте свою скидку</h2>
-        <form class="modal-form" action="https://api.web3forms.com/submit" id="formaPogruzchik" method="POST">
-            <input type="hidden" name="access_key" value="d759a276-7f88-4a85-a572-a472510fd51b">
+        <form class="modal-form" id="formaPogruzchik" method="POST">
             <input type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
             <input type="text" name="contact" placeholder="Телефон или e-mail" required autocomplete="tel">
-            <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
+            <input type="hidden" name="form_type" value="pogruzchik">
             <button type="submit" class="modal-submit">Зафиксировать скидку</button>
         </form>
         <div class="modal-success" style="display:none;text-align:center;font-size:22px;font-weight:600;color:#DF6417;margin-top:18px;">Скидка зафиксирована!</div>
@@ -89,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const submitBtn = modalWindow.querySelector('.modal-submit');
         submitBtn.disabled = true;
         submitBtn.textContent = 'Отправка...';
-        fetch('https://api.web3forms.com/submit', {
+        fetch('send-form.php', {
             method: 'POST',
             body: formData
         })

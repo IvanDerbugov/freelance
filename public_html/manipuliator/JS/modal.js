@@ -51,11 +51,10 @@ document.addEventListener('DOMContentLoaded', function () {
     modalWindow.innerHTML = `
         <button class="modal-close" title="Закрыть">&times;</button>
         <h2>Оставьте свои контакты и зафиксируйте свою скидку</h2>
-        <form class="modal-form" action="https://api.web3forms.com/submit" id="formaManipulator" method="POST">
-            <input type="hidden" name="access_key" value="d759a276-7f88-4a85-a572-a472510fd51b">
+        <form class="modal-form" id="formaManipulator" method="POST">
             <input type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
             <input type="text" name="contact" placeholder="Телефон или e-mail" required autocomplete="tel">
-            <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
+            <input type="hidden" name="form_type" value="manipulator">
             <button type="submit" class="modal-submit">Зафиксировать скидку</button>
         </form>
         <div class="modal-success" style="display:none;text-align:center;font-size:22px;font-weight:600;color:#DF6417;margin-top:18px;">Скидка зафиксирована!</div>
@@ -89,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const submitBtn = modalWindow.querySelector('.modal-submit');
         submitBtn.disabled = true;
         submitBtn.textContent = 'Отправка...';
-        fetch('https://api.web3forms.com/submit', {
+        fetch('send-form.php', {
             method: 'POST',
             body: formData
         })
@@ -100,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.success) {
                 // Отправка события в Яндекс.Метрику
                 if (typeof ym === 'function') {
-                    ym(103296307, 'reachGoal', 'formaManipulator');
+                    ym(103422173, 'reachGoal', 'formaManipulator');
                     console.log('Цель "Отправка формы" отправлена в Яндекс Метрику (formaManipulator)');
                 }
                 form.style.display = 'none';
@@ -148,6 +147,11 @@ document.addEventListener('DOMContentLoaded', function () {
             h2.textContent = 'Оставьте свои контакты';
             submitBtn.textContent = 'Отправить';
             submitBtn.dataset.defaultText = 'Отправить';
+        }
+        
+        // Добавляем отслеживание для динамически созданных ссылок
+        if (typeof window.phoneTrackingAddListeners === 'function') {
+            setTimeout(window.phoneTrackingAddListeners, 100);
         }
     }
 }); 

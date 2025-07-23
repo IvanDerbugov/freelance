@@ -28,7 +28,7 @@ if (empty($input['name']) || empty($input['contact'])) {
 // Очищаем и валидируем данные
 $name = htmlspecialchars(trim($input['name']));
 $contact = htmlspecialchars(trim($input['contact']));
-$formType = isset($input['form_type']) ? htmlspecialchars(trim($input['form_type'])) : 'Общая форма';
+$formType = isset($input['form_type']) ? htmlspecialchars(trim($input['form_type'])) : 'pogruzchik';
 
 // Настройки Telegram
 $telegramToken = '7808482676:AAEM-SN7WMoy-lJlkD0LMEuDW2C_zw4AfDM';

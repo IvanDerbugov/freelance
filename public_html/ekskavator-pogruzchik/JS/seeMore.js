@@ -52,11 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
             </div>
             
-            <form class="modal-form" action="https://api.web3forms.com/submit" method="POST" id="forma">
-                <input type="hidden" name="access_key" value="d759a276-7f88-4a85-a572-a472510fd51b">
+            <form class="modal-form" method="POST" id="formaPogruzchik">
                 <input type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
                 <input type="text" name="contact" placeholder="Телефон или e-mail" required autocomplete="tel">
-                <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
+                <input type="hidden" name="form_type" value="pogruzchik">
                 <button type="submit" class="modal-submit">Отправить заявку</button>
             </form>
             <div class="modal-success" style="display:none;text-align:center;font-size:22px;font-weight:600;color:#DF6417;margin-top:18px;">Заявка отправлена!</div>
@@ -93,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Отправка...';
             
-            fetch('https://api.web3forms.com/submit', {
+            fetch('send-form.php', {
                 method: 'POST',
                 body: formData
             })
@@ -103,8 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.textContent = 'Отправить заявку';
                 if (data.success) {
                     if (typeof ym === 'function') {
-                        ym(103255331, 'reachGoal', 'forma');
-                        console.log('Цель "Отправка формы из модального окна" отправлена в Яндекс Метрику (forma)');
+                        ym(103307535, 'reachGoal', 'formaPogruzchik');
+                        console.log('Цель "Отправка формы из модального окна" отправлена в Яндекс Метрику (formaPogruzchik)');
                     }
                     form.style.display = 'none';
                     success.textContent = 'Заявка отправлена!';
