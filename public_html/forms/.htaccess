@@ -1,0 +1,26 @@
+DirectoryIndex  forms.html
+
+# Защита файла логов
+<Files "form-logs.txt">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Разрешаем только POST запросы к send-form.php
+<Files "send-form.php">
+    <LimitExcept POST>
+        Deny from all
+    </LimitExcept>
+</Files>
+
+# Защита от прямого доступа к PHP файлам (кроме send-form.php)
+<FilesMatch "\.php$">
+    <Files "send-form.php">
+        Order allow,deny
+        Allow from all
+    </Files>
+    <Files "index.php">
+        Order allow,deny
+        Allow from all
+    </Files>
+</FilesMatch>
