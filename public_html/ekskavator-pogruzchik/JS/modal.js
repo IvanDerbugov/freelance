@@ -88,12 +88,25 @@ document.addEventListener('DOMContentLoaded', function () {
         const submitBtn = modalWindow.querySelector('.modal-submit');
         submitBtn.disabled = true;
         submitBtn.textContent = 'Отправка...';
-        fetch('test.php', {
+        fetch('send-form.php', {
             method: 'POST',
             body: formData
         })
-        .then(res => res.json())
+        .then(res => {
+            console.log('Response status:', res.status);
+            console.log('Response headers:', res.headers);
+            return res.text().then(text => {
+                console.log('Raw response:', text);
+                try {
+                    return JSON.parse(text);
+                } catch (e) {
+                    console.error('JSON parse error:', e);
+                    throw new Error('Invalid JSON response');
+                }
+            });
+        })
         .then(data => {
+            console.log('Response data:', data);
             submitBtn.disabled = false;
             submitBtn.textContent = submitBtn.dataset.defaultText || 'Отправить';
             if (data.success) {
@@ -118,7 +131,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 success.style.display = 'block';
             }
         })
-        .catch(() => {
+        .catch((error) => {
+            console.error('Fetch error:', error);
             submitBtn.disabled = false;
             submitBtn.textContent = submitBtn.dataset.defaultText || 'Отправить';
             success.textContent = 'Ошибка соединения!';

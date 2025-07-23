@@ -32,7 +32,9 @@ $formType = isset($input['form_type']) ? htmlspecialchars(trim($input['form_type
 
 // Настройки Telegram
 $telegramToken = '7808482676:AAEM-SN7WMoy-lJlkD0LMEuDW2C_zw4AfDM';
-$telegramChatId = '-4873840411'; // ID группы "Рекордика заявки"
+$telegramPersonalChatId = '955498826'; // ID личного чата (ваш Chat ID)
+$telegramClientChatId = '7501193489'; // ID заказчика (Дмитрий РЕКОРДИКА)
+$telegramGroupChatId = '-1002652686710'; // ID группы "Рекордика заявки"
 
 // Настройки письма
 $to = 'i.derbugoff2001@gmail.com';
@@ -122,12 +124,14 @@ $headers = array(
 // Отправляем письмо
 $mailSent = mail($to, $subject, $message, implode("\r\n", $headers));
 
-// Отправляем в Telegram
-$telegramSent = sendTelegramMessage($telegramToken, $telegramChatId, $telegramMessage);
+// Отправляем в Telegram (только в группу)
+$telegramGroupSent = sendTelegramMessage($telegramToken, $telegramGroupChatId, $telegramMessage);
+
+$telegramSent = $telegramGroupSent;
 
 if ($mailSent || $telegramSent) {
     // Логируем успешную отправку
-    $logMessage = date('Y-m-d H:i:s') . " - Успешная отправка формы от $name ($contact) [Email: " . ($mailSent ? 'OK' : 'FAIL') . ", Telegram: " . ($telegramSent ? 'OK' : 'FAIL') . "]\n";
+    $logMessage = date('Y-m-d H:i:s') . " - Успешная отправка формы от $name ($contact) [Email: " . ($mailSent ? 'OK' : 'FAIL') . ", Telegram Group: " . ($telegramGroupSent ? 'OK' : 'FAIL') . "]\n";
     file_put_contents('form-logs.txt', $logMessage, FILE_APPEND | LOCK_EX);
     
     echo json_encode([

@@ -4,13 +4,6 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
-// Проверяем метод запроса
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['success' => false, 'message' => 'Метод не поддерживается']);
-    exit;
-}
-
 // Получаем данные из POST запроса
 $input = json_decode(file_get_contents('php://input'), true);
 
@@ -28,15 +21,15 @@ if (empty($input['name']) || empty($input['contact'])) {
 // Очищаем и валидируем данные
 $name = htmlspecialchars(trim($input['name']));
 $contact = htmlspecialchars(trim($input['contact']));
-$formType = isset($input['form_type']) ? htmlspecialchars(trim($input['form_type'])) : 'pogruzchik';
+$formType = isset($input['form_type']) ? htmlspecialchars(trim($input['form_type'])) : 'Экскаватор-погрузчик';
 
 // Настройки Telegram
 $telegramToken = '7808482676:AAEM-SN7WMoy-lJlkD0LMEuDW2C_zw4AfDM';
-$telegramChatId = '-4873840411'; // ID группы "Рекордика заявки"
+$telegramGroupChatId = '-1002652686710'; // ID группы "Рекордика заявки"
 
 // Настройки письма
 $to = 'i.derbugoff2001@gmail.com';
-$subject = "Новая заявка с сайта - $formType";
+$subject = "Новая заявка с сайта ЭКСКАВАТОР-ПОГРУЗЧИК - $formType";
 
 // Формируем тело письма
 $message = "
@@ -45,7 +38,7 @@ $message = "
     <title>Новая заявка</title>
 </head>
 <body>
-    <h2>Новая заявка с сайта</h2>
+    <h2>Новая заявка с сайта ЭКСКАВАТОР-ПОГРУЗЧИК</h2>
     <table style='border-collapse: collapse; width: 100%;'>
         <tr>
             <td style='padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9; font-weight: bold;'>Тип формы:</td>
@@ -77,7 +70,7 @@ $message = "
 ";
 
 // Формируем сообщение для Telegram
-$telegramMessage = "🚨 *НОВАЯ ЗАЯВКА С САЙТА*
+$telegramMessage = "🚨 *НОВАЯ ЗАЯВКА С САЙТА ЭКСКАВАТОР-ПОГРУЗЧИК*
 
 📋 *Тип формы:* $formType
 👤 *Имя:* $name
@@ -122,12 +115,14 @@ $headers = array(
 // Отправляем письмо
 $mailSent = mail($to, $subject, $message, implode("\r\n", $headers));
 
-// Отправляем в Telegram
-$telegramSent = sendTelegramMessage($telegramToken, $telegramChatId, $telegramMessage);
+// Отправляем в Telegram (только в группу)
+$telegramGroupSent = sendTelegramMessage($telegramToken, $telegramGroupChatId, $telegramMessage);
+
+$telegramSent = $telegramGroupSent;
 
 if ($mailSent || $telegramSent) {
     // Логируем успешную отправку
-    $logMessage = date('Y-m-d H:i:s') . " - Успешная отправка формы от $name ($contact) [Email: " . ($mailSent ? 'OK' : 'FAIL') . ", Telegram: " . ($telegramSent ? 'OK' : 'FAIL') . "]\n";
+    $logMessage = date('Y-m-d H:i:s') . " - Успешная отправка формы от $name ($contact) [Email: " . ($mailSent ? 'OK' : 'FAIL') . ", Telegram Group: " . ($telegramGroupSent ? 'OK' : 'FAIL') . "]\n";
     file_put_contents('form-logs.txt', $logMessage, FILE_APPEND | LOCK_EX);
     
     echo json_encode([
