@@ -19,12 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Создаем точки навигации
     function renderTariffDots() {
-        tariffsDotsContainer.innerHTML = '';
-        for (let i = 0; i < totalTariffSlides; i++) {
-            const dot = document.createElement('span');
-            dot.className = 'tariffs-dot';
-            dot.addEventListener('click', function() {
-                if (!isTariffTransitioning) {
+        tariffsDotsContainer.innerHTML = ''; //очищаем контейнер точек
+        for (let i = 0; i < totalTariffSlides; i++) { //создаем точки для каждого слайда
+            const dot = document.createElement('span'); //создаем элемент span
+            dot.className = 'tariffs-dot'; //добавляем класс точки
+            dot.addEventListener('click', function() { //добавляем обработчик клика на точку
+                if (!isTariffTransitioning) { //если нет перехода
                     goToTariffSlide(i);
                 }
             });
