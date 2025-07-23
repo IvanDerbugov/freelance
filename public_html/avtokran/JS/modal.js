@@ -51,11 +51,10 @@ document.addEventListener('DOMContentLoaded', function () {
     modalWindow.innerHTML = `
         <button class="modal-close" title="Закрыть">&times;</button>
         <h2>Оставьте свои контакты и зафиксируйте свою скидку</h2>
-        <form class="modal-form" action="https://api.web3forms.com/submit" id="formaAvtokrany" method="POST">
-            <input type="hidden" name="access_key" value="d759a276-7f88-4a85-a572-a472510fd51b">
+        <form class="modal-form" id="formaAvtokrany">
+            <input type="hidden" name="form_type" value="Модальная форма">
             <input type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
             <input type="text" name="contact" placeholder="Телефон или e-mail" required autocomplete="tel">
-            <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
             <button type="submit" class="modal-submit">Зафиксировать скидку</button>
         </form>
         <div class="modal-success" style="display:none;text-align:center;font-size:22px;font-weight:600;color:#DF6417;margin-top:18px;">Скидка зафиксирована!</div>
@@ -85,11 +84,14 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         success.style.display = 'none';
+        
         const formData = new FormData(form);
         const submitBtn = modalWindow.querySelector('.modal-submit');
         submitBtn.disabled = true;
         submitBtn.textContent = 'Отправка...';
-        fetch('https://api.web3forms.com/submit', {
+        
+        // Отправляем данные в наш PHP обработчик
+        fetch('send-form.php', {
             method: 'POST',
             body: formData
         })
@@ -97,15 +99,18 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             submitBtn.disabled = false;
             submitBtn.textContent = submitBtn.dataset.defaultText || 'Отправить';
+            
             if (data.success) {
                 // Отправка события в Яндекс.Метрику
                 if (typeof ym === 'function') {
-                    ym(103296307, 'reachGoal', 'formaAvtokrany');
+                    ym(103422261, 'reachGoal', 'formaAvtokrany');
                     console.log('Цель "Отправка формы" отправлена в Яндекс Метрику (formaAvtokrany)');
                 }
+                
                 form.style.display = 'none';
                 success.textContent = 'Заявка отправлена!';
                 success.style.display = 'block';
+                
                 setTimeout(() => {
                     modalOverlay.style.display = 'none';
                     document.body.style.overflow = '';
@@ -119,7 +124,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 success.style.display = 'block';
             }
         })
-        .catch(() => {
+        .catch((error) => {
+            console.error('Ошибка отправки формы:', error);
             submitBtn.disabled = false;
             submitBtn.textContent = submitBtn.dataset.defaultText || 'Отправить';
             success.textContent = 'Ошибка соединения!';
@@ -148,6 +154,11 @@ document.addEventListener('DOMContentLoaded', function () {
             h2.textContent = 'Оставьте свои контакты';
             submitBtn.textContent = 'Отправить';
             submitBtn.dataset.defaultText = 'Отправить';
+        }
+        
+        // Добавляем отслеживание ссылок после создания модального окна
+        if (typeof window.phoneTrackingAddListeners === 'function') {
+            window.phoneTrackingAddListeners();
         }
     }
 }); 

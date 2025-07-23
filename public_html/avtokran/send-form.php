@@ -21,7 +21,7 @@ if (empty($input['name']) || empty($input['contact'])) {
 // Очищаем и валидируем данные
 $name = htmlspecialchars(trim($input['name']));
 $contact = htmlspecialchars(trim($input['contact']));
-$formType = isset($input['form_type']) ? htmlspecialchars(trim($input['form_type'])) : 'Манипулятор';
+$formType = isset($input['form_type']) ? htmlspecialchars(trim($input['form_type'])) : 'Автокран';
 
 // Настройки Telegram
 $telegramToken = '7808482676:AAEM-SN7WMoy-lJlkD0LMEuDW2C_zw4AfDM';
@@ -29,7 +29,7 @@ $telegramGroupChatId = '-1002652686710'; // ID группы "Рекордика 
 
 // Настройки письма
 $to = 'i.derbugoff2001@gmail.com';
-$subject = "Новая заявка с сайта МАНИПУЛЯТОР - $formType";
+$subject = "Новая заявка с сайта АВТОКРАН - $formType";
 
 // Формируем тело письма
 $message = "
@@ -38,7 +38,7 @@ $message = "
     <title>Новая заявка</title>
 </head>
 <body>
-    <h2>Новая заявка с сайта МАНИПУЛЯТОР</h2>
+    <h2>Новая заявка с сайта АВТОКРАН</h2>
     <table style='border-collapse: collapse; width: 100%;'>
         <tr>
             <td style='padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9; font-weight: bold;'>Тип формы:</td>
@@ -70,7 +70,7 @@ $message = "
 ";
 
 // Формируем сообщение для Telegram
-$telegramMessage = "🚨 *НОВАЯ ЗАЯВКА С САЙТА МАНИПУЛЯТОР*
+$telegramMessage = "🚨 *НОВАЯ ЗАЯВКА С САЙТА АВТОКРАН*
 
 📋 *Тип формы:* $formType
 👤 *Имя:* $name
