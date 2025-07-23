@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const submitBtn = modalWindow.querySelector('.modal-submit');
         submitBtn.disabled = true;
         submitBtn.textContent = 'Отправка...';
-        fetch('send-form.php', {
+        fetch('test.php', {
             method: 'POST',
             body: formData
         })
