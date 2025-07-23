@@ -28,7 +28,7 @@ $telegramToken = '7808482676:AAEM-SN7WMoy-lJlkD0LMEuDW2C_zw4AfDM';
 $telegramGroupChatId = '-1002652686710'; // ID группы "Рекордика заявки"
 
 // Настройки письма
-$to = 'i.derbugoff2001@gmail.com';
+$to = 'info-recordica@mail.ru';
 $subject = "Новая заявка с сайта ДЛИННОМЕР - $formType";
 
 // Формируем тело письма

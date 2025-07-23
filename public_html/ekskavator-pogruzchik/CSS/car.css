@@ -943,10 +943,10 @@ main > .conteiner1800:first-of-type {
 }
 
 .section-limiter {
-    max-width: 1850px;
+    /* max-width: 1850px; */
     margin: 0 auto;
-    padding-left: 24px;
-    padding-right: 24px;
+    /* padding-left: 24px; */
+    /* padding-right: 24px; */
     box-sizing: border-box;
     width: 100%;
 }

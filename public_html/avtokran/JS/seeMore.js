@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let expanded = false;
     let modalShown = false;
     let modalTimer = null;
+    let advantagesSection = document.querySelector('.titleBlock');
+    let wasSeeMoreClicked = false; // Флаг для отслеживания нажатия кнопки "Посмотреть все модели"
 
     function updateCards() {
         cards.forEach((card, idx) => {
@@ -157,20 +159,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Функция для проверки видимости секции преимуществ
+    function checkAdvantagesVisibility() {
+        if (!advantagesSection || modalShown || !wasSeeMoreClicked) return;
+        
+        const rect = advantagesSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Если заголовок "8 ключевых преимуществ" виден в окне браузера
+        if (rect.top <= windowHeight && rect.bottom >= 0) {
+            showContactModal();
+        }
+    }
+
+    // Отслеживаем прокрутку страницы
+    window.addEventListener('scroll', function() {
+        checkAdvantagesVisibility();
+    });
+
     updateCards();
 
     seeMoreShowBtn.addEventListener('click', function() {
         expanded = true;
+        wasSeeMoreClicked = true; // Устанавливаем флаг при нажатии кнопки
         updateCards();
-        
-        // Запускаем таймер на 20 секунд
-        startModalTimer();
     });
     
     seeMoreHideBtn.addEventListener('click', function() {
         expanded = false;
         updateCards();
-        modalShown = false; // Сбрасываем флаг при скрытии
-        stopModalTimer(); // Останавливаем таймер при скрытии
+        // Флаг wasSeeMoreClicked остается true, чтобы модальное окно могло появиться при прокрутке
     });
 });
