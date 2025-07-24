@@ -152,9 +152,72 @@ document.addEventListener('DOMContentLoaded', function() {
     tariffsFlex.addEventListener('mousemove', onTariffDragMove);
     tariffsFlex.addEventListener('mouseup', onTariffDragEnd);
     tariffsFlex.addEventListener('mouseleave', onTariffDragEnd);
-    tariffsFlex.addEventListener('touchstart', onTariffDragStart);
-    tariffsFlex.addEventListener('touchmove', onTariffDragMove);
-    tariffsFlex.addEventListener('touchend', onTariffDragEnd);
+    // Touch события для тарифов с улучшенной поддержкой мобильных
+    tariffsFlex.addEventListener('touchstart', e => {
+        if (isTariffTransitioning) return;
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        tariffsFlex.style.transition = 'none';
+        e.preventDefault(); // Предотвращаем скролл страницы
+    }, { passive: false });
+    
+    tariffsFlex.addEventListener('touchmove', e => {
+        if (!isDragging) return;
+        e.preventDefault(); // Предотвращаем скролл страницы
+        const x = e.touches[0].clientX;
+        deltaX = x - startX;
+        
+        const slideWidth = tariffsSlides[0].offsetWidth;
+        const gap = 8;
+        const totalOffset = currentTariffSlide * (slideWidth + gap);
+        
+        // Центрируем слайд относительно контейнера
+        const container = tariffsFlex.parentElement;
+        const containerWidth = container.offsetWidth;
+        const slideCenter = totalOffset + slideWidth / 2;
+        const containerCenter = containerWidth / 2;
+        const centeringOffset = containerCenter - slideCenter;
+        
+        // Добавляем небольшое смещение для лучшего визуального центрирования
+        const visualOffset = centeringOffset - 20;
+        
+        tariffsFlex.style.transform = `translateX(${visualOffset + deltaX}px)`;
+    }, { passive: false });
+    
+    tariffsFlex.addEventListener('touchend', e => {
+        if (!isDragging) return;
+        tariffsFlex.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        
+        // Уменьшаем порог для более чувствительных свайпов
+        const threshold = 30; // Было 50, стало 30
+        
+        if (Math.abs(deltaX) > threshold) {
+            if (deltaX < 0) {
+                // Свайп влево - следующий слайд
+                const nextIndex = currentTariffSlide < totalTariffSlides - 1 ? currentTariffSlide + 1 : 0;
+                goToTariffSlide(nextIndex);
+            } else {
+                // Свайп вправо - предыдущий слайд
+                const prevIndex = currentTariffSlide > 0 ? currentTariffSlide - 1 : totalTariffSlides - 1;
+                goToTariffSlide(prevIndex);
+            }
+        } else if (deltaX !== 0) {
+            // Был небольшой свайп - возвращаемся к текущему слайду
+            goToTariffSlide(currentTariffSlide);
+        }
+        
+        isDragging = false;
+        deltaX = 0;
+    });
+    
+    tariffsFlex.addEventListener('touchcancel', e => {
+        if (isDragging) {
+            tariffsFlex.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            goToTariffSlide(currentTariffSlide);
+            isDragging = false;
+            deltaX = 0;
+        }
+    });
 
     // Функция для пересчета позиций при изменении размера окна
     function recalculateTariffPositions() {

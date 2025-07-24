@@ -124,9 +124,49 @@ document.addEventListener('DOMContentLoaded', function() {
     reviewsFlex.addEventListener('mousemove', onDragMove);
     reviewsFlex.addEventListener('mouseup', onDragEnd);
     reviewsFlex.addEventListener('mouseleave', onDragEnd);
-    reviewsFlex.addEventListener('touchstart', onDragStart);
-    reviewsFlex.addEventListener('touchmove', onDragMove);
-    reviewsFlex.addEventListener('touchend', onDragEnd);
+    // Touch события для отзывов с улучшенной поддержкой мобильных
+    reviewsFlex.addEventListener('touchstart', e => {
+        if (isTransitioning) return;
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        setReviewsTransition('none');
+        e.preventDefault(); // Предотвращаем скролл страницы
+    }, { passive: false });
+    
+    reviewsFlex.addEventListener('touchmove', e => {
+        if (!isDragging) return;
+        e.preventDefault(); // Предотвращаем скролл страницы
+        const x = e.touches[0].clientX;
+        deltaX = x - startX;
+        reviewsFlex.style.transform = `translateX(${-currentPage * (allReviewsCards[0].offsetWidth + 24) + deltaX}px)`;
+    }, { passive: false });
+    
+    reviewsFlex.addEventListener('touchend', e => {
+        if (!isDragging) return;
+        setReviewsTransition('transform 0.5s cubic-bezier(0.4,0,0.2,1)');
+        
+        // Уменьшаем порог для более чувствительных свайпов
+        const threshold = 30; // Было 50, стало 30
+        
+        if (Math.abs(deltaX) > threshold) {
+            if (deltaX < 0) goToPage(currentPage + 1);
+            else if (deltaX > 0) goToPage(currentPage - 1);
+            else goToPage(currentPage);
+        } else {
+            goToPage(currentPage);
+        }
+        isDragging = false;
+        deltaX = 0;
+    });
+    
+    reviewsFlex.addEventListener('touchcancel', e => {
+        if (isDragging) {
+            setReviewsTransition('transform 0.5s cubic-bezier(0.4,0,0.2,1)');
+            goToPage(currentPage);
+            isDragging = false;
+            deltaX = 0;
+        }
+    });
     // Функция для пересчета позиций отзывов при изменении размера окна
     function recalculateReviewsPositions() {
         if (isTransitioning) return;
@@ -534,7 +574,7 @@ document.addEventListener('DOMContentLoaded', function() {
             worksDeltaX = 0;
         }
     });
-    // Touch
+    // Touch события для мобильных устройств
     worksFlex.addEventListener('touchstart', e => {
         if (isWorksTransitioning) return; // Защита от свайпов во время перехода
         
@@ -545,23 +585,50 @@ document.addEventListener('DOMContentLoaded', function() {
         worksDragging = true;
         worksStartX = e.touches[0].clientX;
         setWorksTransition('none');
-    });
+        
+        // Предотвращаем скролл страницы во время свайпа
+        e.preventDefault();
+    }, { passive: false });
+    
     worksFlex.addEventListener('touchmove', e => {
         if (!worksDragging) return;
+        
+        // Предотвращаем скролл страницы
+        e.preventDefault();
+        
         worksDeltaX = e.touches[0].clientX - worksStartX;
         const slideWidth = allWorksSlides[0].offsetWidth + 24;
         worksFlex.style.transform = `translateX(${-((worksCurrent - (VISIBLE_WORKS - 1)/2) * slideWidth) + worksDeltaX}px)`;
-    });
-    worksFlex.addEventListener('touchend', () => {
+    }, { passive: false });
+    
+    worksFlex.addEventListener('touchend', e => {
         if (!worksDragging) return;
+        
         setWorksTransition('transform 0.5s cubic-bezier(0.4,0,0.2,1)');
-        if (Math.abs(worksDeltaX) > 50) {
+        
+        // Уменьшаем порог для более чувствительных свайпов на мобильных
+        const threshold = 30; // Было 50, стало 30
+        
+        if (Math.abs(worksDeltaX) > threshold) {
             if (worksDeltaX < 0) goToWorks(worksCurrent + 1);
             else if (worksDeltaX > 0) goToWorks(worksCurrent - 1);
             else goToWorks(worksCurrent);
-        } else goToWorks(worksCurrent);
+        } else {
+            // Возвращаемся к текущему слайду при недостаточном свайпе
+            goToWorks(worksCurrent);
+        }
+        
         worksDragging = false;
         worksDeltaX = 0;
+    });
+    
+    worksFlex.addEventListener('touchcancel', e => {
+        if (worksDragging) {
+            setWorksTransition('transform 0.5s cubic-bezier(0.4,0,0.2,1)');
+            goToWorks(worksCurrent);
+            worksDragging = false;
+            worksDeltaX = 0;
+        }
     });
     // Функция для пересчета позиций работ при изменении размера окна
     function recalculateWorksPositions() {
