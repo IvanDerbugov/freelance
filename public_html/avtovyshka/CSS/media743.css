@@ -225,6 +225,17 @@
         padding: 15px 40px;
         max-width: 98%;
     }
+
+    .payment .titleBlock {
+        margin-bottom: 32px;
+        text-align: left;
+        padding: 0 10px;
+    }
+
+    .payment-subtitle {
+        font-size: 22px;
+        padding: 0 10px;
+    }
 }
 
 @media (max-width: 500px) {
