@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.success) {
                 // Отправка события в Яндекс.Метрику
                 if (typeof ym === 'function') {
-                    ym(103422304, 'reachGoal', 'formaDlinnomer');
+                    ym(103422272, 'reachGoal', 'formaDlinnomer');
                     console.log('Цель "Отправка формы" отправлена в Яндекс Метрику (formaDlinnomer)');
                 }
                 form.style.display = 'none';
