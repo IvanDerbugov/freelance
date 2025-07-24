@@ -268,11 +268,11 @@ header {
     background: #FF7482;
     transform: scale(1.15);
 }
-.works-dot:hover {
+/* .works-dot:hover {
     background: #FF7482;
     transform: scale(1.2);
     box-shadow: 0 4px 12px rgba(255, 116, 130, 0.4);
-}
+} */
 @media (max-width: 1100px) {
     .works, .works-flex, .works-slide {
         width: 100vw;
@@ -852,11 +852,11 @@ header {
     cursor: pointer;
 }
 
-.reviews-dot:hover {
+/* .reviews-dot:hover {
     background: #FF7482;
     transform: scale(1.2);
     box-shadow: 0 4px 12px rgba(255, 116, 130, 0.4);
-}
+} */
 
 .reviews-dot.active {
     background: #FF7482;
