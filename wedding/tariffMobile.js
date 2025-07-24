@@ -156,6 +156,45 @@ document.addEventListener('DOMContentLoaded', function() {
     tariffsFlex.addEventListener('touchmove', onTariffDragMove);
     tariffsFlex.addEventListener('touchend', onTariffDragEnd);
 
+    // Функция для пересчета позиций при изменении размера окна
+    function recalculateTariffPositions() {
+        if (isTariffTransitioning) return;
+        
+        // Пересчитываем позицию текущего слайда с новыми размерами
+        const slideWidth = tariffsSlides[0].offsetWidth;
+        const gap = 8;
+        const totalOffset = currentTariffSlide * (slideWidth + gap);
+        
+        // Центрируем слайд относительно контейнера
+        const container = tariffsFlex.parentElement;
+        const containerWidth = container.offsetWidth;
+        const slideCenter = totalOffset + slideWidth / 2;
+        const containerCenter = containerWidth / 2;
+        const centeringOffset = containerCenter - slideCenter;
+        
+        // Добавляем небольшое смещение для лучшего визуального центрирования
+        const visualOffset = centeringOffset - 20;
+        
+        // Применяем новую позицию без анимации
+        tariffsFlex.style.transition = 'none';
+        tariffsFlex.style.transform = `translateX(${visualOffset}px)`;
+        
+        // Восстанавливаем анимацию
+        setTimeout(() => {
+            tariffsFlex.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        }, 10);
+    }
+
+    // Слушатель изменения размера окна
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        // Используем debounce для оптимизации производительности
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            recalculateTariffPositions();
+        }, 150); // Задержка 150мс
+    });
+
     // Инициализация
     renderTariffDots();
     updateTariffDots();

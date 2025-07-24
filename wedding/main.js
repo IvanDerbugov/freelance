@@ -127,6 +127,34 @@ document.addEventListener('DOMContentLoaded', function() {
     reviewsFlex.addEventListener('touchstart', onDragStart);
     reviewsFlex.addEventListener('touchmove', onDragMove);
     reviewsFlex.addEventListener('touchend', onDragEnd);
+    // Функция для пересчета позиций отзывов при изменении размера окна
+    function recalculateReviewsPositions() {
+        if (isTransitioning) return;
+        
+        // Пересчитываем позицию текущего слайда с новыми размерами
+        const slideWidth = allReviewsCards[0].offsetWidth + 24;
+        const newTransform = `translateX(-${currentPage * slideWidth}px)`;
+        
+        // Применяем новую позицию без анимации
+        setReviewsTransition('none');
+        reviewsFlex.style.transform = newTransform;
+        
+        // Восстанавливаем анимацию
+        setTimeout(() => {
+            setReviewsTransition('transform 0.5s cubic-bezier(0.4,0,0.2,1)');
+        }, 10);
+    }
+
+    // Слушатель изменения размера окна для отзывов
+    let reviewsResizeTimeout;
+    window.addEventListener('resize', function() {
+        // Используем debounce для оптимизации производительности
+        clearTimeout(reviewsResizeTimeout);
+        reviewsResizeTimeout = setTimeout(() => {
+            recalculateReviewsPositions();
+        }, 150); // Задержка 150мс
+    });
+
     // Инициализация
     renderDots();
     setReviewsTransition('none');
@@ -535,6 +563,34 @@ document.addEventListener('DOMContentLoaded', function() {
         worksDragging = false;
         worksDeltaX = 0;
     });
+    // Функция для пересчета позиций работ при изменении размера окна
+    function recalculateWorksPositions() {
+        if (isWorksTransitioning) return;
+        
+        // Пересчитываем позицию текущего слайда с новыми размерами
+        const slideWidth = allWorksSlides[0].offsetWidth + 24;
+        const newTransform = `translateX(-${(worksCurrent - (VISIBLE_WORKS - 1)/2) * slideWidth}px)`;
+        
+        // Применяем новую позицию без анимации
+        setWorksTransition('none');
+        worksFlex.style.transform = newTransform;
+        
+        // Восстанавливаем анимацию
+        setTimeout(() => {
+            setWorksTransition('transform 0.5s cubic-bezier(0.4,0,0.2,1)');
+        }, 10);
+    }
+
+    // Слушатель изменения размера окна для работ
+    let worksResizeTimeout;
+    window.addEventListener('resize', function() {
+        // Используем debounce для оптимизации производительности
+        clearTimeout(worksResizeTimeout);
+        worksResizeTimeout = setTimeout(() => {
+            recalculateWorksPositions();
+        }, 150); // Задержка 150мс
+    });
+
     // Инициализация
     renderWorksDots();
     setWorksTransition('none');
