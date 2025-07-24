@@ -228,6 +228,20 @@
         font-size: 22px;
         padding: 0 10px;
     }
+
+
+    .payment-subtitle {
+        text-align: left;
+    }
+
+    .payment-grid ul {
+        text-align: left;
+    }
+
+    .payment-grid b {
+        text-align: left;
+        font-size: 22px;
+    }
 }
 
 @media (max-width: 500px) {
