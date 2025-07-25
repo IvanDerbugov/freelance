@@ -1,3 +1,15 @@
+.header-limiter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 15;
+}
+
+main {
+    margin-top: 64px;
+}
+
 .conteiner1800 {
     width: 100%;
     max-width: 1917px;
