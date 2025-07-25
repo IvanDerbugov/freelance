@@ -18,7 +18,7 @@ function includeHTML(selector, url, callback) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    includeHTML('#header-container', '../header/header.html', function() {
+    includeHTML('#header-container', 'https://рекордика.рф/public_html/header/header.html', function() {
         // Динамически подключаем DropDownList.js после вставки header
         const script1 = document.createElement('script');
         script1.src = 'JS/DropDownList.js';
@@ -30,5 +30,5 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(script2);
     });
     
-    includeHTML('#footer-container', '../footer/footer.html');
+    includeHTML('#footer-container', 'https://рекордика.рф/public_html/footer/footer.html');
 }); 

@@ -2,23 +2,15 @@
 
 function includeHTML(selector, url, callback) {
     fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.text();
-        })
+        .then(response => response.text())
         .then(data => {
             document.querySelector(selector).innerHTML = data;
             if (callback) callback();
-        })
-        .catch(error => {
-            console.error(`Ошибка загрузки ${url}:`, error);
         });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    includeHTML('#header-container', '../header/header.html', function() {
+    includeHTML('#header-container', 'HTML/header.html', function() {
         // Динамически подключаем DropDownList.js после вставки header
         const script1 = document.createElement('script');
         script1.src = 'JS/DropDownList.js';
@@ -29,6 +21,5 @@ document.addEventListener('DOMContentLoaded', function() {
         script2.src = 'JS/burgerMenu.js';
         document.body.appendChild(script2);
     });
-    
-    includeHTML('#footer-container', '../footer/footer.html');
+    includeHTML('#footer-container', 'HTML/footer.html');
 }); 
