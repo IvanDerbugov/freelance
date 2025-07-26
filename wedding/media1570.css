@@ -241,4 +241,8 @@
     .footer-sub {
         font-size: 64px;
     }
+
+    .carousel-indicators {
+        display: none !important;
+    }
 }

@@ -1761,3 +1761,12 @@ footer {
 .tariffs-dot.active {
     background: #F90F4A;
 }
+
+
+.carousel-inner {
+    display: none;
+}
+
+.carousel-indicators {
+    display: none !important;
+}

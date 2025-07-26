@@ -233,7 +233,12 @@
         margin-bottom: 40px;
     }
 
+    .carousel-inner {
+        display: block;
+    }
+
     .carousel-indicators {
+        display: flex!important;
         position: absolute;
         right: 0;
         bottom: -42px;
