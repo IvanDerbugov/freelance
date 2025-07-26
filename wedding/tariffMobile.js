@@ -97,6 +97,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function onTariffDragStart(e) {
         if (isTariffTransitioning) return;
+        const target = e.target;
+        if (target.closest('a[href^="#"]')) {
+            return; // Не начинаем свайп, если кликнули на якорь-ссылку
+        }
         isDragging = true;
         startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
         tariffsFlex.style.transition = 'none';
@@ -155,6 +159,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Touch события для тарифов с улучшенной поддержкой мобильных
     tariffsFlex.addEventListener('touchstart', e => {
         if (isTariffTransitioning) return;
+        const target = e.target;
+        if (target.closest('a[href^="#"]')) {
+            return; // Не начинаем свайп, если кликнули на якорь-ссылку
+        }
         isDragging = true;
         startX = e.touches[0].clientX;
         tariffsFlex.style.transition = 'none';

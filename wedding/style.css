@@ -116,6 +116,7 @@ header {
     left: 86px;
     width: 100%;
     height: 100%;
+    pointer-events: none;
 }
 
 .center-header-right .discount-price {
@@ -161,6 +162,7 @@ header {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     transition: left 0.5s;
+    pointer-events: none;
 }
 
 .bottom-header button:hover {
@@ -435,6 +437,7 @@ header {
     opacity: 0;
     transition: opacity 0.3s;
     border-radius: 48px;
+    pointer-events: none;
 }
 
 .tariff-active {
@@ -492,6 +495,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
+    pointer-events: none;
 }
 
 .price-discount {
@@ -692,6 +696,7 @@ header {
     opacity: 0;
     transition: opacity 0.3s;
     border-radius: 48px;
+    pointer-events: none;
 }
 
 .chooseUs-card:hover {
@@ -953,6 +958,7 @@ header {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     transition: left 0.5s;
+    pointer-events: none;
 }
 
 .leaveRequest form button:hover {
@@ -1081,6 +1087,7 @@ footer {
     height: 2px;
     background: linear-gradient(90deg, #FC9379, #FE7082, #FF8181);
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
 }
 
 .footer-contacts a:hover {
@@ -1255,6 +1262,7 @@ footer {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     transition: left 0.5s;
+    pointer-events: none;
 }
 
 .modal-form button:hover {
