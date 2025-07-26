@@ -229,7 +229,45 @@
     }
 
     .tariff {
-        min-width: 226px;
+        width: 300px;
+        max-width: 95%;
+        height: 444px;
+        margin: 0 auto;
+    }
+
+    .carousel {
+        position: relative;
+        margin-bottom: 40px;
+    }
+
+    .carousel-indicators {
+        position: absolute;
+        right: 0;
+        bottom: -42px;
+        left: 0;
+        z-index: 15;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin-right: 15%;
+        margin-bottom: 1rem;
+        margin-left: 15%;
+        list-style: none;
+    }
+
+    .carousel-indicators [data-bs-target] {
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        background-color: #ccc;
+        border: none;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .carousel-indicators [data-bs-target].active {
+        background-color: #830000ad;
     }
 
     /* Показываем мобильный слайдер, скрываем десктопную версию */
