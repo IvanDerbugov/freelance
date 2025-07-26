@@ -1,11 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const tariffs = document.querySelectorAll('.tariff');
-    tariffs.forEach(tariff => {
-        tariff.addEventListener('click', function() {
-            tariffs.forEach(t => t.classList.remove('tariff-active'));
-            this.classList.add('tariff-active');
+    // Обработчик кликов на тарифы только для десктопа (не мобильные)
+    if (window.innerWidth > 740) {
+        const tariffs = document.querySelectorAll('.tariff');
+        tariffs.forEach(tariff => {
+            tariff.addEventListener('click', function() {
+                tariffs.forEach(t => t.classList.remove('tariff-active'));
+                this.classList.add('tariff-active');
+            });
         });
-    });
+    }
 
     // --- Слайдер отзывов для десктопа ---
     const reviewsFlex = document.querySelector('.reviews-flex');

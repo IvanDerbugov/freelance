@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Проверяем, мобильное ли устройство
-    const isMobile = window.innerWidth <= 740;
+    window.isMobile = window.innerWidth <= 740;
     
-    if (!isMobile) return; // Если не мобилка, не инициализируем слайдер
+    if (!window.isMobile) return; // Если не мобилка, не инициализируем слайдер
 
     // Элементы слайдера тарифов
     const tariffsFlex = document.querySelector('.tariffs-flex');
@@ -98,7 +98,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function onTariffDragStart(e) {
         if (isTariffTransitioning) return;
         const target = e.target;
-        if (target.closest('a[href^="#"]')) {
+        // Проверяем только если кликнули именно на якорь-ссылку, а не на её дочерние элементы
+        if (target.tagName === 'A' && target.getAttribute('href') && target.getAttribute('href').startsWith('#')) {
             return; // Не начинаем свайп, если кликнули на якорь-ссылку
         }
         isDragging = true;
@@ -160,7 +161,8 @@ document.addEventListener('DOMContentLoaded', function() {
     tariffsFlex.addEventListener('touchstart', e => {
         if (isTariffTransitioning) return;
         const target = e.target;
-        if (target.closest('a[href^="#"]')) {
+        // Проверяем только если кликнули именно на якорь-ссылку, а не на её дочерние элементы
+        if (target.tagName === 'A' && target.getAttribute('href') && target.getAttribute('href').startsWith('#')) {
             return; // Не начинаем свайп, если кликнули на якорь-ссылку
         }
         isDragging = true;
