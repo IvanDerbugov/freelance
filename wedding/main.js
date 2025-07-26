@@ -97,6 +97,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let deltaX = 0;
     function onDragStart(e) {
         if (isTransitioning) return; // Защита от свайпов во время перехода
+        
+        // Проверяем, не кликнули ли на кнопку "посмотреть отзыв"
+        const target = e.target;
+        if (target.closest('.seeReview')) {
+            return; // Не начинаем свайп, если кликнули на кнопку
+        }
+        
         isDragging = true;
         startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
         setReviewsTransition('none');
@@ -127,6 +134,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Touch события для отзывов с улучшенной поддержкой мобильных
     reviewsFlex.addEventListener('touchstart', e => {
         if (isTransitioning) return;
+        
+        // Проверяем, не кликнули ли на кнопку "посмотреть отзыв"
+        const target = e.target;
+        if (target.closest('.seeReview')) {
+            return; // Не начинаем свайп, если кликнули на кнопку
+        }
+        
         isDragging = true;
         startX = e.touches[0].clientX;
         setReviewsTransition('none');
