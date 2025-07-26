@@ -97,9 +97,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function onTariffDragStart(e) {
         if (isTariffTransitioning) return;
-        const target = e.target;
-        // Проверяем только если кликнули именно на якорь-ссылку, а не на её дочерние элементы
-        if (target.tagName === 'A' && target.getAttribute('href') && target.getAttribute('href').startsWith('#')) {
+        // Проверяем, не кликнули ли на якорь-ссылку
+        if (e.target.closest('a[href^="#"]')) {
             return; // Не начинаем свайп, если кликнули на якорь-ссылку
         }
         isDragging = true;
@@ -133,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isDragging) return;
         tariffsFlex.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
         
-        if (Math.abs(deltaX) > 50) {
+        if (Math.abs(deltaX) > 30) {
             if (deltaX < 0) {
                 // Свайп влево - следующий слайд
                 const nextIndex = currentTariffSlide < totalTariffSlides - 1 ? currentTariffSlide + 1 : 0;
@@ -160,9 +159,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Touch события для тарифов с улучшенной поддержкой мобильных
     tariffsFlex.addEventListener('touchstart', e => {
         if (isTariffTransitioning) return;
-        const target = e.target;
-        // Проверяем только если кликнули именно на якорь-ссылку, а не на её дочерние элементы
-        if (target.tagName === 'A' && target.getAttribute('href') && target.getAttribute('href').startsWith('#')) {
+        // Проверяем, не кликнули ли на якорь-ссылку
+        if (e.target.closest('a[href^="#"]')) {
             return; // Не начинаем свайп, если кликнули на якорь-ссылку
         }
         isDragging = true;
