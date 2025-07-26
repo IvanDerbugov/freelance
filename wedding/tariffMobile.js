@@ -6,7 +6,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Находим Bootstrap карусель
     const carousel = document.getElementById('carouselExampleIndicators');
-    if (!carousel) return;
+    if (!carousel) {
+        console.log('Карусель не найдена');
+        return;
+    }
+
+    // Проверяем, что Bootstrap доступен
+    if (typeof bootstrap === 'undefined') {
+        console.log('Bootstrap не загружен');
+        return;
+    }
 
     // Инициализируем Bootstrap карусель
     const bsCarousel = new bootstrap.Carousel(carousel, {
@@ -15,17 +24,22 @@ document.addEventListener('DOMContentLoaded', function() {
         touch: true // Включаем поддержку свайпов
     });
 
-    // Добавляем дополнительные обработчики для улучшения свайпов
+    console.log('Bootstrap карусель инициализирована');
+
+    // Добавляем только свайпы, не трогаем точки
     let startX = 0;
     let isDragging = false;
     let deltaX = 0;
 
     function onCarouselDragStart(e) {
-        if (e.target.closest('a[href^="#"]')) {
-            return; // Не начинаем свайп, если кликнули на якорь-ссылку
+        // Не начинаем свайп, если кликнули на точку или якорь-ссылку
+        if (e.target.closest('.carousel-indicators') || e.target.closest('a[href^="#"]')) {
+            console.log('Клик по точке или ссылке, свайп отменен');
+            return;
         }
         isDragging = true;
         startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        console.log('Начало свайпа');
     }
 
     function onCarouselDragMove(e) {
@@ -42,9 +56,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (Math.abs(deltaX) > threshold) {
             if (deltaX < 0) {
                 // Свайп влево - следующий слайд
+                console.log('Свайп влево, следующий слайд');
                 bsCarousel.next();
             } else {
                 // Свайп вправо - предыдущий слайд
+                console.log('Свайп вправо, предыдущий слайд');
                 bsCarousel.prev();
             }
         }
@@ -53,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         deltaX = 0;
     }
 
-    // Добавляем обработчики событий для свайпов
+    // Добавляем обработчики событий только для свайпов
     carousel.addEventListener('mousedown', onCarouselDragStart);
     carousel.addEventListener('mousemove', onCarouselDragMove);
     carousel.addEventListener('mouseup', onCarouselDragEnd);
@@ -61,12 +77,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Touch события для мобильных устройств
     carousel.addEventListener('touchstart', e => {
-        if (e.target.closest('a[href^="#"]')) {
-            return; // Не начинаем свайп, если кликнули на якорь-ссылку
+        // Не начинаем свайп, если кликнули на точку или якорь-ссылку
+        if (e.target.closest('.carousel-indicators') || e.target.closest('a[href^="#"]')) {
+            console.log('Touch по точке или ссылке, свайп отменен');
+            return;
         }
         isDragging = true;
         startX = e.touches[0].clientX;
         e.preventDefault(); // Предотвращаем скролл страницы
+        console.log('Начало touch свайпа');
     }, { passive: false });
     
     carousel.addEventListener('touchmove', e => {
@@ -84,9 +103,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (Math.abs(deltaX) > threshold) {
             if (deltaX < 0) {
                 // Свайп влево - следующий слайд
+                console.log('Touch свайп влево, следующий слайд');
                 bsCarousel.next();
             } else {
                 // Свайп вправо - предыдущий слайд
+                console.log('Touch свайп вправо, предыдущий слайд');
                 bsCarousel.prev();
             }
         }
@@ -105,5 +126,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Начинаем со второго тарифа (Standard)
     setTimeout(() => {
         bsCarousel.to(1);
+        console.log('Переключились на второй тариф');
     }, 100);
 });
