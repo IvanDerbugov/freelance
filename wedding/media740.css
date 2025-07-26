@@ -193,8 +193,8 @@
     .play-btn {
         /* display: none !important; */
         position: absolute;
-        left: 48%;
-        top: 50%;
+        left: 50%;
+        top: 39%;
         transform: translate(-50%, -50%);
         z-index: 3;
         pointer-events: auto;
@@ -202,8 +202,8 @@
     }
 
     .play-btn svg {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
     }
 
     /* Адаптируем unmute кнопку */
