@@ -553,6 +553,11 @@ document.addEventListener('DOMContentLoaded', function() {
             updateWorksDots();
         }
         isWorksTransitioning = false; // Разрешаем новые переходы
+        
+        // Управляем видео после завершения анимации на мобильных устройствах
+        if (window.innerWidth <= 740) {
+            manageVideosOnSlideChange();
+        }
     });
     if (worksArrowPrev) worksArrowPrev.addEventListener('click', () => {
         if (!isWorksTransitioning) {
@@ -893,6 +898,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Инициализируем кнопки play
     setupPlayButtons();
+    
+    // На мобильных устройствах запускаем видео на первом слайде
+    if (window.innerWidth <= 740) {
+        setTimeout(() => {
+            manageVideosOnSlideChange();
+        }, 500);
+    }
 
     // Мобильная версия блока "Обо мне" - анимация при клике
     const aboutMeMobileText = document.getElementById('aboutMeMobileText');
@@ -934,9 +946,63 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Функция управления видео на мобильных устройствах
+    function manageVideosOnSlideChange() {
+        // Работаем только на мобильных устройствах
+        if (window.innerWidth > 740) return;
+
+        const allVideos = document.querySelectorAll('.works-slide video');
+        const allSlides = document.querySelectorAll('.works-slide');
+
+        // Определяем видимый слайд по его реальному положению на экране
+        let visibleSlide = null;
+        let visibleVideo = null;
+
+        allSlides.forEach((slide, index) => {
+            const rect = slide.getBoundingClientRect();
+            const slideCenter = rect.left + rect.width / 2;
+            const screenCenter = window.innerWidth / 2;
+            
+            // Если центр слайда находится в центре экрана (с небольшим допуском)
+            if (Math.abs(slideCenter - screenCenter) < rect.width / 2) {
+                visibleSlide = slide;
+                visibleVideo = slide.querySelector('video');
+            }
+        });
+
+        // Останавливаем все видео
+        allVideos.forEach(video => {
+            if (video !== visibleVideo) {
+                video.pause();
+                video.currentTime = 0;
+            }
+        });
+
+        // Если есть видимое видео, запускаем его
+        if (visibleVideo) {
+            // Небольшая задержка для плавности
+            setTimeout(() => {
+                visibleVideo.currentTime = 0;
+                visibleVideo.play().catch(e => {
+                    // Игнорируем ошибки автовоспроизведения
+                    console.log('Автовоспроизведение заблокировано браузером');
+                });
+            }, 100);
+        }
+    }
+    
     // Инициализируем при загрузке
     setupAboutMeMobile();
     
     // Обновляем при изменении размера окна
-    window.addEventListener('resize', setupAboutMeMobile);
+    window.addEventListener('resize', () => {
+        setupAboutMeMobile();
+        
+        // Если переключились на мобильную версию, запускаем видео на текущем слайде
+        if (window.innerWidth <= 740) {
+            setTimeout(() => {
+                manageVideosOnSlideChange();
+            }, 100);
+        }
+    });
 });

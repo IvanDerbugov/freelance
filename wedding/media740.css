@@ -191,14 +191,7 @@
 
     /* Адаптируем кнопку play */
     .play-btn {
-        /* display: none !important; */
-        position: absolute;
-        left: 50%;
-        top: 40%;
-        transform: translate(-50%, -50%);
-        z-index: 3;
-        pointer-events: auto;
-        animation: playPulse 1.4s infinite;
+        display: none !important;
     }
 
     .play-btn svg {
@@ -267,7 +260,7 @@
     }
 
     .carousel-indicators [data-bs-target].active {
-        background-color: #830000ad;
+        background-color: #cc0101cc;
     }
 
     /* Показываем мобильный слайдер, скрываем десктопную версию */
