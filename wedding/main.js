@@ -493,6 +493,12 @@ document.addEventListener('DOMContentLoaded', function() {
             dot.addEventListener('click', function() {
                 if (!isWorksTransitioning) {
                     goToWorks(i + CLONE_COUNT); // +CLONE_COUNT, т.к. первый реальный слайд — индекс CLONE_COUNT
+                } else {
+                    // Если переход заблокирован, принудительно сбрасываем
+                    setTimeout(() => {
+                        isWorksTransitioning = false;
+                        goToWorks(i + CLONE_COUNT);
+                    }, 100);
                 }
             });
             worksDotsContainer.appendChild(dot);
@@ -511,7 +517,14 @@ document.addEventListener('DOMContentLoaded', function() {
         worksFlex.style.transition = val;
     }
     function goToWorks(idx) {
-        if (isWorksTransitioning) return; // Защита от множественных кликов
+        if (isWorksTransitioning) {
+            // Если переход заблокирован, принудительно сбрасываем через небольшую задержку
+            setTimeout(() => {
+                isWorksTransitioning = false;
+                goToWorks(idx);
+            }, 100);
+            return;
+        }
         
         isWorksTransitioning = true;
         setWorksTransition('transform 0.5s cubic-bezier(0.4,0,0.2,1)');
@@ -541,11 +554,23 @@ document.addEventListener('DOMContentLoaded', function() {
     if (worksArrowPrev) worksArrowPrev.addEventListener('click', () => {
         if (!isWorksTransitioning) {
             goToWorks(worksCurrent - 1);
+        } else {
+            // Если переход заблокирован, принудительно сбрасываем
+            setTimeout(() => {
+                isWorksTransitioning = false;
+                goToWorks(worksCurrent - 1);
+            }, 100);
         }
     });
     if (worksArrowNext) worksArrowNext.addEventListener('click', () => {
         if (!isWorksTransitioning) {
             goToWorks(worksCurrent + 1);
+        } else {
+            // Если переход заблокирован, принудительно сбрасываем
+            setTimeout(() => {
+                isWorksTransitioning = false;
+                goToWorks(worksCurrent + 1);
+            }, 100);
         }
     });
     // Swipe logic
@@ -553,12 +578,15 @@ document.addEventListener('DOMContentLoaded', function() {
     let worksDragging = false;
     let worksDeltaX = 0;
     worksFlex.addEventListener('mousedown', e => {
-        if (isWorksTransitioning) return; // Защита от свайпов во время перехода
-        
-        // Проверяем, не кликнули ли мы по кнопке play
-        const playBtn = e.target.closest('.play-btn');
-        if (playBtn) return; // Если кликнули по кнопке play, не начинаем свайп
-        
+        if (isWorksTransitioning) {
+            // Если переход заблокирован, принудительно сбрасываем
+            setTimeout(() => {
+                isWorksTransitioning = false;
+            }, 100);
+            return;
+        }
+        // Универсальная проверка для всех интерактивных элементов внутри слайда
+        if (e.target.closest('.play-btn, .mute-btn, .volume-btn, button, a')) return;
         worksDragging = true;
         worksStartX = e.clientX;
         setWorksTransition('none');
@@ -590,12 +618,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     // Touch события для мобильных устройств
     worksFlex.addEventListener('touchstart', e => {
-        if (isWorksTransitioning) return; // Защита от свайпов во время перехода
-        
-        // Проверяем, не кликнули ли мы по кнопке play
-        const playBtn = e.target.closest('.play-btn');
-        if (playBtn) return; // Если кликнули по кнопке play, не начинаем свайп
-        
+        if (isWorksTransitioning) {
+            // Если переход заблокирован, принудительно сбрасываем
+            setTimeout(() => {
+                isWorksTransitioning = false;
+            }, 100);
+            return;
+        }
+        // Универсальная проверка для всех интерактивных элементов внутри слайда
+        if (e.target.closest('.play-btn, .mute-btn, .volume-btn, button, a')) return;
         worksDragging = true;
         worksStartX = e.touches[0].clientX;
         setWorksTransition('none');
@@ -828,6 +859,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             relatedVideo.currentTime = 0;
                         }
                     });
+                    
+                    // Сбрасываем состояние перехода, если оно заблокировано
+                    if (isWorksTransitioning) {
+                        setTimeout(() => {
+                            isWorksTransitioning = false;
+                        }, 100);
+                    }
                 });
             }
         });
