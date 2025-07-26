@@ -191,6 +191,7 @@
 
     /* Адаптируем кнопку play */
     .play-btn {
+        display: none !important;
         position: absolute;
         left: 48%;
         top: 50%;
