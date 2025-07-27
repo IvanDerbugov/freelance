@@ -719,35 +719,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const allVideos = document.querySelectorAll('.works-slide video');
         const allPlayBtns = document.querySelectorAll('.works-slide .play-btn');
         
-        // Создаем карту соответствия: клон -> оригинал
-        const cloneToOriginalMap = new Map();
-        const originalToClonesMap = new Map();
-        
-        // Находим соответствия между клонами и оригиналами
-        document.querySelectorAll('.works-slide').forEach((slide, index) => {
-            const video = slide.querySelector('video');
-            if (slide.classList.contains('clone') && video) {
-                // Определяем оригинал по содержимому видео (src)
-                const videoSrc = video.src;
-                let originalVideo = null;
-                
-                // Ищем оригинал с тем же src среди не-клонов
-                document.querySelectorAll('.works-slide:not(.clone)').forEach(originalSlide => {
-                    const origVideo = originalSlide.querySelector('video');
-                    if (origVideo && origVideo.src === videoSrc) {
-                        originalVideo = origVideo;
-                    }
-                });
-                
-                if (originalVideo) {
-                    cloneToOriginalMap.set(video, originalVideo);
-                    if (!originalToClonesMap.has(originalVideo)) {
-                        originalToClonesMap.set(originalVideo, []);
-                    }
-                    originalToClonesMap.get(originalVideo).push(video);
-                }
-            }
-        });
+
         
         document.querySelectorAll('.works-slide').forEach(slide => {
             const playBtn = slide.querySelector('.play-btn');
@@ -768,13 +740,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     allVideos.forEach(otherVideo => {
                         if (otherVideo !== video) {
                             otherVideo.pause();
-                            // Также останавливаем связанные клоны/оригиналы
-                            const relatedVideos = getRelatedVideos(otherVideo, cloneToOriginalMap, originalToClonesMap);
-                            relatedVideos.forEach(relatedVideo => {
-                                if (relatedVideo !== otherVideo) {
-                                    relatedVideo.pause();
-                                }
-                            });
                         }
                     });
                     
@@ -787,87 +752,36 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Скрываем текущую кнопку и запускаем видео
                     playBtn.style.display = 'none';
-                    
-                    // Если это клон, синхронизируем с оригиналом
-                    if (slide.classList.contains('clone')) {
-                        const originalVideo = cloneToOriginalMap.get(video);
-                        if (originalVideo) {
-                            // Запускаем оригинал без звука
-                            originalVideo.muted = true;
-                            originalVideo.currentTime = video.currentTime;
-                            originalVideo.play();
-                            // Запускаем клон со звуком
-                            video.play();
-                        } else {
-                            video.play();
-                        }
-                    } else {
-                        // Если это оригинал, просто запускаем его (без синхронизации с клонами)
-                        video.play();
-                    }
+                    video.play();
                 });
                 
-                // Синхронизация при воспроизведении (только для клонов)
+                // Обработчик воспроизведения видео
                 video.addEventListener('play', function() {
                     playBtn.style.display = 'none';
                     
                     // На мобилке останавливаем все другие видео
                     if (window.innerWidth <= 740) {
-                        pauseOtherVideos(video);
-                    }
-                    
-                    // Синхронизируем связанные видео только если это клон
-                    if (slide.classList.contains('clone')) {
-                        const relatedVideos = getRelatedVideos(video, cloneToOriginalMap, originalToClonesMap);
-                        relatedVideos.forEach(relatedVideo => {
-                            if (relatedVideo !== video && relatedVideo.paused) {
-                                relatedVideo.currentTime = video.currentTime;
-                                relatedVideo.muted = true;
-                                relatedVideo.play();
+                        const allVideos = document.querySelectorAll('.works-slide video');
+                        allVideos.forEach(otherVideo => {
+                            if (otherVideo !== video && !otherVideo.paused) {
+                                otherVideo.pause();
                             }
                         });
                     }
                 });
                 
-                // Синхронизация при паузе
+                // Обработчик паузы видео
                 video.addEventListener('pause', function() {
                     if (video.currentTime < video.duration) {
                         playBtn.style.display = 'block';
                     }
-                    
-                    // Останавливаем связанные видео
-                    const relatedVideos = getRelatedVideos(video, cloneToOriginalMap, originalToClonesMap);
-                    relatedVideos.forEach(relatedVideo => {
-                        if (relatedVideo !== video) {
-                            relatedVideo.pause();
-                        }
-                    });
                 });
                 
-                // Синхронизация при изменении времени (только для клонов)
-                video.addEventListener('timeupdate', function() {
-                    if (slide.classList.contains('clone')) {
-                        const relatedVideos = getRelatedVideos(video, cloneToOriginalMap, originalToClonesMap);
-                        relatedVideos.forEach(relatedVideo => {
-                            if (relatedVideo !== video && Math.abs(relatedVideo.currentTime - video.currentTime) > 0.1) {
-                                relatedVideo.currentTime = video.currentTime;
-                            }
-                        });
-                    }
-                });
+
                 
                 // Показываем кнопку при окончании видео
                 video.addEventListener('ended', function() {
                     playBtn.style.display = 'block';
-                    
-                    // Останавливаем связанные видео
-                    const relatedVideos = getRelatedVideos(video, cloneToOriginalMap, originalToClonesMap);
-                    relatedVideos.forEach(relatedVideo => {
-                        if (relatedVideo !== video) {
-                            relatedVideo.pause();
-                            relatedVideo.currentTime = 0;
-                        }
-                    });
                     
                     // Сбрасываем состояние перехода, если оно заблокировано
                     if (isWorksTransitioning) {
@@ -879,22 +793,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Функция для получения связанных видео (клоны/оригиналы)
-        function getRelatedVideos(video, cloneToOriginalMap, originalToClonesMap) {
-            const related = [];
-            
-            // Если это клон, добавляем оригинал
-            if (cloneToOriginalMap.has(video)) {
-                related.push(cloneToOriginalMap.get(video));
-            }
-            
-            // Если это оригинал, добавляем клоны
-            if (originalToClonesMap.has(video)) {
-                related.push(...originalToClonesMap.get(video));
-            }
-            
-            return related;
-        }
+
     }
     
     // Инициализируем кнопки play
@@ -963,17 +862,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Функция для паузы всех видео кроме текущего при воспроизведении
-    function pauseOtherVideos(currentVideo) {
-        if (window.innerWidth > 740) return; // Только на мобилке
-        
-        const allVideos = document.querySelectorAll('.works-slide video');
-        allVideos.forEach(video => {
-            if (video !== currentVideo && !video.paused) {
-                video.pause();
-            }
-        });
-    }
+
     
     // Инициализируем при загрузке
     setupAboutMeMobile();
