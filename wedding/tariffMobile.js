@@ -32,14 +32,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let isDragging = false;
     let deltaX = 0;
     let deltaY = 0;
+    let isClick = false; // Флаг для определения клика
 
     function onCarouselDragStart(e) {
-        // Не начинаем свайп, если кликнули на точку или якорь-ссылку
-        if (e.target.closest('.carousel-indicators') || e.target.closest('a[href^="#"]')) {
-            console.log('Клик по точке или ссылке, свайп отменен');
+        // Не начинаем свайп, если кликнули на точку
+        if (e.target.closest('.carousel-indicators')) {
+            console.log('Клик по точке, свайп отменен');
             return;
         }
         isDragging = true;
+        isClick = true; // Предполагаем, что это клик
         startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
         startY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
         console.log('Начало свайпа');
@@ -51,6 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const y = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
         deltaX = x - startX;
         deltaY = y - startY;
+        
+        // Если движение больше 5px, это не клик
+        if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
+            isClick = false;
+        }
     }
 
     function onCarouselDragEnd() {
@@ -73,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         isDragging = false;
+        isClick = false;
         deltaX = 0;
         deltaY = 0;
     }
@@ -85,12 +93,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Touch события для мобильных устройств
     carousel.addEventListener('touchstart', e => {
-        // Не начинаем свайп, если кликнули на точку или якорь-ссылку
-        if (e.target.closest('.carousel-indicators') || e.target.closest('a[href^="#"]')) {
-            console.log('Touch по точке или ссылке, свайп отменен');
+        // Не начинаем свайп, если кликнули на точку
+        if (e.target.closest('.carousel-indicators')) {
+            console.log('Touch по точке, свайп отменен');
             return;
         }
         isDragging = true;
+        isClick = true; // Предполагаем, что это клик
         startX = e.touches[0].clientX;
         startY = e.touches[0].clientY;
         e.preventDefault(); // Предотвращаем скролл страницы
@@ -106,6 +115,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const y = e.touches[0].clientY;
         deltaX = x - startX;
         deltaY = y - startY;
+        
+        // Если движение больше 5px, это не клик
+        if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
+            isClick = false;
+        }
     }, { passive: false });
     
     carousel.addEventListener('touchend', e => {
@@ -125,9 +139,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Touch свайп вправо, предыдущий слайд');
                 bsCarousel.prev();
             }
+        } else if (isClick && e.target.closest('a[href^="#"]')) {
+            // Если это был клик по ссылке, разрешаем стандартное поведение
+            console.log('Клик по ссылке, разрешаем переход');
+            const link = e.target.closest('a[href^="#"]');
+            const href = link.getAttribute('href');
+            if (href) {
+                // Программно переходим по якорю
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
         }
         
         isDragging = false;
+        isClick = false;
         deltaX = 0;
         deltaY = 0;
         e.preventDefault(); // Предотвращаем стандартное поведение
@@ -137,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
     carousel.addEventListener('touchcancel', e => {
         if (isDragging) {
             isDragging = false;
+            isClick = false;
             deltaX = 0;
             deltaY = 0;
         }
