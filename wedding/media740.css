@@ -347,7 +347,6 @@
         position: absolute;
         bottom: -315px;
         cursor: pointer;
-        transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 3;
     }
 

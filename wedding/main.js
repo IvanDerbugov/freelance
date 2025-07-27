@@ -908,6 +908,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Мобильная версия блока "Обо мне" - анимация при клике
     const aboutMeMobileText = document.getElementById('aboutMeMobileText');
+    let isAnimating = false; // Флаг для предотвращения быстрых кликов
     
     function setupAboutMeMobile() {
         if (aboutMeMobileText && window.innerWidth <= 740) {
@@ -919,29 +920,37 @@ document.addEventListener('DOMContentLoaded', function() {
             // Убираем обработчик на десктопе
             aboutMeMobileText.removeEventListener('click', toggleAboutMeMobile);
             aboutMeMobileText.classList.remove('expanded', 'sliding-up', 'sliding-down');
+            isAnimating = false;
         }
     }
     
     function toggleAboutMeMobile() {
+        // Предотвращаем быстрые клики во время анимации
+        if (isAnimating) return;
+        
         const element = this;
         
         if (element.classList.contains('expanded')) {
             // Скрываем блок
+            isAnimating = true;
             element.classList.remove('expanded');
             element.classList.add('sliding-down');
             
             // Убираем класс анимации после завершения
             setTimeout(() => {
                 element.classList.remove('sliding-down');
+                isAnimating = false;
             }, 500);
         } else {
             // Показываем блок
+            isAnimating = true;
             element.classList.add('sliding-up');
             
             // Добавляем класс expanded после завершения анимации
             setTimeout(() => {
                 element.classList.remove('sliding-up');
                 element.classList.add('expanded');
+                isAnimating = false;
             }, 500);
         }
     }
