@@ -21,15 +21,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const bsCarousel = new bootstrap.Carousel(carousel, {
         interval: false, // Отключаем автопереключение
         wrap: true, // Включаем зацикливание
-        touch: true // Включаем поддержку свайпов
+        touch: false // Отключаем встроенные touch события Bootstrap
     });
 
     console.log('Bootstrap карусель инициализирована');
 
     // Добавляем только свайпы, не трогаем точки
     let startX = 0;
+    let startY = 0;
     let isDragging = false;
     let deltaX = 0;
+    let deltaY = 0;
 
     function onCarouselDragStart(e) {
         // Не начинаем свайп, если кликнули на точку или якорь-ссылку
@@ -39,21 +41,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         isDragging = true;
         startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        startY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
         console.log('Начало свайпа');
     }
 
     function onCarouselDragMove(e) {
         if (!isDragging) return;
         const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        const y = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
         deltaX = x - startX;
+        deltaY = y - startY;
     }
 
     function onCarouselDragEnd() {
         if (!isDragging) return;
         
-        const threshold = 50; // Порог для свайпа
+        const threshold = 30; // Уменьшенный порог для более чувствительного свайпа
+        const verticalThreshold = 50; // Порог для вертикального движения
         
-        if (Math.abs(deltaX) > threshold) {
+        // Проверяем, что движение больше горизонтальное, чем вертикальное
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > threshold && Math.abs(deltaY) < verticalThreshold) {
             if (deltaX < 0) {
                 // Свайп влево - следующий слайд
                 console.log('Свайп влево, следующий слайд');
@@ -67,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         isDragging = false;
         deltaX = 0;
+        deltaY = 0;
     }
 
     // Добавляем обработчики событий только для свайпов
@@ -84,23 +92,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         isDragging = true;
         startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
         e.preventDefault(); // Предотвращаем скролл страницы
+        e.stopPropagation(); // Останавливаем всплытие события
         console.log('Начало touch свайпа');
     }, { passive: false });
     
     carousel.addEventListener('touchmove', e => {
         if (!isDragging) return;
         e.preventDefault(); // Предотвращаем скролл страницы
+        e.stopPropagation(); // Останавливаем всплытие события
         const x = e.touches[0].clientX;
+        const y = e.touches[0].clientY;
         deltaX = x - startX;
+        deltaY = y - startY;
     }, { passive: false });
     
     carousel.addEventListener('touchend', e => {
         if (!isDragging) return;
         
-        const threshold = 30; // Уменьшенный порог для мобильных
+        const threshold = 30; // Уменьшенный порог для более чувствительного свайпа
+        const verticalThreshold = 50; // Порог для вертикального движения
         
-        if (Math.abs(deltaX) > threshold) {
+        // Проверяем, что движение больше горизонтальное, чем вертикальное
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > threshold && Math.abs(deltaY) < verticalThreshold) {
             if (deltaX < 0) {
                 // Свайп влево - следующий слайд
                 console.log('Touch свайп влево, следующий слайд');
@@ -114,12 +129,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
         isDragging = false;
         deltaX = 0;
-    });
+        deltaY = 0;
+        e.preventDefault(); // Предотвращаем стандартное поведение
+        e.stopPropagation(); // Останавливаем всплытие события
+    }, { passive: false });
     
     carousel.addEventListener('touchcancel', e => {
         if (isDragging) {
             isDragging = false;
             deltaX = 0;
+            deltaY = 0;
         }
     });
 

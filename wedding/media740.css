@@ -231,10 +231,26 @@
     .carousel {
         position: relative;
         margin-bottom: 40px;
+        /* Предотвращаем конфликт с Telegram браузером */
+        touch-action: pan-y pinch-zoom;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
 
     .carousel-inner {
         display: block;
+        /* Дополнительная защита от конфликта с Telegram */
+        touch-action: pan-y pinch-zoom;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
 
     .carousel-indicators {
@@ -266,6 +282,17 @@
 
     .carousel-indicators [data-bs-target].active {
         background-color: #cc0101cc;
+    }
+
+    /* Защита carousel-item от конфликта с Telegram */
+    .carousel-item {
+        touch-action: pan-y pinch-zoom;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
 
     /* Показываем мобильный слайдер, скрываем десктопную версию */
