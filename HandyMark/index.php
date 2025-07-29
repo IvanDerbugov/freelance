@@ -1,0 +1,63 @@
+<?php
+// Основная точка входа для сайта HandyMark
+// Этот файл будет обрабатывать запросы и отображать главную страницу
+
+// Устанавливаем кодировку
+header('Content-Type: text/html; charset=UTF-8');
+
+// Проверяем, есть ли запрос к API
+if (isset($_GET['api']) && $_GET['api'] === 'form') {
+    // Если запрос к API формы, подключаем обработчик
+    include 'send-form.php';
+    exit;
+}
+
+// Иначе отображаем главную страницу
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandyMark</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="form.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <div class="main-icon">🔧</div>
+            </div>
+            <h1>
+                Handy Mark
+            </h1>
+            <h2>
+                Hi, my name is Mark and I am the master of the hour. Any services and even more!
+            </h2>
+            <div class="contact-links">
+                <a href="tel:+15706002525">+1 570 600 2525</a>
+                <a class="telegram" href="https://t.me/+15706002525">Telegram</a>
+            </div>
+            
+            <div class="request-form">
+                <h3>Оставить заявку</h3>
+                <form id="requestForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="contact" name="contact" placeholder="Телефон или e-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Опишите, что нужно сделать..." rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
