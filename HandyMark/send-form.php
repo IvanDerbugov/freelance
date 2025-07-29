@@ -28,7 +28,7 @@ $telegramToken = '8189134089:AAHenhnIexEBe16jQ90goRyOBpFnXgQvqUY';
 $telegramChatId = '6169313997'; // Chat ID заказчика Markus
 
 // Настройки письма
-$to = 'Mark@handymark.su';
+$to = 'Mark@handymark.us'; // Email клиента 
 $subject = "Новая заявка с сайта HandyMark";
 
 // Формируем тело письма
@@ -101,13 +101,18 @@ function sendTelegramMessage($token, $chatId, $message) {
 $headers = array(
     'MIME-Version: 1.0',
     'Content-type: text/html; charset=UTF-8',
-    'From: noreply@handymark.us',
+    'From: HandyMark <noreply@handymark.us>',
     'Reply-To: noreply@handymark.us',
     'X-Mailer: PHP/' . phpversion()
 );
 
 // Отправляем письмо
 $mailSent = mail($to, $subject, $emailMessage, implode("\r\n", $headers));
+
+// Добавляем диагностику ошибок email
+if (!$mailSent) {
+    error_log("Email sending failed for HandyMark form from $name ($contact)");
+}
 
 // Отправляем в Telegram
 $telegramSent = sendTelegramMessage($telegramToken, $telegramChatId, $telegramMessage);
