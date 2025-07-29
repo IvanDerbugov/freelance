@@ -18,19 +18,10 @@ if (empty($input['name']) || empty($input['contact']) || empty($input['message']
     exit;
 }
 
-// Очищаем и валидируем данные
+// Очищаем данные
 $name = htmlspecialchars(trim($input['name']));
 $contact = htmlspecialchars(trim($input['contact']));
 $message = htmlspecialchars(trim($input['message']));
-
-// Проверяем контакт (email или телефон)
-$emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-$phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
-
-if (!preg_match($emailRegex, $contact) && !preg_match($phoneRegex, $contact)) {
-    echo json_encode(['success' => false, 'message' => 'Некорректный email или номер телефона']);
-    exit;
-}
 
 // Настройки Telegram
 $telegramToken = '8189134089:AAHenhnIexEBe16jQ90goRyOBpFnXgQvqUY';
