@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function sendYandexMetricGoal(goalName, description) {
         try {
             if (typeof ym === 'function') {
-                ym(103422304, 'reachGoal', goalName);
+                ym(103469857, 'reachGoal', goalName);
                 console.log(`Цель "${description}" отправлена в Яндекс Метрику (${goalName})`);
                 return true;
             } else {
