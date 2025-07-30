@@ -1,7 +1,7 @@
 // Animate.css scroll-triggered animations (excluding header and form)
 document.addEventListener('DOMContentLoaded', function() {
-    // Находим все элементы с Animate.css классами, кроме хедера и формы
-    const animatedElements = document.querySelectorAll('.animate__animated:not(header .animate__animated):not(.getInTouch .animate__animated)');
+    // Находим все элементы с Animate.css классами, кроме хедера и элементов формы
+    const animatedElements = document.querySelectorAll('.animate__animated:not(header .animate__animated):not(.getInTouch .form .animate__animated)');
     
     // Создаем Intersection Observer
     const observer = new IntersectionObserver((entries) => {
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (entry.isIntersecting) {
                 // Когда элемент становится видимым, запускаем анимацию
                 const element = entry.target;
-                element.style.animationPlayState = 'running';
+                element.classList.remove('animate-hidden');
             }
         });
     }, {
@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: '0px 0px -50px 0px' // Запускаем анимацию немного раньше
     });
     
-    // Останавливаем все анимации по умолчанию и наблюдаем за элементами
+    // Скрываем все анимации по умолчанию и наблюдаем за элементами
     animatedElements.forEach(element => {
-        element.style.animationPlayState = 'paused';
+        element.classList.add('animate-hidden');
         observer.observe(element);
     });
 });

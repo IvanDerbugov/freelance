@@ -1,3 +1,28 @@
+/* Animate.css scroll-triggered animations */
+.animate__animated {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.animate__animated.animate-hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Hide backInLeft animation by default */
+.animate__backInLeft {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    animation: none !important;
+}
+
+/* Show when not hidden */
+.animate__backInLeft:not(.animate-hidden) {
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: backInLeft 1s ease-out !important;
+}
+
 /* Header entrance animations */
 
 /* Override Animate.css classes for custom animation */
