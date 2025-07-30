@@ -1,4 +1,8 @@
-.versionDesktop, .versionTablet1400, .versionTablet1100, .versionMobile, .version450 {
+.versionDesktop,
+.versionTablet1400,
+.versionTablet1100,
+.versionMobile,
+.version450 {
     width: 180px;
     height: 180px;
     position: fixed;
@@ -16,7 +20,11 @@
     text-align: center;
     z-index: 10;
 }
-.versionTablet1400, .versionTablet1100, .versionMobile, .version450 {
+
+.versionTablet1400,
+.versionTablet1100,
+.versionMobile,
+.version450 {
     display: none;
 }
 
@@ -25,23 +33,32 @@
     .versionTablet1400 {
         display: flex;
     }
-    .versionDesktop, .versionTablet1100, .versionMobile, .version450 {
+
+    .versionDesktop,
+    .versionTablet1100,
+    .versionMobile,
+    .version450 {
         display: none;
     }
 }
 
 @media (max-width: 1100px) {
-.versionTablet1100 {
+    .versionTablet1100 {
         display: flex;
     }
-    .versionDesktop, .versionTablet1400, .versionMobile, .version450 {
+
+    .versionDesktop,
+    .versionTablet1400,
+    .versionMobile,
+    .version450 {
         display: none;
     }
 }
 
 
 @media (max-width: 1000px) {
-.versionMobile,
+
+    .versionMobile,
     .version450 {
         display: flex;
         border-radius: 5px;
@@ -74,11 +91,12 @@
 }
 
 
-.nonono { 
+.nonono {
     display: none;
 }
+
 @media (max-width: 1500px) {
-    .nonono { 
+    .nonono {
         display: block;
         position: fixed;
         top: 0;
@@ -131,7 +149,6 @@ header .container {
     font-family: 'Raleway', sans-serif;
     font-size: 128px;
     font-weight: 400;
-
     letter-spacing: 0%;
     color: #000;
 }
@@ -148,7 +165,8 @@ header .container {
     margin: 86px 0 48px;
 }
 
-.header-left .btnTextMe {
+.header-left .btnTextMe,
+.modal-content .btnTextMe {
     background-color: #FF6100;
     padding: 26px 110px;
     border-radius: 24px;
@@ -598,7 +616,7 @@ footer .container {
     align-items: center;
 }
 
-footer .container > div {
+footer .container>div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -608,18 +626,21 @@ footer .container > div {
 footer .container .footer1col {
     align-items: center;
 }
+
 .footer1col h4 {
     font-weight: 800;
     font-size: 32px;
     color: #fff;
     margin: 18px 0 46px;
 }
+
 .footer1col p {
     font-weight: 500;
     font-size: 20px;
     line-height: 100%;
     color: #FFD0B3;
 }
+
 .footer1col p span {
     font-family: 'Commissioner', sans-serif;
     font-weight: 400;
@@ -633,7 +654,8 @@ footer .container .footer1col {
     margin-bottom: 32px;
     color: #fff;
 }
-.footer3col > a {
+
+.footer3col>a {
     font-family: 'Commissioner', sans-serif;
     font-weight: 400;
     font-size: 20px;
@@ -641,7 +663,8 @@ footer .container .footer1col {
     margin-bottom: 16px;
     color: #FFD0B3;
 }
-.footer3col > div {
+
+.footer3col>div {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -653,7 +676,7 @@ footer .container .footer1col {
     color: #fff;
 }
 
-.footer4col > p {
+.footer4col>p {
     font-family: 'Raleway', sans-serif;
     font-weight: 500;
     font-size: 24px;
@@ -661,15 +684,98 @@ footer .container .footer1col {
     margin-bottom: 32px;
 }
 
-.footer4col > div {
+.footer4col>div {
     display: flex;
     align-items: center;
     gap: 9px;
     margin-bottom: 16px;
 }
 
-.footer4col > div > p {
+.footer4col>div>p {
     font-family: 'Commissioner', sans-serif;
     font-weight: 400;
     color: #FFD0B3;
+}
+
+
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.modal.modal-show {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    padding-bottom: 0;
+    width: 220px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #999;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.modal-image {
+    width: 80px;
+    height: 80px;
+    display: block;
+    z-index: 1;
+}
+
+.modal-content .btnTextMe {
+    margin: 0;
+    margin-left: -21px;
+    padding: 12px 24px;
+    font-size: 16px;
+    color: #fff;
+    min-width: 123px;
+}
+
+.modal-content .btnTextMe div {
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Анимация кнопки в модалке приостановлена по умолчанию */
+.modal .btnTextMe.animate__animated {
+    animation-play-state: paused;
 }
