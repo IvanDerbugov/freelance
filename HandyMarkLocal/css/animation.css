@@ -36,3 +36,126 @@ header.animate .header-left h1.animate__animated {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Hover Effects */
+
+/* Header button hover effect */
+.header-left .btnTextMe {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.header-left .btnTextMe:hover {
+    background-color: #E55600;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 97, 0, 0.3);
+}
+
+/* Services cards hover effects */
+.services-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.services-card:hover {
+    transform: translateY(-5px);
+}
+
+.services-card:hover .services-light {
+    filter: blur(15px);
+    opacity: 0.8;
+}
+
+.services-card:hover h4 {
+    color: #FF6100;
+}
+
+/* Before & After cards hover effects */
+.BeforeAfter-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.BeforeAfter-card:hover {
+    transform: scale(1.02);
+    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); */
+}
+
+.BeforeAfter-card:hover img {
+    filter: brightness(1.1);
+}
+
+/* Learn more button hover effect */
+.learnMore {
+    transition: all 0.3s ease;
+}
+
+.learnMore:hover {
+    color: #FF6100;
+}
+
+.learnMore:hover svg {
+    transform: translateX(3px);
+}
+
+/* Form inputs hover effects */
+.form-group input,
+.form-group textarea {
+    transition: all 0.3s ease;
+}
+
+.form-group input:hover,
+.form-group textarea:hover {
+    border-color: #FF6100;
+    box-shadow: 0 0 0 2px rgba(255, 97, 0, 0.1);
+}
+
+/* Footer links hover effects */
+.footer3col > a {
+    transition: color 0.3s ease;
+}
+
+.footer3col > a:hover {
+    color: #fff;
+}
+
+/* Footer payment icons hover effects */
+.footer4col > div {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.footer4col > div:hover {
+    transform: translateY(-2px);
+}
+
+.footer4col > div:hover svg {
+    filter: brightness(1.2);
+}
+
+/* Service areas points hover effects */
+.point-wrap > div {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.point-wrap > div:hover {
+    background-color: #FF6100;
+    transform: scale(1.2);
+}
+
+.point-wrap:hover p {
+    color: #FF6100;
+    font-weight: 600;
+}
+
+/* Orange bar text hover effect */
+.orange-bar-content span:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
