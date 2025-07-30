@@ -1,0 +1,38 @@
+/* Header entrance animations */
+
+/* Override Animate.css classes for custom animation */
+.header-right.animate__animated,
+.header-left .btnTextMe.animate__animated,
+.header-left h2.animate__animated,
+.header-left h1.animate__animated {
+    animation: none !important;
+    opacity: 0;
+    transform: translateY(-100vh);
+    transition: all 0.8s ease-out;
+}
+
+/* Animation delays for sequential fall */
+.header-right.animate__animated {
+    transition-delay: 0.1s;
+}
+
+.header-left .btnTextMe.animate__animated {
+    transition-delay: 0.3s;
+}
+
+.header-left h2.animate__animated {
+    transition-delay: 0.5s;
+}
+
+.header-left h1.animate__animated {
+    transition-delay: 0.7s;
+}
+
+/* Animated state when header comes into view */
+header.animate .header-right.animate__animated,
+header.animate .header-left .btnTextMe.animate__animated,
+header.animate .header-left h2.animate__animated,
+header.animate .header-left h1.animate__animated {
+    opacity: 1;
+    transform: translateY(0);
+}
