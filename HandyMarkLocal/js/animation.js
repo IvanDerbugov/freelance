@@ -1,6 +1,7 @@
 // Header animations
 document.addEventListener('DOMContentLoaded', function() {
     const headerSection = document.querySelector('header');
+    const contactFormSection = document.querySelector('.getInTouch'); // Исправлен селектор
     
     // Функция для проверки видимости элемента
     function isElementInViewport(el) {
@@ -15,6 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleScroll() {
         if (headerSection && isElementInViewport(headerSection)) {
             headerSection.classList.add('animate');
+        }
+        
+        if (contactFormSection && isElementInViewport(contactFormSection)) {
+            contactFormSection.classList.add('animate');
         }
     }
     

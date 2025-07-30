@@ -37,6 +37,41 @@ header.animate .header-left h1.animate__animated {
     transform: translateY(0);
 }
 
+/* Form entrance animations - rewritten from scratch */
+
+/* Form elements start hidden and above viewport */
+.getInTouch button[type="submit"],
+.getInTouch textarea,
+.getInTouch input[type="tel"],
+.getInTouch input[type="text"] {
+    opacity: 0;
+    transform: translateY(-100vh);
+    transition: all 0.8s ease-out;
+}
+
+/* Animation delays for sequential fall */
+.getInTouch input[type="text"] {
+    transition-delay: 0.1s;
+}
+.getInTouch input[type="tel"] {
+    transition-delay: 0.3s;
+}
+.getInTouch textarea {
+    transition-delay: 0.5s;
+}
+.getInTouch button[type="submit"] {
+    transition-delay: 0.7s;
+}
+
+/* Animated state when form comes into view */
+.getInTouch.animate button[type="submit"],
+.getInTouch.animate textarea,
+.getInTouch.animate input[type="tel"],
+.getInTouch.animate input[type="text"] {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Hover Effects */
 
 /* Header button hover effect */
@@ -99,10 +134,7 @@ header.animate .header-left h1.animate__animated {
 }
 
 /* Form inputs hover effects */
-.form-group input,
-.form-group textarea {
-    transition: all 0.3s ease;
-}
+
 
 .form-group input:hover,
 .form-group textarea:hover {
