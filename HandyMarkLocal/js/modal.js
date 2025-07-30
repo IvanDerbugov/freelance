@@ -10,17 +10,26 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isModalClosed) {
             modal.classList.add('modal-show');
             
-            // Запускаем анимацию кнопки
-            const modalButton = modal.querySelector('.btnTextMe');
-            if (modalButton) {
-                modalButton.style.animationPlayState = 'running';
-            }
+            // Запускаем волны
+            const waves = modal.querySelectorAll('.modal-wave');
+            waves.forEach((wave, index) => {
+                wave.style.animation = 'none';
+                setTimeout(() => {
+                    wave.style.animation = `modalWave 2s ease-out infinite ${index * 0.5}s`;
+                }, 10);
+            });
         }
     }
 
     // Функция для скрытия модалки
     function hideModal() {
         modal.classList.remove('modal-show');
+        
+        // Останавливаем волны
+        const waves = modal.querySelectorAll('.modal-wave');
+        waves.forEach(wave => {
+            wave.style.animation = 'none';
+        });
     }
 
     // Обработчик закрытия модалки
@@ -41,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Функция для запуска таймера модалки
     function startModalTimer() {
-        modalTimer = setTimeout(showModal, 1500); // 15 секунд
+        modalTimer = setTimeout(showModal, 15000); // 15 секунд для тестирования
     }
 
     // Запускаем таймер при загрузке страницы
