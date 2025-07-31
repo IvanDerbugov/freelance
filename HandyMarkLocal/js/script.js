@@ -65,6 +65,27 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Reviews - разворачивание скрытых карточек
+document.getElementById('arrowSeeMoreReviews').addEventListener('click', function() {
+    const hiddenReviewCards = document.querySelectorAll('.reviews-card-hidden');
+    const arrow = document.getElementById('arrowSeeMoreReviews');
+    
+    // Проверяем текущее состояние
+    if (hiddenReviewCards[0].style.display === 'block') {
+        // Если карточки показаны - скрываем их
+        hiddenReviewCards.forEach(card => {
+            card.style.display = 'none';
+        });
+        arrow.style.transform = 'rotate(0deg)';
+    } else {
+        // Если карточки скрыты - показываем их
+        hiddenReviewCards.forEach(card => {
+            card.style.display = 'block';
+        });
+        arrow.style.transform = 'rotate(180deg)';
+    }
+});
+
 
 
 
