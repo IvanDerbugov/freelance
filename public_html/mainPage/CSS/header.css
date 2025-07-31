@@ -1,0 +1,340 @@
+header {
+    width: 100%;
+    color: #C4C6C5;
+}
+
+.container1713 {
+    width: 100%;
+    max-width: 1713px;
+    margin: 0 auto;
+}
+
+.headerTop {
+    font-family: 'Noto Sans', sans-serif;
+    background: linear-gradient(90deg, 
+        #090909 0%, 
+        #0B0F0C 2.5%, 
+        #4C8D65 100%
+    );
+    position: relative;
+    padding: 30px 0;
+}
+
+.headerTop::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../img/substrateHeaderTop.png');
+    background-size: 1918px 132px;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.headerTop .container1713 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.headerTop2 {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 25px;
+}
+.headerTop2 p:last-of-type {
+    font-weight: 500;
+}
+
+.headerTop3 {
+    width: 1px;
+    height: 76px;
+    border-left: 1px solid #fff;
+}
+
+
+.headerTop4 {
+    font-weight: 500;
+    font-size: 21px;
+}
+.headerTop4 p {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.headerTop5 {
+    width: 1px;
+    height: 76px;
+    border-left: 1px solid #fff;
+}
+
+.headerTop6 {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+}
+.headerTop6 p {
+    font-weight: 300;
+    letter-spacing: calc(14px * -0.05);
+}
+.headerTop6 a {
+    letter-spacing: calc(14px * 0.09);
+    text-decoration: underline;
+}
+
+.headerTop7 {
+    width: 1px;
+    height: 76px;
+    border-left: 1px solid #fff;
+}
+
+.headerTop8 {
+    display: flex;
+    gap: 20px;
+}
+
+
+.headerTop9 a {
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 100%;
+    color: #fff;
+    background: #DF6417;
+    text-align: center;
+    padding: 18px 8px;
+    border-radius: 17px;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+
+
+
+.headerBottom {
+    padding: 40px 0;
+    font-family: 'Noto Sans', sans-serif;
+    color: #C4C6C5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, 
+        #090909 0%, 
+        #0B0F0C 2.5%,
+        #4C8D65 100%
+    );
+    position: relative;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.headerBottom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../img/substrateHeaderBottom.png');
+    background-size: 1784px 155px;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.headerBottom .container1713 {
+    /* max-width: 1436px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+
+.headerBottom3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.headerBottom6 {
+    margin-right: 263px;
+}
+
+/* Dropdown Menu Styles */
+.catalog-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.catalog-btn {
+    background: none;
+    border: none;
+    color: #C4C6C5;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 3;
+}
+
+.catalog-btn:hover {
+    color: #ffffff;
+}
+
+.catalog-btn::after {
+    content: '▼';
+    margin-left: 8px;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.catalog-dropdown.active .catalog-btn::after {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #D7DFDA;
+    border: 1px solid #4C8D65;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    min-width: 350px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.catalog-dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #043517;
+    text-decoration: none;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(76, 141, 101, 0.1);
+}
+
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(76, 141, 101, 0.1);
+    color: #ffffff;
+    padding-left: 25px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .dropdown-menu {
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dropdown-menu {
+        min-width: 250px;
+        right: 0;
+        left: auto;
+    }
+}
+
+/* Burger Menu Styles */
+.burger-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.burger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 3;
+}
+
+.burger-btn:hover svg line {
+    stroke: #4C8D65;
+}
+
+.burger-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #D7DFDA;
+    border: 1px solid #4C8D65;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    min-width: 350px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.burger-dropdown.active .burger-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.burger-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #043517;
+    text-decoration: none;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(76, 141, 101, 0.1);
+}
+
+.burger-menu a:last-child {
+    border-bottom: none;
+}
+
+.burger-menu a:hover {
+    background: rgba(76, 141, 101, 0.1);
+    color: #4C8D65;
+    padding-left: 25px;
+}
+
+/* Responsive adjustments for burger menu */
+@media (max-width: 1200px) {
+    .burger-menu {
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .burger-menu {
+        min-width: 250px;
+        right: 0;
+        left: auto;
+    }
+}
