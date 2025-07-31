@@ -1,6 +1,14 @@
+html {
+    scroll-behavior: smooth;
+}
+
 header {
     width: 100%;
     color: #C4C6C5;
+    background:     url('../img/substrateHeaderTop.png'),
+    linear-gradient(90deg, #090909 0%, #0B0F0C 2.5%, #4C8D65 100%);
+    background-size: 97% 100%, auto;
+    background-repeat: no-repeat, no-repeat;
 }
 
 .container1713 {
@@ -11,27 +19,7 @@ header {
 
 .headerTop {
     font-family: 'Noto Sans', sans-serif;
-    background: linear-gradient(90deg, 
-        #090909 0%, 
-        #0B0F0C 2.5%, 
-        #4C8D65 100%
-    );
-    position: relative;
     padding: 30px 0;
-}
-
-.headerTop::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('../img/substrateHeaderTop.png');
-    background-size: 1918px 132px;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1;
 }
 
 .headerTop .container1713 {
@@ -123,26 +111,26 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(90deg, 
+    /* background: linear-gradient(90deg, 
         #090909 0%, 
         #0B0F0C 2.5%,
         #4C8D65 100%
     );
-    position: relative;
+    position: relative; */
     font-weight: 600;
     font-size: 25px;
 }
 
 .headerBottom::before {
-    content: '';
+    /* content: ''; */
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-image: url('../img/substrateHeaderBottom.png');
-    background-size: 1784px 155px;
-    background-position: center;
+    /* background-size: 1784px 155px; */
+    /* background-position: center; */
     background-repeat: no-repeat;
     z-index: 1;
 }
