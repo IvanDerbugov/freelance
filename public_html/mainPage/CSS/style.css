@@ -1,0 +1,360 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 100%;
+    max-width: 1730px;
+    margin: 0 auto;
+}
+
+.limiter {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.page1 {
+    background: url('../img/page1FonPodlochka.png') no-repeat,
+    url('../img/1pageFon.jpg') no-repeat center center;
+    background-size: cover;
+    height: 814px;
+    width: 100%;
+    padding-top: 24px;
+    position: relative;
+    z-index: -1;
+}
+
+.page1 .container {
+    position: relative;
+    z-index: 2;
+}
+
+.page1 h1 {
+    font-family: 'Nobile', sans-serif;
+    font-weight: 500;
+    font-size: 66px;
+    line-height: 88px;
+    color: #C4C6C5;
+    max-width: 1230px;
+}
+
+.catalog {
+    background-color: #EAEAE9BA;
+    padding: 65px 0 90px;
+}
+
+.sectionNameH2 {
+    font-family: 'Nobile', sans-serif;
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 41px;
+    color: #023D19;
+    text-align: center;
+}
+
+.catologGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px;
+    padding-top: 65px;
+}
+
+.catologCard {
+    background-color: #D7DFDA;
+    padding: 36px 25px 63px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: max-height 0.5s ease, opacity 0.5s ease, transform 0.5s ease, margin 0.5s ease, padding 0.5s ease;
+    max-height: 400px;
+    opacity: 1;
+    transform: translateY(0);
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Скрываем карточки с 9-й по 24-ю изначально */
+.catologCard:nth-child(n+9):nth-child(-n+24) {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+}
+
+/* Показываем скрытые карточки */
+.catologCard:nth-child(n+9):nth-child(-n+24).show {
+    max-height: 400px;
+    opacity: 1;
+    transform: translateY(0);
+    margin: 0;
+    padding: 36px 25px 63px;
+    pointer-events: auto;
+}
+
+.catologCardName {
+    position: relative;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: #043517;
+    text-align: left;
+    margin: 25px 0 26px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.catologCardName div {
+    width: 7px;
+    height: 7px;
+    padding: 3px;
+    box-shadow: 0 0 7px 0 rgba(12, 137, 60, 0.5);
+    border-radius: 50%;
+    background-color: #0C893C;
+}
+.catologCardName .haveBr {
+    margin-top: -17px;
+    width: 6px;
+    height: 6px;
+}
+
+.catologCardLink {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 19.68px;
+    color: #fff;
+    text-align: center;
+    background-color: #DF6417;
+    padding: 15px 26px;
+    border-radius: 20px;
+}
+
+
+#seeMore {
+    display: block;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    color: #063F1B;
+    text-align: center;
+    margin-top: -165px;
+}
+
+/* Стили для карусели */
+.carousel {
+    margin: 50px auto;
+    max-width: 1400px;
+    height: 500px;
+}
+
+.carousel .carousel-item {
+    width: 520px;
+    height: 520px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.carousel .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel .indicators {
+    bottom: -50px;
+}
+
+.carousel .indicators .indicator-item {
+    background-color: #DF6417;
+}
+
+.carousel .indicators .indicator-item.active {
+    background-color: #023D19;
+}
+
+
+.ozerService {
+    background: linear-gradient(180deg, #EAEAE9BA 0%, #EAEAE9BA 100%),
+    url('../img/OzerServiceVectorFon.png') no-repeat;
+    background-size: auto, auto;
+    background-position: center, center;
+    padding: 62px 0 100px;
+}
+
+.ozerServiceCard {
+    width: 540px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.ozerServiceCard h4 {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 25px;
+    color: #043517;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+
+.aboutUs {
+    background: linear-gradient(180deg, #EAEAE9BA 0%, #EAEAE9BA 100%);
+    /* url('../img/aboutUsVectorFon.png') no-repeat center center; */
+    /* background-position: 0, 580px 30px; */
+}
+.aboutUs .container {
+    background: linear-gradient(180deg, #EAEAE9BA 0%, #EAEAE9BA 100%);
+    position: relative;
+    z-index: 1;
+}
+
+
+.aboutUsTop {
+    display: flex;
+    align-items: flex-start;
+    padding: 59px 0 37px;
+    gap: 30px;
+}
+
+.aboutUsTop div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #063F1B;
+    height: 243px;
+}
+.aboutUsTop div p:nth-child(2) {
+    font-family: 'Nobile', sans-serif;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 39px;
+    color: #C75108;
+    margin: 36px 0 10px;
+}
+.aboutUsTop div:nth-of-type(1) {
+    flex-shrink: 0.9;
+    flex-grow: 1;
+}
+.aboutUsTop div:nth-of-type(2) {
+    flex-shrink: 0.8;
+    flex-grow: 1;
+}
+.aboutUsTop div:nth-of-type(3) {
+    flex-shrink: 0.8;
+    flex-grow: 1;
+}
+.aboutUsTop div:nth-of-type(4) {
+    flex-shrink: 0.85;
+    flex-grow: 1;
+}
+.aboutUsTop div:nth-of-type(5) {
+    flex-shrink: 0.9;
+    flex-grow: 1;
+}
+
+.aboutUsBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.aboutUsText {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+    color: #043517;
+    max-width: 650px;
+}
+
+.aboutUsGallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 65px;
+}
+.aboutUsVectorFon {
+    position: absolute;
+    top: -137px;
+    left: -170px;
+    width: 120%;
+    height: 120%;
+    z-index: 0;
+}
+
+.littleImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.littleImg div {
+    width: calc(180px * 0.715);
+    height: calc(120px * 0.715);
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+.littleImgActive{
+    border: 5px solid #387850;
+}
+.littleImgActive::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(180px * 0.715);
+    height: calc(120px * 0.715);
+    background-color: #000000;
+    opacity: 0.5;
+    z-index: 2;
+}
+.littleImg1 {
+    background: url('../img/galleryLittle1.jpg') no-repeat center center;
+    background-size: cover;
+}
+.littleImg2 {
+    background: url('../img/galleryLittle2.jpg') no-repeat center center;
+    background-size: cover;
+}
+.littleImg3 {
+    background: url('../img/galleryLittle3.jpg') no-repeat center center;
+    background-size: cover;
+}
+.littleImg4 {
+    background: url('../img/galleryLittle4.jpg') no-repeat center center;
+    background-size: cover;
+}
+.littleImg5 {
+    background: url('../img/galleryLittle5.jpg') no-repeat center center;
+    background-size: cover;
+}
+.littleImg6 {
+    background: url('../img/galleryLittle6.jpg') no-repeat center center;
+}
+.littleImg7 {
+    background: url('../img/galleryLittle7.jpg') no-repeat center center;
+    background-size: cover;
+}

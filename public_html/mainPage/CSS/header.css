@@ -5,7 +5,7 @@ html {
 header {
     width: 100%;
     color: #C4C6C5;
-    background:     url('../img/substrateHeaderTop.png'),
+    background:url('../img/headerPodlochka.png'),
     linear-gradient(90deg, #090909 0%, #0B0F0C 2.5%, #4C8D65 100%);
     background-size: 97% 100%, auto;
     background-repeat: no-repeat, no-repeat;
