@@ -422,7 +422,7 @@ main {
     padding: 0px 80px 24px;
 }
 
-.BeforeAfter-card img {
+.BeforeAfter-card picture {
     border-radius: 48px;
     margin-bottom: 24px;
 }
@@ -619,7 +619,7 @@ footer {
 footer .container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 
 footer .container>div {

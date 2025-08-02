@@ -1,0 +1,197 @@
+@media (max-width: 1000px) {
+    .container {
+        max-width: 752px;
+    }
+
+    .header-left h1 {
+        font-size: 64px;
+    }
+
+    .header-left h2 {
+        font-size: 48px;
+        margin: 40px 0 24px;
+    }
+
+    .header-left .btnTextMe,
+    .modal-content .btnTextMe {
+        padding: 17px 50px;
+    }
+
+    .orange-bar {
+        height: 90px;
+        background-image: url('../img/light1Media1000.png');
+        background-size: 100% 105px;
+    }
+
+    .orange-bar-content span {
+        font-size: 20px;
+    }
+
+    .aboutMe {
+        gap: 40px;
+        padding: 112px 0;
+    }
+
+    .aboutMe h3,
+    .services h3,
+    .areas-service h3,
+    .BeforeAfter h3,
+    .reviews h3 {
+        font-size: 48px;
+    }
+
+    .aboutMe p {
+        font-size: 24px;
+    }
+
+    .services-grid {
+        gap: 10px;
+    }
+
+    .services-card h4 {
+        font-size: 16px;
+    }
+    
+    .services-card-img {
+        width: 240px;
+        height: 240px;
+    }
+
+    .services-card .services-card-img {
+        background-size: calc(320px * 0.7) calc(480px * 0.7);
+        background-position: 13px 0;
+    }
+
+    .services-light {
+        width: 140px;
+        height: 140px;
+    }
+
+    .point-wrap>div {
+        width: 24px;
+        height: 24px;
+    }
+
+    .point-wrap p {
+        font-size: 16px;
+    }
+
+    .wrapHr2 {
+        padding-left: 80px;
+        padding-right: 98px;
+    }
+
+    .wrapHr1 .point-wrap {
+        top: -20px;
+    }
+    .wrapHr2 .point-wrap {
+        top: -16px;
+    }
+
+    .areas-service h3 {
+        margin-top: 112px;
+        margin-bottom: 40px;
+    }
+
+    .BeforeAfter {
+        padding: 112px 0;
+    }
+
+    .BeforeAfter-card:nth-child(odd)::before {
+        top: 0%;
+        letter-spacing: -8px;
+    }
+
+    .BeforeAfter-card:nth-child(even)::before {
+        top: 2%;
+        letter-spacing: 0px;
+    }
+
+    .BeforeAfter svg {
+        width: 34px;
+    }
+
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Скрываем отзывы начиная с 3-го при медиазапросе 1000px */
+    .reviews-card:nth-child(n+3):not(.reviews-card-hidden) {
+        display: none;
+    }
+
+    #arrowSeeMoreReviews {
+        width: 34px;
+        margin-top: 32px;
+    }
+
+    .getInTouch {
+        padding: 112px 0;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .getInTouch h3 {
+        font-size: 96px;
+        max-width: 1000px;
+    }
+
+    .form-group input, .form-group textarea {
+        width: 100%;
+        max-width: 368px;
+    }
+
+    .form-group {
+        text-align: center;
+    }
+
+    .getInTouch button {
+        max-width: 363px;
+        padding: 12px 43px;
+        border-radius: 16px;
+        font-size: 24px;
+    }
+    
+}
+
+@media (max-width: 750px) {
+    .services-card .services-card-img {
+        background-size: calc(320px * 0.45) calc(480px * 0.45);
+        background-position: 13px 0;
+    }
+
+    .services-card-img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .services-card h4 {
+        font-size: 13px;
+    }
+
+    .services-light {
+        width: 90px;
+        height: 90px;
+        top: 10%;
+        left: 27%;
+    }
+
+    .wrapHr2 {
+        padding-left: 62px;
+        padding-right: 81px;
+    }
+
+    .BeforeAfter-card:nth-child(odd)::before {
+        top: 3%;
+        letter-spacing: -8px;
+        font-size: 24px;
+        left: -48px;
+    }
+
+    .BeforeAfter-card:nth-child(even)::before {
+        top: 3%;
+        letter-spacing: 4px;
+        font-size: 20px;
+        right: -50px;
+    }
+}
