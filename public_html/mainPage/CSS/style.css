@@ -213,14 +213,10 @@ html {
 
 
 .aboutUs {
-    background: linear-gradient(180deg, #EAEAE9BA 0%, #EAEAE9BA 100%);
-    /* url('../img/aboutUsVectorFon.png') no-repeat center center; */
-    /* background-position: 0, 580px 30px; */
-}
-.aboutUs .container {
-    background: linear-gradient(180deg, #EAEAE9BA 0%, #EAEAE9BA 100%);
-    position: relative;
-    z-index: 1;
+    background: linear-gradient(180deg, #EAEAE9BA 0%, #EAEAE9BA 100%),
+    url('../img/aboutUsVectorFon.png') no-repeat center center;
+    background-position: 0, 110% -9%;
+    padding-bottom: 111px;
 }
 
 
@@ -295,14 +291,14 @@ html {
     justify-content: center;
     gap: 65px;
 }
-.aboutUsVectorFon {
+/* .aboutUsVectorFon {
     position: absolute;
     top: -137px;
     left: -170px;
     width: 120%;
     height: 120%;
     z-index: 0;
-}
+} */
 
 .littleImg {
     display: flex;
@@ -357,4 +353,108 @@ html {
 .littleImg7 {
     background: url('../img/galleryLittle7.jpg') no-repeat center center;
     background-size: cover;
+}
+
+
+.ourAdvantages {
+    background: #EAEAE9BA;
+    padding: 120px 0 80px 0;
+}
+.wrapAdvantagesGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px;
+    counter-reset: advantage;
+    justify-items: center;
+}
+
+.ourAdvantages h2 {
+    margin-bottom: 100px;
+}
+
+.wrapAdvantagesGrid>div {
+    position: relative;
+    font-size: 22px;
+    font-weight: 500;
+    color: #043517;
+    z-index: 1;
+}
+
+.wrapAdvantagesGrid>div::before {
+    content: counter(advantage, decimal-leading-zero);
+    position: absolute;
+    left: -26px;
+    top: -26px;
+    font-size: 200px;
+    font-weight: 800;
+    color: #043517;
+    opacity: 0.08;
+    z-index: 0;
+    pointer-events: none;
+    line-height: 1;
+    font-family: 'Montserrat';
+}
+
+.wrapAdvantagesGrid .text1::before {
+    left: 5px;
+    top: -26px;
+}
+
+.wrapAdvantagesGrid .text5::before {
+    left: -10px;
+    top: -26px;
+}
+
+.wrapAdvantagesGrid .text4::before {
+    top: -25px;
+}
+
+.wrapAdvantagesGrid .text8::before {
+    top: -25px;
+}
+
+
+.wrapAdvantagesGrid>div {
+    position: relative;
+    font-size: 22px;
+    font-weight: 500;
+    color: #043517;
+    z-index: 1;
+}
+
+.wrapAdvantagesGrid>div::before {
+    content: counter(advantage, decimal-leading-zero);
+    position: absolute;
+    left: -26px;
+    top: -26px;
+    font-size: 200px;
+    font-weight: 800;
+    color: #043517;
+    opacity: 0.08;
+    z-index: 0;
+    pointer-events: none;
+    line-height: 1;
+    font-family: 'Montserrat';
+}
+
+.wrapAdvantagesGrid .text1::before {
+    left: 5px;
+    top: -26px;
+}
+
+.wrapAdvantagesGrid .text5::before {
+    left: -10px;
+    top: -26px;
+}
+
+.wrapAdvantagesGrid .text4::before {
+    top: -25px;
+}
+
+.wrapAdvantagesGrid .text8::before {
+    top: -25px;
+}
+
+.wrapAdvantagesGrid>div {
+    counter-increment: advantage;
 }

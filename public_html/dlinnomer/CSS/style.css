@@ -684,7 +684,6 @@ main>.conteiner1800:first-of-type {
     gap: 60px;
     counter-reset: advantage;
     justify-items: center;
-    /* align-items: center; */
 }
 
 
