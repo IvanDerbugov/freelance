@@ -12,8 +12,7 @@
         margin: 40px 0 24px;
     }
 
-    .header-left .btnTextMe,
-    .modal-content .btnTextMe {
+    .header-left .btnTextMe {
         padding: 17px 50px;
     }
 
@@ -151,7 +150,36 @@
         border-radius: 16px;
         font-size: 24px;
     }
+
+
+    footer .container .footer1col {
+        width: 40%;
+    }
+
+    .wrapFooter2-3col {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 23px;
+        width: 25%;
+    }
+    footer > .container {
+        max-width: 1000px;
+    }
+
+    .footer1col p {
+        font-size: 16px;
+        text-wrap: nowrap;
+    }
+
+    .footer1col h4 {
+        font-size: 27px;
+        margin: 12px 0 50px;
+        margin-left: -17px;
+    }
     
+    .footer3col p {
+        margin-bottom: 24px;;
+    }
 }
 
 @media (max-width: 750px) {
@@ -193,5 +221,22 @@
         letter-spacing: 4px;
         font-size: 20px;
         right: -50px;
+    }
+
+    .footer1col p {
+        font-size: 13px;
+    }
+
+    .footer4col>p, .footer3col p {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .footer3col>a {
+        font-size: 14px;
+    }
+
+    .footer4col>div>p {
+        font-size: 14px;
     }
 }
