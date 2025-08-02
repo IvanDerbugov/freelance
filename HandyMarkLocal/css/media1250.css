@@ -1,0 +1,111 @@
+@media (max-width: 1350px) {
+    .BeforeAfter-card:nth-child(odd)::before {
+        top: 4%;
+        letter-spacing: -9px;
+    }
+
+    .BeforeAfter-card:nth-child(even)::before {
+        top: 4%;
+        letter-spacing: 4px;
+    }
+
+
+}
+
+@media (max-width: 1250px) {
+    header {
+        padding: 64px 0 80px;
+    }
+
+    .header-left h1 {
+        font-size: 104px;
+    }
+
+    .header-left h2 {
+        font-size: 72px;
+        margin: 74px 0 40px;
+    }
+
+    .header-left .btnTextMe,
+    .modal-content .btnTextMe {
+        padding: 21px 75px;
+    }
+
+    .header-left .btnTextMe div {
+        font-size: 32px;
+    }
+
+    .header-right img {
+        width: 417px;
+    }
+
+    .aboutMe {
+        gap: 56px;
+    }
+
+    .aboutMe h3,
+    .services h3,
+    .areas-service h3,
+    .BeforeAfter h3,
+    .reviews h3 {
+        font-size: 56px;
+    }
+
+
+    .services-grid {
+        gap: 28px;
+    }
+
+    .services-card h4 {
+        font-size: 24px;
+    }
+
+    .services-card-img {
+        width: 290px;
+        height: 290px;
+    }
+
+    .services-light {
+        left: 25%;
+        width: 190px;
+        height: 190px;
+    }
+
+    .areas-service h3 {
+        margin-top: 140px;
+        margin-bottom: 67px;
+    }
+
+    .point-wrap>div {
+        width: 32px;
+        height: 32px;
+    }
+
+    .point-wrap p {
+        font-size: 24px;
+    }
+
+    .areas-service hr:first-of-type {
+        margin-bottom: 5px;
+    }
+
+    .wrapHr1 .point-wrap,
+    .wrapHr2 .point-wrap {
+        gap: 16px;
+        top: -26px;
+    }
+
+    .BeforeAfter-card:nth-child(odd)::before {
+        top: 10%;
+        left: -54px;
+        font-size: 32px;
+        letter-spacing: 2px;
+    }
+
+    .BeforeAfter-card:nth-child(even)::before {
+        top: 12%;
+        letter-spacing: 5px;
+        font-size: 32px;
+        right: -55px;
+    }
+}
