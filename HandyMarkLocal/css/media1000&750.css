@@ -1,5 +1,5 @@
 @media (max-width: 1000px) {
-    .container {
+    .container:not(.areas-service-content) {
         max-width: 752px;
     }
 
@@ -84,7 +84,7 @@
         top: -20px;
     }
     .wrapHr2 .point-wrap {
-        top: -16px;
+        top: -20px;
     }
 
     .areas-service h3 {

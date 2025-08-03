@@ -1,5 +1,5 @@
 @media (max-width: 1350px) {
-    .container:not(.wrapHr1, .wrapHr2) {
+    .container:not(.wrapHr1, .wrapHr2, .areas-service-content) {
         padding-left: 10px !important;
         padding-right: 10px !important;
     }

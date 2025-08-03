@@ -85,6 +85,7 @@ document.getElementById('arrowSeeMore').addEventListener('click', function() {
                         card.style.margin = '0';
                         card.style.padding = '0';
                         card.classList.remove('hiding');
+                        // Класс animate не добавлялся для карточек 5-6, удалять не нужно
                     }, 300); // Время анимации
                 }, index * 30);
             });
@@ -96,27 +97,49 @@ document.getElementById('arrowSeeMore').addEventListener('click', function() {
                     setTimeout(() => {
                         card.style.display = 'none';
                         card.classList.remove('hiding');
+                        // Класс animate не добавлялся для карточек 7+, удалять не нужно
                     }, 300); // Время анимации
                 }, (additionalBeforeAfterCards.length + index) * 30);
             });
             arrow.style.transform = 'rotate(0deg)'; // Стрелка в исходном положении когда скрываем
         } else {
-            // Если карточки скрыты CSS - показываем их с задержкой
+            // Если карточки скрыты CSS - показываем их одновременно
             additionalBeforeAfterCards.forEach((card, index) => {
                 setTimeout(() => {
                     card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
+                    // На мобилке добавляем translateX для карточек 5-6 (нечетные влево, четные вправо)
+                    if (window.innerWidth <= 600) {
+                        const cardIndex = Array.from(document.querySelectorAll('.BeforeAfter-card')).indexOf(card);
+                        if ((cardIndex + 1) % 2 === 1) { // Нечетные карточки (5-я)
+                            card.style.transform = 'translateY(0) translateX(-25px)';
+                        } else { // Четные карточки (6-я)
+                            card.style.transform = 'translateY(0) translateX(25px)';
+                        }
+                    } else {
+                        card.style.transform = 'translateY(0)'; // На больших экранах карточки стоят ровно
+                    }
                     card.style.pointerEvents = 'auto';
                     card.style.maxHeight = 'none';
                     card.style.overflow = 'visible';
                     card.style.margin = '';
                     card.style.padding = '';
-                }, index * 50);
+                }, index * 30);
             });
             hiddenBeforeAfterCards.forEach((card, index) => {
                 setTimeout(() => {
                     card.style.display = 'block';
-                }, (additionalBeforeAfterCards.length + index) * 50);
+                    // На мобилке добавляем translateX для карточек 7+ (нечетные влево, четные вправо)
+                    if (window.innerWidth <= 600) {
+                        const cardIndex = Array.from(document.querySelectorAll('.BeforeAfter-card')).indexOf(card);
+                        if ((cardIndex + 1) % 2 === 1) { // Нечетные карточки (7, 9, 11...)
+                            card.style.transform = 'translateX(-25px)';
+                        } else { // Четные карточки (8, 10, 12...)
+                            card.style.transform = 'translateX(25px)';
+                        }
+                    } else {
+                        card.style.transform = ''; // На больших экранах карточки стоят ровно
+                    }
+                }, index * 30); // Убираем задержку от additionalBeforeAfterCards.length
             });
             arrow.style.transform = 'rotate(180deg)'; // Поворачиваем на 180° когда показываем
         }
@@ -276,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // На больших экранах показываем все карточки 1-6, скрываем только полностью скрытые (7+)
         additionalBeforeAfterCards.forEach(card => {
             card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
+            card.style.transform = 'translateY(0)'; // На больших экранах карточки стоят ровно
             card.style.pointerEvents = 'auto';
             card.style.maxHeight = 'none';
             card.style.overflow = 'visible';
@@ -286,7 +309,7 @@ document.addEventListener('DOMContentLoaded', function() {
         hiddenBeforeAfterCards.forEach(card => {
             card.style.display = 'none';
         });
-        beforeAfterArrow.style.transform = 'rotate(180deg)'; // Стрелка повёрнута на 180° когда все показаны
+        beforeAfterArrow.style.transform = 'rotate(0deg)'; // Стрелка в исходном положении когда все показаны
     }
 });
 
@@ -476,7 +499,7 @@ window.addEventListener('resize', function() {
         // При переходе на большие экраны показываем все карточки 1-6
         additionalBeforeAfterCards.forEach(card => {
             card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
+            card.style.transform = 'translateY(0)'; // На больших экранах карточки стоят ровно
             card.style.pointerEvents = 'auto';
             card.style.maxHeight = 'none';
             card.style.overflow = 'visible';
@@ -486,7 +509,7 @@ window.addEventListener('resize', function() {
         hiddenBeforeAfterCards.forEach(card => {
             card.style.display = 'none';
         });
-        beforeAfterArrow.style.transform = 'rotate(180deg)'; // Стрелка повёрнута на 180° когда все показаны
+        beforeAfterArrow.style.transform = 'rotate(0deg)'; // Стрелка в исходном положении когда все показаны
     }
 });
 
