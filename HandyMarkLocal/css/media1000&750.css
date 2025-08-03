@@ -116,12 +116,23 @@
     
     /* Скрываем отзывы начиная с 3-го при медиазапросе 1000px */
     .reviews-card:nth-child(n+3):not(.reviews-card-hidden) {
-        display: none !important;
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+        max-height: 0;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
     }
 
     #arrowSeeMoreReviews {
         width: 34px;
-        margin-top: 32px;
+        margin-top: -30px;
+    }
+    
+    /* Когда отзывы развёрнуты - увеличиваем отступ сверху */
+    #arrowSeeMoreReviews[style*="transform: rotate(180deg)"] {
+        margin-top: 15px;
     }
 
     .getInTouch {

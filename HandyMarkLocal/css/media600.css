@@ -1,1 +1,221 @@
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        max-width: 312px;
+    }
 
+    header .container {
+        flex-direction: column-reverse;
+        gap: 32px;
+    }
+
+    .header-left {
+        align-items: center;
+    }
+
+    .header-left h1 {
+        font-size: 48px;
+    }
+
+    .header-left h2 {
+        font-size: 32px;
+        margin: 24px 0;
+    }
+
+    .header-left .btnTextMe div {
+        font-size: 20px;
+    }
+
+    .header-left .btnTextMe {
+        padding: 10px 39px;
+        border-radius: 12px;
+    }
+
+    .orange-bar {
+        height: 90px;
+        background-image: url('../img/light1Media600.png');
+        background-size: 100% 62px;
+        margin-top: -37px;
+    }
+
+    .orange-bar-content span {
+        font-size: 16px;
+    }
+
+    .orange-bar-content span {
+        margin-right: 30px;
+    }
+
+    header {
+        padding: 40px 0 53px;
+    }
+
+    .aboutMe {
+        gap: 24px;
+        padding: 52px 0 72px;
+    }
+
+    .aboutMe h3,
+    .services h3,
+    .areas-service h3,
+    .BeforeAfter h3,
+    .reviews h3 {
+        font-size: 32px;
+    }
+
+    .aboutMe p {
+        font-size: 16px;
+    }
+
+    .services h3 {
+        margin-bottom: 24px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .services-card-img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .services-card .services-card-img {
+        background-size: calc(320px * 0.75) calc(480px * 0.75);
+        background-position: -1px -26px;
+    }
+
+    .services-card {
+        gap: 16px;
+    }
+
+    .services-light {
+        width: 150px;
+        height: 150px;
+        top: 13%;
+        left: 26%;
+        filter: blur(40px);
+    }
+
+    /* Скрываем сервисы начиная с 6-го при медиазапросе 600px */
+    .services-card:nth-child(n+6) {
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+        max-height: 0;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Стрелка для разворачивания сервисов */
+    #arrowSeeMoreServices {
+        width: 34px;
+        margin: 0 auto;
+        margin-top: -17px;
+        transition: transform 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    /* Когда сервисы развёрнуты - увеличиваем отступ сверху */
+    #arrowSeeMoreServices[style*="transform: rotate(0deg)"] {
+        margin-top: 17px;
+    }
+
+    .areas-service h3 {
+        margin-top: 72px;
+        margin-bottom: 27px;
+    }
+
+    .areas-service hr {
+        display: none;
+    }
+
+    .areas-service-content {
+        display: flex;
+    }
+
+    .wrapHr1,
+    .wrapHr2 {
+        flex-direction: column;
+        gap: 69px;
+        position: relative;
+    }
+
+    .wrapHr1 .point-wrap {
+        flex-direction: row;
+    }
+
+    .wrapHr2 .point-wrap {
+        flex-direction: row-reverse;
+    }
+
+    .wrapHr2 {
+        padding: 29px 0;
+    }
+
+    .point-wrap>div {
+        width: 16px;
+        height: 16px;
+    }
+
+    .point-wrap {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .wrapHr1::before,
+    .wrapHr2::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: 14px;
+        width: 4px;
+        height: 344px;
+        background-color: #FF6100;
+    }
+
+    .wrapHr2::before {
+        top: 22px;
+        left: auto;
+        right: 14px;
+        height: 293px;
+    }
+
+    .BeforeAfter {
+        padding: 72px 0;
+    }
+    .BeforeAfter h3 {
+        margin-bottom: 24px;
+    }
+    .BeforeAfter-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 16px;
+        padding: 0px 8px;
+    }
+    .BeforeAfter-card:nth-child(odd)::before {
+        top: 11%;
+        right: -47px;
+        letter-spacing: 2px;
+        font-size: 20px;
+    }
+    .BeforeAfter-card:nth-child(even)::before {
+        top: 13%;
+        letter-spacing: 4px;
+        font-size: 20px;
+        right: auto;
+        left: -49px;
+    }
+    
+    /* Скрываем карточки Before & After начиная с 5-й при медиазапросе 600px */
+    .BeforeAfter-card:nth-child(n+5) {
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+        max-height: 0;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+}
