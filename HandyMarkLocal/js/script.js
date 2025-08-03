@@ -421,22 +421,26 @@ window.addEventListener('resize', function() {
     const beforeAfterArrow = document.getElementById('arrowSeeMore');
     
     if (isMobile) {
-        // При переходе на мобильную версию убираем inline стили
-        // CSS медиазапрос сам скроет отзывы 3-6
-        additionalReviewCards.forEach(card => {
-            // Убираем любые inline стили, чтобы CSS медиазапрос работал
-            card.style.removeProperty('opacity');
-            card.style.removeProperty('transform');
-            card.style.removeProperty('pointer-events');
-            card.style.removeProperty('max-height');
-            card.style.removeProperty('overflow');
-            card.style.removeProperty('margin');
-            card.style.removeProperty('padding');
-        });
-        hiddenReviewCards.forEach(card => {
-            card.style.display = 'none';
-        });
-        arrow.style.transform = 'rotate(0deg)';
+        // При переходе на мобильную версию проверяем текущее состояние
+        // Если блоки уже развернуты, не сбрасываем их состояние
+        const isReviewsExpanded = additionalReviewCards[0] && additionalReviewCards[0].style.opacity === '1';
+        
+        if (!isReviewsExpanded) {
+            // Только если блоки не развернуты, убираем inline стили
+            additionalReviewCards.forEach(card => {
+                card.style.removeProperty('opacity');
+                card.style.removeProperty('transform');
+                card.style.removeProperty('pointer-events');
+                card.style.removeProperty('max-height');
+                card.style.removeProperty('overflow');
+                card.style.removeProperty('margin');
+                card.style.removeProperty('padding');
+            });
+            hiddenReviewCards.forEach(card => {
+                card.style.display = 'none';
+            });
+            arrow.style.transform = 'rotate(0deg)';
+        }
     } else {
         // При переходе на десктоп показываем дополнительные отзывы
         additionalReviewCards.forEach(card => {
@@ -450,19 +454,23 @@ window.addEventListener('resize', function() {
     
     // Обработка сервисов при изменении размера окна
     if (isSmallMobile) {
-        // При переходе на мобильную версию убираем inline стили
-        // CSS медиазапрос сам скроет сервисы 6-9
-        additionalServiceCards.forEach(card => {
-            // Убираем любые inline стили, чтобы CSS медиазапрос работал
-            card.style.removeProperty('opacity');
-            card.style.removeProperty('transform');
-            card.style.removeProperty('pointer-events');
-            card.style.removeProperty('max-height');
-            card.style.removeProperty('overflow');
-            card.style.removeProperty('margin');
-            card.style.removeProperty('padding');
-        });
-        servicesArrow.style.transform = 'rotate(180deg)'; // Стрелка повёрнута на 180° когда карточки скрыты
+        // При переходе на мобильную версию проверяем текущее состояние
+        // Если блоки уже развернуты, не сбрасываем их состояние
+        const isServicesExpanded = additionalServiceCards[0] && additionalServiceCards[0].style.opacity === '1';
+        
+        if (!isServicesExpanded) {
+            // Только если блоки не развернуты, убираем inline стили
+            additionalServiceCards.forEach(card => {
+                card.style.removeProperty('opacity');
+                card.style.removeProperty('transform');
+                card.style.removeProperty('pointer-events');
+                card.style.removeProperty('max-height');
+                card.style.removeProperty('overflow');
+                card.style.removeProperty('margin');
+                card.style.removeProperty('padding');
+            });
+            servicesArrow.style.transform = 'rotate(180deg)'; // Стрелка повёрнута на 180° когда карточки скрыты
+        }
     } else {
         // При переходе на большие экраны показываем все сервисы
         additionalServiceCards.forEach(card => {
@@ -479,22 +487,26 @@ window.addEventListener('resize', function() {
     
     // Обработка Before & After при изменении размера окна
     if (isSmallMobile) {
-        // При переходе на мобильную версию убираем inline стили
-        // CSS медиазапрос сам скроет карточки 5-6
-        additionalBeforeAfterCards.forEach(card => {
-            // Убираем любые inline стили, чтобы CSS медиазапрос работал
-            card.style.removeProperty('opacity');
-            card.style.removeProperty('transform');
-            card.style.removeProperty('pointer-events');
-            card.style.removeProperty('max-height');
-            card.style.removeProperty('overflow');
-            card.style.removeProperty('margin');
-            card.style.removeProperty('padding');
-        });
-        hiddenBeforeAfterCards.forEach(card => {
-            card.style.display = 'none';
-        });
-        beforeAfterArrow.style.transform = 'rotate(0deg)'; // Стрелка в исходном положении когда карточки скрыты
+        // При переходе на мобильную версию проверяем текущее состояние
+        // Если блоки уже развернуты, не сбрасываем их состояние
+        const isBeforeAfterExpanded = additionalBeforeAfterCards[0] && additionalBeforeAfterCards[0].style.opacity === '1';
+        
+        if (!isBeforeAfterExpanded) {
+            // Только если блоки не развернуты, убираем inline стили
+            additionalBeforeAfterCards.forEach(card => {
+                card.style.removeProperty('opacity');
+                card.style.removeProperty('transform');
+                card.style.removeProperty('pointer-events');
+                card.style.removeProperty('max-height');
+                card.style.removeProperty('overflow');
+                card.style.removeProperty('margin');
+                card.style.removeProperty('padding');
+            });
+            hiddenBeforeAfterCards.forEach(card => {
+                card.style.display = 'none';
+            });
+            beforeAfterArrow.style.transform = 'rotate(0deg)'; // Стрелка в исходном положении когда карточки скрыты
+        }
     } else {
         // При переходе на большие экраны показываем все карточки 1-6
         additionalBeforeAfterCards.forEach(card => {
