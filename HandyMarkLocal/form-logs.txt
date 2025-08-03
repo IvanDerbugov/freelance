@@ -1,0 +1,2 @@
+# HandyMark Form Submission Logs
+# Format: YYYY-MM-DD HH:MM:SS - Status from Name (Contact) [Email: OK/FAIL, Telegram: OK/FAIL] 

@@ -1,0 +1,179 @@
+/* Success Modal Styles */
+.success-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.success-modal.success-modal-show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.success-modal-content {
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    text-align: center;
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.success-modal.success-modal-show .success-modal-content {
+    transform: scale(1);
+}
+
+.success-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.success-modal-close:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.success-modal-header {
+    margin-bottom: 24px;
+}
+
+.success-modal-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 16px;
+}
+
+.success-modal-header h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #FF6100;
+    margin: 0;
+}
+
+.success-modal-body {
+    margin-bottom: 32px;
+}
+
+.success-modal-body p {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #333;
+    margin: 0 0 12px 0;
+}
+
+.success-modal-signature {
+    font-weight: 600 !important;
+    color: #FF6100 !important;
+    margin-top: 16px !important;
+}
+
+.success-modal-btn {
+    background-color: #FF6100;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 16px 32px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    min-width: 120px;
+}
+
+.success-modal-btn:hover {
+    background-color: #E55600;
+}
+
+/* Spinner Styles */
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.spinner-inner {
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .success-modal-content {
+        padding: 24px;
+        margin: 20px;
+    }
+    
+    .success-modal-header h3 {
+        font-size: 24px;
+    }
+    
+    .success-modal-body p {
+        font-size: 16px;
+    }
+    
+    .success-modal-btn {
+        padding: 14px 24px;
+        font-size: 16px;
+    }
+    
+    .success-modal-logo {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 400px) {
+    .success-modal-content {
+        padding: 20px;
+        margin: 16px;
+    }
+    
+    .success-modal-header h3 {
+        font-size: 20px;
+    }
+    
+    .success-modal-body p {
+        font-size: 14px;
+    }
+} 
