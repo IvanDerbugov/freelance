@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <input type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
             <input type="text" name="contact" placeholder="Телефон или e-mail" required autocomplete="tel">
             <input type="hidden" name="form_type" value="manipulator">
+            <input type="hidden" name="access_key" value="d759a276-7f88-4a85-a572-a472510fd51b">
             <button type="submit" class="modal-submit">Зафиксировать скидку</button>
         </form>
         <div class="modal-success" style="display:none;text-align:center;font-size:22px;font-weight:600;color:#DF6417;margin-top:18px;">Скидка зафиксирована!</div>
@@ -88,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const submitBtn = modalWindow.querySelector('.modal-submit');
         submitBtn.disabled = true;
         submitBtn.textContent = 'Отправка...';
-        fetch('send-form.php', {
+        fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             body: formData
         })
@@ -114,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     success.style.display = 'none';
                 }, 2000);
             } else {
-                success.textContent = data.message || 'Ошибка отправки!';
+                success.textContent = 'Ошибка отправки!';
                 success.style.display = 'block';
             }
         })

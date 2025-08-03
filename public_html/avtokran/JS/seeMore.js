@@ -54,10 +54,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 </a>
             </div>
             
-            <form class="modal-form" id="formaAvtokrany">
+            <form class="modal-form" id="formaAvtokrany" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="d759a276-7f88-4a85-a572-a472510fd51b">
                 <input type="hidden" name="form_type" value="Форма из модального окна">
                 <input type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
                 <input type="text" name="contact" placeholder="Телефон или e-mail" required autocomplete="tel">
+                <input type="hidden" name="subject" value="Новая заявка с сайта АВТОКРАН (см. больше)">
                 <button type="submit" class="modal-submit">Отправить заявку</button>
             </form>
             <div class="modal-success" style="display:none;text-align:center;font-size:22px;font-weight:600;color:#DF6417;margin-top:18px;">Заявка отправлена!</div>
@@ -97,12 +99,24 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Отправка...';
             
-            // Отправляем данные в наш PHP обработчик
-            fetch('send-form.php', {
+            // Отправляем на web3forms
+            fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 body: formData
             })
-            .then(res => res.json())
+            .then(res => {
+                console.log('Response status:', res.status);
+                console.log('Response headers:', res.headers);
+                return res.text().then(text => {
+                    console.log('Raw response:', text);
+                    try {
+                        return JSON.parse(text);
+                    } catch (e) {
+                        console.error('JSON parse error:', e);
+                        throw new Error('Invalid JSON response');
+                    }
+                });
+            })
             .then(data => {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Отправить заявку';
