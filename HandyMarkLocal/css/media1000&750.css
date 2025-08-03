@@ -116,7 +116,7 @@
     
     /* Скрываем отзывы начиная с 3-го при медиазапросе 1000px */
     .reviews-card:nth-child(n+3):not(.reviews-card-hidden) {
-        display: none;
+        display: none !important;
     }
 
     #arrowSeeMoreReviews {
