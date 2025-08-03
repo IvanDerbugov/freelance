@@ -3,8 +3,7 @@
 .versionTablet1250,
 .versionTablet1000,
 .versionTablet750,
-.versionMobile600,
-.versionMobile450 {
+.versionMobile600 {
     width: 180px;
     height: 180px;
     position: fixed;
@@ -27,8 +26,7 @@
 .versionTablet1250,
 .versionTablet1000,
 .versionTablet750,
-.versionMobile600,
-.versionMobile450 {
+.versionMobile600 {
     display: none;
 }
 
@@ -42,8 +40,7 @@
     .versionTablet1250,
     .versionTablet1000,
     .versionTablet750,
-    .versionMobile600,
-    .versionMobile450 {
+    .versionMobile600 {
         display: none;
     }
 }
@@ -85,9 +82,9 @@
 }
 
 
-@media (max-width: 450px) {
+@media (max-width: 600px) {
 
-    .versionMobile450 {
+    .versionMobile600 {
         display: flex;
     }
 
@@ -95,9 +92,7 @@
     .versionTablet1350,
     .versionTablet1250,
     .versionTablet1000,
-    .versionTablet750,
-    .versionMobile600,
-    .versionMobile450 {
+    .versionTablet750 {
         display: none;
     }
 }

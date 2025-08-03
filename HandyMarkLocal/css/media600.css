@@ -1,5 +1,5 @@
 @media (max-width: 600px) {
-    body {
+    main {
         overflow-x: hidden;
     }
 
@@ -39,7 +39,7 @@
         height: 90px;
         background-image: url('../img/light1Media600.png');
         background-size: 100% 62px;
-        margin-top: -37px;
+        /* margin-top: -37px; */
     }
 
     .orange-bar-content span {
@@ -51,7 +51,7 @@
     }
 
     header {
-        padding: 40px 0 53px;
+        padding: 40px 0 13px;
     }
 
     .aboutMe {
@@ -97,7 +97,7 @@
         width: 150px;
         height: 150px;
         top: 13%;
-        left: 26%;
+        left: 32%;
         filter: blur(40px);
     }
 
