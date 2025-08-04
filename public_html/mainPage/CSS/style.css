@@ -147,6 +147,7 @@ html {
     color: #063F1B;
     text-align: center;
     margin-top: -165px;
+    cursor: pointer;
 }
 
 /* Стили для карусели */
