@@ -22,103 +22,120 @@
 
 
     <style>
-        .versionDesktop, .versionTablet1400, .versionTablet1100, .versionMobile, .version450 {
-    width: 180px;
-    height: 180px;
-    position: fixed;
-    top: 0;
-    right: 50%;
-    font-size: 30px;
-    font-weight: 700;
-    color: #fff;
-    background-color: blue;
-    border-radius: 50%;
-    opacity: 0.3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    z-index: 10;
-}
-.versionTablet1400, .versionTablet1100, .versionMobile, .version450 {
-    display: none;
-}
+        .versionDesktop,
+        .versionTablet1400,
+        .versionTablet1100,
+        .versionMobile,
+        .version450 {
+            width: 180px;
+            height: 180px;
+            position: fixed;
+            top: 0;
+            right: 50%;
+            font-size: 30px;
+            font-weight: 700;
+            color: #fff;
+            background-color: blue;
+            border-radius: 50%;
+            opacity: 0.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .versionTablet1400,
+        .versionTablet1100,
+        .versionMobile,
+        .version450 {
+            display: none;
+        }
 
 
-@media (max-width: 1400px) {
-    .versionTablet1400 {
-        display: flex;
-    }
-    .versionDesktop, .versionTablet1100, .versionMobile, .version450 {
-        display: none;
-    }
-}
+        @media (max-width: 1400px) {
+            .versionTablet1400 {
+                display: flex;
+            }
 
-@media (max-width: 1100px) {
-.versionTablet1100 {
-        display: flex;
-    }
-    .versionDesktop, .versionTablet1400, .versionMobile, .version450 {
-        display: none;
-    }
-}
+            .versionDesktop,
+            .versionTablet1100,
+            .versionMobile,
+            .version450 {
+                display: none;
+            }
+        }
 
+        @media (max-width: 1100px) {
+            .versionTablet1100 {
+                display: flex;
+            }
 
-@media (max-width: 768px) {
-    .versionMobile,
-    .version450 {
-        display: flex;
-        border-radius: 5px;
-        width: auto;
-        height: auto;
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-
-    .versionTablet1100,
-    .versionTablet1400,
-    .version450 {
-        display: none;
-    }
-}
+            .versionDesktop,
+            .versionTablet1400,
+            .versionMobile,
+            .version450 {
+                display: none;
+            }
+        }
 
 
-@media (max-width: 450px) {
+        @media (max-width: 768px) {
 
-    .version450 {
-        display: flex;
-    }
+            .versionMobile,
+            .version450 {
+                display: flex;
+                border-radius: 5px;
+                width: auto;
+                height: auto;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
 
-    .versionDesktop,
-    .versionTablet1400,
-    .versionTablet1100,
-    .versionMobile {
-        display: none;
-    }
-}
+            .versionTablet1100,
+            .versionTablet1400,
+            .version450 {
+                display: none;
+            }
+        }
+
+
+        @media (max-width: 450px) {
+
+            .version450 {
+                display: flex;
+            }
+
+            .versionDesktop,
+            .versionTablet1400,
+            .versionTablet1100,
+            .versionMobile {
+                display: none;
+            }
+        }
 
 
 
 
 
-.nonono { 
-    display: none;
-}
-@media (max-width: 1500px) {
-    .nonono { 
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #000;
-        color: #fff;
-        font-size: 70px;
-        z-index: 15;
-    }
-}
+        .nonono {
+            display: none;
+        }
 
+        @media (max-width: 1500px) {
+            .nonono {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #000;
+                color: #fff;
+                font-size: 70px;
+                z-index: 15;
+            }
+        }
     </style>
 </head>
 
@@ -713,9 +730,9 @@
                     </div>
                 </div>
                 <div class="payment-desc">
-                    Арендуя в «РЕКОРДИКЕ» длинномерный грузовой автомобиль, Вы получаете надежную технику,
-                    профессиональный сервис и гарантированный результат. Свяжитесь с нами, наши специалисты помогут
-                    подобрать технику и ответят на все Ваши вопросы.
+                    Арендуя спецтехнику в ООО «РЕКОРДИКА», Вы получаете надежную технику, профессиональный сервис и
+                    гарантированный результат. Свяжитесь с нами, наши специалисты помогут подобрать технику и ответят на
+                    все Ваши вопросы.
                 </div>
             </div>
         </section>
