@@ -62,30 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return spinner;
     }
     
-    // Функция для показа спиннера
-    function showSpinner() {
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = '';
-        submitBtn.disabled = true;
-        
-        const spinner = createSpinner();
-        submitBtn.appendChild(spinner);
-        
-        // Сохраняем оригинальный текст для восстановления
-        submitBtn.dataset.originalText = originalText;
-    }
-    
-    // Функция для скрытия спиннера
-    function hideSpinner() {
-        submitBtn.disabled = false;
-        submitBtn.textContent = submitBtn.dataset.originalText || 'Submit request';
-        
-        const spinner = submitBtn.querySelector('.spinner');
-        if (spinner) {
-            spinner.remove();
-        }
-    }
-    
     // Обработчик отправки формы
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -106,7 +82,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Показываем спиннер
-        showSpinner();
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = '';
+        submitBtn.disabled = true;
+        
+        const spinner = createSpinner();
+        submitBtn.appendChild(spinner);
         
         // Отправляем данные на сервер
         fetch('send-form.php', {
@@ -120,14 +101,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 message: message
             })
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
+        .then(res => res.json())
         .then(data => {
-            hideSpinner();
+            // Скрываем спиннер
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            
+            if (spinner) {
+                spinner.remove();
+            }
             
             if (data.success) {
                 // Показываем модальное окно успеха
@@ -142,7 +124,15 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch((error) => {
             console.error('Form submission error:', error);
-            hideSpinner();
+            
+            // Скрываем спиннер
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            
+            if (spinner) {
+                spinner.remove();
+            }
+            
             alert('Connection error! Please try again later.');
         });
     });

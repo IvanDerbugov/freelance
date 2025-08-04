@@ -1,17 +1,9 @@
+# BEGIN HTTPS Redirect
 RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# END HTTPS Redirect
 
-# Handle PHP files
-<Files "*.php">
-    SetHandler application/x-httpd-php
-</Files>
-
-# Allow CORS for form submission
-<IfModule mod_headers.c>
-    Header always set Access-Control-Allow-Origin "*"
-    Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
-    Header always set Access-Control-Allow-Headers "Content-Type"
-</IfModule>
-
-# Handle preflight requests
-RewriteCond %{REQUEST_METHOD} OPTIONS
-RewriteRule ^(.*)$ $1 [R=200,L] 
+# BEGIN Index Files
+DirectoryIndex index.html
+# END Index Files 
