@@ -799,3 +799,87 @@ ul:not(.browser-default)>li,
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255,193,7,0.3);
 }
+
+/* Стили для модального окна "Страница в разработке" */
+.contact-modal-text {
+    font-size: 18px;
+    color: #043517;
+    text-align: center;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.contact-modal-buttons {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact-modal-phone,
+.contact-modal-whatsapp {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-modal-phone {
+    background: linear-gradient(270deg, #DF6417, #ffc107);
+    color: #fff;
+}
+
+.contact-modal-phone:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(223,100,23,0.3);
+}
+
+.contact-modal-whatsapp {
+    background: #25D366;
+    color: #fff;
+}
+
+.contact-modal-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+}
+
+.contact-modal-phone .phone-icon-main,
+.contact-modal-whatsapp .phone-icon-main {
+    width: 20px;
+    height: 20px;
+}
+
+.contact-modal-phone .phone-icon-main path {
+    stroke: #fff;
+}
+
+.contact-modal-whatsapp .icon-svg {
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 600px) {
+    .contact-modal-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .contact-modal-phone,
+    .contact-modal-whatsapp {
+        justify-content: center;
+        padding: 14px 20px;
+        font-size: 16px;
+    }
+    
+    .contact-modal-text {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+}

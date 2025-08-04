@@ -1,8 +1,9 @@
 // Функция инициализации header функциональности
 function initHeaderFunctionality() {
-    const catalogDropdown = document.querySelector('.catalog-dropdown');
-    const catalogBtn = document.querySelector('.catalog-btn');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
+    // Header catalog dropdown
+    const catalogDropdown = document.querySelector('.headerBottom .catalog-dropdown');
+    const catalogBtn = document.querySelector('.headerBottom .catalog-btn');
+    const dropdownMenu = document.querySelector('.headerBottom .dropdown-menu');
 
     // Проверяем, что элементы существуют
     if (catalogDropdown && catalogBtn) {
@@ -25,12 +26,52 @@ function initHeaderFunctionality() {
                 catalogDropdown.classList.remove('active');
             }
         });
+
+        // Close dropdown on scroll
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            if (catalogDropdown.classList.contains('active')) {
+                catalogDropdown.classList.remove('active');
+            }
+        }, { passive: true });
+
+        // Close dropdown when clicking on links inside
+        function addDropdownLinkListeners() {
+            const dropdownLinks = catalogDropdown.querySelectorAll('a');
+            dropdownLinks.forEach(function(link) {
+                if (!link.hasAttribute('data-dropdown-link-listener')) {
+                    link.setAttribute('data-dropdown-link-listener', 'true');
+                    link.addEventListener('click', function() {
+                        catalogDropdown.classList.remove('active');
+                    });
+                }
+            });
+        }
+        
+        // Добавляем обработчики для уже существующих ссылок
+        addDropdownLinkListeners();
+        
+        // Добавляем обработчики для динамически загружаемых ссылок
+        const dropdownObserver = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    addDropdownLinkListeners();
+                }
+            });
+        });
+        
+        dropdownObserver.observe(catalogDropdown, {
+            childList: true,
+            subtree: true
+        });
     }
 
-    // Burger menu functionality
-    const burgerDropdown = document.querySelector('.burger-dropdown');
-    const burgerBtn = document.querySelector('.burger-btn');
-    const burgerMenu = document.querySelector('.burger-menu');
+
+
+    // Burger menu functionality (header only)
+    const burgerDropdown = document.querySelector('.headerBottom .burger-dropdown');
+    const burgerBtn = document.querySelector('.headerBottom .burger-btn');
+    const burgerMenu = document.querySelector('.headerBottom .burger-menu');
 
     // Проверяем, что элементы существуют
     if (burgerDropdown && burgerBtn) {
@@ -53,20 +94,57 @@ function initHeaderFunctionality() {
                 burgerDropdown.classList.remove('active');
             }
         });
+
+        // Close burger menu on scroll
+        window.addEventListener('scroll', function() {
+            if (burgerDropdown.classList.contains('active')) {
+                burgerDropdown.classList.remove('active');
+            }
+        }, { passive: true });
+
+        // Close burger menu when clicking on links inside
+        function addBurgerLinkListeners() {
+            const burgerLinks = burgerDropdown.querySelectorAll('a');
+            burgerLinks.forEach(function(link) {
+                if (!link.hasAttribute('data-burger-link-listener')) {
+                    link.setAttribute('data-burger-link-listener', 'true');
+                    link.addEventListener('click', function() {
+                        burgerDropdown.classList.remove('active');
+                    });
+                }
+            });
+        }
+        
+        // Добавляем обработчики для уже существующих ссылок
+        addBurgerLinkListeners();
+        
+        // Добавляем обработчики для динамически загружаемых ссылок
+        const burgerObserver = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    addBurgerLinkListeners();
+                }
+            });
+        });
+        
+        burgerObserver.observe(burgerDropdown, {
+            childList: true,
+            subtree: true
+        });
     }
 
-    // Modal functionality
-    const modalBtn = document.querySelector('.open-modal-btn');
+    // Modal functionality (header and footer)
+    const modalBtns = document.querySelectorAll('.open-modal-btn');
     const modal = document.querySelector('.modal');
     const modalClose = document.querySelector('.modal-close');
     const modalOverlay = document.querySelector('.modal-overlay');
 
-    if (modalBtn) {
+    modalBtns.forEach(function(modalBtn) {
         modalBtn.addEventListener('click', function (e) {
             e.preventDefault();
             if (modal) modal.classList.add('active');
         });
-    }
+    });
 
     if (modalClose) {
         modalClose.addEventListener('click', function () {
@@ -93,3 +171,151 @@ initHeaderFunctionality();
 
 // Также вызываем при загрузке DOM (на случай, если header загружается синхронно)
 document.addEventListener('DOMContentLoaded', initHeaderFunctionality);
+
+// Добавляем поддержку динамически загружаемого контента (футер)
+const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        if (mutation.type === 'childList') {
+            // Проверяем, появился ли футер
+            const footer = document.querySelector('#footer');
+            if (footer) {
+                console.log('Футер обнаружен, инициализируем функциональность');
+                // Инициализируем функциональность для футера
+                initFooterFunctionality();
+            }
+        }
+    });
+});
+
+// Начинаем наблюдение за изменениями в body
+observer.observe(document.body, {
+    childList: true,
+    subtree: true
+});
+
+// Также добавляем инициализацию с задержкой для надежности
+setTimeout(function() {
+    const footer = document.querySelector('#footer');
+    if (footer) {
+        initFooterFunctionality();
+    }
+}, 1000);
+
+setTimeout(function() {
+    const footer = document.querySelector('#footer');
+    if (footer) {
+        initFooterFunctionality();
+    }
+}, 3000);
+
+// Функция для инициализации функциональности футера
+function initFooterFunctionality() {
+    // Footer catalog dropdown
+    const footerCatalogDropdown = document.querySelector('.footerBottom .catalog-dropdown');
+    const footerCatalogBtn = document.querySelector('.footerBottom .catalog-btn');
+    
+    console.log('Инициализация футера:', {
+        footerCatalogDropdown: !!footerCatalogDropdown,
+        footerCatalogBtn: !!footerCatalogBtn,
+        hasListener: footerCatalogBtn ? footerCatalogBtn.hasAttribute('data-footer-listener') : false
+    });
+    
+    // Проверяем, что элементы существуют и обработчики еще не добавлены
+    if (footerCatalogDropdown && footerCatalogBtn && !footerCatalogBtn.hasAttribute('data-footer-listener')) {
+        footerCatalogBtn.setAttribute('data-footer-listener', 'true');
+        
+        // Toggle dropdown on button click
+        footerCatalogBtn.addEventListener('click', function (e) {
+            console.log('Клик по кнопке каталога в футере');
+            e.stopPropagation();
+            footerCatalogDropdown.classList.toggle('active');
+            
+            // Управляем overflow футера
+            const footer = document.querySelector('footer');
+            if (footer) {
+                if (footerCatalogDropdown.classList.contains('active')) {
+                    footer.style.overflow = 'visible';
+                } else {
+                    footer.style.overflow = 'hidden';
+                }
+            }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!footerCatalogDropdown.contains(e.target)) {
+                footerCatalogDropdown.classList.remove('active');
+                
+                // Возвращаем overflow футера
+                const footer = document.querySelector('footer');
+                if (footer) {
+                    footer.style.overflow = 'hidden';
+                }
+            }
+        });
+
+        // Close dropdown on escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                footerCatalogDropdown.classList.remove('active');
+                
+                // Возвращаем overflow футера
+                const footer = document.querySelector('footer');
+                if (footer) {
+                    footer.style.overflow = 'hidden';
+                }
+            }
+        });
+
+        // Close dropdown on scroll
+        window.addEventListener('scroll', function() {
+            if (footerCatalogDropdown.classList.contains('active')) {
+                footerCatalogDropdown.classList.remove('active');
+                
+                // Возвращаем overflow футера
+                const footer = document.querySelector('footer');
+                if (footer) {
+                    footer.style.overflow = 'hidden';
+                }
+            }
+        }, { passive: true });
+
+        // Close dropdown when clicking on links inside
+        function addFooterDropdownLinkListeners() {
+            const footerDropdownLinks = footerCatalogDropdown.querySelectorAll('a');
+            footerDropdownLinks.forEach(function(link) {
+                if (!link.hasAttribute('data-footer-dropdown-link-listener')) {
+                    link.setAttribute('data-footer-dropdown-link-listener', 'true');
+                    link.addEventListener('click', function() {
+                        footerCatalogDropdown.classList.remove('active');
+                        
+                        // Возвращаем overflow футера
+                        const footer = document.querySelector('footer');
+                        if (footer) {
+                            footer.style.overflow = 'hidden';
+                        }
+                    });
+                }
+            });
+        }
+        
+        // Добавляем обработчики для уже существующих ссылок
+        addFooterDropdownLinkListeners();
+        
+        // Добавляем обработчики для динамически загружаемых ссылок
+        const footerDropdownObserver = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    addFooterDropdownLinkListeners();
+                }
+            });
+        });
+        
+        footerDropdownObserver.observe(footerCatalogDropdown, {
+            childList: true,
+            subtree: true
+        });
+        
+        console.log('Обработчики для футера добавлены');
+    }
+}
