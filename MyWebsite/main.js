@@ -136,7 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const nftBlock = document.getElementById('project-nft');
     const subsBlock = document.getElementById('project-subs');
     const weddingBlock = document.getElementById('project-wedding');
-    if (portfolioBtns.length && nftBlock && subsBlock && weddingBlock) {
+    const handymarkBlock = document.getElementById('project-handymark');
+    if (portfolioBtns.length && nftBlock && subsBlock && weddingBlock && handymarkBlock) {
         portfolioBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 portfolioBtns.forEach(b => b.classList.remove('active'));
@@ -146,20 +147,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 nftBlock.style.display = 'none';
                 subsBlock.style.display = 'none';
                 weddingBlock.style.display = 'none';
+                handymarkBlock.style.display = 'none';
                 
-                // Останавливаем видео SubScope
+                // Останавливаем видео SubScope и HandyMark
                 const subsVideo = subsBlock.querySelector('video');
+                const handymarkVideo = handymarkBlock.querySelector('video');
                 if (subsVideo) { subsVideo.pause(); subsVideo.currentTime = 0; }
+                if (handymarkVideo) { handymarkVideo.pause(); handymarkVideo.currentTime = 0; }
                 
                 // Показываем нужный проект
-                if (btn.dataset.project === 'nft') {
-                    nftBlock.style.display = '';
+                if (btn.dataset.project === 'handymark') {
+                    handymarkBlock.style.display = '';
+                    // Запускаем видео HandyMark
+                    if (handymarkVideo) { handymarkVideo.play(); }
+                } else if (btn.dataset.project === 'wedding') {
+                    weddingBlock.style.display = '';
                 } else if (btn.dataset.project === 'subs') {
                     subsBlock.style.display = '';
                     // Запускаем видео SubScope
                     if (subsVideo) { subsVideo.play(); }
-                } else if (btn.dataset.project === 'wedding') {
-                    weddingBlock.style.display = '';
+                } else if (btn.dataset.project === 'nft') {
+                    nftBlock.style.display = '';
                 }
             });
         });
