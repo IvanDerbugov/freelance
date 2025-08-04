@@ -19,9 +19,125 @@
     <link rel="stylesheet" href="CSS/header.css">
     <link rel="stylesheet" href="CSS/footer.css">
     <link rel="stylesheet" href="CSS/style.css">
+
+
+    <style>
+        .versionDesktop, .versionTablet1400, .versionTablet1100, .versionMobile, .version450 {
+    width: 180px;
+    height: 180px;
+    position: fixed;
+    top: 0;
+    right: 50%;
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+    background-color: blue;
+    border-radius: 50%;
+    opacity: 0.3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 10;
+}
+.versionTablet1400, .versionTablet1100, .versionMobile, .version450 {
+    display: none;
+}
+
+
+@media (max-width: 1400px) {
+    .versionTablet1400 {
+        display: flex;
+    }
+    .versionDesktop, .versionTablet1100, .versionMobile, .version450 {
+        display: none;
+    }
+}
+
+@media (max-width: 1100px) {
+.versionTablet1100 {
+        display: flex;
+    }
+    .versionDesktop, .versionTablet1400, .versionMobile, .version450 {
+        display: none;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .versionMobile,
+    .version450 {
+        display: flex;
+        border-radius: 5px;
+        width: auto;
+        height: auto;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .versionTablet1100,
+    .versionTablet1400,
+    .version450 {
+        display: none;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .version450 {
+        display: flex;
+    }
+
+    .versionDesktop,
+    .versionTablet1400,
+    .versionTablet1100,
+    .versionMobile {
+        display: none;
+    }
+}
+
+
+
+
+
+.nonono { 
+    display: none;
+}
+@media (max-width: 1500px) {
+    .nonono { 
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        color: #fff;
+        font-size: 70px;
+        z-index: 15;
+    }
+}
+
+    </style>
 </head>
 
 <body>
+    <div class="versionDesktop">V1 комп</div>
+    <div class="versionTablet1400">V1 план1400</div>
+    <div class="versionTablet1100">V1 план1100</div>
+    <div class="versionMobile">V1 моб</div>
+    <div class="version450">V1 моб450</div>
+
+    <div class="nonono">Это планшетная или мобильная версия, уменьшите масштаб для просмотра компьютерной версии</div>
+
+
+
+
+
+
+
+
     <div class="section-limiter header-limiter">
         <div id="header-container"></div>
     </div>
@@ -360,7 +476,7 @@
             </a>
         </section>
 
-        <section class="ozerService">
+        <section class="ozerService" id="ozerServices">
             <div class="container">
                 <h2 class="sectionNameH2">
                     Дополнительные услуги
@@ -427,7 +543,7 @@
             </div>
         </section>
 
-        <section class="aboutUs">
+        <section class="aboutUs" id="aboutCompany">
             <div class="container">
                 <div class="aboutUsTop">
                     <div>
@@ -563,6 +679,46 @@
                 </div>
             </div>
         </section>
+
+
+        <section class="payment">
+            <div class="container">
+                <h1 class="titleBlock">Оформление и оплата услуги</h1>
+                <div class="payment-subtitle">
+                    Для оплаты возможен наличный и безналичный расчёт<br>
+                    Мы работаем с НДС и без НДС
+                </div>
+                <div class="payment-grid">
+                    <div>
+                        <b>Оформить заявку или получить консультацию специалиста можно:</b>
+                        <ul>
+                            <li>позвонив по телефону: <br>+7 (901) 185-65-62</li>
+                            <li>заполнив форму обратной связи на сайте</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <b>Для составления договора и оплаты:</b>
+                        <ul>
+                            <li>юрлицам (ООО/ИП) потребуются карточка организации, с указанием всех данных
+                                компании
+                            </li>
+                            <li>физлицам – надо просто подписать заявку</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <b>Дополнительно:</b>
+                        <ul class="noDisc">
+                            <li>оплата работы машиниста <br>и топлива уже входят в стоимость аренды</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="payment-desc">
+                    Арендуя в «РЕКОРДИКЕ» длинномерный грузовой автомобиль, Вы получаете надежную технику,
+                    профессиональный сервис и гарантированный результат. Свяжитесь с нами, наши специалисты помогут
+                    подобрать технику и ответят на все Ваши вопросы.
+                </div>
+            </div>
+        </section>
     </main>
 
     <div class="section-limiter">
@@ -574,6 +730,7 @@
     <script src="JS/header.js"></script>
     <script src="JS/catalog.js"></script>
     <script src="JS/gallery.js"></script>
+    <script src="JS/modal.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
