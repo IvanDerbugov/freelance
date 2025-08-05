@@ -30,6 +30,11 @@ footer {
     line-height: 35px;
 }
 
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
 
 .footerBottom {
     font-family: 'Noto Sans', sans-serif;
@@ -64,6 +69,10 @@ footer {
 .footerBottom>div>a {
     text-decoration: underline;
     white-space: nowrap;
+}
+
+.footer-avito-mobile {
+    display: none;
 }
 
 /* Стили для каталога в футере */
@@ -161,12 +170,105 @@ footer .footerBottom .dropdown-menu a:hover {
     padding-left: 25px !important;
 }
 
-/* Responsive adjustments для футера */
+
+
+@media (max-width: 1400px) {
+    .footer .headerTop2 {
+        display: none;
+    }
+
+    .footerBottom>p {
+        font-size: 14px;
+    }
+}
+
 @media (max-width: 1200px) {
     footer .footerBottom .dropdown-menu {
         min-width: 300px !important;
     }
 }
+
+@media (max-width: 1100px) {
+    .footerBottom>p {
+        font-size: 11px;
+    }
+
+    .footerBottom>div {
+        font-size: 13px;
+    }
+
+    .footer-line {
+        height: 54px;
+    }
+
+    .footerBottom {
+        gap: 30px;
+        padding: 20px 0 60px;
+    }
+    .footerBottom>div:last-of-type {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 950px) {
+    .headerTop8 p {
+        font-size: 22px;
+    }
+
+    .headerTop8 {
+        gap: 10px;
+    }
+
+    .footer .headerTop9 {
+        display: none;
+    }
+
+    .footer .headerTop .container1713 {
+        justify-content: space-around;
+    }
+
+    .footer-links {
+        gap: 10px;
+    }
+
+
+    .footerBottom>div:last-of-type {
+        margin-right: 15px;
+    }
+
+    .footerBottom>p {
+        flex-grow: 1.2;
+        flex-shrink: 0.7;
+        font-size: 9px;
+    }
+    .footer .footerBottom .catalog-dropdown {
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+    .footerBottom>div:last-of-type {
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+
+
+    .footerBottom {
+        gap: clamp(4px, 2vw, 30px);
+    }
+
+    footer .footerBottom .catalog-btn {
+        padding-right: 0;
+        font-size: 14px;
+    }
+
+    .footerBottom>div {
+        font-size: 11px;
+    }
+     
+
+}
+
+/* Responsive adjustments для футера */
+
 
 @media (max-width: 768px) {
     footer .footerBottom .dropdown-menu {
@@ -174,4 +276,54 @@ footer .footerBottom .dropdown-menu a:hover {
         right: 0 !important;
         left: auto !important;
     }
+}
+
+
+@media (max-width: 600px) {
+    .footer .headerTop8 {
+        flex-direction: column;
+        gap: 5px;
+    }
+    /* .footer .headerTop8 a:not(.footer-avito-row-item) {
+        width: 30px;
+    } */
+
+    .footer-links {
+        gap: 10px;
+        justify-content: space-between;
+    }
+
+
+    .footerBottom {
+        flex-direction: column;
+    }
+    .footer .footerBottom .footer-line {
+        display: none;
+    }
+
+    footer .footerBottom .catalog-btn {
+        padding-right: 0;
+        font-size: 22px;
+    }
+
+    .footerBottom>p {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .footerBottom>div:last-of-type {
+        text-align: left;
+        margin: 0 auto;
+        margin-left: 8px;
+    }
+    .footer .headerTop8 .footer-avito-row-item {
+        display: none;
+    }
+
+    .footer-avito-mobile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
 }

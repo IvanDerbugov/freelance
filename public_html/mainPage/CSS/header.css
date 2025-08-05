@@ -342,6 +342,13 @@ header {
     .headerTop8 a {
         width: 35px;
     }
+    .headerTop8 a:not(.footer-avito-row-item) {
+        width: 35px;
+    }
+    .headerTop8 .footer-avito-row-item {
+        width: auto;
+        min-width: 60px;
+    }
     .headerTop9 a {
         font-size: 18px;
         padding: 12px 8px;
