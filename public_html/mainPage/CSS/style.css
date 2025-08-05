@@ -17,7 +17,7 @@ html {
 .page1 {
     background: url('../img/page1FonPodlochka.png') no-repeat,
     url('../img/1pageFon.jpg') no-repeat center center;
-    background-size: cover;
+    background-size: 100% 100%, cover;
     height: 814px;
     width: 100%;
     padding-top: 24px;

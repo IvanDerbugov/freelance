@@ -1,5 +1,13 @@
 // Функция инициализации header функциональности
 function initHeaderFunctionality() {
+    // Функция для закрытия всех выпадающих меню
+    function closeAllDropdowns() {
+        const allDropdowns = document.querySelectorAll('.catalog-dropdown, .burger-dropdown');
+        allDropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
+
     // Header catalog dropdown
     const catalogDropdown = document.querySelector('.headerBottom .catalog-dropdown');
     const catalogBtn = document.querySelector('.headerBottom .catalog-btn');
@@ -10,6 +18,8 @@ function initHeaderFunctionality() {
         // Toggle dropdown on button click
         catalogBtn.addEventListener('click', function (e) {
             e.stopPropagation();
+            // Закрываем все другие выпадающие меню перед открытием текущего
+            closeAllDropdowns();
             catalogDropdown.classList.toggle('active');
         });
 
@@ -78,6 +88,8 @@ function initHeaderFunctionality() {
         // Toggle burger menu on button click
         burgerBtn.addEventListener('click', function (e) {
             e.stopPropagation();
+            // Закрываем все другие выпадающие меню перед открытием текущего
+            closeAllDropdowns();
             burgerDropdown.classList.toggle('active');
         });
 
@@ -228,6 +240,8 @@ function initFooterFunctionality() {
         footerCatalogBtn.addEventListener('click', function (e) {
             console.log('Клик по кнопке каталога в футере');
             e.stopPropagation();
+            // Закрываем все другие выпадающие меню перед открытием текущего
+            closeAllDropdowns();
             footerCatalogDropdown.classList.toggle('active');
             
             // Управляем overflow футера
