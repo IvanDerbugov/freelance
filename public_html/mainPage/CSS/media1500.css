@@ -35,7 +35,7 @@
 
     .aboutUs {
         background: linear-gradient(180deg, #EAEAE9BA 0%, #EAEAE9BA 100%),
-        url('../img/aboutUsVectorFon.png') no-repeat center center;
+            url('../img/aboutUsVectorFon.png') no-repeat center center;
         background-position: 0, 110% 110%;
         padding-bottom: 111px;
     }
@@ -46,6 +46,7 @@
         max-width: 742px;
     }
 }
+
 
 /* Медиа-запросы для блока преимуществ */
 /* Медиа-запросы для блока оплаты */
@@ -93,6 +94,12 @@
         left: 6px;
         top: -26px;
     }
+
+    .catologCardLink {
+        font-size: 15px;
+        padding: 10px 15px;
+        border-radius: 12px;
+    }
 }
 
 @media (max-width: 1100px) {
@@ -136,6 +143,60 @@
     .wrapAdvantagesGrid .text5::before {
         left: 6px;
         top: -26px;
+    }
+
+
+    .catologGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 60px;
+    }
+
+    .catologCardName {
+        font-size: 22px;
+    }
+
+    .catologCardLink {
+        font-size: 23px;
+        padding: 20px 27px;
+        border-radius: 23px;
+    }
+
+    .catologCardName div {
+        width: 11px;
+        height: 11px;
+        padding: 3px;
+    }
+
+    .catologCardName .haveBr {
+        margin-top: -4px;
+        width: 11px;
+        height: 11px;
+    }
+
+    .catologCardName .haveBr1100 {
+        margin-top: -21px;
+        width: 11px;
+        height: 11px;
+    }
+
+    /* Для экранов 1100px и меньше показываем только 6 карточек изначально */
+    .catologCard:nth-child(n+7):nth-child(-n+24) {
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(20px);
+        margin: 0;
+        padding: 0;
+        pointer-events: none;
+    }
+
+    /* Показываем скрытые карточки для адаптива */
+    .catologCard:nth-child(n+7):nth-child(-n+24).show {
+        max-height: 400px;
+        opacity: 1;
+        transform: translateY(0);
+        margin: 0;
+        padding: 36px 25px 63px;
+        pointer-events: auto;
     }
 }
 

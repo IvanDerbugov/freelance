@@ -13,6 +13,9 @@ html {
     max-width: 1920px;
     margin: 0 auto;
 }
+.breakFor1100 {
+    word-break: break-word;
+}
 
 .page1 {
     background: url('../img/page1FonPodlochka.png') no-repeat,
@@ -192,8 +195,8 @@ html {
 }
 
 .ozerServiceCard {
-    width: 540px;
-    height: 450px;
+    width: 490px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -222,7 +225,8 @@ html {
 
 
 .aboutUsTop {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     align-items: flex-start;
     padding: 59px 0 37px;
     gap: 30px;
