@@ -1,12 +1,13 @@
+// Глобальная функция для закрытия всех выпадающих меню
+function closeAllDropdowns() {
+    const allDropdowns = document.querySelectorAll('.catalog-dropdown, .burger-dropdown');
+    allDropdowns.forEach(dropdown => {
+        dropdown.classList.remove('active');
+    });
+}
+
 // Функция инициализации header функциональности
 function initHeaderFunctionality() {
-    // Функция для закрытия всех выпадающих меню
-    function closeAllDropdowns() {
-        const allDropdowns = document.querySelectorAll('.catalog-dropdown, .burger-dropdown');
-        allDropdowns.forEach(dropdown => {
-            dropdown.classList.remove('active');
-        });
-    }
 
     // Header catalog dropdown
     const catalogDropdown = document.querySelector('.headerBottom .catalog-dropdown');
@@ -191,7 +192,6 @@ const observer = new MutationObserver(function(mutations) {
             // Проверяем, появился ли футер
             const footer = document.querySelector('#footer');
             if (footer) {
-                console.log('Футер обнаружен, инициализируем функциональность');
                 // Инициализируем функциональность для футера
                 initFooterFunctionality();
             }
@@ -226,19 +226,12 @@ function initFooterFunctionality() {
     const footerCatalogDropdown = document.querySelector('.footerBottom .catalog-dropdown');
     const footerCatalogBtn = document.querySelector('.footerBottom .catalog-btn');
     
-    console.log('Инициализация футера:', {
-        footerCatalogDropdown: !!footerCatalogDropdown,
-        footerCatalogBtn: !!footerCatalogBtn,
-        hasListener: footerCatalogBtn ? footerCatalogBtn.hasAttribute('data-footer-listener') : false
-    });
-    
     // Проверяем, что элементы существуют и обработчики еще не добавлены
     if (footerCatalogDropdown && footerCatalogBtn && !footerCatalogBtn.hasAttribute('data-footer-listener')) {
         footerCatalogBtn.setAttribute('data-footer-listener', 'true');
         
         // Toggle dropdown on button click
         footerCatalogBtn.addEventListener('click', function (e) {
-            console.log('Клик по кнопке каталога в футере');
             e.stopPropagation();
             // Закрываем все другие выпадающие меню перед открытием текущего
             closeAllDropdowns();
@@ -329,7 +322,5 @@ function initFooterFunctionality() {
             childList: true,
             subtree: true
         });
-        
-        console.log('Обработчики для футера добавлены');
     }
 }

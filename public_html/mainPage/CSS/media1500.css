@@ -1,0 +1,223 @@
+@media (max-width: 1500px) {
+    .container {
+        width: 100%;
+        max-width: 1500px;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .sectionNameH2 {
+        font-size: 50px;
+    }
+
+    .page1 h1 {
+        font-size: 51px;
+        max-width: 1012px;
+        line-height: 78px;
+    }
+
+    .aboutUsTop div {
+        font-size: 20px;
+    }
+
+    .aboutUsTop div p:nth-child(2) {
+        font-size: 28px;
+    }
+
+    .aboutUsBottom {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .aboutUsText {
+        max-width: 1500px;
+    }
+
+    .aboutUs {
+        background: linear-gradient(180deg, #EAEAE9BA 0%, #EAEAE9BA 100%),
+        url('../img/aboutUsVectorFon.png') no-repeat center center;
+        background-position: 0, 110% 110%;
+        padding-bottom: 111px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .page1 h1 {
+        max-width: 742px;
+    }
+}
+
+/* Медиа-запросы для блока преимуществ */
+/* Медиа-запросы для блока оплаты */
+@media (max-width: 1400px) {
+    .payment {
+        padding: 60px 20px 50px;
+    }
+
+    .payment-subtitle {
+        font-size: 25px;
+    }
+
+    .payment-grid b {
+        font-size: 24px;
+    }
+
+    .payment-grid ul {
+        font-size: 20px;
+    }
+
+    .payment-desc {
+        font-size: 22px;
+        margin: 0 0 30px 0;
+    }
+
+    .wrapAdvantagesGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 80px;
+    }
+
+    .wrapAdvantagesGrid>div {
+        max-width: 270px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .wrapAdvantagesGrid>div::before {
+        left: 6px;
+    }
+
+    .wrapAdvantagesGrid .text5::before {
+        left: 6px;
+        top: -26px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .payment-grid {
+        align-items: stretch;
+    }
+
+    .payment-grid>div {
+        flex: 1 1 0;
+        padding: 0 30px;
+        height: auto;
+    }
+
+    .payment-grid b {
+        font-size: 20px;
+    }
+
+    .payment-grid ul {
+        font-size: 18px;
+    }
+
+
+    .wrapAdvantagesGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 80px;
+    }
+
+    .wrapAdvantagesGrid>div {
+        max-width: 270px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .wrapAdvantagesGrid>div::before {
+        left: 6px;
+    }
+
+    .wrapAdvantagesGrid .text5::before {
+        left: 6px;
+        top: -26px;
+    }
+}
+
+@media (max-width: 935px) {
+    .payment-grid {
+        flex-direction: column;
+    }
+
+    .payment-grid ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .payment-grid>div {
+        border-right: none;
+    }
+
+
+    .wrapAdvantagesGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 80px;
+    }
+
+    .wrapAdvantagesGrid>div {
+        max-width: 270px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .wrapAdvantagesGrid>div::before {
+        left: 6px;
+    }
+
+    .wrapAdvantagesGrid .text5::before {
+        left: 6px;
+        top: -26px;
+    }
+}
+
+@media (max-width: 743px) {
+    .payment-subtitle {
+        font-size: 22px;
+    }
+
+    .payment-grid>div {
+        padding: 0 10px;
+    }
+
+    .payment-desc {
+        font-size: 18px;
+    }
+
+    .payment .titleBlock {
+        margin-bottom: 32px;
+        text-align: left;
+        padding: 0 10px;
+    }
+
+    .payment-subtitle {
+        font-size: 22px;
+        padding: 0 10px;
+    }
+
+
+    .ourAdvantages {
+        padding: 30px 0;
+    }
+
+    .wrapAdvantagesGrid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .wrapAdvantagesGrid .text1::before {
+        left: 30px;
+        top: -26px;
+    }
+
+    .wrapAdvantagesGrid .text5::before {
+        left: 9px;
+        top: -26px;
+    }
+}

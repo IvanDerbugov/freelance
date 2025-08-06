@@ -71,8 +71,8 @@ footer {
     white-space: nowrap;
 }
 
-.footer-avito-mobile {
-    display: none;
+.link-avito-mobile {
+    display: none !important;
 }
 
 /* Стили для каталога в футере */
@@ -149,15 +149,15 @@ footer:has(.footerBottom .catalog-dropdown.active) {
 }
 
 footer .footerBottom .dropdown-menu a {
-    display: block !important;
-    padding: 12px 20px !important;
-    color: #043517 !important;
-    text-decoration: none !important;
-    font-family: 'Noto Sans', sans-serif !important;
-    font-size: 20px !important;
-    font-weight: 400 !important;
-    transition: all 0.3s ease !important;
-    border-bottom: 1px solid rgba(76, 141, 101, 0.1) !important;
+    display: block ;
+    padding: 12px 20px ;
+    color: #043517 ;
+    text-decoration: none ;
+    font-family: 'Noto Sans', sans-serif ;
+    font-size: 20px ;
+    font-weight: 400 ;
+    transition: all 0.3s ease ;
+    border-bottom: 1px solid rgba(76, 141, 101, 0.1) ;
 }
 
 footer .footerBottom .dropdown-menu a:last-child {
@@ -237,18 +237,18 @@ footer .footerBottom .dropdown-menu a:hover {
     }
 
     .footerBottom>p {
-        flex-grow: 1.2;
-        flex-shrink: 0.7;
+        /* flex-grow: 1.2;
+        flex-shrink: 0.7; */
         font-size: 9px;
     }
-    .footer .footerBottom .catalog-dropdown {
+    /* .footer .footerBottom .catalog-dropdown {
         flex-grow: 1;
         flex-shrink: 0;
     }
     .footerBottom>div:last-of-type {
         flex-grow: 1;
         flex-shrink: 0;
-    }
+    } */
 
 
     .footerBottom {
@@ -266,7 +266,13 @@ footer .footerBottom .dropdown-menu a:hover {
      
 
 }
-
+@media (max-width: 800px) {
+    footer .footerBottom .dropdown-menu a {
+        padding: 2px 10px;
+        font-size: 12px;
+        border-bottom: 1px solid rgba(76, 141, 101, 0.4);
+    }
+}
 /* Responsive adjustments для футера */
 
 
@@ -284,13 +290,13 @@ footer .footerBottom .dropdown-menu a:hover {
         flex-direction: column;
         gap: 5px;
     }
-    /* .footer .headerTop8 a:not(.footer-avito-row-item) {
-        width: 30px;
-    } */
 
     .footer-links {
-        gap: 10px;
+        gap: 5px;
         justify-content: space-between;
+    }
+    .footer .footer-links a {
+        width: 30px;
     }
 
 
@@ -320,10 +326,11 @@ footer .footerBottom .dropdown-menu a:hover {
         display: none;
     }
 
-    .footer-avito-mobile {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+    .link-avito-mobile {
+        display: block !important;
+        width: 30px;
     }
+
+    
 
 }

@@ -16,5 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
             initHeaderFunctionality();
         }
     });
-    includeHTML('#footer-container', 'HTML/footer.html');
+    includeHTML('#footer-container', 'HTML/footer.html', function() {
+        // Вызываем функцию инициализации footer после загрузки
+        if (typeof initFooterFunctionality === 'function') {
+            initFooterFunctionality();
+        }
+    });
 }); 
