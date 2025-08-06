@@ -31,6 +31,40 @@
         margin-top: -1040px;
         font-size: 28px;
     }
+
+
+    .carousel {
+        max-width: 750px;
+        height: auto;
+        min-height: 400px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .carousel .carousel-item {
+        width: 280px;
+        height: 250px;
+        margin: 0 5px;
+    }
+
+    .carousel .carousel-item img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .ozerServiceCard {
+        width: 280px;
+        height: auto;
+        padding: 15px;
+    }
+
+    .ozerServiceCard h4 {
+        font-size: 14px;
+        margin-top: 10px;
+        text-align: center;
+    }
 }
 
 
@@ -39,5 +73,30 @@
 @media (max-width: 450px) {
     .page1 h1 {
         font-size: 20px;
+    }
+
+    .carousel {
+        padding: 0 15px;
+    }
+
+    .carousel .carousel-item {
+        width: 220px;
+        height: 200px;
+        margin: 0 1px;
+    }
+
+    .carousel .carousel-item img {
+        height: 140px;
+
+    }
+
+    .ozerServiceCard {
+        width: 220px;
+        padding: 10px;
+    }
+
+    .ozerServiceCard h4 {
+        font-size: 12px;
+        margin-top: 8px;
     }
 }
