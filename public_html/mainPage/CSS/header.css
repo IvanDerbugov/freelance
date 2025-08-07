@@ -50,6 +50,32 @@ header {
     font-weight: 500;
     font-size: 21px;
 }
+
+.headerTop4 a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+}
+
+.headerTop4 a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #4C8D65, #DF6417);
+    transition: width 0.3s ease;
+}
+
+.headerTop4 a:hover {
+    color: #4C8D65;
+    text-shadow: 0 0 8px rgba(76, 141, 101, 0.3);
+}
+
+.headerTop4 a:hover::before {
+    width: 100%;
+}
 .headerTop4 p {
     font-weight: 300;
     font-size: 14px;
@@ -78,6 +104,29 @@ header {
 .headerTop6 a {
     letter-spacing: calc(14px * 0.09);
     text-decoration: underline;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+}
+
+.headerTop6 a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #4C8D65, #DF6417);
+    transition: width 0.3s ease;
+}
+
+.headerTop6 a:hover {
+    color: #4C8D65;
+    text-shadow: 0 0 8px rgba(76, 141, 101, 0.3);
+}
+
+.headerTop6 a:hover::after {
+    width: 100%;
 }
 
 .headerTop7 {
@@ -89,6 +138,15 @@ header {
 .headerTop8 {
     display: flex;
     gap: 20px;
+}
+
+.headerTop8 a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.headerTop8 a:hover {
+    transform: translateY(-1px);
 }
 
 
@@ -103,6 +161,11 @@ header {
     border-radius: 17px;
     transition: all 0.3s ease;
     margin-right: 10px;
+}
+
+.headerTop9 a:hover {
+    background: #ff8c42;
+    transform: translateY(-1px);
 }
 
 
@@ -132,6 +195,44 @@ header {
 
 .headerBottom3 {
     font-family: 'Montserrat', sans-serif;
+}
+
+.headerBottom2 a,
+.headerBottom4 a,
+.headerBottom5 a,
+.headerBottom6 a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+}
+
+.headerBottom2 a::after,
+.headerBottom4 a::after,
+.headerBottom5 a::after,
+.headerBottom6 a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #4C8D65, #DF6417);
+    transition: width 0.3s ease;
+}
+
+.headerBottom2 a:hover,
+.headerBottom4 a:hover,
+.headerBottom5 a:hover,
+.headerBottom6 a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.headerBottom2 a:hover::after,
+.headerBottom4 a:hover::after,
+.headerBottom5 a:hover::after,
+.headerBottom6 a:hover::after {
+    width: 100%;
 }
 
 .headerBottom6 {
@@ -206,18 +307,37 @@ header {
     font-family: 'Noto Sans', sans-serif;
     font-size: 20px;
     font-weight: 400;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 1px solid rgba(76, 141, 101, 0.1);
+    position: relative;
+    cursor: pointer;
 }
 
 .dropdown-menu a:last-child {
     border-bottom: none;
 }
 
+.dropdown-menu a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: linear-gradient(135deg, #4C8D65, #DF6417);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
 .dropdown-menu a:hover {
-    background: rgba(76, 141, 101, 0.1);
+    background: rgba(76, 141, 101, 0.15);
     color: #ffffff;
     padding-left: 25px;
+    transform: translateX(5px);
+}
+
+.dropdown-menu a:hover::before {
+    width: 4px;
 }
 
 /* Responsive adjustments */
@@ -291,8 +411,10 @@ header {
     font-family: 'Noto Sans', sans-serif;
     font-size: 20px;
     font-weight: 400;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 1px solid rgba(76, 141, 101, 0.1);
+    position: relative;
+    cursor: pointer;
 }
 
 .burger-menu-mobile {
@@ -303,10 +425,27 @@ header {
     border-bottom: none;
 }
 
+.burger-menu a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: linear-gradient(135deg, #4C8D65, #DF6417);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
 .burger-menu a:hover {
-    background: rgba(76, 141, 101, 0.1);
+    background: rgba(76, 141, 101, 0.15);
     color: #4C8D65;
     padding-left: 25px;
+    transform: translateX(5px);
+}
+
+.burger-menu a:hover::before {
+    width: 4px;
 }
 
 .burger-menu .burger-menu-mobile {

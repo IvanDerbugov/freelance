@@ -54,6 +54,30 @@ html {
     line-height: 41px;
     color: #023D19;
     text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+}
+
+.sectionNameH2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #4C8D65, #DF6417);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.sectionNameH2:hover {
+    transform: translateY(-2px);
+    text-shadow: 0 4px 12px rgba(2, 61, 25, 0.2);
+}
+
+.sectionNameH2:hover::after {
+    width: 80%;
 }
 
 .catologGrid {
@@ -138,6 +162,15 @@ html {
     background-color: #DF6417;
     padding: 15px 26px;
     border-radius: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.catologCardLink:hover {
+    background-color: #ff8c42;
+    transform: translateY(-1px);
 }
 
 
@@ -151,6 +184,11 @@ html {
     text-align: center;
     margin-top: -165px;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#seeMore:hover {
+    color: #4C8D65;
 }
 
 /* Стили для карусели */
@@ -202,6 +240,38 @@ html {
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+}
+
+.ozerServiceCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(76, 141, 101, 0.1) 0%, rgba(223, 100, 23, 0.1) 100%);
+    border-radius: 16px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.ozerServiceCard:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(76, 141, 101, 0.2);
+    border-color: rgba(76, 141, 101, 0.3);
+}
+
+.ozerServiceCard:hover::before {
+    opacity: 1;
 }
 
 .ozerServiceCard h4 {
@@ -317,6 +387,31 @@ html {
     overflow: hidden;
     cursor: pointer;
     position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.littleImg div:not(.littleImgActive)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(76, 141, 101, 0.2) 0%, rgba(223, 100, 23, 0.2) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.littleImg div:not(.littleImgActive):hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(76, 141, 101, 0.3);
+}
+
+.littleImg div:not(.littleImgActive):hover::before {
+    opacity: 1;
 }
 .littleImgActive{
     border: 5px solid #387850;
@@ -387,6 +482,43 @@ html {
     max-width: 295px;
     display: flex;
     align-items: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+}
+
+.wrapAdvantagesGrid>div::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(76, 141, 101, 0.1) 0%, rgba(223, 100, 23, 0.1) 100%);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.wrapAdvantagesGrid>div:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(76, 141, 101, 0.2);
+    border-color: rgba(76, 141, 101, 0.3);
+    color: #4C8D65;
+}
+
+.wrapAdvantagesGrid>div:hover::after {
+    opacity: 1;
+}
+
+.wrapAdvantagesGrid>div:hover::before {
+    opacity: 0.12;
+    transform: scale(1.05);
 }
 .wrapAdvantagesGrid>div:last-child {
     max-width: 282px;
