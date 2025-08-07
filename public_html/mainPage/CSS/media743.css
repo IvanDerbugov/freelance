@@ -286,6 +286,12 @@
         font-size: 18px !important;
         margin-top: 15px !important;
     }
+
+
+    .aboutUs {
+        background-position: 0, 18% 92%;
+        background-size: auto, calc(1357px * 0.45) calc(1144px * 0.45);
+    }
 }
 
 @media (max-width: 360px) {
