@@ -21,163 +21,10 @@
     <link rel="stylesheet" href="CSS/media1500.css">
     <link rel="stylesheet" href="CSS/media1100.css">
     <link rel="stylesheet" href="CSS/media743.css">
-
-
-    <style>
-        .versionDesktop,
-        .versionTablet1500,
-        .versionTablet1250,
-        .versionTablet1100,
-        .versionMobile,
-        .version450 {
-            width: 180px;
-            height: 180px;
-            position: fixed;
-            top: 0;
-            right: 50%;
-            font-size: 30px;
-            font-weight: 700;
-            color: #fff;
-            background-color: blue;
-            border-radius: 50%;
-            opacity: 0.3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            z-index: 10;
-        }
-
-        .versionTablet1500,
-        .versionTablet1250,
-        .versionTablet1100,
-        .versionMobile,
-        .version450 {
-            display: none;
-        }
-
-
-        @media (max-width: 1500px) {
-            .versionTablet1500 {
-                display: flex;
-            }
-
-            .versionDesktop,
-            .versionTablet1250,
-            .versionTablet1100,
-            .versionMobile,
-            .version450 {
-                display: none;
-            }
-        }
-
-        @media (max-width: 1250px) {
-            .versionTablet1250 {
-                display: flex;
-            }
-
-            .versionDesktop,
-            .versionTablet1500,
-            .versionTablet1100,
-            .versionMobile,
-            .version450 {
-                display: none;
-            }
-        }
-
-        @media (max-width: 1100px) {
-            .versionTablet1100 {
-                display: flex;
-            }
-
-            .versionDesktop,
-            .versionTablet1500,
-            .versionTablet1250,
-            .versionMobile,
-            .version450 {
-                display: none;
-            }
-        }
-
-
-        @media (max-width: 768px) {
-
-            .versionMobile,
-            .version450 {
-                display: flex;
-                border-radius: 5px;
-                width: auto;
-                height: auto;
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-
-            .versionTablet1100,
-            .versionTablet1500,
-            .versionTablet1250,
-            .version450 {
-                display: none;
-            }
-        }
-
-
-        @media (max-width: 450px) {
-
-            .version450 {
-                display: flex;
-            }
-
-            .versionDesktop,
-            .versionTablet1500,
-            .versionTablet1250,
-            .versionTablet1100,
-            .versionMobile {
-                display: none;
-            }
-        }
-
-
-
-
-
-        .nonono {
-            display: none;
-        }
-
-        @media (max-width: 1500px) {
-            .nonono {
-                display: block;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: #000;
-                color: #fff;
-                font-size: 70px;
-                z-index: 15;
-            }
-        }
-    </style>
 </head>
 
 <body>
-    <div class="versionDesktop">V4 комп</div>
-    <div class="versionTablet1500">V4 план1500</div>
-    <div class="versionTablet1250">V4 план1250</div>
-    <div class="versionTablet1100">V4 план1100</div>
-    <div class="versionMobile">V4 моб</div>
-    <div class="version450">V4 моб450</div>
-
-    <!-- <div class="nonono">Это планшетная или мобильная версия, уменьшите масштаб для просмотра компьютерной версии</div> -->
-
-
-
-
-
-
-
-
+    
     <div class="section-limiter header-limiter">
         <div id="header-container"></div>
     </div>
@@ -665,7 +512,11 @@
 
                     <div class="aboutUsGallery">
                         <div class="bigImg">
-                            <img src="img/galleryBig1.jpg" alt="">
+                            <picture>
+                                <source srcset="img/galleryBig1.jpg" media="(min-width: 450px)">
+                                <source srcset="img/galleryBig1Mobile450.jpg" media="(min-width: 450px)">
+                                <img src="img/galleryBig1Mobile450.jpg" alt="">
+                            </picture>
                         </div>
                         <div class="littleImg">
                             <div class="littleImg1 littleImgActive">
@@ -765,6 +616,7 @@
         <div id="footer-container"></div>
     </div>
 
+    <script src="JS/versions.js"></script>
     <script src="JS/includeHeaderFooter.js"></script>
     <script src="JS/header.js"></script>
     <script src="JS/catalog.js"></script>

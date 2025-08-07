@@ -2,6 +2,7 @@
     .container {
         max-width: 740px;
     }
+
     .sectionNameH2 {
         font-size: 28px;
     }
@@ -18,6 +19,7 @@
         gap: 60px;
         max-width: 400px;
         justify-items: center;
+        padding-top: 0;
     }
 
     .catologCardLink {
@@ -65,6 +67,93 @@
         margin-top: 10px;
         text-align: center;
     }
+
+    .ozerService h2 {
+        margin-bottom: -70px;
+    }
+
+
+    .aboutUsTop {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        justify-items: center;
+        align-items: flex-start;
+        padding: 59px 0 37px;
+    }
+
+    .aboutUsTop div {
+        align-items: center;
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 30px;
+        height: 150px;
+    }
+
+    .aboutUsTop div p:nth-child(2) {
+        margin: 16px 0 6px;
+    }
+
+    .aboutUsTop div p:nth-child(3) {
+        text-decoration: underline #C75108 2px;
+        text-underline-offset: 4px;
+    }
+
+    .aboutUsTop div:nth-of-type(1) {
+        grid-column: 1 / 3;
+    }
+
+    .aboutUsTop div:nth-of-type(2) {
+        grid-column: 3 / 5;
+    }
+
+    .aboutUsTop div:nth-of-type(3) {
+        grid-column: 1 / 3;
+    }
+
+    .aboutUsTop div:nth-of-type(4) {
+        grid-column: 3 / 5;
+    }
+
+    .aboutUsTop div:nth-of-type(5) {
+        grid-column: 1 / 5;
+        font-size: 1.3em;
+    }
+
+    .aboutUsTop div:nth-of-type(5) p:nth-child(2) {
+        font-size: 32px;
+    }
+
+
+    .aboutUsGallery {
+        gap: 25px;
+    }
+
+    .bigImg {
+        width: 90vw;
+        height: auto;
+    }
+
+    .bigImg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .littleImg {
+        gap: 6px;
+    }
+    .littleImg div {
+        width: calc(180px * 0.55);
+        height: calc(120px * 0.55);
+    }
+    .littleImgActive::before {
+        width: calc(180px * 0.55);
+        height: calc(120px * 0.55);
+    }
+
+    .aboutUs {
+        background-position: 0, 103% 150%;
+    }
 }
 
 
@@ -98,5 +187,47 @@
     .ozerServiceCard h4 {
         font-size: 12px;
         margin-top: 8px;
+    }
+
+    .ozerService {
+        background-position: center, -311px -170px;
+    }
+
+
+    .aboutUsTop div {
+        font-size: 14px;
+        height: 159px;
+    }
+
+    .aboutUsTop div p:nth-child(2) {
+        font-size: 22px;
+    }
+
+
+    .aboutUsText {
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .littleImg div {
+        width: calc(180px * 0.45);
+        height: calc(120px * 0.45);
+    }
+}
+
+
+
+@media (max-width: 360px) {
+    .aboutUsTop div {
+        height: 190px;
+    }
+
+    .aboutUsGallery {
+        gap: 15px;
+    }
+
+    .littleImg div {
+        width: calc(180px * 0.35);
+        height: calc(120px * 0.35);
     }
 }
