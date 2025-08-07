@@ -39,6 +39,14 @@
         background-position: 0, 110% 110%;
         padding-bottom: 111px;
     }
+
+    .ourAdvantages {
+        padding: 10px 0 10px 0;
+    }
+
+    .ozerService {
+        padding: 30px 0 10px;
+    }
 }
 
 @media (max-width: 1200px) {

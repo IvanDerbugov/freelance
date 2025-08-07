@@ -112,24 +112,24 @@ footer .footerBottom .catalog-dropdown.active .catalog-btn::after {
 }
 
 footer .footerBottom .dropdown-menu {
-    position: absolute !important;
-    bottom: 100% !important;
-    top: auto !important;
-    left: 0 !important;
-    background: #D7DFDA !important;
-    border: 1px solid #4C8D65 !important;
-    border-radius: 8px !important;
-    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3) !important;
-    min-width: 350px !important;
+    position: absolute;
+    bottom: 100%;
+    top: auto;
+    left: 0;
+    background: #D7DFDA;
+    border: 1px solid #4C8D65;
+    border-radius: 8px;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
+    min-width: 350px;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px) !important;
-    transition: all 0.3s ease !important;
-    z-index: 10 !important;
-    backdrop-filter: blur(10px) !important;
-    margin-bottom: 10px !important;
-    max-height: 80vh !important;
-    overflow-y: auto !important;
+    transform: translateY(10px)t;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    margin-bottom: 10px;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 footer .footerBottom .catalog-dropdown.active .dropdown-menu {
@@ -170,6 +170,12 @@ footer .footerBottom .dropdown-menu a:hover {
     padding-left: 25px !important;
 }
 
+.footer .headerPhoneMobile, .footer .headerTop4 a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 
 
 @media (max-width: 1400px) {
@@ -184,7 +190,7 @@ footer .footerBottom .dropdown-menu a:hover {
 
 @media (max-width: 1200px) {
     footer .footerBottom .dropdown-menu {
-        min-width: 300px !important;
+        min-width: 300px;
     }
 }
 
@@ -253,6 +259,15 @@ footer .footerBottom .dropdown-menu a:hover {
     .footerBottom>div {
         font-size: 11px;
     }
+
+    .footer .headerPhoneMobile, .footer .headerTop4 a {
+        gap: 5px;
+    }
+
+    .headerPhoneIcon {
+        width: 25px;
+        height: 25px;
+    }
      
 
 }
@@ -261,6 +276,10 @@ footer .footerBottom .dropdown-menu a:hover {
         padding: 2px 10px;
         font-size: 12px;
         border-bottom: 1px solid rgba(76, 141, 101, 0.4);
+    }
+
+    .headerPhoneIcon {
+        margin-top: -5px;
     }
 }
 /* Responsive adjustments для футера */
@@ -309,5 +328,23 @@ footer .footerBottom .dropdown-menu a:hover {
     .link-avito-mobile {
         display: block !important;
         width: 30px;
+    }
+}
+
+@media (max-width: 400px) {
+    .headerPhoneIcon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .dropdown-menu {
+        min-width: 288px !important;
+        right: 0%;
+    }
+}
+
+@media (max-width: 360px) {
+    .headerTop1 {
+        width: 75px;
     }
 }

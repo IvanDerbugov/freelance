@@ -80,7 +80,7 @@ header {
 
 .headerTop4 p {
     font-weight: 300;
-    font-size: 14px;
+    font-size: 17px;
     line-height: 25px;
 }
 
@@ -496,6 +496,10 @@ header {
     display: none;
 }
 
+.headerPhoneIcon {
+    margin: 0 0 -5px 0;
+}
+
 @media (max-width: 1250px) {
     .container1713 {
         max-width: 1200px;
@@ -533,7 +537,7 @@ header {
     }
 
     .headerTop4 p {
-        font-size: 12px;
+        font-size: 14px;
         line-height: 16px;
         letter-spacing: -0.3px;
     }
@@ -619,6 +623,7 @@ header {
 
     .headerPhoneMobile {
         letter-spacing: 1px;
+        font-size: 11px;
     }
 
     .headerBottom4,
@@ -680,6 +685,15 @@ header {
     .burger-menu .burger-menu-mobile {
         font-size: 18px;
     }
+
+
+    .headerPhoneIcon {
+        margin: 0 0 -9px 0;
+    }
+
+    .headerEmailMobile {
+        font-size: 17px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -715,6 +729,7 @@ header {
 
     .headerPhoneMobile {
         letter-spacing: 0px;
+        font-size: 9px;
     }
 
     .headerTop5-mobile a:last-of-type {
