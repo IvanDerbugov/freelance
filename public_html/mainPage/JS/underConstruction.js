@@ -77,10 +77,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
+        // Функция отправки в наш обработчик
+        async function sendToOurHandler(formData) {
+            try {
+                const response = await fetch('webhook-handler.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(Object.fromEntries(formData))
+                });
+                
+                const result = await response.json();
+                console.log('Наш обработчик ответил:', result);
+                return result.success;
+            } catch (error) {
+                console.error('Ошибка отправки в наш обработчик:', error);
+                return false;
+            }
+        }
+
         // Обработка формы
         const form = modalWindow.querySelector('.modal-form');
         const success = modalWindow.querySelector('.modal-success');
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
             success.style.display = 'none';
             const formData = new FormData(form);
@@ -88,23 +108,29 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             submitBtn.textContent = 'Отправка...';
             
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            })
-            .then(res => res.json())
-            .then(data => {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Отправить заявку';
+            try {
+                // Сначала отправляем в web3forms
+                const web3formsResponse = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
                 
-                if (data.success) {
+                const web3formsData = await web3formsResponse.json();
+                
+                if (web3formsData.success) {
+                    // Если web3forms успешно обработал, отправляем в наш обработчик
+                    console.log('web3forms успешно обработал форму, отправляем в наш обработчик...');
+                    const ourHandlerSuccess = await sendToOurHandler(formData);
+                    
                     // Отправка события в Яндекс.Метрику
                     if (typeof ym === 'function') {
                         ym(103422173, 'reachGoal', 'formaUnderConstruction');
                     }
+                    
                     form.style.display = 'none';
                     success.textContent = 'Заявка отправлена!';
                     success.style.display = 'block';
+                    
                     setTimeout(() => {
                         modalOverlay.remove();
                         document.body.style.overflow = '';
@@ -112,17 +138,24 @@ document.addEventListener('DOMContentLoaded', function() {
                         form.style.display = '';
                         success.style.display = 'none';
                     }, 2000);
+                    
+                    // Логируем результат
+                    console.log('Результат обработки:', {
+                        web3forms: 'success',
+                        ourHandler: ourHandlerSuccess ? 'success' : 'failed'
+                    });
+                    
                 } else {
-                    success.textContent = 'Ошибка отправки!';
-                    success.style.display = 'block';
+                    throw new Error('web3forms вернул ошибку');
                 }
-            })
-            .catch(() => {
+            } catch (error) {
+                console.error('Ошибка при отправке формы:', error);
+                success.textContent = 'Ошибка отправки!';
+                success.style.display = 'block';
+            } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Отправить заявку';
-                success.textContent = 'Ошибка соединения!';
-                success.style.display = 'block';
-            });
+            }
         });
     }
 
@@ -220,7 +253,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 // Также добавляем обработчик для пустых ссылок
-                if (link.getAttribute('href') === '' || link.getAttribute('href') === '#') {
+                // Исключаем кнопки "Оставить заявку" (leaveRequest)
+                if ((link.getAttribute('href') === '' || link.getAttribute('href') === '#') && !link.classList.contains('leaveRequest')) {
                     link.addEventListener('click', function(e) {
                         e.preventDefault();
                         const linkText = this.textContent.trim();

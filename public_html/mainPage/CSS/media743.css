@@ -231,3 +231,101 @@
         height: calc(120px * 0.35);
     }
 }
+
+/* Адаптивные стили для модального окна "Страница в разработке" */
+@media (max-width: 450px) {
+    /* Модальное окно "Страница в разработке" */
+    .modal-window {
+        padding: 20px !important;
+        max-width: 95% !important;
+        width: 95% !important;
+        max-height: 85vh !important;
+    }
+    
+    .modal-window h2 {
+        font-size: 20px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .modal-window p {
+        font-size: 14px !important;
+        margin-bottom: 20px !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* Кнопки телефона и WhatsApp */
+    .modal-window a[href^="tel:"],
+    .modal-window a[href*="wa.me"] {
+        padding: 10px 15px !important;
+        font-size: 14px !important;
+        gap: 6px !important;
+    }
+    
+    .modal-window a[href^="tel:"] svg,
+    .modal-window a[href*="wa.me"] img {
+        width: 16px !important;
+        height: 16px !important;
+    }
+    
+    /* Форма */
+    .modal-window .modal-form {
+        gap: 12px !important;
+    }
+    
+    .modal-window .modal-form input {
+        padding: 10px !important;
+        font-size: 14px !important;
+    }
+    
+    .modal-window .modal-submit {
+        padding: 12px !important;
+        font-size: 16px !important;
+    }
+    
+    .modal-window .modal-success {
+        font-size: 18px !important;
+        margin-top: 15px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    /* Дополнительные стили для очень маленьких экранов */
+    .modal-window {
+        padding: 15px !important;
+        max-width: 98% !important;
+        width: 98% !important;
+    }
+    
+    .modal-window h2 {
+        font-size: 18px !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .modal-window p {
+        font-size: 13px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    /* Кнопки в одну колонку для очень маленьких экранов */
+    .modal-window > div:has(a[href^="tel:"]) {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+    
+    .modal-window a[href^="tel:"],
+    .modal-window a[href*="wa.me"] {
+        padding: 8px 12px !important;
+        font-size: 13px !important;
+        justify-content: center !important;
+    }
+    
+    .modal-window .modal-form input {
+        padding: 8px !important;
+        font-size: 13px !important;
+    }
+    
+    .modal-window .modal-submit {
+        padding: 10px !important;
+        font-size: 15px !important;
+    }
+}

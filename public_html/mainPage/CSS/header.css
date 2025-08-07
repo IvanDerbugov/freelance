@@ -301,6 +301,10 @@ header {
     padding-left: 25px;
 }
 
+.burger-menu .burger-menu-mobile {
+    display: none;
+}
+
 @media (max-width: 1250px) {
     .container1713 {
         max-width: 1200px;
