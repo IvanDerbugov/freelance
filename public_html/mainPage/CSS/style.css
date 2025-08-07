@@ -173,6 +173,19 @@ html {
     transform: translateY(-1px);
 }
 
+/* Стили для неактивных кнопок "Перейти в каталог" */
+.catologCardLink[href=""] {
+    opacity: 0.7;
+    background-color: #c17a4a !important;
+    color: #fff !important;
+}
+
+.catologCardLink[href=""]:hover {
+    background-color: #c17a4a !important;
+    color: #fff !important;
+    transform: none !important;
+}
+
 
 #seeMore {
     display: block;
