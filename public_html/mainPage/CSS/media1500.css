@@ -34,9 +34,7 @@
     }
 
     .aboutUs {
-        background: linear-gradient(180deg, #EAEAE9BA 0%, #EAEAE9BA 100%),
-            url('../img/aboutUsVectorFon.png') no-repeat center center;
-        background-position: 0, 110% 110%;
+        background: linear-gradient(180deg, #EAEAE9BA 0%, #EAEAE9BA 100%);
         padding-bottom: 111px;
     }
 

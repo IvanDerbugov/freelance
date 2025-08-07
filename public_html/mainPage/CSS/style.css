@@ -238,10 +238,7 @@ html {
 
 
 .ozerService {
-    background: linear-gradient(180deg, #EAEAE9BA 0%, #EAEAE9BA 100%),
-    url('../img/OzerServiceVectorFon.png') no-repeat;
-    background-size: auto, auto;
-    background-position: center, center;
+    background: linear-gradient(180deg, #EAEAE9BA 0%, #EAEAE9BA 100%);
     padding: 62px 0 100px;
 }
 
@@ -300,9 +297,7 @@ html {
 
 
 .aboutUs {
-    background: linear-gradient(180deg, #EAEAE9BA 0%, #EAEAE9BA 100%),
-    url('../img/aboutUsVectorFon.png') no-repeat center center;
-    background-position: 0, 110% -9%;
+    background: linear-gradient(180deg, #EAEAE9BA 0%, #EAEAE9BA 100%);
     padding-bottom: 111px;
 }
 
