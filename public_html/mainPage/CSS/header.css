@@ -187,6 +187,9 @@ header {
     transition: all 0.3s ease;
     z-index: 10;
     backdrop-filter: blur(10px);
+    max-height: 70vh;
+    overflow-y: auto;
+    margin-top: 10px;
 }
 
 .catalog-dropdown.active .dropdown-menu {
@@ -229,6 +232,8 @@ header {
         min-width: 250px;
         right: 0;
         left: auto;
+        max-width: calc(100vw - 30px);
+        overflow-x: auto;
     }
 }
 
@@ -267,6 +272,9 @@ header {
     transition: all 0.3s ease;
     z-index: 10;
     backdrop-filter: blur(10px);
+    max-height: 80vh;
+    overflow-y: auto;
+    margin-top: 10px;
 }
 
 .burger-dropdown.active .burger-menu {
