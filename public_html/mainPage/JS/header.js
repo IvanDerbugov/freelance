@@ -46,6 +46,41 @@ function initHeaderFunctionality() {
             }
         }, { passive: true });
 
+        // Прокрутка колесом мыши для выпадающего списка
+        let isDropdownActive = false;
+        
+        // Отслеживаем состояние выпадающего списка
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    isDropdownActive = catalogDropdown.classList.contains('active');
+                }
+            });
+        });
+        
+        observer.observe(catalogDropdown, { attributes: true });
+        
+        // Обработчик прокрутки колесом мыши
+        document.addEventListener('wheel', function(e) {
+            if (isDropdownActive && dropdownMenu) {
+                const scrollTop = dropdownMenu.scrollTop;
+                const scrollHeight = dropdownMenu.scrollHeight;
+                const clientHeight = dropdownMenu.clientHeight;
+                
+                // Проверяем, можно ли прокручивать
+                const canScrollUp = scrollTop > 0;
+                const canScrollDown = scrollTop < scrollHeight - clientHeight;
+                
+                // Если прокрутка возможна, предотвращаем прокрутку страницы
+                if ((e.deltaY < 0 && canScrollUp) || (e.deltaY > 0 && canScrollDown)) {
+                    e.preventDefault();
+                    
+                    // Прокручиваем выпадающий список
+                    dropdownMenu.scrollTop += e.deltaY;
+                }
+            }
+        }, { passive: false });
+
         // Close dropdown when clicking on links inside
         function addDropdownLinkListeners() {
             const dropdownLinks = catalogDropdown.querySelectorAll('a');
@@ -260,6 +295,42 @@ function initFooterFunctionality() {
                 }
             }
         });
+
+        // Прокрутка колесом мыши для выпадающего списка в футере
+        let isFooterDropdownActive = false;
+        const footerDropdownMenu = footerCatalogDropdown.querySelector('.dropdown-menu');
+        
+        // Отслеживаем состояние выпадающего списка футера
+        const footerObserver = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    isFooterDropdownActive = footerCatalogDropdown.classList.contains('active');
+                }
+            });
+        });
+        
+        footerObserver.observe(footerCatalogDropdown, { attributes: true });
+        
+        // Обработчик прокрутки колесом мыши для футера
+        document.addEventListener('wheel', function(e) {
+            if (isFooterDropdownActive && footerDropdownMenu) {
+                const scrollTop = footerDropdownMenu.scrollTop;
+                const scrollHeight = footerDropdownMenu.scrollHeight;
+                const clientHeight = footerDropdownMenu.clientHeight;
+                
+                // Проверяем, можно ли прокручивать
+                const canScrollUp = scrollTop > 0;
+                const canScrollDown = scrollTop < scrollHeight - clientHeight;
+                
+                // Если прокрутка возможна, предотвращаем прокрутку страницы
+                if ((e.deltaY < 0 && canScrollUp) || (e.deltaY > 0 && canScrollDown)) {
+                    e.preventDefault();
+                    
+                    // Прокручиваем выпадающий список
+                    footerDropdownMenu.scrollTop += e.deltaY;
+                }
+            }
+        }, { passive: false });
 
         // Close dropdown on escape key
         document.addEventListener('keydown', function (e) {
