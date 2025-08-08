@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'hidden';
         
         // Добавляем отслеживание ссылок в модальном окне
-        if (typeof window.phoneTrackingAddListeners === 'function') {
-            window.phoneTrackingAddListeners();
+        if (typeof window.mainPageMetricsAddListeners === 'function') {
+            window.mainPageMetricsAddListeners();
         }
         
         // Закрытие модального окна
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Отправка события в Яндекс.Метрику
                     if (typeof ym === 'function') {
-                        ym(103422173, 'reachGoal', 'formaUnderConstruction');
+                        ym(103637885, 'reachGoal', 'formaUnderConstruction');
                     }
                     
                     form.style.display = 'none';

@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.success) {
                 // Отправка события в Яндекс.Метрику
                 if (typeof ym === 'function') {
-                    ym(103422173, 'reachGoal', 'formaMainPage');
+                    ym(103637885, 'reachGoal', 'formaMainPage');
                     console.log('Цель "Отправка формы" отправлена в Яндекс Метрику (formaMainPage)');
                 }
                 form.style.display = 'none';
@@ -186,8 +186,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         
         // Добавляем отслеживание для динамически созданных ссылок
-        if (typeof window.phoneTrackingAddListeners === 'function') {
-            setTimeout(window.phoneTrackingAddListeners, 100);
+        if (typeof window.mainPageMetricsAddListeners === 'function') {
+            setTimeout(window.mainPageMetricsAddListeners, 100);
         }
     }
 }); 

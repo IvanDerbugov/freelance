@@ -16,11 +16,11 @@
         line-height: 78px;
     }
 
-    .aboutUsTop div {
+    .aboutUsTop>div {
         font-size: 20px;
     }
 
-    .aboutUsTop div p:nth-child(2) {
+    .aboutUsTop .wrapIndicator p:nth-child(1) {
         font-size: 28px;
     }
 
@@ -47,11 +47,7 @@
     }
 }
 
-@media (max-width: 1200px) {
-    .page1 h1 {
-        max-width: 742px;
-    }
-}
+
 
 
 /* Медиа-запросы для блока преимуществ */
@@ -108,183 +104,17 @@
     }
 }
 
-@media (max-width: 1100px) {
-    .payment-grid {
-        align-items: stretch;
+@media (max-width: 1200px) {
+    .page1 h1 {
+        max-width: 742px;
     }
 
-    .payment-grid>div {
-        flex: 1 1 0;
-        padding: 0 30px;
-        height: auto;
+    .aboutUsTop .wrapIndicator p:nth-child(1) {
+        font-size: 24px;
+        margin-bottom: 5px;
     }
 
-    .payment-grid b {
-        font-size: 20px;
-    }
-
-    .payment-grid ul {
-        font-size: 18px;
-    }
-
-
-    .wrapAdvantagesGrid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 80px;
-    }
-
-    .wrapAdvantagesGrid>div {
-        max-width: 270px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .wrapAdvantagesGrid>div::before {
-        left: 6px;
-    }
-
-    .wrapAdvantagesGrid .text5::before {
-        left: 6px;
-        top: -26px;
-    }
-
-
-    .catologGrid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 60px;
-    }
-
-    .catologCardName {
-        font-size: 22px;
-    }
-
-    .catologCardLink {
-        font-size: 23px;
-        padding: 20px 27px;
-        border-radius: 23px;
-    }
-
-    .catologCardName div {
-        width: 11px;
-        height: 11px;
-        padding: 3px;
-    }
-
-    .catologCardName .haveBr {
-        margin-top: -4px;
-        width: 11px;
-        height: 11px;
-    }
-
-    .catologCardName .haveBr1100 {
-        margin-top: -21px;
-        width: 11px;
-        height: 11px;
-    }
-
-    /* Для экранов 1100px и меньше показываем только 6 карточек изначально */
-    .catologCard:nth-child(n+7):nth-child(-n+24) {
-        max-height: 0;
-        opacity: 0;
-        transform: translateY(20px);
-        margin: 0;
-        padding: 0;
-        pointer-events: none;
-    }
-
-    /* Показываем скрытые карточки для адаптива */
-    .catologCard:nth-child(n+7):nth-child(-n+24).show {
-        max-height: 400px;
-        opacity: 1;
-        transform: translateY(0);
-        margin: 0;
-        padding: 36px 25px 63px;
-        pointer-events: auto;
-    }
-}
-
-@media (max-width: 935px) {
-    .payment-grid {
-        flex-direction: column;
-    }
-
-    .payment-grid ul {
-        list-style: none;
-        padding-left: 0;
-    }
-
-    .payment-grid>div {
-        border-right: none;
-    }
-
-
-    .wrapAdvantagesGrid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 80px;
-    }
-
-    .wrapAdvantagesGrid>div {
-        max-width: 270px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .wrapAdvantagesGrid>div::before {
-        left: 6px;
-    }
-
-    .wrapAdvantagesGrid .text5::before {
-        left: 6px;
-        top: -26px;
-    }
-}
-
-@media (max-width: 743px) {
-    .payment-subtitle {
-        font-size: 22px;
-    }
-
-    .payment-grid>div {
-        padding: 0 10px;
-    }
-
-    .payment-desc {
-        font-size: 18px;
-    }
-
-    .payment .titleBlock {
-        margin-bottom: 32px;
-        text-align: left;
-        padding: 0 10px;
-    }
-
-    .payment-subtitle {
-        font-size: 22px;
-        padding: 0 10px;
-    }
-
-
-    .ourAdvantages {
-        padding: 30px 0;
-    }
-
-    .wrapAdvantagesGrid {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .wrapAdvantagesGrid .text1::before {
-        left: 30px;
-        top: -26px;
-    }
-
-    .wrapAdvantagesGrid .text5::before {
-        left: 9px;
-        top: -26px;
+    .wrapIndicator p:last-of-type {
+        font-size: 15px;
     }
 }

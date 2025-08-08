@@ -154,6 +154,48 @@
     .aboutUs {
         background-position: 0, 103% 150%;
     }
+
+    .payment-subtitle {
+        font-size: 22px;
+    }
+
+    .payment-grid>div {
+        padding: 0 10px;
+    }
+
+    .payment-desc {
+        font-size: 18px;
+    }
+
+    .payment .titleBlock {
+        margin-bottom: 32px;
+        text-align: left;
+        padding: 0 10px;
+    }
+
+    .payment-subtitle {
+        font-size: 22px;
+        padding: 0 10px;
+    }
+
+
+    .ourAdvantages {
+        padding: 30px 0;
+    }
+
+    .wrapAdvantagesGrid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .wrapAdvantagesGrid .text1::before {
+        left: 30px;
+        top: -26px;
+    }
+
+    .wrapAdvantagesGrid .text5::before {
+        left: 9px;
+        top: -26px;
+    }
 }
 
 
@@ -212,6 +254,12 @@
     .littleImg div {
         width: calc(180px * 0.45);
         height: calc(120px * 0.45);
+    }
+}
+
+@media (max-width: 400px) {
+    .page1 {
+        margin-top: calc(65px + 62px);
     }
 }
 

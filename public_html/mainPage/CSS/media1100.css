@@ -164,4 +164,150 @@
     .aboutUsGallery {
         gap: 35px;
     }
+
+    .payment-grid {
+        align-items: stretch;
+    }
+
+    .payment-grid>div {
+        flex: 1 1 0;
+        padding: 0 30px;
+        height: auto;
+    }
+
+    .payment-grid b {
+        font-size: 20px;
+    }
+
+    .payment-grid ul {
+        font-size: 18px;
+    }
+
+
+    .wrapAdvantagesGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 80px;
+    }
+
+    .wrapAdvantagesGrid>div {
+        max-width: 270px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .wrapAdvantagesGrid>div::before {
+        left: 6px;
+    }
+
+    .wrapAdvantagesGrid .text5::before {
+        left: 6px;
+        top: -26px;
+    }
+
+
+    .catologGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 60px;
+    }
+
+    .catologCardName {
+        font-size: 22px;
+    }
+
+    .catologCardLink {
+        font-size: 23px;
+        padding: 20px 27px;
+        border-radius: 23px;
+    }
+
+    .catologCardName div {
+        width: 11px;
+        height: 11px;
+        padding: 3px;
+    }
+
+    .catologCardName .haveBr {
+        margin-top: -4px;
+        width: 11px;
+        height: 11px;
+    }
+
+    .catologCardName .haveBr1100 {
+        margin-top: -21px;
+        width: 11px;
+        height: 11px;
+    }
+
+    /* Для экранов 1100px и меньше показываем только 6 карточек изначально */
+    .catologCard:nth-child(n+7):nth-child(-n+24) {
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(20px);
+        margin: 0;
+        padding: 0;
+        pointer-events: none;
+    }
+
+    /* Показываем скрытые карточки для адаптива */
+    .catologCard:nth-child(n+7):nth-child(-n+24).show {
+        max-height: 400px;
+        opacity: 1;
+        transform: translateY(0);
+        margin: 0;
+        padding: 36px 25px 63px;
+        pointer-events: auto;
+    }
+
+
+    .page1 {
+        margin-top: calc(90px + 94px);
+    }
+}
+
+@media (max-width: 935px) {
+    .payment-grid {
+        flex-direction: column;
+    }
+
+    .payment-grid ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .payment-grid>div {
+        border-right: none;
+    }
+
+
+    .wrapAdvantagesGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 80px;
+    }
+
+    .wrapAdvantagesGrid>div {
+        max-width: 270px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .wrapAdvantagesGrid>div::before {
+        left: 6px;
+    }
+
+    .wrapAdvantagesGrid .text5::before {
+        left: 6px;
+        top: -26px;
+    }
+}
+
+@media (max-width: 800px) {
+    .page1 {
+        margin-top: calc(89px + 80px);
+    }
 }

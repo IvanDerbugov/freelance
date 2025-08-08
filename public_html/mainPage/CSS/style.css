@@ -1,13 +1,11 @@
 html {
     scroll-behavior: smooth;
 }
-
 .container {
     width: 100%;
     max-width: 1730px;
     margin: 0 auto;
 }
-
 .limiter {
     width: 100%;
     max-width: 1920px;
@@ -16,6 +14,14 @@ html {
 .breakFor1100 {
     word-break: break-word;
 }
+.header-limiter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
 
 .page1 {
     background: url('../img/page1FonPodlochka.png') no-repeat,
@@ -26,6 +32,7 @@ html {
     padding-top: 24px;
     position: relative;
     z-index: -1;
+    margin-top: calc(130px + 136px);
 }
 
 .page1 .container {
@@ -310,7 +317,7 @@ html {
     gap: 30px;
 }
 
-.aboutUsTop div {
+.aboutUsTop>div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -323,7 +330,7 @@ html {
     color: #063F1B;
     height: 243px;
 }
-.aboutUsTop div p:nth-child(2) {
+.aboutUsTop .wrapIndicator p:nth-child(1) {
     font-family: 'Nobile', sans-serif;
     font-weight: 700;
     font-size: 35px;
@@ -331,7 +338,7 @@ html {
     color: #C75108;
     margin: 36px 0 10px;
 }
-.aboutUsTop div:nth-of-type(1) {
+/* .aboutUsTop div:nth-of-type(1) {
     flex-shrink: 0.9;
     flex-grow: 1;
 }
@@ -350,7 +357,12 @@ html {
 .aboutUsTop div:nth-of-type(5) {
     flex-shrink: 0.9;
     flex-grow: 1;
-}
+} */
+
+.wrapIndicator p:last-of-type {
+    font-size: 17px;
+    text-transform: uppercase;
+} 
 
 .aboutUsBottom {
     display: flex;
@@ -513,21 +525,7 @@ html {
     z-index: -1;
 }
 
-.wrapAdvantagesGrid>div:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 12px 35px rgba(76, 141, 101, 0.2);
-    border-color: rgba(76, 141, 101, 0.3);
-    color: #4C8D65;
-}
 
-.wrapAdvantagesGrid>div:hover::after {
-    opacity: 1;
-}
-
-.wrapAdvantagesGrid>div:hover::before {
-    opacity: 0.12;
-    transform: scale(1.05);
-}
 .wrapAdvantagesGrid>div:last-child {
     max-width: 282px;
 }
