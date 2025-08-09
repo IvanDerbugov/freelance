@@ -1,3 +1,8 @@
+// Функция для проверки, является ли экран мобильным (743px и меньше)
+function isMobileScreen() {
+    return window.innerWidth <= 743;
+}
+
 // Глобальная функция для закрытия всех выпадающих меню
 function closeAllDropdowns() {
     const allDropdowns = document.querySelectorAll('.catalog-dropdown, .burger-dropdown');
@@ -19,9 +24,14 @@ function initHeaderFunctionality() {
         // Toggle dropdown on button click
         catalogBtn.addEventListener('click', function (e) {
             e.stopPropagation();
-            // Закрываем все другие выпадающие меню перед открытием текущего
+            // Проверяем, был ли список активен до закрытия всех
+            const wasActive = catalogDropdown.classList.contains('active');
+            // Закрываем все другие выпадающие меню
             closeAllDropdowns();
-            catalogDropdown.classList.toggle('active');
+            // Если список не был активен, открываем его
+            if (!wasActive) {
+                catalogDropdown.classList.add('active');
+            }
         });
 
         // Close dropdown when clicking outside
@@ -124,9 +134,14 @@ function initHeaderFunctionality() {
         // Toggle burger menu on button click
         burgerBtn.addEventListener('click', function (e) {
             e.stopPropagation();
-            // Закрываем все другие выпадающие меню перед открытием текущего
+            // Проверяем, было ли меню активно до закрытия всех
+            const wasActive = burgerDropdown.classList.contains('active');
+            // Закрываем все другие выпадающие меню
             closeAllDropdowns();
-            burgerDropdown.classList.toggle('active');
+            // Если меню не было активно, открываем его
+            if (!wasActive) {
+                burgerDropdown.classList.add('active');
+            }
         });
 
         // Close burger menu when clicking outside
@@ -268,16 +283,22 @@ function initFooterFunctionality() {
         // Toggle dropdown on button click
         footerCatalogBtn.addEventListener('click', function (e) {
             e.stopPropagation();
-            // Закрываем все другие выпадающие меню перед открытием текущего
+            // Проверяем, был ли список активен до закрытия всех
+            const wasActive = footerCatalogDropdown.classList.contains('active');
+            // Закрываем все другие выпадающие меню
             closeAllDropdowns();
-            footerCatalogDropdown.classList.toggle('active');
             
             // Управляем overflow футера
             const footer = document.querySelector('footer');
-            if (footer) {
-                if (footerCatalogDropdown.classList.contains('active')) {
+            
+            // Если список не был активен, открываем его
+            if (!wasActive) {
+                footerCatalogDropdown.classList.add('active');
+                if (footer) {
                     footer.style.overflow = 'visible';
-                } else {
+                }
+            } else {
+                if (footer) {
                     footer.style.overflow = 'hidden';
                 }
             }
@@ -345,9 +366,10 @@ function initFooterFunctionality() {
             }
         });
 
-        // Close dropdown on scroll
+        // Close dropdown on scroll (НЕ закрываем на мобилке для футера)
         window.addEventListener('scroll', function() {
-            if (footerCatalogDropdown.classList.contains('active')) {
+            // НЕ закрываем выпадающий список в футере на мобильных устройствах (743px и меньше)
+            if (!isMobileScreen() && footerCatalogDropdown.classList.contains('active')) {
                 footerCatalogDropdown.classList.remove('active');
                 
                 // Возвращаем overflow футера

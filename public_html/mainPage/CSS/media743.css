@@ -81,7 +81,7 @@
         padding: 59px 0 37px;
     }
 
-    .aboutUsTop div {
+    .aboutUsTop > div {
         align-items: center;
         text-align: center;
         font-size: 16px;

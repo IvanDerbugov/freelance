@@ -79,7 +79,7 @@
         gap: 40px;
     }
 
-    .aboutUsTop div {
+    .aboutUsTop > div {
         align-items: center;
         text-align: center;
         font-size: 18px;
