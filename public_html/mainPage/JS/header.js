@@ -366,18 +366,18 @@ function initFooterFunctionality() {
             }
         });
 
-        // Close dropdown on scroll (НЕ закрываем на мобилке для футера)
+        // Close dropdown on scroll (НЕ закрываем выпадающий список в футере на всех устройствах)
         window.addEventListener('scroll', function() {
-            // НЕ закрываем выпадающий список в футере на мобильных устройствах (743px и меньше)
-            if (!isMobileScreen() && footerCatalogDropdown.classList.contains('active')) {
-                footerCatalogDropdown.classList.remove('active');
-                
-                // Возвращаем overflow футера
-                const footer = document.querySelector('footer');
-                if (footer) {
-                    footer.style.overflow = 'hidden';
-                }
-            }
+            // НЕ закрываем выпадающий список в футере на всех устройствах
+            // if (!isMobileScreen() && footerCatalogDropdown.classList.contains('active')) {
+            //     footerCatalogDropdown.classList.remove('active');
+            //     
+            //     // Возвращаем overflow футера
+            //     const footer = document.querySelector('footer');
+            //     if (footer) {
+            //         footer.style.overflow = 'hidden';
+            //     }
+            // }
         }, { passive: true });
 
         // Close dropdown when clicking on links inside
