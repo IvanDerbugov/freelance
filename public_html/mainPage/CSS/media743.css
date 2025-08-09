@@ -198,6 +198,13 @@
     }
 }
 
+@media (max-width: 600px) {
+    .page1 {
+        margin-top: 117px;
+    }
+}
+
+
 
 
 
@@ -257,28 +264,7 @@
     }
 }
 
-@media (max-width: 400px) {
-    .page1 {
-        margin-top: calc(65px + 62px);
-    }
-}
 
-
-
-@media (max-width: 360px) {
-    .aboutUsTop div {
-        height: 190px;
-    }
-
-    .aboutUsGallery {
-        gap: 15px;
-    }
-
-    .littleImg div {
-        width: calc(180px * 0.35);
-        height: calc(120px * 0.35);
-    }
-}
 
 /* Адаптивные стили для модального окна "Страница в разработке" */
 @media (max-width: 450px) {
@@ -344,6 +330,29 @@
 
     .aboutUsTop .wrapIndicator p:nth-child(1) {
         font-size: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .page1 {
+        margin-top: 92px;
+    }
+}
+
+
+
+@media (max-width: 360px) {
+    .aboutUsTop div {
+        height: 190px;
+    }
+
+    .aboutUsGallery {
+        gap: 15px;
+    }
+
+    .littleImg div {
+        width: calc(180px * 0.35);
+        height: calc(120px * 0.35);
     }
 }
 

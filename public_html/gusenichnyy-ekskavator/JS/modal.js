@@ -80,37 +80,51 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.style.overflow = '';
         }
     });
-    // Обработка формы
+    // Обработка формы с reCAPTCHA v3
     const form = modalWindow.querySelector('.modal-form');
     const success = modalWindow.querySelector('.modal-success');
-    form.addEventListener('submit', function(e) {
+    
+    // Добавляем reCAPTCHA v3 к форме
+    if (window.RecaptchaV3) {
+        window.RecaptchaV3.addRecaptchaToForm(form, 'gusenichnyy_ekskavator_form');
+    }
+    
+    // Переопределяем обработчик отправки для совместимости с reCAPTCHA
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
         success.style.display = 'none';
-        const formData = new FormData(form);
+        
         const submitBtn = modalWindow.querySelector('.modal-submit');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Отправка...';
-        // Отправляем на web3forms
-        fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: formData
-        })
-        .then(res => {
-            console.log('Response status:', res.status);
-            console.log('Response headers:', res.headers);
-            return res.text().then(text => {
-                console.log('Raw response:', text);
-                try {
-                    return JSON.parse(text);
-                } catch (e) {
-                    console.error('JSON parse error:', e);
-                    throw new Error('Invalid JSON response');
-                }
+        const originalText = submitBtn.textContent;
+        
+        try {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Проверка...';
+            
+            // Получаем токен reCAPTCHA
+            const token = await window.RecaptchaV3.getRecaptchaToken('gusenichnyy_ekskavator_form');
+            
+            // Добавляем токен к данным формы
+            const formData = new FormData(form);
+            formData.append('g-recaptcha-response', token);
+            
+            submitBtn.textContent = 'Отправка...';
+            
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
             });
-        })
-        .then(data => {
-            submitBtn.disabled = false;
-            submitBtn.textContent = submitBtn.dataset.defaultText || 'Отправить';
+            
+            const responseText = await response.text();
+            console.log('Raw response:', responseText);
+            
+            let data;
+            try {
+                data = JSON.parse(responseText);
+            } catch (e) {
+                console.error('JSON parse error:', e);
+                throw new Error('Invalid JSON response');
+            }
             
             if (data.success) {
                 // Отправка события в Яндекс.Метрику
@@ -133,13 +147,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 success.textContent = data.message || 'Ошибка отправки!';
                 success.style.display = 'block';
             }
-        })
-        .catch(() => {
-            submitBtn.disabled = false;
-            submitBtn.textContent = submitBtn.dataset.defaultText || 'Отправить';
+        } catch (error) {
+            console.error('Form submission error:', error);
             success.textContent = 'Ошибка соединения!';
             success.style.display = 'block';
-        });
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
     });
 
     // Открытие модального окна по всем кнопкам с классом .open-modal-btn

@@ -18,6 +18,7 @@
             url('../img/1pageFon1100.jpg') no-repeat center center;
         background-size: 100% 100%, cover;
         height: 467px;
+        margin-top: calc(78px + 59px);
     }
 
     .page1 h1 {
@@ -261,10 +262,6 @@
         pointer-events: auto;
     }
 
-
-    .page1 {
-        margin-top: calc(90px + 94px);
-    }
 }
 
 @media (max-width: 935px) {
@@ -308,6 +305,6 @@
 
 @media (max-width: 800px) {
     .page1 {
-        margin-top: calc(89px + 80px);
+        margin-top: 123px;
     }
 }

@@ -7,7 +7,8 @@ header {
     color: #C4C6C5;
     background: url('../img/headerPodlochkaNew.png') center center,
         linear-gradient(90deg, #090909 0%, #0B0F0C 2.5%, #4C8D65 100%);
-    background-size: 102vw 100%, auto;
+    background-size: 99vw 171%, auto;
+    background-position: 0 0, 0 0;
     background-repeat: no-repeat, no-repeat;
 }
 
@@ -19,7 +20,7 @@ header {
 
 .headerTop {
     font-family: 'Noto Sans', sans-serif;
-    padding: 30px 0;
+    padding: 10px 0;
 }
 
 .headerTop .container1713 {
@@ -176,7 +177,7 @@ header {
 
 
 .headerBottom {
-    padding: 40px 0;
+    padding: 15px 0;
     font-family: 'Noto Sans', sans-serif;
     color: #C4C6C5;
     display: flex;
@@ -520,12 +521,16 @@ header {
 }
 
 @media (max-width: 1100px) {
+    header {
+        background-size: 99vw 131%, auto;
+    }
+
     .container1713 {
         max-width: 1050px;
     }
 
     .headerTop {
-        padding: 15px 0;
+        padding: 7px 0;
     }
 
     .headerTop1 {
@@ -567,7 +572,7 @@ header {
     }
 
     .headerBottom {
-        padding: 20px 0;
+        padding: 5px 0;
         font-size: 18px;
     }
 
@@ -600,7 +605,6 @@ header {
 @media (max-width: 800px) {
     .burger-menu {
         min-width: 250px;
-        /* right: 0; */
         left: auto;
     }
 
@@ -710,6 +714,14 @@ header {
         min-width: 364px;
         right: -7%;
     }
+
+    .headerTop {
+        padding: 4px 0;
+    }
+
+    header {
+        background-size: 97vw 137%, auto;
+    }
 }
 
 @media (max-width: 400px) {
@@ -747,16 +759,12 @@ header {
     }
 
     .headerBottom {
-        padding: 20px 0;
+        padding: 1px 0;
+        font-size: 15px;
     }
 
     .headerTop {
-        padding: 12px 0;
-    }
-
-    .headerBottom {
-        padding: 10px 0;
-        font-size: 15px;
+        padding: 4px 0;
     }
 
     .catalog-btn {
@@ -788,5 +796,9 @@ header {
     .dropdown-menu {
         min-width: 288px;
         right: 0%;
+    }
+
+    header {
+        background-size: 96vw 164%, auto;
     }
 }
