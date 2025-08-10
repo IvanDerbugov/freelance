@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const btn = document.createElement('button');
     btn.className = 'fixed-modal-btn';
     btn.type = 'button';
-    btn.textContent = 'Зафиксировать скидку 15%';
+    btn.textContent = 'Зафиксировать скидку до 15%';
     modalBtnWrap.appendChild(btn);
 
     document.body.appendChild(modalBtnWrap);
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
             timeLeft--;
         } else {
             timer.style.display = 'none';
-            btn.textContent = 'Зафиксировать скидку в 10%';
+            btn.textContent = 'Зафиксировать скидку до 10%';
         }
     }
     updateTimer();
