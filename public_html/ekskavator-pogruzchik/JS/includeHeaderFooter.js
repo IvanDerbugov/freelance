@@ -11,15 +11,15 @@ function includeHTML(selector, url, callback) {
 
 document.addEventListener('DOMContentLoaded', function() {
     includeHTML('#header-container', 'HTML/header.html', function() {
-        // Динамически подключаем DropDownList.js после вставки header
-        const script1 = document.createElement('script');
-        script1.src = 'JS/DropDownList.js';
-        document.body.appendChild(script1);
-
-        // Динамически подключаем burgerMenu.js после вставки header
-        const script2 = document.createElement('script');
-        script2.src = 'JS/burgerMenu.js';
-        document.body.appendChild(script2);
+        // Вызываем функцию инициализации header после загрузки
+        if (typeof initHeaderFunctionality === 'function') {
+            initHeaderFunctionality();
+        }
     });
-    includeHTML('#footer-container', 'HTML/footer.html');
+    includeHTML('#footer-container', 'HTML/footer.html', function() {
+        // Вызываем функцию инициализации footer после загрузки
+        if (typeof initFooterFunctionality === 'function') {
+            initFooterFunctionality();
+        }
+    });
 }); 

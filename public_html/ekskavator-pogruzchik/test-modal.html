@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Modal Functionality</title>
+    <link rel="stylesheet" href="CSS/car.css">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-btn { 
+            display: inline-block; 
+            padding: 10px 20px; 
+            margin: 10px; 
+            background: #007bff; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+        }
+        .test-btn:hover { background: #0056b3; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Тест модального окна</h1>
+    
+    <div class="test-section">
+        <h2>Тест кнопок с классом open-modal-btn</h2>
+        <a href="#" class="card-btn card-btn-order open-modal-btn">оставить заявку</a>
+        <a href="#" class="card-btn card-btn-calc open-modal-btn">рассчитать стоимость</a>
+        <button class="advantages-btn open-modal-btn">Рассчитать аренду</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Тест кнопки с классом leaveRequest</h2>
+        <a href="#" class="leaveRequest open-modal-btn">Оставить заявку (leaveRequest)</a>
+    </div>
+    
+    <div class="test-section">
+        <h2>Тест фиксированной кнопки скидки</h2>
+        <p>Должна появиться фиксированная кнопка с таймером</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Логи консоли</h2>
+        <div id="console-log" style="background: #f5f5f5; padding: 10px; height: 200px; overflow-y: auto; font-family: monospace; font-size: 12px;"></div>
+    </div>
+
+    <!-- Подключаем только modal.js для тестирования -->
+    <script src="JS/modal.js"></script>
+    
+    <script>
+        // Перехватываем console.log для отображения в интерфейсе
+        const originalLog = console.log;
+        const consoleDiv = document.getElementById('console-log');
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            const logEntry = document.createElement('div');
+            logEntry.textContent = new Date().toLocaleTimeString() + ': ' + args.join(' ');
+            consoleDiv.appendChild(logEntry);
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        };
+        
+        // Тестируем, что modal.js загрузился
+        console.log('Страница загружена');
+        console.log('Проверяем наличие modal.js функционала...');
+        
+        // Проверяем, что обработчики добавлены
+        setTimeout(() => {
+            const openModalBtns = document.querySelectorAll('.open-modal-btn');
+            console.log('Найдено кнопок с классом open-modal-btn:', openModalBtns.length);
+            
+            openModalBtns.forEach((btn, index) => {
+                console.log(`Кнопка ${index + 1}:`, btn.textContent.trim(), 'классы:', btn.className);
+                console.log('Имеет атрибут data-modal-listener:', btn.hasAttribute('data-modal-listener'));
+            });
+        }, 1000);
+    </script>
+</body>
+</html>

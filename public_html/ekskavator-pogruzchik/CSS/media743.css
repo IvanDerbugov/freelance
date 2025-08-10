@@ -217,3 +217,15 @@
         font-size: 22px;
     }
 }
+
+@media (max-width: 600px) {
+    main > .conteiner1800:first-of-type {
+        margin-top: 117px;
+    }
+}
+
+@media (max-width: 400px) {
+    main > .conteiner1800:first-of-type {
+        margin-top: 92px;
+    }
+}

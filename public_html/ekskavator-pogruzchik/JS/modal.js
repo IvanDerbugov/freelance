@@ -147,11 +147,46 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Открытие модального окна по всем кнопкам с классом .open-modal-btn
-    document.querySelectorAll('.open-modal-btn').forEach(function(el) {
-        el.addEventListener('click', function(e) {
-            if (el.tagName === 'A') e.preventDefault();
-            openModal(false);
+    function addModalListeners() {
+        document.querySelectorAll('.open-modal-btn').forEach(function(el) {
+            // Проверяем, не добавлен ли уже обработчик
+            if (!el.hasAttribute('data-modal-listener')) {
+                el.setAttribute('data-modal-listener', 'true');
+                el.addEventListener('click', function(e) {
+                    if (el.tagName === 'A') e.preventDefault();
+                    
+                    // Все кнопки с классом open-modal-btn должны открывать модальное окно
+                    // Кнопки с классом leaveRequest открывают модальное окно без скидки
+                    // Остальные кнопки (card-btn-order, card-btn-calc, advantages-btn) открывают модальное окно без скидки
+                    if (el.classList.contains('leaveRequest')) {
+                        openModal(false);
+                    } else {
+                        // Для всех остальных кнопок с классом open-modal-btn открываем модальное окно
+                        openModal(false);
+                        console.log('Кнопка с классом open-modal-btn нажата:', el.textContent.trim());
+                    }
+                });
+            }
         });
+    }
+
+    // Добавляем обработчики для уже существующих элементов
+    addModalListeners();
+
+    // Добавляем обработчики для динамически загружаемых элементов
+    // Создаем наблюдатель за изменениями в DOM
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList') {
+                addModalListeners();
+            }
+        });
+    });
+
+    // Начинаем наблюдение за изменениями в body
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
     });
 
     function openModal(isDiscount) {

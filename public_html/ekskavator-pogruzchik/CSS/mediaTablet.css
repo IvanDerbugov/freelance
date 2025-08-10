@@ -184,6 +184,7 @@
         background-position: 314px 172px, -277px -118px;
         height: auto;
         padding: 40px 0;
+        margin-top: 138px;
     }
 
 
@@ -415,5 +416,11 @@
 @media (max-width: 880px) {
     .offer-15 {
         top: 325px;
+    }
+}
+
+@media (max-width: 800px) {
+    main > .conteiner1800:first-of-type {
+        margin-top: 122px;
     }
 }

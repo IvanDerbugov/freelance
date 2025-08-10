@@ -1,390 +1,350 @@
 footer {
-    background-color: #E2DCCD;
-}
-
-footer .container1240 {
-    display: flex;
-    justify-content: space-between;
-    padding: 40px 0 120px 0;
-}
-
-footer a {
-    color: #023D19;
-    font-size: 18px;
-    font-weight: 600;
-    text-decoration: underline;
-}
-
-.footer-mail, .privacyPolicy, .footer-center-text a{
-    text-decoration: none;
-    font-weight: 400;
-}
-
-footer a:hover {
-    color: #eaff67;
-}
-
-.wrapFoter-left2_footer-center {
-    display: flex;
-    gap: 55px;
-}
-
-.footer-mail-phone {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.footer-left,
-.footer-left2,
-.footer-center,
-.footer-right,
-.wrapFoterlinks {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 300px;
-}
-
-.footer-center-text {
-    font-size: 13px;
-    max-width: 242px;
-    color: #263238;
-}
-
-.footer-center-text a {
-    font-size: 13px;
-    color: #2b7397;
-}
-
-.footer-left {
+    width: 100%;
+    color: #C4C6C5;
+    background: url('../img/headerPodlochkaNew.png') center center,
+        linear-gradient(90deg, #090909 0%, #0B0F0C 2.5%, #4C8D65 100%);
+    background-size: 103vw 100%, auto;
+    background-repeat: no-repeat, no-repeat;
+    overflow: hidden;
     position: relative;
-    top: -26px;
-    gap: 10px;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
-.footer-left img:not(.bankCardPng) {
-    position: relative;
-    right: 21px;
+.footer-line {
+    width: 1px;
+    height: 76px;
+    border-left: 1px solid #fff;
 }
 
-.phone-number-mobile {
-    display: none;
-}
-
-.footer-right {
-    gap: 10px;
-}
-
-.footer-right .mobileCard {
-    display: none;
-}
-
-.footer-right .desktopCard {
-    display: flex;
-}
-
-.bankCards {
-    display: flex;
-    gap: 25px;
-    flex-direction: column;
-}
-
-.bankCards .bankCardPng {
-    width: 72px;
-    border-radius: 6px;
-}
-
-.mobileMailPhone {
-    display: none;
-}
-
-.footer-icon {
-    transition: transform 0.2s, filter 0.2s;
-    cursor: pointer;
-}
-
-.footer-icon:hover {
-    transform: scale(1.12) rotate(-2deg);
-    filter: brightness(1.2) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.10));
-
-}
-
-.footer-icon:hover circle,
-.footer-icon:hover path {
-    fill: #FF4053;
-}
-
-/* Цвет иконки WhatsApp в футере */
-.footer-left a[title="WhatsApp"] svg path {
-    fill: #063F1B;
-    transition: fill 0.2s;
-}
-
-.footer-left a[title="WhatsApp"]:hover svg path {
-    fill: #DF6417;
-}
-
-.requisites {
-    font-size: 14px;
-    color: #263238;
-}
-
-.requisites div:first-of-type {
-    margin-top: -15px;
-}
-
-.link-footer {
-    margin-top: -10px;
-    font-size: 21px;
-}
-
-.phone-number-footer {
-    font-size: 21px;
-    color: #023D19;
-}
-
-.footer-contacts-row {
+.headerTop8 a {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 3px;
+}
+
+.headerTop8 p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 31px;
+    line-height: 35px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+
+.footerBottom {
+    font-family: 'Noto Sans', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 30px 0 62px;
+    color: #fff;
     margin-bottom: 0;
+    border-top: 1px solid hsl(0, 0%, 100%, 0.5);
 }
 
-.phone-icon {
-    width: 30px;
-    height: 30px;
-    margin: 1px 5px 0 0;
+.catalog-btn {
+    white-space: nowrap;
 }
 
-.footer-avito-row {
-    margin-top: 8px;
+.footerBottom>p {
+    font-weight: 300;
+    font-size: 17px;
+    max-width: 1030px;
 }
 
-.bubble {
-    position: relative;
-    top: 3px;
-    left: -11px;
-}
-
-.avitoText {
-    position: relative;
-    left: -10px;
-}
-
-.privacyPolicy {
-    color: #040809;
+.footerBottom>div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-weight: 300;
     font-size: 17px;
 }
 
-@media (max-width: 1400px) {
-    footer .container1240 {
-        padding: 30px 10px 110px;
-    }
-
-    footer .footer-left,
-    footer .footer-left2,
-    footer .footer-center,
-    footer .footer-right,
-    footer .wrapFoterlinks {
-        gap: 30px;
-    }
-
-    footer a {
-        font-size: 16px;
-    }
-
-    .logo-footer {
-        width: 200px;
-    }
+.footerBottom>div>a {
+    text-decoration: underline;
+    white-space: nowrap;
 }
 
-@media (max-width: 1100px) {
-    footer .container1240 {
-        padding: 30px 15px 100px 10px;
-        gap: 15px;
+.link-avito-mobile {
+    display: none !important;
+}
+
+/* Стили для каталога в футере */
+footer .footerBottom .catalog-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+footer .footerBottom .catalog-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+}
+
+footer .footerBottom .catalog-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+footer .footerBottom .catalog-btn::after {
+    content: '▲' !important;
+    margin-left: 8px !important;
+    font-size: 12px !important;
+    transition: transform 0.3s ease !important;
+}
+
+footer .footerBottom .catalog-dropdown.active .catalog-btn::after {
+    transform: rotate(180deg) !important;
+}
+
+footer .footerBottom .dropdown-menu {
+    position: absolute;
+    bottom: 100%;
+    top: auto;
+    left: 0;
+    background: #D7DFDA;
+    border: 1px solid #4C8D65;
+    border-radius: 8px;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
+    min-width: 350px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px)t;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    margin-bottom: 10px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+footer .footerBottom .catalog-dropdown.active .dropdown-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+/* Убираем overflow: hidden когда dropdown активен */
+footer .footerBottom .catalog-dropdown.active {
+    overflow: visible !important;
+}
+
+/* Также убираем overflow: hidden у родительского футера когда dropdown активен */
+footer:has(.footerBottom .catalog-dropdown.active) {
+    overflow: visible !important;
+}
+
+footer .footerBottom .dropdown-menu a {
+    display: block ;
+    padding: 12px 20px ;
+    color: #043517 ;
+    text-decoration: none ;
+    font-family: 'Noto Sans', sans-serif ;
+    font-size: 20px ;
+    font-weight: 400 ;
+    transition: all 0.3s ease ;
+    border-bottom: 1px solid rgba(76, 141, 101, 0.1) ;
+}
+
+footer .footerBottom .dropdown-menu a:last-child {
+    border-bottom: none !important;
+}
+
+footer .footerBottom .dropdown-menu a:hover {
+    background: rgba(76, 141, 101, 0.1) !important;
+    color: #ffffff !important;
+    padding-left: 25px !important;
+}
+
+.footer .headerPhoneMobile, .footer .headerTop4 a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+@media (max-width: 1400px) {
+    .footer .headerTop2 {
+        display: none;
     }
 
-    .footer-left img {
-        position: relative;
-        right: 0px;
-        width: 170px;
-    }
-
-    .footer-contacts-row {
-        justify-content: center;
-        gap: 5px;
-    }
-
-    .footer-avito-row {
-        display: flex;
-        justify-content: flex-start;
-        margin-top: 10px;
-    }
-
-    footer .footer-left,
-    footer .footer-left2,
-    footer .footer-center,
-    footer .footer-right,
-    footer .wrapFoterlinks {
-        gap: 20px;
-    }
-
-    footer a {
-        font-size: 13px;
-    }
-
-    .footer-center-text {
-        font-size: 10px;
-    }
-
-    .requisites {
-        font-size: 11px;
-    }
-
-    .phone-number-footer {
-        font-size: 15px;
-    }
-
-    .link-footer {
-        margin-top: 11px;
-        font-size: 15px;
-    }
-
-    .privacyPolicy {
+    .footerBottom>p {
         font-size: 14px;
     }
 }
 
-@media (max-width: 743px) {
-    footer .container1240 {
-        flex-direction: column;
-        align-items: center;
-        padding: 24px 0 90px;
-        gap: 0;
+@media (max-width: 1200px) {
+    footer .footerBottom .dropdown-menu {
+        min-width: 300px;
     }
+}
 
-    .footer-left,
-    .footer-left2,
-    .footer-center,
-    .footer-right,
-    .wrapFoterlinks {
-        max-width: 100%;
-        align-items: center;
-        text-align: center;
-        gap: 16px;
-        margin: 0;
-        padding: 0;
-    }
-
-    .footer-left {
-        top: 0;
-        margin-bottom: 12px;
-    }
-
-    .logo-footer img {
-        width: 200px;
-        margin: 0 auto 8px auto;
-        display: block;
-    }
-
-    .footer-left>p {
-        font-size: 13px;
-        margin-bottom: 8px;
-    }
-
-    .footer-contacts-row {
-        justify-content: center;
-        gap: 18px;
-        margin-bottom: 0;
-        margin-top: 8px;
-    }
-
-    .footer-avito-row {
-        justify-content: center;
-        margin: 10px 0 0 0;
-    }
-
-    .desktopCard {
-        display: none;
-    }
-
-    .footer-right .mobileCard {
-        display: block;
-    }
-
-    .bankCards {
-        flex-direction: row;
-        justify-content: center;
-        gap: 12px;
-        margin: 10px 0 0 0;
-    }
-
-    .footer-left2,
-    .footer-center {
-        flex-direction: column;
-        gap: 8px;
-        margin: 0;
-        padding: 0;
-    }
-
-    .link-footer,
-    .phone-number-footer {
-        font-size: 25px;
-        margin: 0;
-    }
-
-    .desktopMailPhone {
-        display: none;
-    }
-
-    .mobileMailPhone {
-        display: flex;
-    }
-
-    .footer-center-text,
-    .requisites {
+@media (max-width: 1100px) {
+    .footerBottom>p {
         font-size: 11px;
-        max-width: 95vw;
-        margin: 10px auto 0 auto;
-        text-align: center;
     }
 
-    .requisites div {
-        margin-top: 0;
+    .footerBottom>div {
+        font-size: 13px;
     }
 
-    /* Убираем лишние отступы */
-    .footer-right {
-        margin: 0;
-        padding: 0;
-        align-items: center;
+    .footer-line {
+        height: 54px;
     }
 
-    footer .footer-left,
-    footer .footer-left2,
-    footer .footer-center,
-    footer .footer-right,
-    footer .wrapFoterlinks {
+    .footerBottom {
+        gap: 30px;
+        padding: 20px 0 60px;
+    }
+    .footerBottom>div:last-of-type {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 950px) {
+    .headerTop8 p {
+        font-size: 22px;
+    }
+
+    .headerTop8 {
         gap: 10px;
     }
 
-    .wrapFoter-left2_footer-center {
-        display: flex;
-        gap: 15px;
+    .footer .headerTop9 {
+        display: none;
     }
 
-    .phone-number-mobile {
-        display: block;
-        font-size: 25px;
+    .footer .headerTop .container1713 {
+        justify-content: space-around;
+    }
+
+    .footer-links {
+        gap: 10px;
+    }
+
+
+    .footerBottom>div:last-of-type {
+        margin-right: 15px;
+    }
+
+    .footerBottom>p {
+        font-size: 9px;
+    }
+
+
+    .footerBottom {
+        gap: clamp(4px, 2vw, 30px);
+    }
+
+    footer .footerBottom .catalog-btn {
+        padding-right: 0;
+        font-size: 14px;
+    }
+
+    .footerBottom>div {
+        font-size: 11px;
+    }
+
+    .footer .headerPhoneMobile, .footer .headerTop4 a {
+        gap: 5px;
+    }
+
+    .headerPhoneIcon {
+        width: 25px;
+        height: 25px;
+    }
+     
+
+}
+@media (max-width: 800px) {
+    footer .footerBottom .dropdown-menu a {
+        padding: 2px 10px;
+        font-size: 12px;
+        border-bottom: 1px solid rgba(76, 141, 101, 0.4);
+    }
+
+    .headerPhoneIcon {
+        margin-top: -5px;
+    }
+}
+/* Responsive adjustments для футера */
+
+@media (max-width: 600px) {
+    .footer .headerTop8 {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .footer-links {
+        gap: 5px;
+        justify-content: space-between;
+    }
+    .footer .footer-links a {
+        width: 30px;
+    }
+
+
+    .footerBottom {
+        flex-direction: column;
+    }
+    .footer .footerBottom .footer-line {
+        display: none;
+    }
+
+    footer .footerBottom .catalog-btn {
+        padding-right: 0;
+        font-size: 22px;
+    }
+
+    .footerBottom>p {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .footerBottom>div:last-of-type {
+        text-align: left;
+        margin: 0 auto;
+        margin-left: 8px;
+    }
+    .footer .headerTop8 .footer-avito-row-item {
+        display: none;
+    }
+
+    .link-avito-mobile {
+        display: block !important;
+        width: 30px;
     }
 }
 
-/* Только для SVG шириной 79px (ваш логотип) */
-footer .footer-icon[width="79"] path {
-    fill: #023D19;
+@media (max-width: 400px) {
+    .headerPhoneIcon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .dropdown-menu {
+        min-width: 288px !important;
+        right: 0%;
+    }
 }
 
-footer .footer-icon[width="79"] path:hover {
-    fill: #FF4053;
+@media (max-width: 360px) {
+    .headerTop1 {
+        width: 75px;
+    }
 }
