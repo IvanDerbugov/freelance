@@ -44,6 +44,140 @@ header {
 }
 
 
+.header-bottom-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.catalog-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.catalog-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    max-width: 100%;
+    padding: 0 16px;
+    background-color: #1F7D63;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    gap: 8px;
+    position: relative;
+}
+
+.catalog-button::after {
+    content: '▼';
+    margin-left: 8px;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+    color: #FFFFFF;
+}
+
+.catalog-dropdown.active .catalog-button::after {
+    transform: rotate(180deg);
+}
+
+.catalog-button:hover {
+    background-color: #166b54;
+}
+
+.catalog-button:active {
+    background-color: #0f5a47;
+}
+
+.burger-icon {
+    flex-shrink: 0;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    max-height: 70vh;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.catalog-dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-section {
+    padding: 16px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-section:last-child {
+    border-bottom: none;
+}
+
+.dropdown-section h4 {
+    margin: 0 0 12px 20px;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: #333333;
+    text-decoration: none;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(31, 125, 99, 0.1);
+    color: #1F7D63;
+}
+
+.dropdown-menu a small {
+    font-size: 12px;
+    color: #666666;
+    font-weight: 300;
+}
+
 
 
 
@@ -51,12 +185,82 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 16px 0;
 }
 
 .header-bottom-left {
     display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 50px;
+}
+
+.header-bottom-link {
+    display: flex;
     flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    gap: 3px;
+}
+
+.header-bottom-link a {
+    color: #333333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.header-bottom-left a:hover {
+    color: #666666;
+}
+
+.header-bottom-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header-cart {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.header-cart:hover {
+    background-color: #f0f0f0;
+}
+
+.cart-icon {
+    position: relative;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff6b35;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.cart-price {
+    color: #1f7d63;
+    font-size: 16px;
+    font-weight: 600;
 }
