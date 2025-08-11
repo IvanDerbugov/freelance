@@ -39,7 +39,7 @@ function initVersionDisplay() {
 
         // Настраиваем nonono для всех экранов меньше 1500px (если элемент существует)
         if (nonono) {
-            if (width <= 1500) {
+            if (width <= 1400) {
                 nonono.style.display = 'block';
                 nonono.style.position = 'fixed';
                 nonono.style.top = '0';
