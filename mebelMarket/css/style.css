@@ -3,11 +3,25 @@ html {
     font-family: 'Fira Sans', sans-serif;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .container {
     max-width: 1408px;
     margin: 0 auto;
 }
 
+section {
+    padding: 40px 0;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 22px;
+}
 
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
@@ -79,11 +93,6 @@ html {
     pointer-events: auto;
 }
 
-/* .carousel-control-prev:hover,
-.carousel-control-next:hover {
-    background-color: rgba(0, 0, 0, 0.6);
-} */
-
 /* Иконки кнопок */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
@@ -127,3 +136,218 @@ html {
     z-index: 10;
 }
 
+
+
+
+.cardBestWorks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 259px;
+    height: 602px;
+}
+
+.cardBestWorks-img1 {
+    background: url(../img/card1.jpg) no-repeat center center;
+    width: 259px;
+    height: 354px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.cardBestWorks-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 9px;
+    padding: 10px;
+}
+.cardBestWorks-info p:nth-of-type(1) {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+}
+.cardBestWorks .cardBestWorks-info > p {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Стили для цен в карточке лучших работ */
+.cardBestWorks-info .old-price {
+    font-size: 18px;
+    color: #333;
+    text-decoration: line-through;
+    font-weight: 400;
+    transform: translateY(10px);
+}
+
+/* Стили для кнопки "В корзину" */
+.cardBestWorks-info button {
+    background: #1F7D63;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Fira Sans', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(31, 125, 99, 0.2);
+}
+
+.cardBestWorks-info button:hover {
+    background: #166b54;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(31, 125, 99, 0.3);
+}
+
+.cardBestWorks-info button img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+
+/* Стили для крупных скидочных бейджей на карточках товаров */
+
+/* Основной контейнер для скидки */
+.sale-badge {
+    position: absolute;
+    top: -12px;
+    right: -24px;
+    background: linear-gradient(135deg, #ff4757, #ff3742);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+    z-index: 10;
+    transform: rotate(5deg);
+    animation: salePulse 2s ease-in-out infinite;
+}
+
+/* Анимация пульсации для привлечения внимания */
+@keyframes salePulse {
+    0%, 100% {
+        transform: rotate(5deg) scale(1);
+        box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+    }
+    50% {
+        transform: rotate(5deg) scale(1.05);
+        box-shadow: 0 6px 20px rgba(255, 71, 87, 0.6);
+    }
+}
+
+/* Большая скидка (от 30%) */
+.sale-badge.large {
+    font-size: 22px;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #ff3838, #ff0000);
+    box-shadow: 0 6px 20px rgba(255, 56, 56, 0.5);
+    animation: salePulseLarge 1.5s ease-in-out infinite;
+}
+
+@keyframes salePulseLarge {
+    0%, 100% {
+        transform: rotate(5deg) scale(1);
+        box-shadow: 0 6px 20px rgba(255, 56, 56, 0.5);
+    }
+    50% {
+        transform: rotate(5deg) scale(1.08);
+        box-shadow: 0 8px 25px rgba(255, 56, 56, 0.7);
+    }
+}
+
+/* Огромная скидка (от 50%) */
+.sale-badge.huge {
+    font-size: 26px;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
+    animation: salePulseHuge 1s ease-in-out infinite;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes salePulseHuge {
+    0%, 100% {
+        transform: rotate(5deg) scale(1);
+        box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
+    }
+    50% {
+        transform: rotate(5deg) scale(1.1);
+        box-shadow: 0 10px 30px rgba(255, 0, 0, 0.8);
+    }
+}
+
+/* Стили для карточек товаров */
+.product-card {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Эффект при наведении на карточку со скидкой */
+.product-card:hover .sale-badge {
+    animation-play-state: paused;
+    transform: rotate(0deg) scale(1.1);
+    transition: all 0.3s ease;
+}
+
+/* Дополнительный элемент "ХИТ" */
+.hit-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(135deg, #ffa726, #ff9800);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(255, 167, 38, 0.4);
+    z-index: 10;
+    transform: rotate(-5deg);
+}
+
+/* Стили для цен со скидкой */
+.price-with-sale {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+
+
+.new-price {
+    font-size: 28px;
+    color: #cf2c2c;
+    font-weight: 800;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cardBestWorks-info > div {
+    font-size: 24px;
+    color: #a52323;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    transform: translateY(18px);
+}
+
+.timer {
+    font-size: 33px;
+}
