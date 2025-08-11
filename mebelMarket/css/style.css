@@ -138,6 +138,11 @@ section {
 
 
 
+.best-works-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
 
 .cardBestWorks{
     display: flex;
@@ -149,8 +154,7 @@ section {
     height: 602px;
 }
 
-.cardBestWorks-img1 {
-    background: url(../img/card1.jpg) no-repeat center center;
+ [class^='cardBestWorks-img'] {
     width: 259px;
     height: 354px;
     border-radius: 10px;
@@ -158,6 +162,21 @@ section {
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+}
+.cardBestWorks-img1 {
+    background: url(../img/card1.jpg);
+}
+.cardBestWorks-img2 {
+    background: url(../img/card2.jpg);
+}
+.cardBestWorks-img3 {
+    background: url(../img/card3.jpg);
+}
+.cardBestWorks-img4 {
+    background: url(../img/card4.jpeg);
+}
+.cardBestWorks-img5 {
+    background: url(../img/card5.jpeg);
 }
 
 .cardBestWorks-info {

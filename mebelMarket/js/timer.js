@@ -1,8 +1,8 @@
 // timer.js - Таймер обратного отсчета до конца недели по московскому времени
 
 class WeeklyTimer {
-    constructor() {
-        this.timerElement = document.querySelector('.timer');
+    constructor(timerElement) {
+        this.timerElement = timerElement;
         
         // Правильные селекторы для span элементов
         if (this.timerElement) {
@@ -152,9 +152,17 @@ class WeeklyTimer {
     }
 }
 
-// Инициализация таймера после загрузки DOM
+// Инициализация всех таймеров после загрузки DOM
 document.addEventListener('DOMContentLoaded', () => {
-    new WeeklyTimer();
+    // Находим все таймеры на странице
+    const allTimers = document.querySelectorAll('.timer');
+    
+    // Создаем экземпляр таймера для каждого найденного элемента
+    allTimers.forEach(timerElement => {
+        new WeeklyTimer(timerElement);
+    });
+    
+    console.log(`Инициализировано ${allTimers.length} таймеров`);
 });
 
 // Экспорт для использования в других модулях
