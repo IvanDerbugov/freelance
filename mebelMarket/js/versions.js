@@ -1,6 +1,6 @@
 // Функция для подключения versions.html как шаблона
 function includeVersions() {
-    fetch('HTML/versions.html')
+    fetch('html/versions.html')
         .then(response => response.text())
         .then(html => {
             // Создаем временный div для парсинга HTML
