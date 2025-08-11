@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест SmartCAPTCHA</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .smartcaptcha-container {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        .form-message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Тест SmartCAPTCHA</h1>
+        
+        <div class="info">
+            <h3>ℹ️ Информация</h3>
+            <p>Этот файл тестирует интеграцию SmartCAPTCHA от Яндекса. Для работы необходимо:</p>
+            <ol>
+                <li>Получить Client Key на <a href="https://captcha.yandex.ru/" target="_blank">captcha.yandex.ru</a></li>
+                <li>Вставить ключ в файл <code>JS/smartcaptcha.js</code></li>
+                <li>Обновить страницу</li>
+            </ol>
+        </div>
+
+        <form id="testForm">
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Сообщение:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            
+            <button type="submit">Отправить форму</button>
+        </form>
+
+        <div class="smartcaptcha-container">
+            <p><strong>SmartCAPTCHA будет загружена здесь автоматически</strong></p>
+        </div>
+
+        <div class="info">
+            <h3>🔍 Что проверять:</h3>
+            <ul>
+                <li>Загрузка SmartCAPTCHA в консоли браузера</li>
+                <li>Появление капчи в контейнере</li>
+                <li>Работа формы с капчей</li>
+                <li>Адаптивность на мобильных устройствах</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Подключаем SmartCAPTCHA -->
+    <script src="JS/smartcaptcha.js"></script>
+    
+    <script>
+        // Дополнительное логирование для отладки
+        console.log('Страница загружена, инициализируем SmartCAPTCHA...');
+        
+        // Проверяем загрузку SmartCAPTCHA
+        setTimeout(() => {
+            if (window.SmartCaptcha) {
+                console.log('✅ SmartCAPTCHA успешно загружена');
+            } else {
+                console.log('❌ SmartCAPTCHA не загружена');
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
