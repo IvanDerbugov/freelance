@@ -1,0 +1,47 @@
+header {
+    
+}
+
+.header-top {
+    background-color: #f7f7f7;
+    padding: 8px 0;
+}
+
+.header-top > .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-top-left {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: #333333;
+    font-size: 16px;
+    gap: 24px;
+}
+
+.header-top-right {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 16px;
+    color: #333333;
+    font-size: 16px;
+}
+
+.header-top-right > div {
+    display: flex;
+    align-items: center;
+}
+
+.header-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+

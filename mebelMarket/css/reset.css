@@ -1,0 +1,402 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    line-height: 1;
+    font-size: 16px;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Убираем подчеркивание у ссылок */
+a {
+    text-decoration: none;
+}
+
+/* Убираем обводку у кнопок и полей ввода */
+button, input, textarea, select {
+    outline: none;
+    border: none;
+    background: none;
+    font-family: inherit;
+}
+
+/* Убираем стрелки у input type="number" */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Убираем стандартные стили у кнопок */
+button {
+    cursor: pointer;
+}
+
+/* Убираем стандартные стили у изображений */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Убираем стандартные стили у форм */
+form {
+    margin: 0;
+}
+
+/* Убираем стандартные стили у заголовков */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-size: inherit;
+}
+
+/* Убираем стандартные стили у параграфов */
+p {
+    margin: 0;
+}
+
+/* Убираем стандартные стили у списков */
+ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+/* Убираем стандартные стили у таблиц */
+table {
+    border: none;
+}
+
+/* Убираем стандартные стили у полей ввода */
+input, textarea, select {
+    font-size: inherit;
+    color: inherit;
+}
+
+/* Убираем стандартные стили у кнопок */
+button, input[type="submit"], input[type="button"] {
+    font-size: inherit;
+    color: inherit;
+}
+
+/* Убираем стандартные стили у ссылок */
+a {
+    color: inherit;
+}
+
+/* Убираем стандартные стили у изображений */
+img {
+    border: none;
+}
+
+/* Убираем стандартные стили у форм */
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+legend {
+    padding: 0;
+}
+
+/* Убираем стандартные стили у деталей */
+details {
+    display: block;
+}
+
+summary {
+    display: block;
+    cursor: pointer;
+}
+
+/* Убираем стандартные стили у прогресс-баров */
+progress {
+    vertical-align: baseline;
+}
+
+/* Убираем стандартные стили у ползунков */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Убираем стандартные стили у чекбоксов и радио-кнопок */
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+/* Убираем стандартные стили у файловых полей */
+input[type="file"] {
+    font-size: inherit;
+    color: inherit;
+}
+
+/* Убираем стандартные стили у цветовых полей */
+input[type="color"] {
+    border: none;
+    padding: 0;
+}
+
+/* Убираем стандартные стили у дата-полей */
+input[type="date"], input[type="time"], input[type="datetime-local"] {
+    font-size: inherit;
+    color: inherit;
+}
+
+/* Убираем стандартные стили у поисковых полей */
+input[type="search"] {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Убираем стандартные стили у полей с автозаполнением */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+/* Убираем стандартные стили у placeholder */
+::placeholder {
+    color: inherit;
+    opacity: 1;
+}
+
+/* Убираем стандартные стили у выделения */
+::selection {
+    background: inherit;
+    color: inherit;
+}
+
+/* Убираем стандартные стили у фокуса */
+:focus {
+    outline: none;
+}
+
+/* Убираем стандартные стили у hover */
+:hover {
+    transition: none;
+}
+
+/* Убираем стандартные стили у active */
+:active {
+    transition: none;
+}
+
+/* Убираем стандартные стили у visited */
+:visited {
+    color: inherit;
+}
+
+/* Убираем стандартные стили у disabled */
+:disabled {
+    cursor: default;
+}
+
+/* Убираем стандартные стили у required */
+:required {
+    box-shadow: none;
+}
+
+/* Убираем стандартные стили у invalid */
+:invalid {
+    box-shadow: none;
+}
+
+/* Убираем стандартные стили у valid */
+:valid {
+    box-shadow: none;
+}
+
+/* Убираем стандартные стили у optional */
+:optional {
+    box-shadow: none;
+}
+
+/* Убираем стандартные стили у read-only */
+:read-only {
+    box-shadow: none;
+}
+
+/* Убираем стандартные стили у read-write */
+:read-write {
+    box-shadow: none;
+}
+
+/* Убираем стандартные стили у checked */
+:checked {
+    box-shadow: none;
+}
+
+/* Убираем стандартные стили у indeterminate */
+:indeterminate {
+    box-shadow: none;
+}
+
+/* Убираем стандартные стили у default */
+:default {
+    box-shadow: none;
+}
+
+/* Убираем стандартные стили у enabled */
+:enabled {
+    box-shadow: none;
+}
+
+/* Убираем стандартные стили у first-child */
+:first-child {
+    margin-left: 0;
+}
+
+/* Убираем стандартные стили у last-child */
+:last-child {
+    margin-right: 0;
+}
+
+/* Убираем стандартные стили у only-child */
+:only-child {
+    margin: 0;
+}
+
+/* Убираем стандартные стили у first-of-type */
+:first-of-type {
+    margin-left: 0;
+}
+
+/* Убираем стандартные стили у last-of-type */
+:last-of-type {
+    margin-right: 0;
+}
+
+/* Убираем стандартные стили у only-of-type */
+:only-of-type {
+    margin: 0;
+}
+
+/* Убираем стандартные стили у empty */
+:empty {
+    margin: 0;
+    padding: 0;
+}
+
+/* Убираем стандартные стили у root */
+:root {
+    font-size: 16px;
+}
+
+/* Убираем стандартные стили у html */
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/* Убираем стандартные стили у body */
+body {
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Убираем стандартные стили у всех элементов */
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Разрешаем выделение текста */
+p, h1, h2, h3, h4, h5, h6, span, div, a, button, input, textarea, select, label {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* Убираем стандартные стили у скроллбаров */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Убираем стандартные стили у выделения */
+::-moz-selection {
+    background: inherit;
+    color: inherit;
+}
+
+/* Убираем стандартные стили у фокуса */
+::-moz-focus-inner {
+    border: 0;
+}
+
+/* Убираем стандартные стили у кнопок в Firefox */
+button::-moz-focus-inner {
+    border: 0;
+}
+
+/* Убираем стандартные стили у input в Firefox */
+input::-moz-focus-inner {
+    border: 0;
+}
+
+/* Убираем стандартные стили у textarea в Firefox */
+textarea::-moz-focus-inner {
+    border: 0;
+}
+
+/* Убираем стандартные стили у select в Firefox */
+select::-moz-focus-inner {
+    border: 0;
+}
