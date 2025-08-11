@@ -4,13 +4,12 @@ class WeeklyTimer {
     constructor(timerElement) {
         this.timerElement = timerElement;
         
-        // Правильные селекторы для span элементов
+        // Правильные селекторы для span элементов (убрали секунды)
         if (this.timerElement) {
             const spans = this.timerElement.querySelectorAll('span');
             this.daysElement = spans[0];      // Первый span - дни
             this.hoursElement = spans[1];     // Второй span - часы  
             this.minutesElement = spans[2];   // Третий span - минуты
-            this.secondsElement = spans[3];   // Четвертый span - секунды
         }
         
         this.interval = null;
@@ -23,8 +22,8 @@ class WeeklyTimer {
             return;
         }
         
-        // Проверяем, что все элементы найдены
-        if (!this.daysElement || !this.hoursElement || !this.minutesElement || !this.secondsElement) {
+        // Проверяем, что все элементы найдены (убрали проверку секунд)
+        if (!this.daysElement || !this.hoursElement || !this.minutesElement) {
             console.warn('Timer elements not found');
             return;
         }
@@ -81,9 +80,8 @@ class WeeklyTimer {
         const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
         
-        // Обновляем элементы таймера
+        // Обновляем элементы таймера (убрали секунды)
         if (this.daysElement) {
             this.daysElement.textContent = days.toString().padStart(2, '0');
         }
@@ -93,12 +91,9 @@ class WeeklyTimer {
         if (this.minutesElement) {
             this.minutesElement.textContent = minutes.toString().padStart(2, '0');
         }
-        if (this.secondsElement) {
-            this.secondsElement.textContent = seconds.toString().padStart(2, '0');
-        }
     }
 
-    // Функция тик - обновляет таймер каждую секунду
+    // Функция тик - обновляет таймер каждую минуту (вместо секунды)
     tick() {
         this.updateTimer();
     }
@@ -119,10 +114,10 @@ class WeeklyTimer {
 
     // Запуск таймера
     startTimer() {
-        // Обновляем каждую секунду используя функцию tick
+        // Обновляем каждую минуту вместо секунды
         this.interval = setInterval(() => {
             this.tick();
-        }, 1000);
+        }, 60000); // 60000 мс = 1 минута
     }
 
     // Остановка таймера
@@ -139,13 +134,11 @@ class WeeklyTimer {
         const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
         
         return {
             days,
             hours,
             minutes,
-            seconds,
             totalMilliseconds: timeLeft,
             isExpired: timeLeft <= 0
         };
