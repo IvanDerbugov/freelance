@@ -1,0 +1,161 @@
+/* logo-fonts.css - Стили для 5 вариантов логотипных шрифтов */
+
+/* Вариант 1: Playfair Display - Элегантный классический шрифт */
+.logo-font-1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #1F7D63;
+    text-shadow: 2px 2px 4px rgba(31, 125, 99, 0.2);
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.logo-font-1:hover {
+    color: #166b54;
+    text-shadow: 3px 3px 6px rgba(31, 125, 99, 0.3);
+    transform: scale(1.05);
+}
+
+/* Вариант 2: Montserrat - Современный минималистичный */
+.logo-font-2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: #2c3e50;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.logo-font-2:hover {
+    color: #1F7D63;
+    border-bottom-color: #1F7D63;
+    letter-spacing: 3px;
+}
+
+/* Вариант 3: Roboto Slab - Прочный и надежный */
+.logo-font-3 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 500;
+    font-size: 23px;
+    color: #34495e;
+    background: linear-gradient(45deg, #1F7D63, #27ae60);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s ease;
+}
+
+.logo-font-3:hover {
+    background: linear-gradient(45deg, #27ae60, #1F7D63);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transform: translateY(-2px);
+}
+
+/* Вариант 4: Oswald - Смелый и выразительный */
+.logo-font-4 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: #e74c3c;
+    text-shadow: 1px 1px 0px #c0392b;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.logo-font-4::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #e74c3c;
+    transition: width 0.3s ease;
+}
+
+.logo-font-4:hover::after {
+    width: 100%;
+}
+
+.logo-font-4:hover {
+    color: #c0392b;
+    transform: skew(-2deg);
+}
+
+/* Вариант 5: Merriweather - Премиум и утонченный */
+.logo-font-5 {
+    font-family: 'Merriweather', serif;
+    font-weight: 900;
+    font-size: 25px;
+    color: #8e44ad;
+    background: linear-gradient(135deg, #8e44ad, #9b59b6, #3498db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(142, 68, 173, 0.3);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.logo-font-5::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #3498db, #9b59b6, #8e44ad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.logo-font-5:hover::before {
+    opacity: 1;
+}
+
+.logo-font-5:hover {
+    transform: scale(1.1) rotate(1deg);
+    text-shadow: 0 0 50px rgba(142, 68, 173, 0.6);
+}
+
+/* Общие стили для всех логотипов */
+.logo-font-1,
+.logo-font-2,
+.logo-font-3,
+.logo-font-4,
+.logo-font-5 {
+    cursor: pointer;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+    min-width: 200px;
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo-font-1 { animation: fadeInUp 0.6s ease 0.1s both; }
+.logo-font-2 { animation: fadeInUp 0.6s ease 0.2s both; }
+.logo-font-3 { animation: fadeInUp 0.6s ease 0.3s both; }
+.logo-font-4 { animation: fadeInUp 0.6s ease 0.4s both; }
+.logo-font-5 { animation: fadeInUp 0.6s ease 0.5s both; }

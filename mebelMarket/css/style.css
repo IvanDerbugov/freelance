@@ -7,3 +7,123 @@ html {
     max-width: 1408px;
     margin: 0 auto;
 }
+
+
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    width: 60px;    
+    height: 60px;
+}
+
+.carousel-control-prev-icon {
+    position: relative;
+    left: -54px;
+}
+
+.carousel-control-next-icon {
+    position: relative;
+    right: -54px;
+}
+
+.carousel-indicators {
+    width: 100%;
+}
+.carousel-indicators [data-bs-target] {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 7px;
+    margin-left: 7px;
+}
+
+.carousel-indicators [data-bs-target].active {
+    background-color: #1F7D63;
+}
+
+.carusel-slide1, .carusel-slide2, .carusel-slide3, .carusel-slide4 {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 1408px;
+    height: 469px;
+}
+
+.carusel-slide1 {
+    background-image: url(../img/caruselSlide1.webp);
+}
+
+.carusel-slide2 {
+    background-image: url(../img/caruselSlide2.webp);
+}
+
+
+.carusel-slide3 {
+    background-image: url(../img/caruselSlide3.webp);
+}
+
+.carusel-slide4 {
+    background-image: url(../img/caruselSlide4.webp);
+}
+
+/* Стили для плавного перетаскивания карусели */
+.carousel {
+    user-select: none; /* Запрещаем выделение текста при свайпе */
+    touch-action: pan-y pinch-zoom; /* Оптимизация для касаний */
+}
+
+/* Восстанавливаем стандартное поведение кнопок навигации */
+.carousel-control-prev,
+.carousel-control-next {
+    cursor: pointer !important;
+    z-index: 15;
+    pointer-events: auto;
+}
+
+/* .carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+} */
+
+/* Иконки кнопок */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    pointer-events: none;
+}
+
+.carousel-inner {
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+}
+
+.carousel-inner.dragging {
+    transition: none;
+    cursor: grabbing;
+}
+
+/* Улучшенные стили для активного слайда */
+.carousel-item.active {
+    z-index: 2;
+}
+
+/* Стили для неактивных слайдов */
+.carousel-item:not(.active) {
+    z-index: 1;
+}
+
+/* Анимация для плавного перехода */
+.carousel-item {
+    transition: transform 0.3s ease-out;
+}
+
+/* Стили для индикаторов прогресса */
+.carousel-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.7);
+    width: 0%;
+    transition: width 0.1s linear;
+    z-index: 10;
+}
+
