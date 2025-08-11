@@ -9,7 +9,6 @@ function initCatalogDropdown() {
         catalogBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             catalogDropdown.classList.toggle('active');
-            console.log('Catalog button clicked, dropdown active:', catalogDropdown.classList.contains('active'));
         });
 
         // Close dropdown when clicking outside
@@ -41,8 +40,8 @@ function initCatalogDropdown() {
             });
         });
 
-        console.log('Catalog dropdown initialized successfully');
+        // Dropdown initialized successfully
     } else {
-        console.log('Catalog dropdown elements not found:', { catalogDropdown, catalogBtn });
+        console.warn('Catalog dropdown elements not found');
     }
 }

@@ -19,8 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (typeof initHeaderFunctionality === 'function') {
             initHeaderFunctionality();
         }
-        // Инициализируем выпадающий каталог
-        initCatalogDropdown();
+        // Инициализируем выпадающий каталог с небольшой задержкой
+        setTimeout(() => {
+            initCatalogDropdown();
+        }, 100);
     });
     includeHTML('#footer-container', 'html/footer.html', function() {
         // Вызываем функцию инициализации footer после загрузки
