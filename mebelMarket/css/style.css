@@ -228,7 +228,7 @@ section.carousel-bootstrap {
     align-items: center;
     overflow: hidden;
     max-width: 100%;
-    padding: 0 80px; /* Место для стрелок */
+    padding: 0 75px;
 }
 
 .best-works-carousel {
@@ -240,7 +240,7 @@ section.carousel-bootstrap {
 
 .best-works-carousel-wrapper {
     display: flex;
-    gap: 50px;
+    gap: 30px;
     transition: transform 0.5s ease-in-out;
     min-width: calc(259px * 4 + 50px * 3 + 40px);
     padding-right: 20px;
@@ -309,18 +309,18 @@ section.carousel-bootstrap {
     visibility: visible;
 }
 
-.cardBestWorks{
+.cardBestWorks {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 12px;
-    width: 259px;
+    width: 279px;
     height: 602px;
 }
 
- [class^='cardBestWorks-img'] {
-    width: 259px;
+[class^='cardBestWorks-img'] {
+    width: 279px;
     height: 354px;
     border-radius: 10px;
     background-size: cover;
@@ -425,8 +425,8 @@ section.carousel-bootstrap {
 /* Основной контейнер для скидки */
 .sale-badge {
     position: absolute;
-    top: -12px;
-    right: -24px;
+    top: -14px;
+    right: -9px;
     background: linear-gradient(135deg, #ff4757, #ff3742);
     color: white;
     padding: 8px 12px;
@@ -541,8 +541,8 @@ section.carousel-bootstrap {
 }
 
 .borderCard > div {
-    font-size: 24px;
-    color: #a52323;
+    font-size: 22px;
+    color: #000;
     font-weight: 600;
     display: flex;
     flex-direction: column;
@@ -551,7 +551,7 @@ section.carousel-bootstrap {
 }
 
 .timer {
-    font-size: 25px;
+    font-size: 23px;
     font-weight: 400;
     position: relative;
 }
@@ -834,7 +834,7 @@ section.carousel-bootstrap {
     transition: transform 0.5s ease-in-out;
     min-width: calc(259px * 4 + 50px * 3 + 40px);
     padding-right: 20px;
-    padding: 50px 15px;
+    padding: 50px 20px;
 }
 
 /* Стрелки для отзывов */
@@ -874,7 +874,7 @@ section.carousel-bootstrap {
 }
 
 .reviews-arrow.next {
-    right: 40px;
+    right: 20px;
 }
 
 .reviews-arrow:disabled {
@@ -995,11 +995,6 @@ section.carousel-bootstrap {
     line-height: 1.6;
     margin: 0;
     flex: 1;
-    /* display: -webkit-box; */
-    /* -webkit-line-clamp: 6; */
-    /* -webkit-box-orient: vertical; */
-    /* overflow: hidden; */
-    /* text-overflow: ellipsis; */
 }
 
 /* Подвал отзыва */
