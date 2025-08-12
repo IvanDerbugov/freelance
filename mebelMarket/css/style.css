@@ -13,7 +13,7 @@ body {
 }
 
 section {
-    padding: 40px 0;
+    padding: 70px 0;
 }
 
 .section-title {
@@ -23,6 +23,13 @@ section {
     margin-bottom: 22px;
 }
 
+section.carousel-bootstrap {
+    padding-top: 0;
+}
+#carouselExampleAutoplaying {
+    padding-left: 0;
+    padding-right: 0;
+}
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
     width: 60px;    
@@ -137,6 +144,82 @@ section {
 }
 
 
+.module-kitchens-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.module-kitchens-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    width: 328px;
+    background-size: cover;
+    font-size: 18px;
+    color: #333333;
+    font-weight: 600;
+    overflow: hidden;
+}
+.module-kitchens-card:hover {
+    font-size: 20px;
+    color: #1F7D63;
+    transition: all 0.3s ease;
+}
+
+.module-kitchens-card img {
+    transition: transform 0.3s ease;
+}
+
+.module-kitchens-card:hover img {
+    transform: scale(1.1);
+}
+
+
+
+
+
+.best-card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.best-card-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.best-card-card img {
+    transition: transform 0.3s ease;
+}
+
+.best-card-card:hover img {
+    transform: scale(1.1);
+}
+.best-card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 16px 24px;
+    width: 100%;
+    height: 72px;
+    background-color: #1F7D63;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
 
 .best-works-container {
     position: relative;
@@ -200,7 +283,7 @@ section {
 }
 
 .carousel-arrow.next {
-    right: 15px;
+    right: 40px;
 }
 
 .carousel-arrow:disabled {
