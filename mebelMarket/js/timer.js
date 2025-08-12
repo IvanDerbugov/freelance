@@ -8,8 +8,8 @@ class WeeklyTimer {
         if (this.timerElement) {
             const spans = this.timerElement.querySelectorAll('span');
             this.daysElement = spans[0];      // Первый span - дни
-            this.hoursElement = spans[1];     // Второй span - часы  
-            this.minutesElement = spans[2];   // Третий span - минуты
+            this.hoursElement = spans[2];     // Второй span - часы (теперь третий из-за time-unit)
+            this.minutesElement = spans[4];   // Третий span - минуты (теперь пятый из-за time-unit)
         }
         
         this.interval = null;
@@ -67,7 +67,7 @@ class WeeklyTimer {
         return nextSunday.getTime() - moscowTime.getTime();
     }
 
-    // Обновляем таймер
+    // Обновляем таймер с анимацией
     updateTimer() {
         const timeLeft = this.getTimeUntilWeekEnd();
         
@@ -81,15 +81,31 @@ class WeeklyTimer {
         const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
         
-        // Обновляем элементы таймера (убрали секунды)
-        if (this.daysElement) {
-            this.daysElement.textContent = days.toString().padStart(2, '0');
-        }
-        if (this.hoursElement) {
-            this.hoursElement.textContent = hours.toString().padStart(2, '0');
-        }
-        if (this.minutesElement) {
-            this.minutesElement.textContent = minutes.toString().padStart(2, '0');
+        // Обновляем элементы таймера с анимацией
+        this.updateElementWithAnimation(this.daysElement, days);
+        this.updateElementWithAnimation(this.hoursElement, hours);
+        this.updateElementWithAnimation(this.minutesElement, minutes);
+    }
+
+    // Обновление элемента с анимацией
+    updateElementWithAnimation(element, newValue) {
+        if (!element) return;
+        
+        const oldValue = parseInt(element.textContent);
+        const newValueStr = newValue.toString().padStart(2, '0');
+        
+        // Если значение изменилось, добавляем анимацию
+        if (oldValue !== newValue) {
+            // Добавляем класс для анимации
+            element.classList.add('updating');
+            
+            // Обновляем значение
+            element.textContent = newValueStr;
+            
+            // Убираем класс анимации через время анимации
+            setTimeout(() => {
+                element.classList.remove('updating');
+            }, 500);
         }
     }
 
