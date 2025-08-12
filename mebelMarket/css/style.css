@@ -27,6 +27,16 @@ section {
     padding: 70px 0;
 }
 
+
+#catalog {
+    position: relative;
+    top: -200px;
+}
+
+
+
+
+
 .section-title {
     font-size: 32px;
     font-weight: 600;

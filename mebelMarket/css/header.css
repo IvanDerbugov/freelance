@@ -22,6 +22,37 @@ header {
     gap: 24px;
 }
 
+.header-top-left a {
+    color: #333333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+    position: relative;
+}
+
+.header-top-left a:hover {
+    color: #1F7D63;
+    background-color: rgba(31, 125, 99, 0.1);
+    transform: translateY(-1px);
+}
+
+.header-top-left a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #1F7D63, #27ae60);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.header-top-left a:hover::after {
+    width: 80%;
+}
+
 .header-top-right {
     display: flex;
     align-items: center;
@@ -43,6 +74,30 @@ header {
     gap: 10px;
 }
 
+.header-social a {
+    transition: all 0.3s ease;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.header-social a:hover {
+    background-color: rgba(31, 125, 99, 0.1);
+    transform: scale(1.1);
+}
+
+.header-top-right a[href^="tel"] {
+    color: #333333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.header-top-right a[href^="tel"]:hover {
+    color: #1F7D63;
+    background-color: rgba(31, 125, 99, 0.1);
+    transform: translateY(-1px);
+}
 
 .header-bottom-center {
     display: flex;
@@ -76,7 +131,7 @@ header {
     vertical-align: middle;
     user-select: none;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease;
     gap: 8px;
     position: relative;
 }
@@ -95,10 +150,13 @@ header {
 
 .catalog-button:hover {
     background-color: #166b54;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(31, 125, 99, 0.3);
 }
 
 .catalog-button:active {
     background-color: #0f5a47;
+    transform: translateY(0);
 }
 
 .burger-icon {
@@ -228,13 +286,14 @@ header {
     font-size: 30px;
     color: #ff0000;
     font-weight: 500;
-    transition: color 0.2s ease;
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
 .header-bottom-left a:hover {
-    color: #666666;
+    color: #1F7D63;
+    transform: scale(1.05);
 }
 
 .header-bottom-right {
@@ -250,11 +309,13 @@ header {
     cursor: pointer;
     padding: 8px 12px;
     border-radius: 8px;
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .header-cart:hover {
-    background-color: #f0f0f0;
+    background-color: rgba(31, 125, 99, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(31, 125, 99, 0.2);
 }
 
 .cart-icon {
@@ -262,6 +323,11 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.header-cart:hover .cart-icon {
+    transform: scale(1.1);
 }
 
 .cart-badge {
@@ -279,10 +345,21 @@ header {
     align-items: center;
     justify-content: center;
     line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.header-cart:hover .cart-badge {
+    background-color: #e55a2b;
+    transform: scale(1.1);
 }
 
 .cart-price {
     color: #1f7d63;
     font-size: 16px;
     font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.header-cart:hover .cart-price {
+    color: #166b54;
 }
