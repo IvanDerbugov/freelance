@@ -239,7 +239,7 @@ section.carousel-bootstrap {
     align-items: center;
     overflow: hidden;
     max-width: 100%;
-    padding: 0 75px;
+    padding: 0 50px; /* Обновлено: уменьшено для карточек 400px */
 }
 
 .best-works-carousel {
@@ -251,11 +251,12 @@ section.carousel-bootstrap {
 
 .best-works-carousel-wrapper {
     display: flex;
-    gap: 30px;
+    gap: 50px; /* Изменено с 80px на 50px */
     transition: transform 0.5s ease-in-out;
-    min-width: calc(259px * 4 + 50px * 3 + 40px);
+    min-width: calc(380px * 3 + 50px * 2 + 40px); /* Обновлено для gap 50px */
     padding-right: 20px;
     padding: 50px 0;
+    margin-left: 40px; /* Добавлено: небольшое смещение вправо для центрирования */
 }
 
 .carousel-arrow {
@@ -290,11 +291,11 @@ section.carousel-bootstrap {
 }
 
 .carousel-arrow.prev {
-    left: 15px;
+    left: 10px; /* Обновлено: позиция для 3 карточек */
 }
 
 .carousel-arrow.next {
-    right: 40px;
+    right: 10px; /* Обновлено: позиция для 3 карточек */
 }
 
 .carousel-arrow:disabled {
@@ -308,14 +309,14 @@ section.carousel-bootstrap {
     transform: translateY(-50%) scale(1);
 }
 
-/* Скрываем карточки после 4-й по умолчанию */
-.cardBestWorks:nth-child(n+5) {
+/* Скрываем карточки после 3-й по умолчанию */
+.cardBestWorks:nth-child(n+4) {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.cardBestWorks:nth-child(n+5).visible {
+.cardBestWorks:nth-child(n+4).visible {
     opacity: 1;
     visibility: visible;
 }
@@ -326,51 +327,52 @@ section.carousel-bootstrap {
     align-items: flex-start;
     justify-content: center;
     gap: 12px;
-    width: 279px;
+    width: 380px;
     height: 692px;
 }
 
 [class^='cardBestWorks-img'] {
-    width: 279px;
-    height: 354px;
+    width: 380px;
+    height: 285px;
     border-radius: 10px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    background-size: contain;
 }
 .cardBestWorks-img1 {
-    background: url(../img/card1.jpg);
+    background-image: url(../img/card1.jpg);
 }
 .cardBestWorks-img2 {
-    background: url(../img/card2.jpg);
+    background-image: url(../img/card2.jpg);
 }
 .cardBestWorks-img3 {
-    background: url(../img/card3.jpg);
+    background-image: url(../img/card3.jpg);
 }
 .cardBestWorks-img4 {
-    background: url(../img/card4.jpeg);
+    background-image: url(../img/card4.jpeg);
 }
 .cardBestWorks-img5 {
-    background: url(../img/card5.jpeg);
+    background-image: url(../img/card5.jpeg);
 }
 .cardBestWorks-img6 {
-    background: url(../img/card6.jpeg);
+    background-image: url(../img/card6.jpeg);
 }
 .cardBestWorks-img7 {
-    background: url(../img/card7.jpeg);
+    background-image: url(../img/card7.jpeg);
 }
 .cardBestWorks-img8 {
-    background: url(../img/card8.jpeg);
+    background-image: url(../img/card8.jpeg);
 }
 .cardBestWorks-img9 {
-    background: url(../img/card9.jpeg);
+    background-image: url(../img/card9.jpeg);
 }
 .cardBestWorks-img10 {
-    background: url(../img/card10.jpeg);
+    background-image: url(../img/card10.jpeg);
 }
 .cardBestWorks-img11 {
-    background: url(../img/card11.jpg);
+    background-image: url(../img/card11.jpg);
 }
 
 .cardBestWorks-info {
@@ -386,6 +388,7 @@ section.carousel-bootstrap {
     font-weight: 400;
     color: #333333;
     min-height: 48px;
+    letter-spacing: 1px;
 }
 .old-price {
     font-size: 22px !important;
@@ -550,6 +553,7 @@ section.carousel-bootstrap {
     color: #cf2c2c;
     font-weight: 600;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
 }
 
 .borderCard > div {
@@ -566,6 +570,7 @@ section.carousel-bootstrap {
     font-size: 23px;
     font-weight: 400;
     position: relative;
+    letter-spacing: 1px;
 }
 
 /* Стили для цифр таймера */

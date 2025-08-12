@@ -4,7 +4,7 @@ class CardsCarousel {
     constructor() {
         this.currentIndex = 0;
         this.totalCards = 10; // Обновлено: теперь 10 карточек
-        this.visibleCards = 4; // Оставляем 4 видимыми одновременно
+        this.visibleCards = 3; // Обновлено: теперь 3 видимых одновременно
         this.carouselWrapper = document.querySelector('.best-works-carousel-wrapper');
         this.prevBtn = document.getElementById('prevBtn');
         this.nextBtn = document.getElementById('nextBtn');
@@ -45,14 +45,14 @@ class CardsCarousel {
     }
 
     updateCarousel() {
-        const cardWidth = 259; // Ширина карточки
-        const gap = 50; // Промежуток между карточками
+        const cardWidth = 380; // Обновлено: ширина карточки 380px
+        const gap = 50; // Обновлено: промежуток между карточками 50px
         const translateX = -(this.currentIndex * (cardWidth + gap));
         
         this.carouselWrapper.style.transform = `translateX(${translateX}px)`;
         
-        // Обновляем видимость карточек после 4-й
-        for (let i = 4; i < this.totalCards; i++) {
+        // Обновляем видимость карточек после 3-й
+        for (let i = 3; i < this.totalCards; i++) {
             const card = this.carouselWrapper.querySelector(`.cardBestWorks:nth-child(${i + 1})`);
             if (card) {
                 if (this.currentIndex > 0) {
@@ -68,7 +68,7 @@ class CardsCarousel {
         // Кнопка "Назад"
         this.prevBtn.disabled = this.currentIndex === 0;
         
-        // Кнопка "Вперед" - теперь можно пролистать до 6-й позиции (чтобы показать карточки 7-10)
+        // Кнопка "Вперед" - теперь можно пролистать до 7-й позиции (чтобы показать карточки 8-10)
         this.nextBtn.disabled = this.currentIndex >= this.totalCards - this.visibleCards;
     }
 
