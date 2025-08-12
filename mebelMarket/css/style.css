@@ -327,7 +327,7 @@ section.carousel-bootstrap {
     justify-content: center;
     gap: 12px;
     width: 279px;
-    height: 602px;
+    height: 692px;
 }
 
 [class^='cardBestWorks-img'] {
@@ -385,6 +385,7 @@ section.carousel-bootstrap {
     font-size: 16px;
     font-weight: 400;
     color: #333333;
+    min-height: 48px;
 }
 .old-price {
     font-size: 22px !important;
