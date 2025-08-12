@@ -205,7 +205,46 @@ section.carousel-bootstrap {
     grid-column: 6 / 8;
 }
 
-
+[class^='module-kitchens-card-img'] {
+    width: 328px;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.module-kitchens-card-img1 {
+    background-image: url(../img/madalCard1.jpg);
+}
+.module-kitchens-card-img2 {
+    background-image: url(../img/madalCard2.jpg);
+}
+.module-kitchens-card-img3 {
+    background-image: url(../img/madalCard3.jpg);
+}
+.module-kitchens-card-img4 {
+    background-image: url(../img/madalCard4.jpg);
+}
+.module-kitchens-card-img5 {
+    background-image: url(../img/madalCard5.jpg);
+}
+.module-kitchens-card-img6 {
+    background-image: url(../img/madalCard6.jpg);
+}
+.module-kitchens-card-img7 {
+    background-image: url(../img/madalCard7.jpeg);
+}
+.module-kitchens-card-img8 {    
+    background-image: url(../img/madalCard8.jpg);
+}
+.module-kitchens-card-img9 {
+    background-image: url(../img/madalCard9.jpg);
+}
+.module-kitchens-card-img10 {
+    background-image: url(../img/madalCard10.jpg);
+}
+.module-kitchens-card-img11 {
+    background-image: url(../img/madalCard11.jpg);
+}
 
 .module-kitchens-card {
     display: flex;

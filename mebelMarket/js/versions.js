@@ -1,6 +1,23 @@
 // Функция для подключения versions.html как шаблона
 function includeVersions() {
-    fetch('html/versions.html')
+    // Определяем правильный путь в зависимости от расположения страницы
+    const currentPath = window.location.pathname;
+    let versionsPath;
+    
+    // Если страница в корне (например, /index.html)
+    if (currentPath === '/' || currentPath === '/index.html' || currentPath.endsWith('/mebelMarket/') || currentPath.endsWith('/mebelMarket/index.html')) {
+        versionsPath = 'html/versions.html';
+    } else if (currentPath.includes('/html/')) {
+        // Если страница в папке html (например, /html/aboutCompany.html)
+        versionsPath = 'versions.html';
+    } else {
+        // По умолчанию считаем, что страница в корне
+        versionsPath = 'html/versions.html';
+    }
+    
+    console.log('Загружаем versions.html по пути:', versionsPath);
+    
+    fetch(versionsPath)
         .then(response => response.text())
         .then(html => {
             // Создаем временный div для парсинга HTML
@@ -32,9 +49,13 @@ function initVersionDisplay() {
         const version360 = document.querySelector('.version360');
         const nonono = document.querySelector('.nonono');
 
-        // Скрываем все версии
+        // Скрываем все версии и делаем их некликабельными
         [versionDesktop, versionTablet1500, versionTablet1400, versionTablet1100, versionTablet935, version743, version450, version360].forEach(el => {
-            if (el) el.style.display = 'none';
+            if (el) {
+                el.style.display = 'none';
+                el.style.pointerEvents = 'none'; // Не блокирует клики
+                el.style.userSelect = 'none'; // Не выделяется текст
+            }
         });
 
         // Настраиваем nonono для всех экранов меньше 1500px (если элемент существует)
@@ -55,17 +76,37 @@ function initVersionDisplay() {
             }
         }
 
-        // Показываем соответствующую версию
+        // Показываем соответствующую версию и делаем её некликабельной
         if (width > 1500) {
-            if (versionDesktop) versionDesktop.style.display = 'flex';
+            if (versionDesktop) {
+                versionDesktop.style.display = 'flex';
+                versionDesktop.style.pointerEvents = 'none';
+                versionDesktop.style.userSelect = 'none';
+            }
         } else if (width <= 1500 && width > 1400) {
-            if (versionTablet1500) versionTablet1500.style.display = 'flex';
+            if (versionTablet1500) {
+                versionTablet1500.style.display = 'flex';
+                versionTablet1500.style.pointerEvents = 'none';
+                versionTablet1500.style.userSelect = 'none';
+            }
         } else if (width <= 1400 && width > 1100) {
-            if (versionTablet1400) versionTablet1400.style.display = 'flex';
+            if (versionTablet1400) {
+                versionTablet1400.style.display = 'flex';
+                versionTablet1400.style.pointerEvents = 'none';
+                versionTablet1400.style.userSelect = 'none';
+            }
         } else if (width <= 1100 && width > 935) {
-            if (versionTablet1100) versionTablet1100.style.display = 'flex';
+            if (versionTablet1100) {
+                versionTablet1100.style.display = 'flex';
+                versionTablet1100.style.pointerEvents = 'none';
+                versionTablet1100.style.userSelect = 'none';
+            }
         } else if (width <= 935 && width > 743) {
-            if (versionTablet935) versionTablet935.style.display = 'flex';
+            if (versionTablet935) {
+                versionTablet935.style.display = 'flex';
+                versionTablet935.style.pointerEvents = 'none';
+                versionTablet935.style.userSelect = 'none';
+            }
         } else if (width <= 743 && width > 450) {
             if (version743) {
                 version743.style.display = 'flex';
@@ -74,6 +115,8 @@ function initVersionDisplay() {
                 version743.style.height = 'auto';
                 version743.style.padding = '10px 20px';
                 version743.style.fontSize = '14px';
+                version743.style.pointerEvents = 'none';
+                version743.style.userSelect = 'none';
             }
         } else if (width <= 450 && width > 360) {
             if (version450) {
@@ -83,6 +126,8 @@ function initVersionDisplay() {
                 version450.style.height = 'auto';
                 version450.style.padding = '10px 20px';
                 version450.style.fontSize = '14px';
+                version450.style.pointerEvents = 'none';
+                version450.style.userSelect = 'none';
             }
         } else if (width <= 360) {
             if (version360) {
@@ -92,6 +137,8 @@ function initVersionDisplay() {
                 version360.style.height = 'auto';
                 version360.style.padding = '10px 20px';
                 version360.style.fontSize = '14px';
+                version360.style.pointerEvents = 'none';
+                version360.style.userSelect = 'none';
             }
         }
     }

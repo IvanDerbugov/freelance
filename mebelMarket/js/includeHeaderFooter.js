@@ -72,6 +72,47 @@ function fixInternalLinks(container, basePath) {
     });
 }
 
+function highlightActiveLink(container) {
+    // Определяем текущую страницу
+    const currentPath = window.location.pathname;
+    const currentPage = currentPath.split('/').pop() || 'index.html';
+    
+    // Находим все ссылки в шапке
+    const headerLinks = container.querySelectorAll('.header-top-left a');
+    
+    headerLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href) {
+            // Убираем все классы active
+            link.classList.remove('active');
+            
+            // Проверяем, соответствует ли ссылка текущей странице
+            if (href === '#catalog') {
+                // Каталог - это выпадающий список, не выделяем как активную страницу
+                return;
+            } else if (href.includes('index.html') || href === 'index.html') {
+                // Главная страница
+                if (currentPage === 'index.html' || currentPage === '' || currentPath.endsWith('/mebelMarket/')) {
+                    link.classList.add('active');
+                    console.log(`Выделена активная ссылка: Главная на странице ${currentPage}`);
+                }
+            } else if (href.includes('aboutCompany.html') && currentPage === 'aboutCompany.html') {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: О компании на странице ${currentPage}`);
+            } else if (href.includes('payment.html') && currentPage === 'payment.html') {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: Оплата на странице ${currentPage}`);
+            } else if (href.includes('delivery.html') && currentPage === 'delivery.html') {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: Доставка на странице ${currentPage}`);
+            } else if (href.includes('contacts.html') && currentPage === 'contacts.html') {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: Контакты на странице ${currentPage}`);
+            }
+        }
+    });
+}
+
 function includeHTML(selector, url, callback) {
     fetch(url)
         .then(response => response.text())
@@ -83,6 +124,11 @@ function includeHTML(selector, url, callback) {
             const basePath = getBasePath();
             fixImagePaths(container, basePath);
             fixInternalLinks(container, basePath);
+            
+            // Если это header, выделяем активную ссылку
+            if (selector === '#header-container') {
+                highlightActiveLink(container);
+            }
             
             if (callback) callback();
         })
