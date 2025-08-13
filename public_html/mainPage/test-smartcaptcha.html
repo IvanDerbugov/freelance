@@ -100,9 +100,17 @@
             <p>Этот файл тестирует интеграцию SmartCAPTCHA от Яндекса. Для работы необходимо:</p>
             <ol>
                 <li>Получить Client Key на <a href="https://captcha.yandex.ru/" target="_blank">captcha.yandex.ru</a></li>
-                <li>Вставить ключ в файл <code>JS/smartcaptcha.js</code></li>
+                <li>Вставить ключ в файл <code>JS/smartcaptcha.js</code> (строка 22)</li>
                 <li>Обновить страницу</li>
             </ol>
+            <p><strong>📝 Рекомендуемые настройки при создании капчи:</strong></p>
+            <ul>
+                                 <li><strong>Имя:</strong> main-page-forms</li>
+                <li><strong>Отключить проверку домена:</strong> ✅ ОТМЕТИТЬ</li>
+                                 <li><strong>Хосты:</strong> не заполнять (автоматически скрыто)</li>
+                <li><strong>Тема:</strong> Стандартный</li>
+                                 <li><strong>Сложность:</strong> Легкая (рекомендуется)</li>
+            </ul>
         </div>
 
         <form id="testForm">
@@ -126,6 +134,9 @@
 
         <div class="smartcaptcha-container">
             <p><strong>SmartCAPTCHA будет загружена здесь автоматически</strong></p>
+            <div id="captchaStatus" style="margin-top: 10px; padding: 10px; background: #e3f2fd; border-radius: 5px; border: 1px solid #2196f3;">
+                <p style="margin: 0; color: #1976d2;">⏳ Ожидание загрузки SmartCAPTCHA...</p>
+            </div>
         </div>
 
         <div class="info">
@@ -146,14 +157,75 @@
         // Дополнительное логирование для отладки
         console.log('Страница загружена, инициализируем SmartCAPTCHA...');
         
+        // Функция обновления статуса
+        function updateCaptchaStatus(message, type = 'info') {
+            const statusElement = document.getElementById('captchaStatus');
+            if (statusElement) {
+                let bgColor, borderColor, textColor;
+                
+                switch(type) {
+                    case 'success':
+                        bgColor = '#e8f5e8';
+                        borderColor = '#4caf50';
+                        textColor = '#2e7d32';
+                        break;
+                    case 'error':
+                        bgColor = '#ffebee';
+                        borderColor = '#f44336';
+                        textColor = '#c62828';
+                        break;
+                    case 'warning':
+                        bgColor = '#fff3e0';
+                        borderColor = '#ff9800';
+                        textColor = '#ef6c00';
+                        break;
+                    default:
+                        bgColor = '#e3f2fd';
+                        borderColor = '#2196f3';
+                        textColor = '#1976d2';
+                }
+                
+                statusElement.style.background = bgColor;
+                statusElement.style.borderColor = borderColor;
+                statusElement.querySelector('p').style.color = textColor;
+                statusElement.querySelector('p').innerHTML = message;
+            }
+        }
+        
         // Проверяем загрузку SmartCAPTCHA
         setTimeout(() => {
             if (window.SmartCaptcha) {
                 console.log('✅ SmartCAPTCHA успешно загружена');
+                updateCaptchaStatus('✅ SmartCAPTCHA успешно загружена!', 'success');
             } else {
                 console.log('❌ SmartCAPTCHA не загружена');
+                updateCaptchaStatus('❌ SmartCAPTCHA не загружена. Проверьте настройки.', 'error');
             }
         }, 2000);
+        
+        // Дополнительная проверка через 5 секунд
+        setTimeout(() => {
+            if (!window.SmartCaptcha) {
+                updateCaptchaStatus('⚠️ SmartCAPTCHA не загрузилась. Проверьте Client Key в JS/smartcaptcha.js', 'warning');
+            }
+        }, 5000);
+        
+        // Проверяем наличие Client Key
+        setTimeout(() => {
+            const script = document.createElement('script');
+            script.src = 'JS/smartcaptcha.js';
+            script.onload = () => {
+                // Читаем содержимое файла для проверки ключа
+                fetch('JS/smartcaptcha.js')
+                    .then(response => response.text())
+                    .then(content => {
+                        if (content.includes('YOUR_CLIENT_KEY_HERE')) {
+                            updateCaptchaStatus('⚠️ Необходимо заменить YOUR_CLIENT_KEY_HERE на реальный ключ!', 'warning');
+                        }
+                    });
+            };
+            document.head.appendChild(script);
+        }, 1000);
     </script>
 </body>
 </html>

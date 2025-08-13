@@ -1,8 +1,16 @@
 // SmartCAPTCHA Integration
 // Отечественная альтернатива reCAPTCHA v3 от Яндекса
+// 
+// 🚀 ИНСТРУКЦИЯ ПО НАСТРОЙКЕ:
+// 1. Зарегистрируйтесь на https://captcha.yandex.ru/
+// 2. Создайте капчу с именем "mainPage-forms"
+// 3. В настройках отметьте "Отключить проверку домена"
+// 4. Добавьте хосты: localhost, 127.0.0.1, ваш-домен.com
+// 5. Скопируйте Client Key и вставьте ниже
+// 6. Выберите тему "Стандартный" и сложность "Средняя"
 
 // Глобальные переменные
-let smartCaptchaClientKey = 'YOUR_CLIENT_KEY_HERE'; // Замените на ваш Client Key
+let smartCaptchaClientKey = 'YOUR_CLIENT_KEY_HERE'; // ← ВСТАВЬТЕ ВАШ CLIENT KEY ЗДЕСЬ
 let smartCaptchaLoaded = false;
 
 // Функция загрузки SmartCAPTCHA
@@ -25,10 +33,12 @@ function loadSmartCaptcha() {
         
         script.onload = () => {
             smartCaptchaLoaded = true;
+            console.log('✅ SmartCAPTCHA успешно загружена');
             resolve();
         };
         
         script.onerror = () => {
+            console.error('❌ Ошибка загрузки SmartCAPTCHA');
             reject(new Error('Failed to load SmartCAPTCHA'));
         };
         
@@ -54,10 +64,15 @@ async function getSmartCaptchaToken() {
 
 // Функция для добавления SmartCAPTCHA в форму
 function addSmartCaptchaToForm(formElement, action = 'submit') {
+    // Проверяем, есть ли уже SmartCAPTCHA в форме
+    if (formElement.querySelector('.smartcaptcha-container')) {
+        return;
+    }
+    
     // Создаем контейнер для SmartCAPTCHA
     const captchaContainer = document.createElement('div');
     captchaContainer.className = 'smartcaptcha-container';
-    captchaContainer.style.cssText = 'margin: 15px 0;';
+    captchaContainer.style.cssText = 'margin: 15px 0; padding: 10px; background: #f8f9fa; border-radius: 8px; border: 1px solid #e9ecef;';
     
     // Добавляем контейнер после формы
     formElement.parentNode.insertBefore(captchaContainer, formElement.nextSibling);
@@ -70,11 +85,25 @@ function addSmartCaptchaToForm(formElement, action = 'submit') {
                 callback: function(token) {
                     // Токен получен, можно отправлять форму
                     console.log('SmartCAPTCHA token received:', token);
+                    
+                    // Добавляем скрытое поле с токеном
+                    let tokenField = formElement.querySelector('input[name="smart-token"]');
+                    if (!tokenField) {
+                        tokenField = document.createElement('input');
+                        tokenField.type = 'hidden';
+                        tokenField.name = 'smart-token';
+                        formElement.appendChild(tokenField);
+                    }
+                    tokenField.value = token;
                 },
                 invisible: true, // Невидимая капча
-                hideShield: true // Скрываем щит
+                hideShield: true, // Скрываем щит
+                theme: 'light' // Светлая тема
             });
         }
+    }).catch(error => {
+        console.error('Ошибка инициализации SmartCAPTCHA:', error);
+        captchaContainer.innerHTML = '<p style="color: #f44336;">Ошибка загрузки капчи. Проверьте настройки.</p>';
     });
     
     // Перехватываем отправку формы
