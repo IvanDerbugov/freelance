@@ -475,9 +475,15 @@ section.carousel-bootstrap {
     min-height: 48px;
     letter-spacing: 1px;
 }
+.price-container {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+}
 .old-price {
     font-size: 22px !important;
     font-weight: 500;
+    text-decoration: line-through;
 }
 
 /* Стили для цен в карточке лучших работ */
@@ -488,6 +494,7 @@ section.carousel-bootstrap {
     font-weight: 400;
     transform: translateY(6px);
 }
+
 
 /* Стили для кнопки "В корзину" */
 .cardBestWorks-info button {
@@ -641,14 +648,13 @@ section.carousel-bootstrap {
     letter-spacing: 1px;
 }
 
-.borderCard > div {
+.borderCard > div:not(.price-container) {
     font-size: 22px;
     color: #000;
     font-weight: 600;
     display: flex;
     flex-direction: column;
     gap: 0px;
-    /* transform: translateY(18px); */
 }
 
 .timer {
@@ -656,6 +662,7 @@ section.carousel-bootstrap {
     font-weight: 400;
     position: relative;
     letter-spacing: 1px;
+    margin-top: -21px;
 }
 
 /* Стили для цифр таймера */
@@ -1376,6 +1383,15 @@ section.carousel-bootstrap {
     width: 20px;
     height: 20px;
     filter: brightness(0) invert(1);
+}
+
+
+.ourWorks .price-container {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    align-items: center;
+    line-height: 24px;
 }
 
 /* Адаптивность для мобильных устройств */
