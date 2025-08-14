@@ -477,7 +477,7 @@ section.carousel-bootstrap {
 }
 .price-container {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     gap: 10px;
 }
 .old-price {
@@ -661,8 +661,9 @@ section.carousel-bootstrap {
     font-size: 23px;
     font-weight: 400;
     position: relative;
-    letter-spacing: 1px;
-    margin-top: -21px;
+    letter-spacing: 2px;
+    margin-top: -14px;
+    text-align: center;
 }
 
 /* Стили для цифр таймера */
@@ -740,6 +741,7 @@ section.carousel-bootstrap {
     display: inline-block;
     transition: all 0.3s ease;
     animation: unitFloat 3s ease-in-out infinite;
+    letter-spacing: 4px;
 }
 
 @keyframes unitFloat {
@@ -765,6 +767,11 @@ section.carousel-bootstrap {
     display: flex;
     flex-direction: column;
     gap: 0px;
+}
+.p-timer {
+    font-size: 19px !important;
+    font-weight: 600 !important;
+    letter-spacing: 4px !important;
 }
 
 /* Секция "Почему выбирают нас" */
@@ -1388,7 +1395,7 @@ section.carousel-bootstrap {
 
 .ourWorks .price-container {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     gap: 10px;
     align-items: center;
     line-height: 24px;
