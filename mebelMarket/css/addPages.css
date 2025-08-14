@@ -69,15 +69,20 @@
 }
 
 .about-section {
-    margin-bottom: -60px;
+    margin-bottom: 40px;
 }
 
 .about-section h2 {
     font-size: 28px;
     font-weight: 600;
     color: #1F7D63;
+    margin-top: 30px;
     margin-bottom: 20px;
     position: relative;
+}
+
+.about-section:first-child h2 {
+    margin-top: 0;
 }
 
 .about-section h2::after {

@@ -32,12 +32,21 @@ function fixImagePaths(container, basePath) {
 
 function fixInternalLinks(container, basePath) {
     // Исправляем внутренние ссылки в зависимости от расположения страницы
-    const links = container.querySelectorAll('a[href^="aboutCompany.html"], a[href^="payment.html"], a[href^="delivery.html"], a[href^="contacts.html"], a[href^="index.html"]');
+    const links = container.querySelectorAll('a[href^="aboutCompany.html"], a[href^="payment.html"], a[href^="delivery.html"], a[href^="contacts.html"], a[href^="privacyPolicy.html"], a[href^="termsOfUse.html"], a[href^="index.html"], a[href^="#"]');
     links.forEach(link => {
         const oldHref = link.getAttribute('href');
         let newHref = oldHref;
         
-        if (basePath === '../') {
+        // Обрабатываем якорные ссылки (например, #catalog)
+        if (oldHref.startsWith('#')) {
+            if (basePath === '../') {
+                // Если мы в папке html, добавляем путь к главной странице
+                newHref = '../index.html' + oldHref;
+            } else {
+                // Если мы в корне, добавляем только якорь
+                newHref = 'index.html' + oldHref;
+            }
+        } else if (basePath === '../') {
             // Если мы в папке html, исправляем ссылки
             if (oldHref === 'aboutCompany.html') {
                 newHref = 'aboutCompany.html'; // Остается как есть
@@ -47,6 +56,10 @@ function fixInternalLinks(container, basePath) {
                 newHref = 'delivery.html'; // Остается как есть
             } else if (oldHref === 'contacts.html') {
                 newHref = 'contacts.html'; // Остается как есть
+            } else if (oldHref === 'privacyPolicy.html') {
+                newHref = 'privacyPolicy.html'; // Остается как есть
+            } else if (oldHref === 'termsOfUse.html') {
+                newHref = 'termsOfUse.html'; // Остается как есть
             } else if (oldHref === 'index.html') {
                 newHref = '../index.html'; // На главную
             }
@@ -60,6 +73,10 @@ function fixInternalLinks(container, basePath) {
                 newHref = 'html/delivery.html'; // В папку html
             } else if (oldHref === 'contacts.html') {
                 newHref = 'html/contacts.html'; // В папку html
+            } else if (oldHref === 'privacyPolicy.html') {
+                newHref = 'html/privacyPolicy.html'; // В папку html
+            } else if (oldHref === 'termsOfUse.html') {
+                newHref = 'html/termsOfUse.html'; // В папку html
             } else if (oldHref === 'index.html') {
                 newHref = 'index.html'; // Остается как есть
             }
