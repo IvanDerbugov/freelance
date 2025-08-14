@@ -785,7 +785,7 @@ img[src*="img/loader"] {
 }
 
 .infoAboutLoader {
-    background: #C4C6C5;
+    background: #F8F8F9;
     padding: 60px 0;
 }
 .infoAboutLoader > .conteiner1240 {
@@ -802,7 +802,7 @@ img[src*="img/loader"] {
     padding: 38px 32px 38px 58px;
     font-size: 21px;
     line-height: 1.2;
-    color: #043517;
+    color: #000;
     background: none;
     display: flex;
     flex-direction: column;
@@ -813,8 +813,7 @@ img[src*="img/loader"] {
 }
 .info-col b {
     font-size: 28px;
-    font-weight: 700;
-    color: #043517;
+    font-weight: 700;   
     margin-bottom: 12px;
     display: block;
 }
@@ -822,7 +821,6 @@ img[src*="img/loader"] {
     list-style: disc;
     margin: 12px 0 0 0;
     font-size: 20px;
-    color: #043517;
 }
 .info-col li {
     margin-bottom: 8px;
@@ -909,7 +907,7 @@ img[src*="img/loader"] {
 
 
 .payment {
-    background-color: #C4C6C5;
+    background-color: #F8F8F9;
     padding: 120px 0 80px 0;
 }
 .payment .titleBlock {
