@@ -53,9 +53,24 @@
 
     .offer-15 {
         position: absolute;
-        top: 280px;
-        left: 449px;
-        width: 230px;
+        top: 226px;
+        left: 483px;
+        font-size: 46px;
+    }
+    .offer-15 >div {
+        width: calc(246px * 0.7);
+        height: calc(91px * 0.7);
+        background-size: calc(246px * 0.7) calc(91px * 0.7);
+    }
+    .offer-15 span {
+        font-size: 20px;
+    }
+    .offer-15-span1 {
+        transform: translate(-10px, -14px);
+    }
+    .offer-15-span2 {
+        letter-spacing: 3px;
+        transform: translate(6px, 6px);
     }
 
     .contact-buttons p {
@@ -221,9 +236,8 @@
 
     .offer-15 {
         position: absolute;
-        top: 263px;
-        left: 358px;
-        width: 180px;
+        top: 243px;
+        left: 398px;
     }
 
     .contact-buttons-wrap {

@@ -58,17 +58,28 @@
     }
 
     .offer-15 {
-        display: none;
+        font-size: 29px;
+        top: 68%;
+        left: 188px;
+        gap: 0;
+    }
+    .offer-15 >div {
+        width: calc(246px * 0.5);
+        height: calc(91px * 0.5);
+        background-size: calc(246px * 0.5) calc(91px * 0.5);
+    }
+    .offer-15 span {
+        font-size: 13px;
+    }
+    .offer-15-span1 {
+        transform: translate(-10px, -10px);
+    }
+    .offer-15-span2 {
+        letter-spacing: 1px;
     }
     .leaveRequest-wrap {
         display: flex;
         align-items: center;
-        margin-top: -30px;
-        margin-bottom: -23px;
-    }
-    .offer-15Mobile {
-        display: block;
-        width: 140px;
     }
 
     .contact-buttons p {
@@ -227,5 +238,23 @@
 @media (max-width: 400px) {
     main > .conteiner1800:first-of-type {
         margin-top: 92px;
+    }
+
+    .offer-15 {
+        font-size: 24px;
+        top: 73%;
+        left: 160px;
+        gap: 0;
+    }
+    .offer-15 >div {
+        width: calc(246px * 0.4);
+        height: calc(91px * 0.4);
+        background-size: calc(246px * 0.4) calc(91px * 0.4);
+    }
+    .offer-15 span {
+        font-size: 11px;
+    }
+    .offer-15-span1 {
+        transform: translate(-7px, -6px);
     }
 }

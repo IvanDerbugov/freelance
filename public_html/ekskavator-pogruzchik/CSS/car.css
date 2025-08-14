@@ -14,6 +14,7 @@
 
 main {
     margin-top: 64px;
+    background-color: #EAEAE9;
 }
 
 .conteiner1240 {
@@ -32,7 +33,7 @@ main > .conteiner1800:first-of-type {
     align-items: center;
     justify-content: center;
     position: relative;
-    margin-top: 178px;
+    margin-top: 177px;
 }
 
 .bannerMain {
@@ -365,14 +366,40 @@ main > .conteiner1800:first-of-type {
 
 .offer-15 {
     position: absolute;
-    top: 260px;
-    left: 719px;
-    width: 300px;
+    top: 258px;
+    left: 811px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 64px;
+    font-weight: 600;
+    color: #fff;
 }
 
-.offer-15Mobile {
-    display: none;
+.offer-15 >div {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background: url(../img/discountFon.png) no-repeat center center;
+    width: 246px;
+    height: 91px;
 }
+.offer-15 span {
+    font-size: 24px;
+    font-weight: 400;
+}
+.offer-15-span1 {
+    transform: translate(-14px, -18px);
+}
+.offer-15-span2 {
+    letter-spacing: 6px;
+    transform: translate(10px, 6px);
+}
+
+
+
 
 .wrapCardGrid {
     display: grid;
@@ -657,7 +684,7 @@ main > .conteiner1800:first-of-type {
 }
 
 .ourAdvantages {
-    background: #C4C6C5;
+    background: #FAFAFAF5;
     padding: 120px 0 80px 0;
 }
 
@@ -754,6 +781,7 @@ main > .conteiner1800:first-of-type {
 
 img[src*="img/loader"] {
     margin: 0 auto;
+    width: 1917px;
 }
 
 .infoAboutLoader {
