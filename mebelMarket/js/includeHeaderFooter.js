@@ -32,7 +32,7 @@ function fixImagePaths(container, basePath) {
 
 function fixInternalLinks(container, basePath) {
     // Исправляем внутренние ссылки в зависимости от расположения страницы
-    const links = container.querySelectorAll('a[href^="aboutCompany.html"], a[href^="payment.html"], a[href^="delivery.html"], a[href^="contacts.html"], a[href^="privacyPolicy.html"], a[href^="termsOfUse.html"], a[href^="index.html"], a[href^="#"]');
+    const links = container.querySelectorAll('a[href^="aboutCompany.html"], a[href^="payment.html"], a[href^="delivery.html"], a[href^="contacts.html"], a[href^="privacyPolicy.html"], a[href^="termsOfUse.html"], a[href^="flat-8900.html"], a[href^="index.html"], a[href^="#"]');
     links.forEach(link => {
         const oldHref = link.getAttribute('href');
         let newHref = oldHref;
@@ -60,6 +60,8 @@ function fixInternalLinks(container, basePath) {
                 newHref = 'privacyPolicy.html'; // Остается как есть
             } else if (oldHref === 'termsOfUse.html') {
                 newHref = 'termsOfUse.html'; // Остается как есть
+            } else if (oldHref === 'flat-8900.html') {
+                newHref = 'flat-8900.html'; // Остается как есть
             } else if (oldHref === 'index.html') {
                 newHref = '../index.html'; // На главную
             }
@@ -77,6 +79,8 @@ function fixInternalLinks(container, basePath) {
                 newHref = 'html/privacyPolicy.html'; // В папку html
             } else if (oldHref === 'termsOfUse.html') {
                 newHref = 'html/termsOfUse.html'; // В папку html
+            } else if (oldHref === 'flat-8900.html') {
+                newHref = 'html/flat-8900.html'; // В папку html
             } else if (oldHref === 'index.html') {
                 newHref = 'index.html'; // Остается как есть
             }
@@ -105,10 +109,10 @@ function highlightActiveLink(container) {
             
             // Проверяем, соответствует ли ссылка текущей странице
             if (href === '#catalog') {
-                // Каталог - это выпадающий список, не выделяем как активную страницу
+                // Каталог - никогда не выделяем как активную ссылку
                 return;
             } else if (href.includes('index.html') || href === 'index.html') {
-                // Главная страница
+                // Главная страница - выделяем всегда на главной странице
                 if (currentPage === 'index.html' || currentPage === '' || currentPath.endsWith('/mebelMarket/')) {
                     link.classList.add('active');
                     console.log(`Выделена активная ссылка: Главная на странице ${currentPage}`);
@@ -125,6 +129,9 @@ function highlightActiveLink(container) {
             } else if (href.includes('contacts.html') && currentPage === 'contacts.html') {
                 link.classList.add('active');
                 console.log(`Выделена активная ссылка: Контакты на странице ${currentPage}`);
+            } else if (href.includes('flat-8900.html') && currentPage === 'flat-8900.html') {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: Флэт от 8900р на странице ${currentPage}`);
             }
         }
     });

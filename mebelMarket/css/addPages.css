@@ -1073,3 +1073,224 @@
 }
 
 
+
+/* Стили для страницы кухонь Флэт от 8900р */
+.flat-kitchens-main {
+    padding: 40px 0 80px;
+    font-family: 'Fira Sans', sans-serif;
+    background-color: #ffffff;
+}
+
+.page-subtitle {
+    font-size: 20px;
+    color: #666666;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+.kitchens-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.kitchens-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.kitchen-card {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.kitchen-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.kitchen-card-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.kitchen-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.kitchen-card:hover .kitchen-card-image img {
+    transform: scale(1.05);
+}
+
+.kitchen-card .sale-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #e74c3c;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 2;
+    width: auto;
+    min-width: fit-content;
+    max-width: none;
+    transform: none;
+    animation: none;
+    box-shadow: none;
+    text-align: center;
+}
+
+.kitchen-card-info {
+    padding: 25px;
+}
+
+.kitchen-card-info h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.kitchen-features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.feature {
+    font-size: 14px;
+    color: #666666;
+    padding: 5px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.feature:last-child {
+    border-bottom: none;
+}
+
+.price-container {
+    margin-bottom: 20px;
+}
+
+.old-price {
+    font-size: 16px;
+    color: #999999;
+    text-decoration: line-through;
+    margin: 0 0 5px 0;
+}
+
+.new-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1F7D63;
+    margin: 0;
+}
+
+.kitchen-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-primary {
+    background: #1F7D63;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background: #166b54;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #f8f9fa;
+    color: #1F7D63;
+    border: 2px solid #1F7D63;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: #1F7D63;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .kitchens-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+    }
+    
+    .kitchen-card-info {
+        padding: 20px;
+    }
+    
+    .kitchen-card-info h3 {
+        font-size: 16px;
+    }
+    
+    .new-price {
+        font-size: 20px;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .flat-kitchens-main {
+        padding: 20px 0 60px;
+    }
+    
+    .page-title {
+        font-size: 32px;
+    }
+    
+    .page-subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+    
+    .kitchen-card-image {
+        height: 200px;
+    }
+    
+    .kitchen-card-info {
+        padding: 15px;
+    }
+}
+
+
