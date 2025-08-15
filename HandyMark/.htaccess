@@ -1,9 +1,0 @@
-# BEGIN HTTPS Redirect
-RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-# END HTTPS Redirect
-
-# BEGIN Index Files
-DirectoryIndex index.html
-# END Index Files 

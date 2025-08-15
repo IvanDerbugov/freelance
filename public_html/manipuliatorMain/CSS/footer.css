@@ -1,0 +1,350 @@
+footer {
+    width: 100%;
+    color: #C4C6C5;
+    background: url('../img/headerPodlochkaNew.png') center center,
+        linear-gradient(90deg, #090909 0%, #0B0F0C 2.5%, #4C8D65 100%);
+    background-size: 103vw 100%, auto;
+    background-repeat: no-repeat, no-repeat;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.footer-line {
+    width: 1px;
+    height: 76px;
+    border-left: 1px solid #fff;
+}
+
+.headerTop8 a {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.headerTop8 p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 31px;
+    line-height: 35px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+
+.footerBottom {
+    font-family: 'Noto Sans', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 30px 0 62px;
+    color: #fff;
+    margin-bottom: 0;
+    border-top: 1px solid hsl(0, 0%, 100%, 0.5);
+}
+
+.catalog-btn {
+    white-space: nowrap;
+}
+
+.footerBottom>p {
+    font-weight: 300;
+    font-size: 17px;
+    max-width: 1030px;
+}
+
+.footerBottom>div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-weight: 300;
+    font-size: 17px;
+}
+
+.footerBottom>div>a {
+    text-decoration: underline;
+    white-space: nowrap;
+}
+
+.link-avito-mobile {
+    display: none !important;
+}
+
+/* Стили для каталога в футере */
+footer .footerBottom .catalog-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+footer .footerBottom .catalog-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+}
+
+footer .footerBottom .catalog-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+footer .footerBottom .catalog-btn::after {
+    content: '▲' !important;
+    margin-left: 8px !important;
+    font-size: 12px !important;
+    transition: transform 0.3s ease !important;
+}
+
+footer .footerBottom .catalog-dropdown.active .catalog-btn::after {
+    transform: rotate(180deg) !important;
+}
+
+footer .footerBottom .dropdown-menu {
+    position: absolute;
+    bottom: 100%;
+    top: auto;
+    left: 0;
+    background: #D7DFDA;
+    border: 1px solid #4C8D65;
+    border-radius: 8px;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
+    min-width: 350px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px)t;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    margin-bottom: 10px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+footer .footerBottom .catalog-dropdown.active .dropdown-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+/* Убираем overflow: hidden когда dropdown активен */
+footer .footerBottom .catalog-dropdown.active {
+    overflow: visible !important;
+}
+
+/* Также убираем overflow: hidden у родительского футера когда dropdown активен */
+footer:has(.footerBottom .catalog-dropdown.active) {
+    overflow: visible !important;
+}
+
+footer .footerBottom .dropdown-menu a {
+    display: block ;
+    padding: 12px 20px ;
+    color: #043517 ;
+    text-decoration: none ;
+    font-family: 'Noto Sans', sans-serif ;
+    font-size: 20px ;
+    font-weight: 400 ;
+    transition: all 0.3s ease ;
+    border-bottom: 1px solid rgba(76, 141, 101, 0.1) ;
+}
+
+footer .footerBottom .dropdown-menu a:last-child {
+    border-bottom: none !important;
+}
+
+footer .footerBottom .dropdown-menu a:hover {
+    background: rgba(76, 141, 101, 0.1) !important;
+    color: #ffffff !important;
+    padding-left: 25px !important;
+}
+
+.footer .headerPhoneMobile, .footer .headerTop4 a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+@media (max-width: 1400px) {
+    .footer .headerTop2 {
+        display: none;
+    }
+
+    .footerBottom>p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1200px) {
+    footer .footerBottom .dropdown-menu {
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .footerBottom>p {
+        font-size: 11px;
+    }
+
+    .footerBottom>div {
+        font-size: 13px;
+    }
+
+    .footer-line {
+        height: 54px;
+    }
+
+    .footerBottom {
+        gap: 30px;
+        padding: 20px 0 60px;
+    }
+    .footerBottom>div:last-of-type {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 950px) {
+    .headerTop8 p {
+        font-size: 22px;
+    }
+
+    .headerTop8 {
+        gap: 10px;
+    }
+
+    .footer .headerTop9 {
+        display: none;
+    }
+
+    .footer .headerTop .container1713 {
+        justify-content: space-around;
+    }
+
+    .footer-links {
+        gap: 10px;
+    }
+
+
+    .footerBottom>div:last-of-type {
+        margin-right: 15px;
+    }
+
+    .footerBottom>p {
+        font-size: 9px;
+    }
+
+
+    .footerBottom {
+        gap: clamp(4px, 2vw, 30px);
+    }
+
+    footer .footerBottom .catalog-btn {
+        padding-right: 0;
+        font-size: 14px;
+    }
+
+    .footerBottom>div {
+        font-size: 11px;
+    }
+
+    .footer .headerPhoneMobile, .footer .headerTop4 a {
+        gap: 5px;
+    }
+
+    .headerPhoneIcon {
+        width: 25px;
+        height: 25px;
+    }
+     
+
+}
+@media (max-width: 800px) {
+    footer .footerBottom .dropdown-menu a {
+        padding: 2px 10px;
+        font-size: 12px;
+        border-bottom: 1px solid rgba(76, 141, 101, 0.4);
+    }
+
+    .headerPhoneIcon {
+        margin-top: -5px;
+    }
+}
+/* Responsive adjustments для футера */
+
+@media (max-width: 600px) {
+    .footer .headerTop8 {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .footer-links {
+        gap: 5px;
+        justify-content: space-between;
+    }
+    .footer .footer-links a {
+        width: 30px;
+    }
+
+
+    .footerBottom {
+        flex-direction: column;
+    }
+    .footer .footerBottom .footer-line {
+        display: none;
+    }
+
+    footer .footerBottom .catalog-btn {
+        padding-right: 0;
+        font-size: 22px;
+    }
+
+    .footerBottom>p {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .footerBottom>div:last-of-type {
+        text-align: left;
+        margin: 0 auto;
+        margin-left: 8px;
+    }
+    .footer .headerTop8 .footer-avito-row-item {
+        display: none;
+    }
+
+    .link-avito-mobile {
+        display: block !important;
+        width: 30px;
+    }
+}
+
+@media (max-width: 400px) {
+    .headerPhoneIcon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .dropdown-menu {
+        min-width: 288px !important;
+        right: 0%;
+    }
+}
+
+@media (max-width: 360px) {
+    .headerTop1 {
+        width: 75px;
+    }
+}
