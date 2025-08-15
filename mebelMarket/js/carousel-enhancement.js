@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         carousel.addEventListener('touchend', function(e) {
             if (!isDragging) return;
             
+            endX = e.changedTouches[0].clientX;
             const diffX = startX - endX;
             const threshold = 100; // Увеличиваем порог для плавности
             
@@ -105,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
         carousel.addEventListener('mouseup', function(e) {
             if (!isDragging) return;
             
+            endX = e.clientX;
             const diffX = startX - endX;
             const threshold = 100; // Увеличиваем порог для плавности
             
