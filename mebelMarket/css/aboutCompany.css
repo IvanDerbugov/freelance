@@ -1,0 +1,209 @@
+/* Стили для страницы "О компании" */
+
+.about-company-main {
+    padding: 40px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.page-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    border-radius: 2px;
+}
+
+.about-content {
+    max-width: 100%;
+    margin: 0;
+}
+
+/* Хлебные крошки */
+.breadcrumbs {
+    margin-bottom: 30px;
+}
+
+.breadcrumbs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.breadcrumbs li {
+    display: flex;
+    align-items: center;
+}
+
+/* Разделители убираем - они уже есть в HTML */
+
+.breadcrumbs a {
+    color: #1F7D63;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: rgba(31, 125, 99, 0.1);
+}
+
+.breadcrumbs a:hover {
+    color: #16a085;
+    background: rgba(31, 125, 99, 0.2);
+}
+
+.breadcrumbs span {
+    color: #7f8c8d;
+    font-weight: 400;
+    padding: 8px 12px;
+}
+
+.about-section {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #3498db;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.about-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ecf0f1;
+    position: relative;
+}
+
+.about-section h2::before {
+    content: '✨';
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #34495e;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.about-section strong {
+    color: #2980b9;
+    font-weight: 600;
+}
+
+.delivery-rates {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.delivery-rates li {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.delivery-rates li::before {
+    content: '🚚';
+    margin-right: 10px;
+}
+
+.about-footer {
+    text-align: center;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.about-footer .signature {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.about-footer .wishes {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+.link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .about-company-main {
+        padding: 20px 0;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .about-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .about-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .about-section p {
+        font-size: 1rem;
+    }
+    
+    .delivery-rates li {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}

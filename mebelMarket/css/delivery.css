@@ -1,0 +1,311 @@
+/* Стили для страницы "Доставка" */
+
+.about-company-main {
+    padding: 40px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.page-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #27ae60, #229954);
+    border-radius: 2px;
+}
+
+.about-content {
+    max-width: 100%;
+    margin: 0;
+}
+
+/* Хлебные крошки */
+.breadcrumbs {
+    margin-bottom: 30px;
+}
+
+.breadcrumbs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.breadcrumbs li {
+    display: flex;
+    align-items: center;
+}
+
+/* Разделители убираем - они уже есть в HTML */
+
+.breadcrumbs a {
+    color: #1F7D63;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: rgba(31, 125, 99, 0.1);
+}
+
+.breadcrumbs a:hover {
+    color: #16a085;
+    background: rgba(31, 125, 99, 0.2);
+}
+
+.breadcrumbs span {
+    color: #7f8c8d;
+    font-weight: 400;
+    padding: 8px 12px;
+}
+
+.about-section {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #27ae60;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.about-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ecf0f1;
+    position: relative;
+}
+
+.about-section h2::before {
+    content: '🚚';
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #34495e;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.about-section strong {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+/* Способы доставки */
+.delivery-methods {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.delivery-methods li {
+    background: linear-gradient(135deg, #27ae60, #229954);
+    color: white;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.delivery-methods li:hover {
+    transform: translateX(5px);
+}
+
+.delivery-methods li::before {
+    content: '✅';
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+/* Зоны доставки */
+.delivery-zones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.zone-item {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid #27ae60;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.zone-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #27ae60, #229954);
+}
+
+.zone-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(39, 174, 96, 0.2);
+}
+
+.zone-item h3 {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.zone-item p {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.delivery-price {
+    background: linear-gradient(135deg, #27ae60, #229954);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+}
+
+.free-delivery {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+}
+
+/* Условия доставки */
+.delivery-conditions {
+    background: linear-gradient(135deg, #e8f5e8, #d5f4d5);
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 5px solid #27ae60;
+    margin: 20px 0;
+}
+
+.delivery-conditions p {
+    color: #2c3e50;
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* Важная информация */
+.delivery-important {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 5px solid #f39c12;
+    margin: 20px 0;
+}
+
+.delivery-important p {
+    color: #856404;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.delivery-important p:last-child {
+    margin-bottom: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .about-company-main {
+        padding: 20px 0;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .about-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .about-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .about-section p {
+        font-size: 1rem;
+    }
+    
+    .delivery-zones {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .zone-item {
+        padding: 20px;
+    }
+    
+    .zone-item h3 {
+        font-size: 1.2rem;
+    }
+    
+    .delivery-price {
+        font-size: 1.1rem;
+        padding: 12px;
+    }
+    
+    .free-delivery {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+    
+    .delivery-methods li {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+}

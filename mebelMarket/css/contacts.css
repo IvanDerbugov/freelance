@@ -1,0 +1,283 @@
+/* Стили для страницы "Контакты" */
+
+.about-company-main {
+    padding: 40px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.page-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #e74c3c, #c0392b);
+    border-radius: 2px;
+}
+
+.about-content {
+    max-width: 100%;
+    margin: 0;
+}
+
+/* Хлебные крошки */
+.breadcrumbs {
+    margin-bottom: 30px;
+}
+
+.breadcrumbs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.breadcrumbs li {
+    display: flex;
+    align-items: center;
+}
+
+/* Разделители убираем - они уже есть в HTML */
+
+.breadcrumbs a {
+    color: #1F7D63;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: rgba(31, 125, 99, 0.1);
+}
+
+.breadcrumbs a:hover {
+    color: #16a085;
+    background: rgba(31, 125, 99, 0.2);
+}
+
+.breadcrumbs span {
+    color: #7f8c8d;
+    font-weight: 400;
+    padding: 8px 12px;
+}
+
+.about-section {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #e74c3c;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.about-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ecf0f1;
+    position: relative;
+}
+
+.about-section h2::before {
+    content: '📞';
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.about-section h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #e74c3c;
+    margin-bottom: 15px;
+    margin-top: 25px;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #34495e;
+    margin-bottom: 15px;
+}
+
+.about-section strong {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* Контактные кнопки */
+.contact-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.contact-btn.whatsapp {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+}
+
+.contact-btn.telegram {
+    background: linear-gradient(135deg, #0088cc, #005580);
+}
+
+.contact-btn.phone {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.contact-btn.email {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.btn-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+.btn-text {
+    flex: 1;
+}
+
+/* Адресные карточки */
+.main-address, .contact-phones, .showrooms, .requisites {
+    margin: 20px 0;
+}
+
+.address-card, .phone-item, .showroom-item, .requisites-card {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+}
+
+.address-card:hover, .phone-item:hover, .showroom-item:hover, .requisites-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.working-hours {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #dee2e6;
+}
+
+.working-hours h4 {
+    color: #e74c3c;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.working-hours ul {
+    list-style: none;
+    padding: 0;
+}
+
+.working-hours li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f3f4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.working-hours li:last-child {
+    border-bottom: none;
+}
+
+.requisites-content p {
+    margin-bottom: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.requisites-content p:last-child {
+    border-bottom: none;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .about-company-main {
+        padding: 20px 0;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .about-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .about-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .about-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .about-section p {
+        font-size: 1rem;
+    }
+    
+    .contact-buttons {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .contact-btn {
+        padding: 15px;
+        font-size: 1rem;
+    }
+    
+    .working-hours li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}

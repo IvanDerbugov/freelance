@@ -320,64 +320,67 @@ header {
     justify-content: flex-end;
 }
 
-.header-cart {
+.header-services {
     display: flex;
     align-items: center;
-    gap: 12px;
-    cursor: pointer;
+    justify-content: right;
+    color: #333333;
+    font-size: 20px;
+    gap: 24px;
+}
+
+.header-services a {
+    color: #333333;
+    text-decoration: none;
+    transition: all 0.3s ease;
     padding: 8px 12px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.header-cart:hover {
-    background-color: rgba(31, 125, 99, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(31, 125, 99, 0.2);
-}
-
-.cart-icon {
+    border-radius: 6px;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
 }
 
-.header-cart:hover .cart-icon {
-    transform: scale(1.1);
+.header-services a:hover {
+    color: #1F7D63;
+    background-color: rgba(31, 125, 99, 0.1);
+    transform: translateY(-1px);
 }
 
-.cart-badge {
+.header-services a::after {
+    content: '';
     position: absolute;
-    top: -8px;
-    right: -8px;
-    background-color: #ff6b35;
-    color: white;
-    font-size: 12px;
-    font-weight: 600;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #1F7D63, #27ae60);
     transition: all 0.3s ease;
+    transform: translateX(-50%);
 }
 
-.header-cart:hover .cart-badge {
-    background-color: #e55a2b;
-    transform: scale(1.1);
+.header-services a:hover::after {
+    width: 80%;
 }
 
-.cart-price {
-    color: #1f7d63;
-    font-size: 16px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .header-services {
+        gap: 16px;
+        font-size: 18px;
+    }
+    
+    .header-services a {
+        padding: 6px 10px;
+    }
 }
 
-.header-cart:hover .cart-price {
-    color: #166b54;
+@media (max-width: 480px) {
+    .header-services {
+        gap: 12px;
+        font-size: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .header-services a {
+        padding: 6px 8px;
+    }
 }

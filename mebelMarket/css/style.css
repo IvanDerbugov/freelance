@@ -487,11 +487,6 @@ section.carousel-bootstrap {
 }
 
 
-.action-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 
 .cardBestWorks-info .old-price {
     font-size: 18px;
@@ -533,71 +528,6 @@ section.carousel-bootstrap {
     height: 20px;
     filter: brightness(0) invert(1);
 }
-
-
-/* Стили для новых кнопок действий */
-.btn-measure {
-    background: linear-gradient(135deg, #4CAF50, #45a049);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
-}
-
-.btn-measure:hover {
-    background: linear-gradient(135deg, #45a049, #3d8b40);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
-}
-
-.btn-calculate {
-    background: #1F7D63;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
-}
-
-.btn-calculate:hover {
-    background: #1F7D63;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
-}
-
-.btn-consultant {
-    background: #1F7D63;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
-}
-
-.btn-consultant:hover {
-    background: #1F7D63;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
-}
-
-
-/* Стили для крупных скидочных бейджей на карточках товаров */
 
 /* Основной контейнер для скидки */
 .sale-badge {
@@ -732,8 +662,12 @@ section.carousel-bootstrap {
     font-weight: 400;
     position: relative;
     letter-spacing: 2px;
-    margin-top: -14px;
+    margin-top: -7px;
     text-align: center;
+}
+
+.cardOurWorks .timer {
+    margin-bottom: 10px;
 }
 
 /* Стили для цифр таймера */
@@ -1431,35 +1365,6 @@ section.carousel-bootstrap {
     letter-spacing: 1px;
 }
 
-/* Стили для кнопки "В корзину" в карусели "Наши работы" */
-.cardOurWorks-info button {
-    background: #1F7D63;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    font-family: 'Fira Sans', sans-serif;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(31, 125, 99, 0.2);
-}
-
-.cardOurWorks-info button:hover {
-    background: #166b54;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(31, 125, 99, 0.3);
-}
-
-.cardOurWorks-info button img {
-    width: 20px;
-    height: 20px;
-    filter: brightness(0) invert(1);
-}
 
 
 .ourWorks .price-container {
