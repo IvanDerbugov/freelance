@@ -469,8 +469,8 @@ section.carousel-bootstrap {
     padding: 10px;
 }
 .cardBestWorks-info p:nth-of-type(1) {
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 20px;
+    font-weight: 600;
     color: #333333;
     min-height: 48px;
     letter-spacing: 1px;
@@ -486,7 +486,13 @@ section.carousel-bootstrap {
     text-decoration: line-through;
 }
 
-/* Стили для цен в карточке лучших работ */
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .cardBestWorks-info .old-price {
     font-size: 18px;
     color: #333;
@@ -496,15 +502,14 @@ section.carousel-bootstrap {
 }
 
 
-/* Стили для кнопки "В корзину" */
+
 .cardBestWorks-info button {
-    background: #1F7D63;
     color: white;
     border: none;
-    padding: 12px 24px;
+    padding: 12px 43px;
     border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 800;
     font-family: 'Fira Sans', sans-serif;
     cursor: pointer;
     display: flex;
@@ -512,6 +517,9 @@ section.carousel-bootstrap {
     gap: 8px;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(31, 125, 99, 0.2);
+    width: 351px;
+    justify-content: center;
+    align-content: center;
 }
 
 .cardBestWorks-info button:hover {
@@ -524,6 +532,68 @@ section.carousel-bootstrap {
     width: 20px;
     height: 20px;
     filter: brightness(0) invert(1);
+}
+
+
+/* Стили для новых кнопок действий */
+.btn-measure {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.btn-measure:hover {
+    background: linear-gradient(135deg, #45a049, #3d8b40);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.btn-calculate {
+    background: #1F7D63;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+.btn-calculate:hover {
+    background: #1F7D63;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+}
+
+.btn-consultant {
+    background: #1F7D63;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+.btn-consultant:hover {
+    background: #1F7D63;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
 }
 
 
