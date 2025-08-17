@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кухонный Гарнитур прямой 1.6м - МебельМаркет77</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/addPages.css">
+    <link rel="stylesheet" href="../css/logo-fonts.css">
+    <link rel="stylesheet" href="../css/card.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta name="description" content="Кухонный Гарнитур прямой 1.6м. Качественные материалы ЛДСП, индивидуальные размеры. Заказ и установка в Москве.">
+    <meta name="keywords" content="кухонный гарнитур, кухня 1.6м, мебель на заказ, ЛДСП, Москва">
+</head>
+
+<body>
+    <div class="section-limiter header-limiter">
+        <div id="header-container"></div>
+    </div>
+
+    <main>
+        <section class="container">
+            <div class="breadcrumbs">
+                <a href="../index.html">Главная</a> / 
+                <a href="flat-8900.html">Каталог кухонь</a> / 
+                <span>Кухонный Гарнитур прямой 1.6м</span>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="kitchen-detail-grid">
+                <!-- Левая колонка - изображение -->
+                <div class="kitchen-image-section">
+                    <div class="kitchen-main-image">
+                        <img src="../img/card4.jpg" alt="Кухонный Гарнитур прямой 1.6м" id="mainImage">
+                    </div>
+                </div>
+
+                <!-- Правая колонка - информация о продукте -->
+                <div class="kitchen-info-section">
+                    <h1>Кухонный Гарнитур прямой 1.6м</h1>
+                    
+                    <div class="borderForCard">
+                        <div class="timer-section">
+                            <p class="p-timer">До конца акции осталось:</p>
+                            <p class="timer" id="kitchenTimer">
+                                <span>00</span><span class="time-unit">д</span>
+                                <span>00</span><span class="time-unit">ч</span>
+                                <span>00</span><span class="time-unit">мин</span>
+                            </p>
+                        </div>
+                        
+                        <div class="price-section">
+                            <div class="old-price">31500.00 руб</div>
+                            <div class="current-price">19750.00 руб</div>
+                            <div class="discount-badge">-50%</div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button class="btn-primary">Заказать сейчас</button>
+                            <button class="btn-secondary">Получить консультацию</button>
+                        </div>
+                    </div>
+
+                    <div class="product-details">
+                        <h3>Описание:</h3>
+                        <p>Современный кухонный гарнитур прямого типа длиной 1.6 метра. Идеально подходит для небольших кухонь и студий. Включает в себя все необходимые элементы для полноценного обустройства кухонного пространства.</p>
+
+                        <h3>Комплектация:</h3>
+                        <ul>
+                            <li><strong>Нижние шкафы</strong> - для хранения посуды и продуктов</li>
+                            <li><strong>Верхние шкафы</strong> - для хранения кухонной утвари</li>
+                            <li><strong>Столешница</strong> - практичная рабочая поверхность</li>
+                            <li><strong>Фурнитура</strong> - качественные петли и направляющие</li>
+                        </ul>
+
+                        <h3>Материалы:</h3>
+                        <ul>
+                            <li><strong>Корпус:</strong> ЛДСП</li>
+                            <li><strong>Фасады:</strong> ЛДСП</li>
+                            <li><strong>Столешница:</strong> ЛДСП</li>
+                            <li><strong>Фурнитура:</strong> Металл</li>
+                        </ul>
+
+                        <h3>Полезная информация:</h3>
+                        <p>Внимание! Ручка в комплект не входит. Возможна установка дополнительных аксессуаров.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="section-limiter">
+        <div id="footer-container"></div>
+    </div>
+
+    <!-- Скрипты -->
+    <script src="../js/includeHeaderFooter.js"></script>
+    <script src="../js/timer.js"></script>
+    
+    <script>
+        // Инициализация таймера для этой страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            // Устанавливаем время до конца акции (например, 3 дня)
+            const endTime = new Date();
+            endTime.setDate(endTime.getDate() + 3);
+            
+            // Инициализируем таймер
+            if (typeof startTimer === 'function') {
+                startTimer('kitchenTimer', endTime);
+            }
+        });
+    </script>
+</body>
+
+</html>

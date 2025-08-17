@@ -475,6 +475,9 @@ section.carousel-bootstrap {
     min-height: 48px;
     letter-spacing: 1px;
 }
+.best-works-container .cardBestWorks-info>p {
+    min-height: 60px;
+}
 .price-container {
     display: flex;
     flex-direction: row;
@@ -771,6 +774,7 @@ section.carousel-bootstrap {
     display: flex;
     flex-direction: column;
     gap: 0px;
+    max-height: 143px;
 }
 .p-timer {
     font-size: 19px !important;
