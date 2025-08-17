@@ -37,7 +37,7 @@ class WeeklyTimer {
         const now = new Date();
         
         // Получаем московское время (UTC+3)
-        const moscowTime = new Date(now.getTime() + (3 * 60 * 60 * 1000));
+        const moscowTime = new Date(now.getTime() + (1 * 60 * 60 * 1000));
         
         // День недели (0 = воскресенье, 1 = понедельник, ..., 6 = суббота)
         const currentDay = moscowTime.getDay();
