@@ -204,6 +204,17 @@
     animation: salePulse 2s ease-in-out infinite;
 }
 
+.kitchen-description-section {
+    margin-top: 50px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 30px;
+    background: #f8f9fa;
+    max-width: 1030px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
     .kitchen-detail-grid {
