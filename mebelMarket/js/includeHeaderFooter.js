@@ -32,7 +32,7 @@ function fixImagePaths(container, basePath) {
 
 function fixInternalLinks(container, basePath) {
     // Исправляем внутренние ссылки в зависимости от расположения страницы
-    const links = container.querySelectorAll('a[href^="aboutCompany.html"], a[href^="payment.html"], a[href^="delivery.html"], a[href^="contacts.html"], a[href^="privacyPolicy.html"], a[href^="termsOfUse.html"], a[href^="flat.html"], a[href^="fusion.html"], a[href^="mari.html"], a[href^="index.html"], a[href^="#"]');
+    const links = container.querySelectorAll('a[href^="aboutCompany.html"], a[href^="payment.html"], a[href^="delivery.html"], a[href^="contacts.html"], a[href^="privacyPolicy.html"], a[href^="termsOfUse.html"], a[href^="flat.html"], a[href^="fusion.html"], a[href^="mari.html"], a[href^="skala.html"], a[href^="verona.html"], a[href^="valeria.html"], a[href^="grandel.html"], a[href^="index.html"], a[href^="#"]');
     links.forEach(link => {
         const oldHref = link.getAttribute('href');
         let newHref = oldHref;
@@ -66,6 +66,14 @@ function fixInternalLinks(container, basePath) {
                 newHref = 'fusion.html'; // Остается как есть
             } else if (oldHref === 'mari.html') {
                 newHref = 'mari.html'; // Остается как есть
+            } else if (oldHref === 'skala.html') {
+                newHref = 'skala.html'; // Остается как есть
+            } else if (oldHref === 'verona.html') {
+                newHref = 'verona.html'; // Остается как есть
+            } else if (oldHref === 'valeria.html') {
+                newHref = 'valeria.html'; // Остается как есть
+            } else if (oldHref === 'grandel.html') {
+                newHref = 'grandel.html'; // Остается как есть
             } else if (oldHref === 'index.html') {
                 newHref = '../index.html'; // На главную
             }
@@ -89,6 +97,14 @@ function fixInternalLinks(container, basePath) {
                 newHref = 'html/fusion.html'; // В папку html
             } else if (oldHref === 'mari.html') {
                 newHref = 'html/mari.html'; // В папку html
+            } else if (oldHref === 'skala.html') {
+                newHref = 'html/skala.html'; // В папку html
+            } else if (oldHref === 'verona.html') {
+                newHref = 'html/verona.html'; // В папку html
+            } else if (oldHref === 'valeria.html') {
+                newHref = 'html/valeria.html'; // В папку html
+            } else if (oldHref === 'grandel.html') {
+                newHref = 'html/grandel.html'; // В папку html
             } else if (oldHref === 'index.html') {
                 newHref = 'index.html'; // Остается как есть
             }

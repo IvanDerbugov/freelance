@@ -30,7 +30,7 @@
     width: 100%;
     height: auto;
     max-height: 500px;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -101,7 +101,7 @@
 }
 
 .current-price {
-    font-size: 30px;
+    font-size: 29px;
     font-weight: 700;
     color: #cf2c2c;
 }
@@ -387,7 +387,7 @@
     margin: 8px 0;
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     border-radius: 10px;
-    border-left: 4px solid #3498db;
+    border-left: 4px solid #1F7D63;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
 }
@@ -406,31 +406,31 @@
 .kitchen-modules-list li:hover {
     transform: translateX(5px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    border-left-color: #2980b9;
+    border-left-color: #1F7D63;
 }
 
 .kitchen-modules-list li:nth-child(even) {
-    border-left-color: #e74c3c;
+    border-left-color: #1F7D63;
 }
 
 .kitchen-modules-list li:nth-child(even):hover {
-    border-left-color: #c0392b;
+    border-left-color: #1F7D63;
 }
 
 .kitchen-modules-list li:nth-child(3n) {
-    border-left-color: #f39c12;
+    border-left-color: #1F7D63;
 }
 
 .kitchen-modules-list li:nth-child(3n):hover {
-    border-left-color: #e67e22;
+    border-left-color: #1F7D63;
 }
 
 .kitchen-modules-list li:nth-child(4n) {
-    border-left-color: #9b59b6;
+    border-left-color: #1F7D63;
 }
 
 .kitchen-modules-list li:nth-child(4n):hover {
-    border-left-color: #8e44ad;
+    border-left-color: #1F7D63;
 }
 
 /* Адаптивность для списка модулей */
