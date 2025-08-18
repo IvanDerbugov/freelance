@@ -32,7 +32,7 @@ function fixImagePaths(container, basePath) {
 
 function fixInternalLinks(container, basePath) {
     // Исправляем внутренние ссылки в зависимости от расположения страницы
-    const links = container.querySelectorAll('a[href^="aboutCompany.html"], a[href^="payment.html"], a[href^="delivery.html"], a[href^="contacts.html"], a[href^="privacyPolicy.html"], a[href^="termsOfUse.html"], a[href^="flat.html"], a[href^="index.html"], a[href^="#"]');
+    const links = container.querySelectorAll('a[href^="aboutCompany.html"], a[href^="payment.html"], a[href^="delivery.html"], a[href^="contacts.html"], a[href^="privacyPolicy.html"], a[href^="termsOfUse.html"], a[href^="flat.html"], a[href^="fusion.html"], a[href^="index.html"], a[href^="#"]');
     links.forEach(link => {
         const oldHref = link.getAttribute('href');
         let newHref = oldHref;
@@ -62,6 +62,8 @@ function fixInternalLinks(container, basePath) {
                 newHref = 'termsOfUse.html'; // Остается как есть
             } else if (oldHref === 'flat.html') {
                 newHref = 'flat.html'; // Остается как есть
+            } else if (oldHref === 'fusion.html') {
+                newHref = 'fusion.html'; // Остается как есть
             } else if (oldHref === 'index.html') {
                 newHref = '../index.html'; // На главную
             }
@@ -81,6 +83,8 @@ function fixInternalLinks(container, basePath) {
                 newHref = 'html/termsOfUse.html'; // В папку html
             } else if (oldHref === 'flat.html') {
                 newHref = 'html/flat.html'; // В папку html
+            } else if (oldHref === 'fusion.html') {
+                newHref = 'html/fusion.html'; // В папку html
             } else if (oldHref === 'index.html') {
                 newHref = 'index.html'; // Остается как есть
             }
