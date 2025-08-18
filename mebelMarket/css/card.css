@@ -373,3 +373,76 @@
         justify-self: center;
     }
 }
+
+/* Стили для списка модулей кухни */
+.kitchen-modules-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.kitchen-modules-list li {
+    position: relative;
+    padding: 12px 0 12px 30px;
+    margin: 8px 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 10px;
+    border-left: 4px solid #3498db;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.kitchen-modules-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #27ae60;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.kitchen-modules-list li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-left-color: #2980b9;
+}
+
+.kitchen-modules-list li:nth-child(even) {
+    border-left-color: #e74c3c;
+}
+
+.kitchen-modules-list li:nth-child(even):hover {
+    border-left-color: #c0392b;
+}
+
+.kitchen-modules-list li:nth-child(3n) {
+    border-left-color: #f39c12;
+}
+
+.kitchen-modules-list li:nth-child(3n):hover {
+    border-left-color: #e67e22;
+}
+
+.kitchen-modules-list li:nth-child(4n) {
+    border-left-color: #9b59b6;
+}
+
+.kitchen-modules-list li:nth-child(4n):hover {
+    border-left-color: #8e44ad;
+}
+
+/* Адаптивность для списка модулей */
+@media (max-width: 768px) {
+    .kitchen-modules-list li {
+        padding: 10px 0 10px 25px;
+        margin: 6px 0;
+        font-size: 14px;
+    }
+    
+    .kitchen-modules-list li:before {
+        left: 8px;
+        font-size: 1rem;
+    }
+}

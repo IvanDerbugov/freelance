@@ -1284,9 +1284,7 @@ section.carousel-bootstrap {
     visibility: visible;
 }
 
-/* .ourWorks>h3 {
-    position: relative;
-} */
+
 #ourWorksAnchor,
 #saleAnchor {
     position: absolute;
