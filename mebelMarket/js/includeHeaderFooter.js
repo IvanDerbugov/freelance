@@ -192,7 +192,7 @@ function highlightActiveLink(container) {
             link.classList.remove('active');
             
             // Проверяем, соответствует ли ссылка текущей странице
-            if (href === '#catalog') {
+            if (href === '#catalog' || href.includes('catalog') || link.textContent.trim().toLowerCase() === 'каталог') {
                 // Каталог - никогда не выделяем как активную ссылку
                 return;
             } else if (href.includes('index.html') || href === 'index.html') {
