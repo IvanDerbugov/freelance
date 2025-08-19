@@ -834,4 +834,174 @@
     }
 }
 
+/* Стили для страницы "Условия использования" */
+.about-company-main {
+    padding: 40px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+}
+
+.about-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about-section {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid #27ae60;
+    transition: all 0.3s ease;
+}
+
+.about-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.about-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #34495e;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.about-section strong {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+/* Простые стили для списков */
+.about-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.about-section ul li {
+    background: #f8f9fa;
+    color: #2c3e50;
+    padding: 12px 20px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border-left: 3px solid #27ae60;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.about-section ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #27ae60;
+    font-weight: bold;
+    font-size: 0.9rem;
+    background: #e8f5e8;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-section ul li:hover {
+    background: #ffffff;
+    border-left-color: #229954;
+    box-shadow: 0 2px 8px rgba(39, 174, 96, 0.1);
+    transform: translateX(3px);
+}
+
+/* Ссылки */
+.about-section .link {
+    color: #27ae60;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.about-section .link:hover {
+    color: #229954;
+    text-decoration: underline;
+}
+
+/* Футер */
+.about-footer {
+    text-align: center;
+    background: linear-gradient(135deg, #27ae60, #229954);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.about-footer .signature {
+    margin-bottom: 15px;
+}
+
+.about-footer .signature p {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.about-footer .wishes p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+/* Адаптивность для страницы "Условия использования" */
+@media (max-width: 768px) {
+    .about-company-main {
+        padding: 20px 0;
+    }
+    
+    .about-content {
+        padding: 0 15px;
+    }
+    
+    .about-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .about-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .about-section p {
+        font-size: 1rem;
+    }
+    
+    .about-section ul li {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+    
+    .about-section ul li::before {
+        width: 18px;
+        height: 18px;
+        font-size: 0.8rem;
+    }
+}
+
 

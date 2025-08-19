@@ -24,7 +24,7 @@
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, #e74c3c, #c0392b);
+    background: linear-gradient(90deg, #27ae60, #229954);
     border-radius: 2px;
 }
 
@@ -82,7 +82,7 @@
     padding: 30px;
     margin-bottom: 30px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #e74c3c;
+    border-left: 5px solid #27ae60;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -110,7 +110,7 @@
 .about-section h3 {
     font-size: 1.4rem;
     font-weight: 600;
-    color: #e74c3c;
+    color: #27ae60;
     margin-bottom: 15px;
     margin-top: 25px;
 }
@@ -123,7 +123,7 @@
 }
 
 .about-section strong {
-    color: #e74c3c;
+    color: #27ae60;
     font-weight: 600;
 }
 
@@ -205,7 +205,7 @@
 }
 
 .working-hours h4 {
-    color: #e74c3c;
+    color: #27ae60;
     margin-bottom: 15px;
     font-size: 1.1rem;
 }
