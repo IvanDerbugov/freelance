@@ -32,7 +32,7 @@ function fixImagePaths(container, basePath) {
 
 function fixInternalLinks(container, basePath) {
     // Исправляем внутренние ссылки в зависимости от расположения страницы
-    const links = container.querySelectorAll('a[href^="aboutCompany.html"], a[href^="payment.html"], a[href^="delivery.html"], a[href^="contacts.html"], a[href^="privacyPolicy.html"], a[href^="termsOfUse.html"], a[href^="flat.html"], a[href^="fusion.html"], a[href^="mari.html"], a[href^="skala.html"], a[href^="verona.html"], a[href^="valeria.html"], a[href^="grandel.html"], a[href^="linda.html"], a[href^="index.html"], a[href^="#"]');
+    const links = container.querySelectorAll('a[href^="aboutCompany.html"], a[href^="payment.html"], a[href^="delivery.html"], a[href^="contacts.html"], a[href^="privacyPolicy.html"], a[href^="termsOfUse.html"], a[href^="flat.html"], a[href^="fusion.html"], a[href^="mari.html"], a[href^="skala.html"], a[href^="verona.html"], a[href^="valeria.html"], a[href^="grandel.html"], a[href^="linda.html"], a[href^="praga.html"], a[href^="shale.html"], a[href^="loft.html"], a[href^="praga-"], a[href^="shale-"], a[href^="loft-"], a[href^="flat-"], a[href^="fusion-"], a[href^="mari-"], a[href^="skala-"], a[href^="verona-"], a[href^="valeria-"], a[href^="grandel-"], a[href^="linda-"], a[href^="index.html"], a[href^="#"]');
     links.forEach(link => {
         const oldHref = link.getAttribute('href');
         let newHref = oldHref;
@@ -76,6 +76,34 @@ function fixInternalLinks(container, basePath) {
                 newHref = 'grandel.html'; // Остается как есть
             } else if (oldHref === 'linda.html') {
                 newHref = 'linda.html'; // Остается как есть
+            } else if (oldHref === 'praga.html') {
+                newHref = 'praga.html'; // Остается как есть
+            } else if (oldHref === 'shale.html') {
+                newHref = 'shale.html'; // Остается как есть
+            } else if (oldHref === 'loft.html') {
+                newHref = 'loft.html'; // Остается как есть
+            } else if (oldHref.startsWith('praga-')) {
+                newHref = oldHref; // Остается как есть
+            } else if (oldHref.startsWith('shale-')) {
+                newHref = oldHref; // Остается как есть
+            } else if (oldHref.startsWith('loft-')) {
+                newHref = oldHref; // Остается как есть
+            } else if (oldHref.startsWith('flat-')) {
+                newHref = oldHref; // Остается как есть
+            } else if (oldHref.startsWith('fusion-')) {
+                newHref = oldHref; // Остается как есть
+            } else if (oldHref.startsWith('mari-')) {
+                newHref = oldHref; // Остается как есть
+            } else if (oldHref.startsWith('skala-')) {
+                newHref = oldHref; // Остается как есть
+            } else if (oldHref.startsWith('verona-')) {
+                newHref = oldHref; // Остается как есть
+            } else if (oldHref.startsWith('valeria-')) {
+                newHref = oldHref; // Остается как есть
+            } else if (oldHref.startsWith('grandel-')) {
+                newHref = oldHref; // Остается как есть
+            } else if (oldHref.startsWith('linda-')) {
+                newHref = oldHref; // Остается как есть
             } else if (oldHref === 'index.html') {
                 newHref = '../index.html'; // На главную
             }
@@ -109,6 +137,34 @@ function fixInternalLinks(container, basePath) {
                 newHref = 'html/grandel.html'; // В папку html
             } else if (oldHref === 'linda.html') {
                 newHref = 'html/linda.html'; // В папку html
+            } else if (oldHref === 'praga.html') {
+                newHref = 'html/praga.html'; // В папку html
+            } else if (oldHref === 'shale.html') {
+                newHref = 'html/shale.html'; // В папку html
+            } else if (oldHref === 'loft.html') {
+                newHref = 'html/loft.html'; // В папку html
+            } else if (oldHref.startsWith('praga-')) {
+                newHref = 'html/' + oldHref; // В папку html
+            } else if (oldHref.startsWith('shale-')) {
+                newHref = 'html/' + oldHref; // В папку html
+            } else if (oldHref.startsWith('loft-')) {
+                newHref = 'html/' + oldHref; // В папку html
+            } else if (oldHref.startsWith('flat-')) {
+                newHref = 'html/' + oldHref; // В папку html
+            } else if (oldHref.startsWith('fusion-')) {
+                newHref = 'html/' + oldHref; // В папку html
+            } else if (oldHref.startsWith('mari-')) {
+                newHref = 'html/' + oldHref; // В папку html
+            } else if (oldHref.startsWith('skala-')) {
+                newHref = 'html/' + oldHref; // В папку html
+            } else if (oldHref.startsWith('verona-')) {
+                newHref = 'html/' + oldHref; // В папку html
+            } else if (oldHref.startsWith('valeria-')) {
+                newHref = 'html/' + oldHref; // В папку html
+            } else if (oldHref.startsWith('grandel-')) {
+                newHref = 'html/' + oldHref; // В папку html
+            } else if (oldHref.startsWith('linda-')) {
+                newHref = 'html/' + oldHref; // В папку html
             } else if (oldHref === 'index.html') {
                 newHref = 'index.html'; // Остается как есть
             }
@@ -157,9 +213,39 @@ function highlightActiveLink(container) {
             } else if (href.includes('contacts.html') && currentPage === 'contacts.html') {
                 link.classList.add('active');
                 console.log(`Выделена активная ссылка: Контакты на странице ${currentPage}`);
-            } else if (href.includes('flat.html') && currentPage === 'flat.html') {
+            } else if (href.includes('flat.html') && (currentPage === 'flat.html' || currentPage.startsWith('flat-'))) {
                 link.classList.add('active');
                 console.log(`Выделена активная ссылка: Флэт на странице ${currentPage}`);
+            } else if (href.includes('praga.html') && (currentPage === 'praga.html' || currentPage.startsWith('praga-'))) {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: Прага на странице ${currentPage}`);
+            } else if (href.includes('shale.html') && (currentPage === 'shale.html' || currentPage.startsWith('shale-'))) {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: Шале на странице ${currentPage}`);
+            } else if (href.includes('loft.html') && (currentPage === 'loft.html' || currentPage.startsWith('loft-'))) {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: Лофт на странице ${currentPage}`);
+            } else if (href.includes('fusion.html') && (currentPage === 'fusion.html' || currentPage.startsWith('fusion-'))) {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: Фьюжн на странице ${currentPage}`);
+            } else if (href.includes('mari.html') && (currentPage === 'mari.html' || currentPage.startsWith('mari-'))) {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: Мари на странице ${currentPage}`);
+            } else if (href.includes('skala.html') && (currentPage === 'skala.html' || currentPage.startsWith('skala-'))) {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: Скала на странице ${currentPage}`);
+            } else if (href.includes('verona.html') && (currentPage === 'verona.html' || currentPage.startsWith('verona-'))) {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: Верона на странице ${currentPage}`);
+            } else if (href.includes('valeria.html') && (currentPage === 'valeria.html' || currentPage.startsWith('valeria-'))) {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: Валерия на странице ${currentPage}`);
+            } else if (href.includes('grandel.html') && (currentPage === 'grandel.html' || currentPage.startsWith('grandel-'))) {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: Грандель на странице ${currentPage}`);
+            } else if (href.includes('linda.html') && (currentPage === 'linda.html' || currentPage.startsWith('linda-'))) {
+                link.classList.add('active');
+                console.log(`Выделена активная ссылка: Линда на странице ${currentPage}`);
             }
         }
     });
