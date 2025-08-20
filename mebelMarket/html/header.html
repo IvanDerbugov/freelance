@@ -99,9 +99,67 @@
         <div class="header-bottom-right">
             <div class="header-services">
                 <a href="">Дизайн-проект</a>
-                <a href="">Замер</a>
-                <a href="">Сборка</a>
+                <a href="#" class="modal-trigger" data-modal="measureModal">Замер</a>
+                <a href="#" class="modal-trigger" data-modal="assemblyModal">Сборка</a>
             </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для формы "Замер" -->
+    <div id="measureModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Заказать замер</h3>
+                <span class="close" data-modal="measureModal">&times;</span>
+            </div>
+            <form class="modal-form" id="measureForm">
+                <div class="form-group">
+                    <label for="measureName">Имя *</label>
+                    <input type="text" id="measureName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="measurePhone">Телефон *</label>
+                    <input type="tel" id="measurePhone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="measureAddress">Адрес *</label>
+                    <input type="text" id="measureAddress" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="measureDate">Когда нужен замер</label>
+                    <input type="date" id="measureDate" name="date">
+                </div>
+                <button type="submit" class="submit-btn">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно для формы "Сборка" -->
+    <div id="assemblyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Заказать сборку</h3>
+                <span class="close" data-modal="assemblyModal">&times;</span>
+            </div>
+            <form class="modal-form" id="assemblyForm">
+                <div class="form-group">
+                    <label for="assemblyName">Имя *</label>
+                    <input type="text" id="assemblyName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="assemblyPhone">Телефон *</label>
+                    <input type="tel" id="assemblyPhone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="assemblyAddress">Адрес *</label>
+                    <input type="text" id="assemblyAddress" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="assemblyDate">Когда нужна сборка</label>
+                    <input type="date" id="assemblyDate" name="date">
+                </div>
+                <button type="submit" class="submit-btn">Отправить заявку</button>
+            </form>
         </div>
     </div>
 </header>

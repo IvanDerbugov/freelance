@@ -170,9 +170,9 @@
     background: #1F7D63;
     color: white;
     border: none;
-    padding: 12px 20px; /* Было 14px 25px */
-    border-radius: 6px; /* Было 8px */
-    font-size: 16px; /* Было 27px */
+    padding: 12px 20px; 
+    border-radius: 6px; 
+    font-size: 16px; 
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;

@@ -292,12 +292,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 initCatalogDropdown();
             }
         }, 100);
+        
+        // Инициализируем модальные окна после загрузки header
+        if (typeof initializeModals === 'function') {
+            initializeModals();
+        }
     });
     
     includeHTML('#footer-container', basePath + 'html/footer.html', function() {
         // Вызываем функцию инициализации footer после загрузки
         if (typeof initFooterFunctionality === 'function') {
             initFooterFunctionality();
+        }
+        
+        // Инициализируем модальные окна после загрузки footer (если еще не инициализированы)
+        if (typeof initializeModals === 'function') {
+            initializeModals();
         }
     });
 });
