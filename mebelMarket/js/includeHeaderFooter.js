@@ -28,10 +28,10 @@ function initKitchenQuiz() {
     const progressText = document.querySelector('.progress-text');
     const progressBars = document.querySelectorAll('.progress-bar');
     const options = document.querySelectorAll('.kviz-option');
-    const backBtn = document.querySelector('.kviz-btn-back');
-    const nextBtn = document.querySelector('.kviz-btn-next');
     const steps = document.querySelectorAll('.kviz-step');
     const dimensionInputs = document.querySelectorAll('.dimension-input');
+    
+
     
     // Функция открытия модального окна квиза
     function openKvizModal() {
@@ -94,6 +94,9 @@ function initKitchenQuiz() {
                 }
             }
         }
+        
+        // Обновляем навигацию для текущего шага
+        updateNavigation();
     }
     
     // Функция обновления прогресса
@@ -113,6 +116,13 @@ function initKitchenQuiz() {
     
     // Функция обновления навигации
     function updateNavigation() {
+        // Находим кнопки в текущем шаге
+        const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
+        if (!currentStepElement) return;
+        
+        const backBtn = currentStepElement.querySelector('.kviz-btn-back');
+        const nextBtn = currentStepElement.querySelector('.kviz-btn-next');
+        
         if (backBtn) {
             backBtn.disabled = currentStep === 1;
         }
@@ -162,49 +172,59 @@ function initKitchenQuiz() {
     });
     
     // Обработчик кнопки "Назад"
-    if (backBtn) {
-        backBtn.addEventListener('click', function() {
-            if (currentStep > 1) {
-                currentStep--;
-                showStep(currentStep);
-                updateProgress();
-                updateNavigation();
-                
-                // Восстанавливаем предыдущий выбор
-                if (currentStep === 1) {
-                    const previousAnswer = answers[`step${currentStep}`];
-                    if (previousAnswer) {
-                        const selectedOption = document.querySelector(`[data-value="${previousAnswer}"]`);
-                        if (selectedOption) {
-                            selectedOption.classList.add('selected');
-                        }
+    function handleBackClick() {
+        if (currentStep > 1) {
+            currentStep--;
+            showStep(currentStep);
+            updateProgress();
+            updateNavigation();
+            
+            // Восстанавливаем предыдущий выбор
+            if (currentStep === 1) {
+                const previousAnswer = answers[`step${currentStep}`];
+                if (previousAnswer) {
+                    const selectedOption = document.querySelector(`[data-value="${previousAnswer}"]`);
+                    if (selectedOption) {
+                        selectedOption.classList.add('selected');
                     }
                 }
             }
-        });
+        }
     }
     
     // Обработчик кнопки "Далее"
-    if (nextBtn) {
-        nextBtn.addEventListener('click', function() {
-            if (currentStep < totalSteps) {
-                currentStep++;
-                showStep(currentStep);
-                updateProgress();
-                updateNavigation();
-                
-                // Сохраняем размеры на втором шаге
-                if (currentStep === 2) {
-                    const selectedLayout = answers.step1;
-                    const currentLayoutElement = document.querySelector(`[data-layout="${selectedLayout}"]`);
-                    if (currentLayoutElement) {
-                        const inputs = currentLayoutElement.querySelectorAll('.dimension-input');
-                        inputs.forEach(input => {
-                            answers[`step2_${input.dataset.dimension}`] = input.value;
-                        });
-                    }
+    function handleNextClick() {
+        if (currentStep < totalSteps) {
+            currentStep++;
+            showStep(currentStep);
+            updateProgress();
+            updateNavigation();
+            
+            // Сохраняем размеры на втором шаге
+            if (currentStep === 2) {
+                const selectedLayout = answers.step1;
+                const currentLayoutElement = document.querySelector(`[data-layout="${selectedLayout}"]`);
+                if (currentLayoutElement) {
+                    const inputs = currentLayoutElement.querySelectorAll('.dimension-input');
+                    inputs.forEach(input => {
+                        answers[`step2_${input.dataset.dimension}`] = input.value;
+                    });
                 }
             }
+        }
+    }
+    
+    // Добавляем обработчики для всех кнопок навигации
+    function addNavigationHandlers() {
+        const allBackBtns = document.querySelectorAll('.kviz-btn-back');
+        const allNextBtns = document.querySelectorAll('.kviz-btn-next');
+        
+        allBackBtns.forEach(btn => {
+            btn.addEventListener('click', handleBackClick);
+        });
+        
+        allNextBtns.forEach(btn => {
+            btn.addEventListener('click', handleNextClick);
         });
     }
     
@@ -225,6 +245,9 @@ function initKitchenQuiz() {
         updateNavigation();
     }
     
+    // Добавляем обработчики для кнопок навигации
+    addNavigationHandlers();
+    
     // Делаем функцию сброса доступной глобально
     window.kitchenQuiz = {
         reset: resetQuiz
@@ -234,6 +257,8 @@ function initKitchenQuiz() {
     showStep(currentStep);
     updateProgress();
     updateNavigation();
+    
+
 }
 
 function getBasePath() {
@@ -261,7 +286,7 @@ function fixImagePaths(container, basePath) {
         const oldSrc = img.getAttribute('src');
         const newSrc = basePath + oldSrc;
         img.setAttribute('src', newSrc);
-        console.log(`Исправлен путь изображения: ${oldSrc} → ${newSrc}`);
+
     });
 }
 
@@ -407,7 +432,7 @@ function fixInternalLinks(container, basePath) {
         
         if (oldHref !== newHref) {
             link.setAttribute('href', newHref);
-            console.log(`Исправлена ссылка: ${oldHref} → ${newHref}`);
+
         }
     });
 }
@@ -434,53 +459,53 @@ function highlightActiveLink(container) {
                 // Главная страница - выделяем всегда на главной странице
                 if (currentPage === 'index.html' || currentPage === '' || currentPath.endsWith('/mebelMarket/')) {
                     link.classList.add('active');
-                    console.log(`Выделена активная ссылка: Главная на странице ${currentPage}`);
+
                 }
             } else if (href.includes('aboutCompany.html') && currentPage === 'aboutCompany.html') {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: О компании на странице ${currentPage}`);
+
             } else if (href.includes('payment.html') && currentPage === 'payment.html') {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: Оплата на странице ${currentPage}`);
+
             } else if (href.includes('delivery.html') && currentPage === 'delivery.html') {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: Доставка на странице ${currentPage}`);
+
             } else if (href.includes('contacts.html') && currentPage === 'contacts.html') {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: Контакты на странице ${currentPage}`);
+
             } else if (href.includes('flat.html') && (currentPage === 'flat.html' || currentPage.startsWith('flat-'))) {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: Флэт на странице ${currentPage}`);
+
             } else if (href.includes('praga.html') && (currentPage === 'praga.html' || currentPage.startsWith('praga-'))) {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: Прага на странице ${currentPage}`);
+
             } else if (href.includes('shale.html') && (currentPage === 'shale.html' || currentPage.startsWith('shale-'))) {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: Шале на странице ${currentPage}`);
+
             } else if (href.includes('loft.html') && (currentPage === 'loft.html' || currentPage.startsWith('loft-'))) {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: Лофт на странице ${currentPage}`);
+
             } else if (href.includes('fusion.html') && (currentPage === 'fusion.html' || currentPage.startsWith('fusion-'))) {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: Фьюжн на странице ${currentPage}`);
+
             } else if (href.includes('mari.html') && (currentPage === 'mari.html' || currentPage.startsWith('mari-'))) {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: Мари на странице ${currentPage}`);
+
             } else if (href.includes('skala.html') && (currentPage === 'skala.html' || currentPage.startsWith('skala-'))) {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: Скала на странице ${currentPage}`);
+
             } else if (href.includes('verona.html') && (currentPage === 'verona.html' || currentPage.startsWith('verona-'))) {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: Верона на странице ${currentPage}`);
+
             } else if (href.includes('valeria.html') && (currentPage === 'valeria.html' || currentPage.startsWith('valeria-'))) {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: Валерия на странице ${currentPage}`);
+
             } else if (href.includes('grandel.html') && (currentPage === 'grandel.html' || currentPage.startsWith('grandel-'))) {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: Грандель на странице ${currentPage}`);
+
             } else if (href.includes('linda.html') && (currentPage === 'linda.html' || currentPage.startsWith('linda-'))) {
                 link.classList.add('active');
-                console.log(`Выделена активная ссылка: Линда на странице ${currentPage}`);
+
             }
         }
     });
@@ -514,7 +539,7 @@ function includeHTML(selector, url, callback) {
 document.addEventListener('DOMContentLoaded', function() {
     const basePath = getBasePath();
     
-    console.log('Текущий базовый путь:', basePath);
+
     
     includeHTML('#header-container', basePath + 'html/header.html', function() {
         // Вызываем функцию инициализации header после загрузки
