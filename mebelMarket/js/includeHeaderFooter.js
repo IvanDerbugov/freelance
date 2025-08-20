@@ -40,44 +40,35 @@ window.openKitchenQuiz = function() {
     
 
     
-    // Функция открытия модального окна квиза
-    function openKvizModal() {
-        if (kvizModal) {
-            // Блокируем скролл страницы
-            document.body.style.overflow = 'hidden';
-            document.documentElement.style.overflow = 'hidden';
-            
-            kvizModal.style.display = 'block';
-            setTimeout(() => {
-                kvizModal.classList.add('show');
-            }, 10);
-        }
-    }
-    
-    // Функция закрытия модального окна квиза
-    function closeKvizModal() {
-        if (kvizModal) {
-            kvizModal.classList.remove('show');
-            setTimeout(() => {
-                kvizModal.style.display = 'none';
-                // Восстанавливаем скролл страницы
-                document.body.style.overflow = '';
-                document.documentElement.style.overflow = '';
-            }, 300);
-        }
-    }
-    
     // Обработчик клика по крестику
     const closeBtn = document.querySelector('#kvizModal .close');
     if (closeBtn) {
-        closeBtn.addEventListener('click', closeKvizModal);
+        closeBtn.addEventListener('click', function() {
+            if (kvizModal) {
+                kvizModal.classList.remove('show');
+                setTimeout(() => {
+                    kvizModal.style.display = 'none';
+                    // Восстанавливаем скролл страницы
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                }, 300);
+            }
+        });
     }
     
     // Обработчик клика вне модального окна
     if (kvizModal) {
         kvizModal.addEventListener('click', function(e) {
             if (e.target === kvizModal) {
-                closeKvizModal();
+                if (kvizModal) {
+                    kvizModal.classList.remove('show');
+                    setTimeout(() => {
+                        kvizModal.style.display = 'none';
+                        // Восстанавливаем скролл страницы
+                        document.body.style.overflow = '';
+                        document.documentElement.style.overflow = '';
+                    }, 300);
+                }
             }
         });
     }
@@ -96,34 +87,17 @@ window.openKitchenQuiz = function() {
         // Показываем соответствующие поля для размеров на втором шаге
         if (stepNumber === 2) {
             const selectedLayout = answers.step1;
-            console.log('=== ОТЛАДКА ВТОРОГО ШАГА ===');
-            console.log('Выбранная планировка:', selectedLayout);
-            console.log('Все элементы планировок:', document.querySelectorAll('.kviz-dimensions'));
             
             if (selectedLayout) {
                 const layoutElements = document.querySelectorAll('.kviz-dimensions');
                 layoutElements.forEach(element => {
                     element.style.display = 'none';
-                    console.log('Скрываем элемент:', element.dataset.layout);
                 });
                 
                 const selectedElement = document.querySelector(`[data-layout="${selectedLayout}"]`);
-                console.log('Найденный элемент для показа:', selectedElement);
                 if (selectedElement) {
                     selectedElement.style.display = 'block';
-                    selectedElement.style.visibility = 'visible';
-                    selectedElement.style.opacity = '1';
-                    console.log('Показываем элемент:', selectedLayout);
-                    console.log('Стили элемента после показа:', {
-                        display: selectedElement.style.display,
-                        visibility: selectedElement.style.visibility,
-                        opacity: selectedElement.style.opacity
-                    });
-                } else {
-                    console.log('Элемент НЕ найден для планировки:', selectedLayout);
                 }
-            } else {
-                console.log('Планировка НЕ выбрана в первом шаге!');
             }
         }
         
@@ -191,9 +165,6 @@ window.openKitchenQuiz = function() {
             // Сохраняем ответ
             const selectedValue = this.dataset.value;
             answers[`step${currentStep}`] = selectedValue;
-            console.log('=== ВЫБОР ПЛАНИРОВКИ ===');
-            console.log('Выбрана планировка:', selectedValue);
-            console.log('Сохранено в answers:', answers);
             
             // Обновляем навигацию
             updateNavigation();
@@ -252,8 +223,9 @@ window.openKitchenQuiz = function() {
     
     // Добавляем обработчики для всех кнопок навигации
     function addNavigationHandlers() {
-        const allBackBtns = document.querySelectorAll('.kviz-btn-back');
-        const allNextBtns = document.querySelectorAll('.kviz-btn-next');
+        // Находим все кнопки навигации в квизе
+        const allBackBtns = document.querySelectorAll('#kvizModal .kviz-btn-back');
+        const allNextBtns = document.querySelectorAll('#kvizModal .kviz-btn-next');
         
         allBackBtns.forEach(btn => {
             btn.addEventListener('click', handleBackClick);
