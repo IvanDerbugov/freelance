@@ -5,6 +5,9 @@
 window.openKitchenQuiz = function() {
     const kvizModal = document.getElementById('kvizModal');
     if (kvizModal) {
+        // Убираем все подсказки при открытии
+        document.querySelectorAll('.kviz-hint').forEach(hint => hint.remove());
+        
         // Блокируем скролл страницы
         document.body.style.overflow = 'hidden';
         document.documentElement.style.overflow = 'hidden';
@@ -45,6 +48,9 @@ window.openKitchenQuiz = function() {
     if (closeBtn) {
         closeBtn.addEventListener('click', function() {
             if (kvizModal) {
+                // Убираем все подсказки при закрытии
+                document.querySelectorAll('.kviz-hint').forEach(hint => hint.remove());
+                
                 kvizModal.classList.remove('show');
                 setTimeout(() => {
                     kvizModal.style.display = 'none';
@@ -61,6 +67,9 @@ window.openKitchenQuiz = function() {
         kvizModal.addEventListener('click', function(e) {
             if (e.target === kvizModal) {
                 if (kvizModal) {
+                    // Убираем все подсказки при закрытии
+                    document.querySelectorAll('.kviz-hint').forEach(hint => hint.remove());
+                    
                     kvizModal.classList.remove('show');
                     setTimeout(() => {
                         kvizModal.style.display = 'none';
@@ -75,6 +84,10 @@ window.openKitchenQuiz = function() {
     
     // Функция показа шага
     function showStep(stepNumber) {
+        // Убираем все подсказки при смене шага
+        const existingHints = document.querySelectorAll('.kviz-hint');
+        existingHints.forEach(hint => hint.remove());
+        
         steps.forEach(step => {
             step.style.display = 'none';
         });
@@ -101,6 +114,8 @@ window.openKitchenQuiz = function() {
             }
         }
         
+
+        
         // Обновляем навигацию для текущего шага
         updateNavigation();
     }
@@ -120,44 +135,73 @@ window.openKitchenQuiz = function() {
         });
     }
     
+    // Функция показа подсказки
+    function showHint(message, type = 'warning') {
+        // Убираем предыдущую подсказку
+        const existingHint = document.querySelector('.kviz-hint');
+        if (existingHint) {
+            existingHint.remove();
+        }
+        
+        // Создаем новую подсказку
+        const hint = document.createElement('div');
+        hint.className = `kviz-hint kviz-hint-${type}`;
+        hint.innerHTML = `
+            <div class="hint-content">
+                <span class="hint-icon">⚠️</span>
+                <span class="hint-text">${message}</span>
+            </div>
+        `;
+        
+        // Добавляем подсказку в текущий шаг
+        const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
+        if (currentStepElement) {
+            currentStepElement.appendChild(hint);
+            
+            // Автоматически убираем подсказку через 4 секунды
+            setTimeout(() => {
+                if (hint.parentNode) {
+                    hint.remove();
+                }
+            }, 4000);
+        } else {
+            // Если не можем найти текущий шаг, добавляем подсказку в модальное окно
+            const kvizModal = document.getElementById('kvizModal');
+            if (kvizModal) {
+                kvizModal.appendChild(hint);
+                
+                // Автоматически убираем подсказку через 4 секунды
+                setTimeout(() => {
+                    if (hint.parentNode) {
+                        hint.remove();
+                    }
+                }, 4000);
+            }
+        }
+    }
+    
     // Функция обновления навигации
     function updateNavigation() {
-        // Находим кнопки в текущем шаге
-        const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
-        if (!currentStepElement) return;
-        
-        const backBtn = currentStepElement.querySelector('.kviz-btn-back');
-        const nextBtn = currentStepElement.querySelector('.kviz-btn-next');
+        // Находим кнопки навигации (они находятся вне шагов)
+        const backBtn = document.querySelector('#kvizModal .kviz-btn-back');
+        const nextBtn = document.querySelector('#kvizModal .kviz-btn-next');
         
         if (backBtn) {
             backBtn.disabled = currentStep === 1;
         }
         
         if (nextBtn) {
-            let canProceed = false;
-            
-            if (currentStep === 1) {
-                // На первом шаге проверяем, выбран ли вариант планировки
-                canProceed = !!answers[`step${currentStep}`];
-            } else if (currentStep === 2) {
-                // На втором шаге проверяем, заполнены ли все поля размеров
-                const selectedLayout = answers.step1;
-                const currentLayoutElement = document.querySelector(`[data-layout="${selectedLayout}"]`);
-                if (currentLayoutElement) {
-                    const inputs = currentLayoutElement.querySelectorAll('.dimension-input');
-                    canProceed = Array.from(inputs).every(input => input.value.trim() !== '');
-                }
-            }
-            
-            nextBtn.disabled = !canProceed;
+            // Кнопка всегда активна
+            nextBtn.disabled = false;
         }
     }
     
     // Обработчик выбора варианта
     options.forEach(option => {
         option.addEventListener('click', function() {
-            // Убираем выделение со всех вариантов
-            options.forEach(opt => opt.classList.remove('selected'));
+            // Убираем выделение со всех вариантов в текущем шаге
+            const currentStepOptions = document.querySelectorAll(`[data-step="${currentStep}"]`);
+            currentStepOptions.forEach(opt => opt.classList.remove('selected'));
             
             // Выделяем выбранный вариант
             this.classList.add('selected');
@@ -178,6 +222,30 @@ window.openKitchenQuiz = function() {
         });
     });
     
+    // Обработчики для новых опций (материал, столешница, срочность)
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('kviz-option') && e.target.dataset.step) {
+            const step = e.target.dataset.step;
+            const value = e.target.dataset.value;
+            
+            // Убираем выделение со всех опций в текущем шаге
+            const currentStepElement = document.querySelector(`[data-step="${step}"]`);
+            if (currentStepElement) {
+                const currentStepOptions = currentStepElement.querySelectorAll('.kviz-option');
+                currentStepOptions.forEach(opt => opt.classList.remove('selected'));
+            }
+            
+            // Выделяем выбранную опцию
+            e.target.classList.add('selected');
+            
+            // Сохраняем ответ
+            answers[`step${step}`] = value;
+            
+            // Обновляем навигацию
+            updateNavigation();
+        }
+    });
+    
     // Обработчик кнопки "Назад"
     function handleBackClick() {
         if (currentStep > 1) {
@@ -195,12 +263,103 @@ window.openKitchenQuiz = function() {
                         selectedOption.classList.add('selected');
                     }
                 }
+            } else if (currentStep === 3) {
+                const previousAnswer = answers[`step${currentStep}`];
+                if (previousAnswer) {
+                    const selectedOption = document.querySelector(`[data-step="3"] [data-value="${previousAnswer}"]`);
+                    if (selectedOption) {
+                        selectedOption.classList.add('selected');
+                    }
+                }
+            } else if (currentStep === 4) {
+                const previousAnswer = answers[`step${currentStep}`];
+                if (previousAnswer) {
+                    const selectedOption = document.querySelector(`[data-step="4"] [data-value="${previousAnswer}"]`);
+                    if (selectedOption) {
+                        selectedOption.classList.add('selected');
+                    }
+                }
+            } else if (currentStep === 5) {
+                const previousAnswer = answers[`step${currentStep}`];
+                if (previousAnswer) {
+                    const selectedOption = document.querySelector(`[data-step="5"] [data-value="${previousAnswer}"]`);
+                    if (selectedOption) {
+                        selectedOption.classList.add('selected');
+                    }
+                }
+            } else if (currentStep === 6) {
+                // Восстанавливаем данные формы подарка
+                const giftName = answers[`step6_name`];
+                const giftPhone = answers[`step6_phone`];
+                
+                const giftNameInput = document.getElementById('giftName');
+                const giftPhoneInput = document.getElementById('giftPhone');
+                
+                if (giftNameInput && giftName) giftNameInput.value = giftName;
+                if (giftPhoneInput && giftPhone) giftPhoneInput.value = giftPhone;
             }
         }
     }
     
     // Обработчик кнопки "Далее"
     function handleNextClick() {
+        // Проверяем, можно ли перейти к следующему шагу
+        let canProceed = true;
+        let hintMessage = '';
+        
+        if (currentStep === 1) {
+            // На первом шаге проверяем, выбран ли вариант планировки
+            if (!answers[`step${currentStep}`]) {
+                canProceed = false;
+                hintMessage = 'Пожалуйста, выберите планировку кухни';
+            }
+        } else if (currentStep === 2) {
+            // На втором шаге проверяем, заполнены ли все поля размеров
+            const selectedLayout = answers.step1;
+            const currentLayoutElement = document.querySelector(`[data-layout="${selectedLayout}"]`);
+            if (currentLayoutElement) {
+                const inputs = currentLayoutElement.querySelectorAll('.dimension-input');
+                const emptyInputs = Array.from(inputs).filter(input => input.value.trim() === '');
+                if (emptyInputs.length > 0) {
+                    canProceed = false;
+                    hintMessage = 'Пожалуйста, заполните все поля с размерами';
+                }
+            }
+        } else if (currentStep === 3) {
+            // На третьем шаге проверяем, выбран ли материал
+            if (!answers[`step${currentStep}`]) {
+                canProceed = false;
+                hintMessage = 'Пожалуйста, выберите материал кухни';
+            }
+        } else if (currentStep === 4) {
+            // На четвёртом шаге проверяем, выбран ли тип столешницы
+            if (!answers[`step${currentStep}`]) {
+                canProceed = false;
+                hintMessage = 'Пожалуйста, выберите тип столешницы';
+            }
+        } else if (currentStep === 5) {
+            // На пятом шаге проверяем, выбрана ли срочность
+            if (!answers[`step${currentStep}`]) {
+                canProceed = false;
+                hintMessage = 'Пожалуйста, выберите срочность заказа';
+            }
+        } else if (currentStep === 6) {
+            // На шестом шаге проверяем, заполнены ли поля формы
+            const giftName = document.getElementById('giftName')?.value.trim();
+            const giftPhone = document.getElementById('giftPhone')?.value.trim();
+            if (!giftName || !giftPhone) {
+                canProceed = false;
+                hintMessage = 'Пожалуйста, заполните имя и телефон';
+            }
+        }
+        
+        // Если нельзя перейти, показываем подсказку и останавливаемся
+        if (!canProceed) {
+            showHint(hintMessage, 'warning');
+            return;
+        }
+        
+        // Если можно перейти, переходим к следующему шагу
         if (currentStep < totalSteps) {
             currentStep++;
             showStep(currentStep);
@@ -218,6 +377,36 @@ window.openKitchenQuiz = function() {
                     });
                 }
             }
+            
+            // На третьем шаге сбрасываем предыдущий выбор материала
+            if (currentStep === 3) {
+                // Убираем выделение со всех вариантов материалов
+                const materialOptions = document.querySelectorAll('[data-step="3"] .kviz-option');
+                materialOptions.forEach(option => option.classList.remove('selected'));
+            }
+            
+            // На четвёртом шаге сбрасываем предыдущий выбор столешницы
+            if (currentStep === 4) {
+                // Убираем выделение со всех вариантов столешниц
+                const countertopOptions = document.querySelectorAll('[data-step="4"] .kviz-option');
+                countertopOptions.forEach(option => option.classList.remove('selected'));
+            }
+            
+            // На пятом шаге сбрасываем предыдущий выбор срочности
+            if (currentStep === 5) {
+                // Убираем выделение со всех вариантов срочности
+                const urgencyOptions = document.querySelectorAll('[data-step="5"] .kviz-option');
+                urgencyOptions.forEach(option => option.classList.remove('selected'));
+            }
+            
+            // На шестом шаге сбрасываем поля формы подарка
+            if (currentStep === 6) {
+                // Очищаем поля формы
+                const giftNameInput = document.getElementById('giftName');
+                const giftPhoneInput = document.getElementById('giftPhone');
+                if (giftNameInput) giftNameInput.value = '';
+                if (giftPhoneInput) giftPhoneInput.value = '';
+            }
         }
     }
     
@@ -234,6 +423,26 @@ window.openKitchenQuiz = function() {
         allNextBtns.forEach(btn => {
             btn.addEventListener('click', handleNextClick);
         });
+        
+        // Обработчики для полей формы подарка
+        const giftNameInput = document.getElementById('giftName');
+        const giftPhoneInput = document.getElementById('giftPhone');
+        
+        if (giftNameInput) {
+            giftNameInput.addEventListener('input', function() {
+                // Сохраняем имя в ответы
+                answers[`step6_name`] = this.value.trim();
+                updateNavigation();
+            });
+        }
+        
+        if (giftPhoneInput) {
+            giftPhoneInput.addEventListener('input', function() {
+                // Сохраняем телефон в ответы
+                answers[`step6_phone`] = this.value.trim();
+                updateNavigation();
+            });
+        }
     }
     
     // Функция сброса квиза
@@ -241,11 +450,33 @@ window.openKitchenQuiz = function() {
         currentStep = 1;
         answers = {};
         
-        // Сбрасываем выбор вариантов
+        // Сбрасываем выбор вариантов планировки
         options.forEach(option => option.classList.remove('selected'));
         
-        // Сбрасываем поля ввода
+        // Сбрасываем поля ввода размеров
         dimensionInputs.forEach(input => input.value = '');
+        
+        // Сбрасываем выбранные материалы
+        const materialOptions = document.querySelectorAll('[data-step="3"] .kviz-option');
+        materialOptions.forEach(option => option.classList.remove('selected'));
+        
+        // Сбрасываем выбранные столешницы
+        const countertopOptions = document.querySelectorAll('[data-step="4"] .kviz-option');
+        countertopOptions.forEach(option => option.classList.remove('selected'));
+        
+        // Сбрасываем выбранную срочность
+        const urgencyOptions = document.querySelectorAll('[data-step="5"] .kviz-option');
+        urgencyOptions.forEach(option => option.classList.remove('selected'));
+        
+        // Очищаем поля формы подарка
+        const giftNameInput = document.getElementById('giftName');
+        const giftPhoneInput = document.getElementById('giftPhone');
+        if (giftNameInput) giftNameInput.value = '';
+        if (giftPhoneInput) giftPhoneInput.value = '';
+        
+        // Убираем все подсказки
+        const existingHints = document.querySelectorAll('.kviz-hint');
+        existingHints.forEach(hint => hint.remove());
         
         // Показываем первый шаг
         showStep(currentStep);

@@ -831,3 +831,182 @@ header {
         padding: 20px 15px;
     }
 }
+
+/* Стили для шестого шага - форма подарка */
+.kviz-gift-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-top: 20px;
+}
+
+.gift-info {
+    text-align: center;
+}
+
+.gift-title {
+    color: #28a745;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.gift-description {
+    color: #6c757d;
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.gift-image {
+    margin-top: 20px;
+}
+
+.gift-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.gift-form {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+.form-title {
+    color: #495057;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.form-subtitle {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.gift-form-content .form-group {
+    margin-bottom: 20px;
+}
+
+.gift-form-content input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.gift-form-content input:focus {
+    outline: none;
+    border-color: #ffc107;
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.1);
+}
+
+.gift-form-content input::placeholder {
+    color: #adb5bd;
+}
+
+.gift-submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.gift-submit-btn:hover {
+    background: linear-gradient(135deg, #ffb300 0%, #ffa000 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+}
+
+.form-disclaimer {
+    color: #6c757d;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
+    margin: 0;
+}
+
+/* Стили для подсказок */
+.kviz-hint {
+    position: relative;
+    margin-top: 15px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    animation: hintSlideIn 0.3s ease-out;
+}
+
+.kviz-hint-warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    color: #856404;
+}
+
+.kviz-hint-error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.kviz-hint-success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.hint-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hint-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.hint-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+@keyframes hintSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .kviz-gift-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .gift-form {
+        padding: 20px;
+    }
+}

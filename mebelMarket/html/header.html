@@ -324,17 +324,129 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Шаг 3: Выбор материала -->
+                <div class="kviz-step" data-step="3" style="display: none;">
+                    <div class="kviz-question">
+                        <h4>Выберите Материал:</h4>
+                    </div>
+
+                    <!-- Варианты материалов -->
+                    <div class="kviz-options">
+                        <div class="kviz-option" data-value="ldsp">
+                            <div class="option-image">
+                                <img src="img/kviz-ldsp.jpg" alt="ЛДСП">
+                            </div>
+                            <span class="option-text">Лдсп</span>
+                        </div>
+
+                        <div class="kviz-option" data-value="mdf">
+                            <div class="option-image">
+                                <img src="img/kviz-mdf.jpg" alt="МДФ">
+                            </div>
+                            <span class="option-text">МДФ</span>
+                        </div>
+
+                        <div class="kviz-option" data-value="plastic">
+                            <div class="option-image">
+                                <img src="img/kviz-plastic.jpg" alt="Пластик">
+                            </div>
+                            <span class="option-text">Пластик</span>
+                        </div>
+
+                        <div class="kviz-option" data-value="enamel">
+                            <div class="option-image">
+                                <img src="img/kviz-emal.jpeg" alt="Эмаль">
+                            </div>
+                            <span class="option-text">Эмаль</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Шаг 4: Выбор типа столешницы -->
+                <div class="kviz-step" data-step="4" style="display: none;">
+                    <div class="kviz-question">
+                        <h4>Выберите тип столешницы:</h4>
+                    </div>
+
+                    <!-- Варианты столешниц -->
+                    <div class="kviz-options">
+                        <div class="kviz-option" data-value="dsp28">
+                            <div class="option-image">
+                                <img src="img/kviz-dsp28mm.jpg" alt="Столешница ДСП 28 мм">
+                            </div>
+                            <span class="option-text">Столешница ДСП 28 мм</span>
+                        </div>
+
+                        <div class="kviz-option" data-value="dsp38">
+                            <div class="option-image">
+                                <img src="img/kviz-dsp38mm.jpg" alt="Столешница ДСП 38 мм">
+                            </div>
+                            <span class="option-text">Столешница ДСП 38 мм</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Шаг 5: Выбор срочности -->
+                <div class="kviz-step" data-step="5" style="display: none;">
+                    <div class="kviz-question">
+                        <h4>Как срочно вам нужна новая кухня?</h4>
+                    </div>
+
+                    <!-- Варианты срочности -->
+                    <div class="kviz-options">
+                        <div class="kviz-option" data-value="tomorrow">
+                            <span class="option-text">Завтра</span>
+                        </div>
+
+                        <div class="kviz-option" data-value="week">
+                            <span class="option-text">Через неделю</span>
+                        </div>
+
+                        <div class="kviz-option" data-value="month">
+                            <span class="option-text">Через месяц</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Шаг 6: Форма для получения подарка -->
+                <div class="kviz-step" data-step="6" style="display: none;">
+                    <div class="kviz-gift-section">
+                        <div class="gift-info">
+                            <h4 class="gift-title">ПОЛУЧИТЕ ПОДАРОК</h4>
+                            <p class="gift-description">Комплект посудосушителей с поддоном (цвет белый)</p>
+                            <div class="gift-image">
+                                <img src="img/kviz-surprize.jpg" alt="Подарок - посудосушитель">
+                            </div>
+                        </div>
+                        
+                        <div class="gift-form">
+                            <h5 class="form-title">ЗАПОЛНИТЕ ФОРМУ</h5>
+                            <p class="form-subtitle">Введите ваши контактные данные</p>
+                            
+                            <form id="giftForm" class="gift-form-content">
+                                <div class="form-group">
+                                    <input type="text" id="giftName" name="name" placeholder="Ваше Имя" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" id="giftPhone" name="phone" placeholder="+7 (999) 999-99-99" required>
+                                </div>
+                                <button type="submit" class="gift-submit-btn">ОТПРАВИТЬ</button>
+                                <p class="form-disclaimer">Нажимая на кнопку, Вы даете согласие на обработку персональных данных и соглашаетесь с политикой конфиденциальности</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Кнопки навигации для второго шага -->
+            <!-- Кнопки навигации -->
             <div class="kviz-navigation">
-                <button class="kviz-btn kviz-btn-back">ВЕРНУТЬСЯ НАЗАД</button>
+                <button class="kviz-btn kviz-btn-back" disabled>ВЕРНУТЬСЯ НАЗАД</button>
                 <button class="kviz-btn kviz-btn-next" disabled>СЛЕДУЮЩИЙ ШАГ</button>
             </div>
 
 
         </div>
-    </div>
     </div>
 
 </header>
