@@ -1,6 +1,22 @@
 // Умное подключение header.html и footer.html через fetch
 // Автоматически определяет правильные пути в зависимости от расположения страницы
 
+// Глобальная функция для открытия квиза
+window.openKitchenQuiz = function() {
+    const kvizModal = document.getElementById('kvizModal');
+    if (kvizModal) {
+        kvizModal.style.display = 'block';
+        setTimeout(() => {
+            kvizModal.classList.add('show');
+        }, 10);
+        
+        // Сбрасываем квиз к первому шагу
+        if (window.kitchenQuiz) {
+            window.kitchenQuiz.reset();
+        }
+    }
+};
+
 // Функция для инициализации квиза
 function initKitchenQuiz() {
     let currentStep = 1;
@@ -8,11 +24,77 @@ function initKitchenQuiz() {
     const answers = {};
     
     // Находим элементы квиза
+    const kvizModal = document.getElementById('kvizModal');
     const progressText = document.querySelector('.progress-text');
     const progressBars = document.querySelectorAll('.progress-bar');
     const options = document.querySelectorAll('.kviz-option');
     const backBtn = document.querySelector('.kviz-btn-back');
     const nextBtn = document.querySelector('.kviz-btn-next');
+    const steps = document.querySelectorAll('.kviz-step');
+    const dimensionInputs = document.querySelectorAll('.dimension-input');
+    
+    // Функция открытия модального окна квиза
+    function openKvizModal() {
+        if (kvizModal) {
+            kvizModal.style.display = 'block';
+            setTimeout(() => {
+                kvizModal.classList.add('show');
+            }, 10);
+        }
+    }
+    
+    // Функция закрытия модального окна квиза
+    function closeKvizModal() {
+        if (kvizModal) {
+            kvizModal.classList.remove('show');
+            setTimeout(() => {
+                kvizModal.style.display = 'none';
+            }, 300);
+        }
+    }
+    
+    // Обработчик клика по крестику
+    const closeBtn = document.querySelector('#kvizModal .close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeKvizModal);
+    }
+    
+    // Обработчик клика вне модального окна
+    if (kvizModal) {
+        kvizModal.addEventListener('click', function(e) {
+            if (e.target === kvizModal) {
+                closeKvizModal();
+            }
+        });
+    }
+    
+    // Функция показа шага
+    function showStep(stepNumber) {
+        steps.forEach(step => {
+            step.style.display = 'none';
+        });
+        
+        const currentStepElement = document.querySelector(`[data-step="${stepNumber}"]`);
+        if (currentStepElement) {
+            currentStepElement.style.display = 'block';
+        }
+        
+        // Показываем соответствующие поля для размеров на втором шаге
+        if (stepNumber === 2) {
+            const selectedLayout = answers.step1;
+            if (selectedLayout) {
+                const layoutElements = document.querySelectorAll('.kviz-dimensions');
+                layoutElements.forEach(element => {
+                    element.style.display = 'none';
+                });
+                
+                const selectedElement = document.querySelector(`[data-layout="${selectedLayout}"]`);
+                if (selectedElement) {
+                    selectedElement.style.display = 'block';
+                }
+            }
+        }
+    }
     
     // Функция обновления прогресса
     function updateProgress() {
@@ -36,8 +118,22 @@ function initKitchenQuiz() {
         }
         
         if (nextBtn) {
-            const currentAnswer = answers[`step${currentStep}`];
-            nextBtn.disabled = !currentAnswer;
+            let canProceed = false;
+            
+            if (currentStep === 1) {
+                // На первом шаге проверяем, выбран ли вариант планировки
+                canProceed = !!answers[`step${currentStep}`];
+            } else if (currentStep === 2) {
+                // На втором шаге проверяем, заполнены ли все поля размеров
+                const selectedLayout = answers.step1;
+                const currentLayoutElement = document.querySelector(`[data-layout="${selectedLayout}"]`);
+                if (currentLayoutElement) {
+                    const inputs = currentLayoutElement.querySelectorAll('.dimension-input');
+                    canProceed = Array.from(inputs).every(input => input.value.trim() !== '');
+                }
+            }
+            
+            nextBtn.disabled = !canProceed;
         }
     }
     
@@ -58,23 +154,30 @@ function initKitchenQuiz() {
         });
     });
     
+    // Обработчик ввода размеров
+    dimensionInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            updateNavigation();
+        });
+    });
+    
     // Обработчик кнопки "Назад"
     if (backBtn) {
         backBtn.addEventListener('click', function() {
             if (currentStep > 1) {
                 currentStep--;
+                showStep(currentStep);
                 updateProgress();
                 updateNavigation();
                 
-                // Убираем выделение со всех вариантов
-                options.forEach(opt => opt.classList.remove('selected'));
-                
                 // Восстанавливаем предыдущий выбор
-                const previousAnswer = answers[`step${currentStep}`];
-                if (previousAnswer) {
-                    const selectedOption = document.querySelector(`[data-value="${previousAnswer}"]`);
-                    if (selectedOption) {
-                        selectedOption.classList.add('selected');
+                if (currentStep === 1) {
+                    const previousAnswer = answers[`step${currentStep}`];
+                    if (previousAnswer) {
+                        const selectedOption = document.querySelector(`[data-value="${previousAnswer}"]`);
+                        if (selectedOption) {
+                            selectedOption.classList.add('selected');
+                        }
                     }
                 }
             }
@@ -86,25 +189,49 @@ function initKitchenQuiz() {
         nextBtn.addEventListener('click', function() {
             if (currentStep < totalSteps) {
                 currentStep++;
+                showStep(currentStep);
                 updateProgress();
                 updateNavigation();
                 
-                // Убираем выделение со всех вариантов
-                options.forEach(opt => opt.classList.remove('selected'));
-                
-                // Восстанавливаем выбор для текущего шага
-                const currentAnswer = answers[`step${currentStep}`];
-                if (currentAnswer) {
-                    const selectedOption = document.querySelector(`[data-value="${currentAnswer}"]`);
-                    if (selectedOption) {
-                        selectedOption.classList.add('selected');
+                // Сохраняем размеры на втором шаге
+                if (currentStep === 2) {
+                    const selectedLayout = answers.step1;
+                    const currentLayoutElement = document.querySelector(`[data-layout="${selectedLayout}"]`);
+                    if (currentLayoutElement) {
+                        const inputs = currentLayoutElement.querySelectorAll('.dimension-input');
+                        inputs.forEach(input => {
+                            answers[`step2_${input.dataset.dimension}`] = input.value;
+                        });
                     }
                 }
             }
         });
     }
     
+    // Функция сброса квиза
+    function resetQuiz() {
+        currentStep = 1;
+        answers = {};
+        
+        // Сбрасываем выбор вариантов
+        options.forEach(option => option.classList.remove('selected'));
+        
+        // Сбрасываем поля ввода
+        dimensionInputs.forEach(input => input.value = '');
+        
+        // Показываем первый шаг
+        showStep(currentStep);
+        updateProgress();
+        updateNavigation();
+    }
+    
+    // Делаем функцию сброса доступной глобально
+    window.kitchenQuiz = {
+        reset: resetQuiz
+    };
+    
     // Инициализация
+    showStep(currentStep);
     updateProgress();
     updateNavigation();
 }
