@@ -43,8 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Обработчики для кнопок
     const consultantBtn = document.querySelector('.btn-consultant-main');
     const buyOneClickBtn = document.querySelector('.btn-buy-one-click');
-    const calculateCostBtn = document.querySelector('.btn-calculate-cost');
-    const freeMeasurementBtn = document.querySelector('.btn-free-measurement');
 
     // Кнопка "Помощь консультанта"
     if (consultantBtn) {
@@ -62,19 +60,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Кнопка "Рассчитать стоимость"
-    if (calculateCostBtn) {
-        calculateCostBtn.addEventListener('click', function() {
-            // Здесь можно добавить логику для калькулятора стоимости
-            alert('Калькулятор стоимости будет доступен в ближайшее время.');
-        });
-    }
+    // Кнопка "Рассчитать стоимость" - теперь использует onclick="openKitchenQuiz()"
+    // Обработчик не нужен, так как используется прямая функция
 
-    // Кнопка "Заявка на бесплатный замер"
-    if (freeMeasurementBtn) {
-        freeMeasurementBtn.addEventListener('click', function() {
-            // Здесь можно добавить логику для заявки на замер
-            alert('Спасибо! Мы свяжемся с вами для уточнения деталей замера.');
-        });
-    }
+    // Кнопка "Заявка на бесплатный замер" - теперь использует onclick="openMeasureModal()"
+    // Обработчик не нужен, так как используется прямая функция
+
+    // Обработчики для модалки квиза не нужны, так как она управляется из includeHeaderFooter.js
 });

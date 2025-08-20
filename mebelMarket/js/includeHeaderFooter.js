@@ -24,6 +24,119 @@ window.openKitchenQuiz = function() {
     }
 };
 
+// Глобальная функция для открытия модалки замера
+window.openMeasureModal = function() {
+    const measureModal = document.getElementById('measureModal');
+    if (measureModal) {
+        // Блокируем скролл страницы
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+        
+        measureModal.style.display = 'block';
+        setTimeout(() => {
+            measureModal.classList.add('show');
+        }, 10);
+    }
+};
+
+// Глобальная функция для открытия модалки сборки
+window.openAssemblyModal = function() {
+    const assemblyModal = document.getElementById('assemblyModal');
+    if (assemblyModal) {
+        // Блокируем скролл страницы
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+        
+        assemblyModal.style.display = 'block';
+        setTimeout(() => {
+            assemblyModal.classList.add('show');
+        }, 10);
+    }
+};
+
+// Инициализация обработчиков для модалок замера и сборки
+function initServiceModals() {
+    // Модалка замера
+    const measureModal = document.getElementById('measureModal');
+    const measureCloseBtn = document.querySelector('#measureModal .close');
+    
+    if (measureCloseBtn && measureModal) {
+        measureCloseBtn.addEventListener('click', function() {
+            measureModal.classList.remove('show');
+            setTimeout(() => {
+                measureModal.style.display = 'none';
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
+            }, 300);
+        });
+    }
+    
+    // Модалка сборки
+    const assemblyModal = document.getElementById('assemblyModal');
+    const assemblyCloseBtn = document.querySelector('#assemblyModal .close');
+    
+    if (assemblyCloseBtn && assemblyModal) {
+        assemblyCloseBtn.addEventListener('click', function() {
+            assemblyModal.classList.remove('show');
+            setTimeout(() => {
+                assemblyModal.style.display = 'none';
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
+            }, 300);
+        });
+    }
+    
+    // Закрытие по клику вне модалки
+    if (measureModal) {
+        measureModal.addEventListener('click', function(e) {
+            if (e.target === measureModal) {
+                measureModal.classList.remove('show');
+                setTimeout(() => {
+                    measureModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                }, 300);
+            }
+        });
+    }
+    
+    if (assemblyModal) {
+        assemblyModal.addEventListener('click', function(e) {
+            if (e.target === assemblyModal) {
+                assemblyModal.classList.remove('show');
+                setTimeout(() => {
+                    assemblyModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                }, 300);
+            }
+        });
+    }
+    
+    // Обработчик клавиши Escape для модалок услуг
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (measureModal && measureModal.style.display === 'block') {
+                measureModal.classList.remove('show');
+                setTimeout(() => {
+                    measureModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                }, 300);
+            }
+            
+            if (assemblyModal && assemblyModal.style.display === 'block') {
+                assemblyModal.classList.remove('show');
+                setTimeout(() => {
+                    assemblyModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                }, 300);
+            }
+        }
+    });
+}
+
     // Функция для инициализации квиза
     function initKitchenQuiz() {
         let currentStep = 1;
@@ -810,6 +923,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Инициализируем квиз после загрузки header
         initKitchenQuiz();
+        
+        // Инициализируем модалки услуг
+        initServiceModals();
     });
     
     includeHTML('#footer-container', basePath + 'html/footer.html', function() {
