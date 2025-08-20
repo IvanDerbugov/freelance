@@ -121,12 +121,12 @@
 }
 
 .btn-consultant-main {
-    background: #1F7D63;
-    color: white;
-    border: none;
-    padding: 14px 24px; /* Было 18px 30px */
-    border-radius: 8px; /* Было 10px */
-    font-size: 18px; /* Было 27px */
+    background: #fff;
+    color: #000;
+    border: #000 1px solid;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: 18px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -140,12 +140,12 @@
 }
 
 .btn-buy-one-click {
-    background: white;
+    background: #CDC9BC;
     color: #333;
     border: 2px solid #e0e0e0;
-    padding: 12px 24px; /* Было 16px 30px */
-    border-radius: 8px; /* Было 10px */
-    font-size: 14px; /* Было 16px */
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -177,6 +177,10 @@
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
+}
+.btn-calculate-cost {
+    background: #FFEB18;
+    color: #000;
 }
 
 .btn-calculate-cost:hover,
