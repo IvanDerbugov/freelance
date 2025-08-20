@@ -5,6 +5,10 @@
 window.openKitchenQuiz = function() {
     const kvizModal = document.getElementById('kvizModal');
     if (kvizModal) {
+        // Блокируем скролл страницы
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+        
         kvizModal.style.display = 'block';
         setTimeout(() => {
             kvizModal.classList.add('show');
@@ -17,11 +21,14 @@ window.openKitchenQuiz = function() {
     }
 };
 
-// Функция для инициализации квиза
-function initKitchenQuiz() {
-    let currentStep = 1;
-    const totalSteps = 6;
-    const answers = {};
+    // Функция для инициализации квиза
+    function initKitchenQuiz() {
+        let currentStep = 1;
+        const totalSteps = 6;
+        const answers = {};
+        
+        // Инициализируем answers как глобальную переменную
+        window.quizAnswers = answers;
     
     // Находим элементы квиза
     const kvizModal = document.getElementById('kvizModal');
@@ -36,6 +43,10 @@ function initKitchenQuiz() {
     // Функция открытия модального окна квиза
     function openKvizModal() {
         if (kvizModal) {
+            // Блокируем скролл страницы
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            
             kvizModal.style.display = 'block';
             setTimeout(() => {
                 kvizModal.classList.add('show');
@@ -49,6 +60,9 @@ function initKitchenQuiz() {
             kvizModal.classList.remove('show');
             setTimeout(() => {
                 kvizModal.style.display = 'none';
+                // Восстанавливаем скролл страницы
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
             }, 300);
         }
     }
@@ -97,7 +111,14 @@ function initKitchenQuiz() {
                 console.log('Найденный элемент для показа:', selectedElement);
                 if (selectedElement) {
                     selectedElement.style.display = 'block';
+                    selectedElement.style.visibility = 'visible';
+                    selectedElement.style.opacity = '1';
                     console.log('Показываем элемент:', selectedLayout);
+                    console.log('Стили элемента после показа:', {
+                        display: selectedElement.style.display,
+                        visibility: selectedElement.style.visibility,
+                        opacity: selectedElement.style.opacity
+                    });
                 } else {
                     console.log('Элемент НЕ найден для планировки:', selectedLayout);
                 }
