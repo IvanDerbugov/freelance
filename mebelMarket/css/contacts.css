@@ -175,8 +175,22 @@
     margin-right: 15px;
 }
 
-.btn-text {
+.btn-content {
+    display: flex;
+    flex-direction: column;
     flex: 1;
+}
+
+.btn-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.btn-detail {
+    font-size: 0.9rem;
+    font-weight: 400;
+    opacity: 0.9;
 }
 
 /* Адресные карточки */
