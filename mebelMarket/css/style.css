@@ -1384,7 +1384,7 @@ section.carousel-bootstrap {
 
 .ourWorks .price-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 10px;
     align-items: center;
     line-height: 24px;
