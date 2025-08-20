@@ -27,8 +27,16 @@ function includeVersions() {
             // Вставляем содержимое в начало body текущей страницы
             document.body.insertBefore(tempDiv, document.body.firstChild);
             
-            // Инициализируем отображение версий
-            initVersionDisplay();
+            // Проверяем, что элементы загрузились
+            console.log('📁 versions.html загружен и вставлен в DOM');
+            console.log('📁 Поиск элемента nonono после вставки:', document.querySelector('.nonono'));
+            console.log('📁 Все элементы versions:', document.querySelectorAll('[class*="version"]'));
+            
+            // Инициализируем отображение версий с небольшой задержкой
+            setTimeout(() => {
+                console.log('⏰ Инициализация с задержкой...');
+                initVersionDisplay();
+            }, 100);
         })
         .catch(error => {
             console.error('Ошибка загрузки versions.html:', error);
@@ -59,8 +67,12 @@ function initVersionDisplay() {
         });
 
         // Настраиваем nonono для всех экранов меньше 1500px (если элемент существует)
+        console.log('🔍 Поиск элемента nonono:', nonono);
+        console.log('🔍 Текущая ширина экрана:', width, 'px');
+        console.log('🔍 Условие активации защиты:', width < 1500);
+        
         if (nonono) {
-            if (width <= 1400) {
+            if (width < 1500) {
                 nonono.style.display = 'block';
                 nonono.style.position = 'fixed';
                 nonono.style.top = '0';
@@ -70,9 +82,29 @@ function initVersionDisplay() {
                 nonono.style.backgroundColor = '#000';
                 nonono.style.color = '#fff';
                 nonono.style.fontSize = '70px';
-                nonono.style.zIndex = '15';
+                nonono.style.zIndex = '9999';
+                nonono.style.display = 'flex';
+                nonono.style.alignItems = 'center';
+                nonono.style.justifyContent = 'center';
+                nonono.style.textAlign = 'center';
+                nonono.style.padding = '20px';
+                nonono.style.boxSizing = 'border-box';
+                
+                // Блокируем взаимодействие с основным контентом
+                document.body.style.overflow = 'hidden';
+                document.body.style.pointerEvents = 'none';
+                
+                // Делаем nonono некликабельным
+                nonono.style.pointerEvents = 'none';
+                nonono.style.cursor = 'default';
+                
+                console.log('🔒 ЗАЩИТА АКТИВИРОВАНА для экрана шириной:', width, 'px');
             } else {
                 nonono.style.display = 'none';
+                // Восстанавливаем взаимодействие с основным контентом
+                document.body.style.overflow = '';
+                document.body.style.pointerEvents = '';
+                console.log('✅ ЗАЩИТА ОТКЛЮЧЕНА для экрана шириной:', width, 'px');
             }
         }
 
@@ -148,6 +180,36 @@ function initVersionDisplay() {
 
     // Обновляем при изменении размера окна
     window.addEventListener('resize', updateVersionDisplay);
+    
+    // Добавляем функцию для ручного тестирования защиты
+    window.testProtection = function() {
+        console.log('🧪 ТЕСТИРОВАНИЕ ЗАЩИТЫ');
+        const nonono = document.querySelector('.nonono');
+        if (nonono) {
+            nonono.style.display = 'flex';
+            nonono.style.position = 'fixed';
+            nonono.style.top = '0';
+            nonono.style.left = '0';
+            nonono.style.width = '100%';
+            nonono.style.height = '100%';
+            nonono.style.backgroundColor = '#000';
+            nonono.style.color = '#fff';
+            nonono.style.fontSize = '70px';
+            nonono.style.zIndex = '9999';
+            nonono.style.alignItems = 'center';
+            nonono.style.justifyContent = 'center';
+            nonono.style.textAlign = 'center';
+            nonono.style.padding = '20px';
+            nonono.style.boxSizing = 'border-box';
+            document.body.style.overflow = 'hidden';
+            document.body.style.pointerEvents = 'none';
+            console.log('✅ ЗАЩИТА ПРИНУДИТЕЛЬНО АКТИВИРОВАНА');
+        } else {
+            console.log('❌ Элемент nonono не найден');
+        }
+    };
+    
+    console.log('🧪 Для тестирования защиты введите в консоль: testProtection()');
 }
 
 // Автоматически подключаем версии при загрузке DOM

@@ -200,7 +200,7 @@ window.openKitchenQuiz = function() {
     options.forEach(option => {
         option.addEventListener('click', function() {
             // Убираем выделение со всех вариантов в текущем шаге
-            const currentStepOptions = document.querySelectorAll(`[data-step="${currentStep}"]`);
+            const currentStepOptions = document.querySelectorAll(`[data-step="${currentStep}"] .kviz-option`);
             currentStepOptions.forEach(opt => opt.classList.remove('selected'));
             
             // Выделяем выбранный вариант
@@ -209,6 +209,9 @@ window.openKitchenQuiz = function() {
             // Сохраняем ответ
             const selectedValue = this.dataset.value;
             answers[`step${currentStep}`] = selectedValue;
+            
+            console.log(`Выбрана планировка: ${selectedValue}`);
+            console.log('Текущие ответы:', answers);
             
             // Обновляем навигацию
             updateNavigation();
@@ -222,24 +225,32 @@ window.openKitchenQuiz = function() {
         });
     });
     
-    // Обработчики для новых опций (материал, столешница, срочность)
+    // Обработчики для всех опций квиза (материал, столешница, срочность)
     document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('kviz-option') && e.target.dataset.step) {
-            const step = e.target.dataset.step;
-            const value = e.target.dataset.value;
+        if (e.target.classList.contains('kviz-option') || e.target.closest('.kviz-option')) {
+            const option = e.target.classList.contains('kviz-option') ? e.target : e.target.closest('.kviz-option');
+            
+            // Находим родительский шаг
+            const stepElement = option.closest('.kviz-step');
+            if (!stepElement) return;
+            
+            const step = stepElement.dataset.step;
+            const value = option.dataset.value;
+            
+            if (!step || !value) return;
             
             // Убираем выделение со всех опций в текущем шаге
-            const currentStepElement = document.querySelector(`[data-step="${step}"]`);
-            if (currentStepElement) {
-                const currentStepOptions = currentStepElement.querySelectorAll('.kviz-option');
-                currentStepOptions.forEach(opt => opt.classList.remove('selected'));
-            }
+            const currentStepOptions = stepElement.querySelectorAll('.kviz-option');
+            currentStepOptions.forEach(opt => opt.classList.remove('selected'));
             
             // Выделяем выбранную опцию
-            e.target.classList.add('selected');
+            option.classList.add('selected');
             
             // Сохраняем ответ
             answers[`step${step}`] = value;
+            
+            console.log(`Выбрана опция: шаг ${step}, значение ${value}`);
+            console.log('Текущие ответы:', answers);
             
             // Обновляем навигацию
             updateNavigation();

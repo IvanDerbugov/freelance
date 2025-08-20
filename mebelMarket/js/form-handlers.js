@@ -194,16 +194,21 @@ function collectQuizResults() {
         urgency: ''
     };
     
+    console.log('=== НАЧАЛО СБОРА РЕЗУЛЬТАТОВ КВИЗА ===');
+    
     // Шаг 1: Планировка (первый шаг)
     const selectedLayout = document.querySelector('.kviz-step[data-step="1"] .kviz-option.selected');
+    console.log('Найденная планировка:', selectedLayout);
     if (selectedLayout) {
         const layoutValue = selectedLayout.getAttribute('data-value');
         const layoutText = selectedLayout.querySelector('.option-text').textContent;
         results.layout = `${layoutText} (${layoutValue})`;
+        console.log('Планировка сохранена:', results.layout);
     }
     
     // Шаг 2: Размеры
     const dimensionInputs = document.querySelectorAll('.dimension-input');
+    console.log('Найдены поля размеров:', dimensionInputs.length);
     if (dimensionInputs.length > 0) {
         const dimensions = [];
         dimensionInputs.forEach(input => {
@@ -213,32 +218,40 @@ function collectQuizResults() {
             }
         });
         results.dimensions = dimensions.join(', ');
+        console.log('Размеры сохранены:', results.dimensions);
     }
     
     // Шаг 3: Материал (третий шаг)
     const selectedMaterial = document.querySelector('.kviz-step[data-step="3"] .kviz-option.selected');
+    console.log('Найденный материал:', selectedMaterial);
     if (selectedMaterial) {
         const materialValue = selectedMaterial.getAttribute('data-value');
         const materialText = selectedMaterial.querySelector('.option-text').textContent;
         results.material = `${materialText} (${materialValue})`;
+        console.log('Материал сохранен:', results.material);
     }
     
     // Шаг 4: Столешница (четвертый шаг)
     const selectedCountertop = document.querySelector('.kviz-step[data-step="4"] .kviz-option.selected');
+    console.log('Найденная столешница:', selectedCountertop);
     if (selectedCountertop) {
         const countertopValue = selectedCountertop.getAttribute('data-value');
         const countertopText = selectedCountertop.querySelector('.option-text').textContent;
         results.countertop = `${countertopText} (${countertopValue})`;
+        console.log('Столешница сохранена:', results.countertop);
     }
     
     // Шаг 5: Срочность (пятый шаг)
     const selectedUrgency = document.querySelector('.kviz-step[data-step="5"] .kviz-option.selected');
+    console.log('Найденная срочность:', selectedUrgency);
     if (selectedUrgency) {
         const urgencyValue = selectedUrgency.getAttribute('data-value');
         const urgencyText = selectedUrgency.querySelector('.option-text').textContent;
         results.urgency = `${urgencyText} (${urgencyValue})`;
+        console.log('Срочность сохранена:', results.urgency);
     }
     
+    console.log('=== ФИНАЛЬНЫЕ РЕЗУЛЬТАТЫ КВИЗА ===');
     console.log('Собранные результаты квиза:', results);
     return results;
 }
