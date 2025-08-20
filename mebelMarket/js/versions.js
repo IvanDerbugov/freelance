@@ -73,7 +73,13 @@ function initVersionDisplay() {
         
         if (nonono) {
             if (width < 1500) {
-                nonono.style.display = 'block';
+                // Принудительно сбрасываем display: none если он был установлен
+                if (nonono.style.display === 'none') {
+                    console.log('🔄 СБРАСЫВАЕМ display: none для активации защиты');
+                    // Принудительно сбрасываем все inline стили
+                    nonono.removeAttribute('style');
+                }
+                
                 nonono.style.position = 'fixed';
                 nonono.style.top = '0';
                 nonono.style.left = '0';
@@ -179,7 +185,30 @@ function initVersionDisplay() {
     updateVersionDisplay();
 
     // Обновляем при изменении размера окна
-    window.addEventListener('resize', updateVersionDisplay);
+    window.addEventListener('resize', () => {
+        console.log('🔄 РЕСАЙЗ ОКНА - обновляем защиту');
+        console.log('🔄 Новая ширина окна:', window.innerWidth, 'px');
+        
+        // Принудительно обновляем защиту при ресайзе
+        setTimeout(() => {
+            updateVersionDisplay();
+        }, 50); // Небольшая задержка для стабилизации размера
+    });
+    
+    // Периодически проверяем защиту (каждые 1 секунду)
+    setInterval(() => {
+        const currentWidth = window.innerWidth;
+        const nonono = document.querySelector('.nonono');
+        if (nonono && currentWidth < 1500) {
+            // Проверяем, что защита активна
+            if (nonono.style.display !== 'flex') {
+                console.log('⚠️ ЗАЩИТА БЫЛА ОТКЛЮЧЕНА - ВОССТАНАВЛИВАЕМ');
+                console.log('⚠️ Текущий display:', nonono.style.display);
+                console.log('⚠️ Текущая ширина:', currentWidth, 'px');
+                updateVersionDisplay();
+            }
+        }
+    }, 1000);
     
     // Добавляем функцию для ручного тестирования защиты
     window.testProtection = function() {
@@ -210,6 +239,47 @@ function initVersionDisplay() {
     };
     
     console.log('🧪 Для тестирования защиты введите в консоль: testProtection()');
+    console.log('🧪 Для тестирования ресайза введите в консоль: testResize()');
+    console.log('🧪 Для принудительного обновления защиты введите в консоль: forceUpdate()');
+    
+    // Функция для тестирования ресайза
+    window.testResize = function() {
+        console.log('🧪 ТЕСТИРОВАНИЕ РЕСАЙЗА');
+        console.log('🧪 Текущая ширина:', window.innerWidth, 'px');
+        console.log('🧪 Симулируем ресайз...');
+        
+        // Симулируем событие ресайза
+        window.dispatchEvent(new Event('resize'));
+        
+        setTimeout(() => {
+            console.log('🧪 После ресайза ширина:', window.innerWidth, 'px');
+            const nonono = document.querySelector('.nonono');
+            if (nonono) {
+                console.log('🧪 Статус защиты:', nonono.style.display);
+                console.log('🧪 Стили защиты:', {
+                    position: nonono.style.position,
+                    zIndex: nonono.style.zIndex,
+                    backgroundColor: nonono.style.backgroundColor
+                });
+            }
+        }, 100);
+    };
+    
+    // Функция для принудительного обновления защиты
+    window.forceUpdate = function() {
+        console.log('🧪 ПРИНУДИТЕЛЬНОЕ ОБНОВЛЕНИЕ ЗАЩИТЫ');
+        console.log('🧪 Текущая ширина:', window.innerWidth, 'px');
+        updateVersionDisplay();
+        
+        setTimeout(() => {
+            const nonono = document.querySelector('.nonono');
+            if (nonono) {
+                console.log('🧪 После обновления display:', nonono.style.display);
+                console.log('🧪 После обновления position:', nonono.style.position);
+                console.log('🧪 После обновления zIndex:', nonono.style.zIndex);
+            }
+        }, 100);
+    };
 }
 
 // Автоматически подключаем версии при загрузке DOM
