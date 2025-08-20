@@ -1,6 +1,114 @@
 // Умное подключение header.html и footer.html через fetch
 // Автоматически определяет правильные пути в зависимости от расположения страницы
 
+// Функция для инициализации квиза
+function initKitchenQuiz() {
+    let currentStep = 1;
+    const totalSteps = 6;
+    const answers = {};
+    
+    // Находим элементы квиза
+    const progressText = document.querySelector('.progress-text');
+    const progressBars = document.querySelectorAll('.progress-bar');
+    const options = document.querySelectorAll('.kviz-option');
+    const backBtn = document.querySelector('.kviz-btn-back');
+    const nextBtn = document.querySelector('.kviz-btn-next');
+    
+    // Функция обновления прогресса
+    function updateProgress() {
+        if (progressText) {
+            progressText.textContent = `Шаг ${currentStep} из ${totalSteps}`;
+        }
+        
+        progressBars.forEach((bar, index) => {
+            if (index < currentStep) {
+                bar.classList.add('active');
+            } else {
+                bar.classList.remove('active');
+            }
+        });
+    }
+    
+    // Функция обновления навигации
+    function updateNavigation() {
+        if (backBtn) {
+            backBtn.disabled = currentStep === 1;
+        }
+        
+        if (nextBtn) {
+            const currentAnswer = answers[`step${currentStep}`];
+            nextBtn.disabled = !currentAnswer;
+        }
+    }
+    
+    // Обработчик выбора варианта
+    options.forEach(option => {
+        option.addEventListener('click', function() {
+            // Убираем выделение со всех вариантов
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Выделяем выбранный вариант
+            this.classList.add('selected');
+            
+            // Сохраняем ответ
+            answers[`step${currentStep}`] = this.dataset.value;
+            
+            // Обновляем навигацию
+            updateNavigation();
+        });
+    });
+    
+    // Обработчик кнопки "Назад"
+    if (backBtn) {
+        backBtn.addEventListener('click', function() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateProgress();
+                updateNavigation();
+                
+                // Убираем выделение со всех вариантов
+                options.forEach(opt => opt.classList.remove('selected'));
+                
+                // Восстанавливаем предыдущий выбор
+                const previousAnswer = answers[`step${currentStep}`];
+                if (previousAnswer) {
+                    const selectedOption = document.querySelector(`[data-value="${previousAnswer}"]`);
+                    if (selectedOption) {
+                        selectedOption.classList.add('selected');
+                    }
+                }
+            }
+        });
+    }
+    
+    // Обработчик кнопки "Далее"
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateProgress();
+                updateNavigation();
+                
+                // Убираем выделение со всех вариантов
+                options.forEach(opt => opt.classList.remove('selected'));
+                
+                // Восстанавливаем выбор для текущего шага
+                const currentAnswer = answers[`step${currentStep}`];
+                if (currentAnswer) {
+                    const selectedOption = document.querySelector(`[data-value="${currentAnswer}"]`);
+                    if (selectedOption) {
+                        selectedOption.classList.add('selected');
+                    }
+                }
+            }
+        });
+    }
+    
+    // Инициализация
+    updateProgress();
+    updateNavigation();
+}
+
 function getBasePath() {
     // Определяем, где находится текущая страница
     const currentPath = window.location.pathname;
@@ -297,6 +405,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (typeof initializeModals === 'function') {
             initializeModals();
         }
+        
+        // Инициализируем квиз после загрузки header
+        initKitchenQuiz();
     });
     
     includeHTML('#footer-container', basePath + 'html/footer.html', function() {
