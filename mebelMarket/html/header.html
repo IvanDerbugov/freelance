@@ -113,7 +113,7 @@
                 <h3>Заказать замер</h3>
                 <span class="close" data-modal="measureModal">&times;</span>
             </div>
-            <form class="modal-form" id="measureForm" action="https://api.web3forms.com/submit" method="POST">
+            <form class="modal-form" id="measureForm">
                 <input type="hidden" name="access_key" value="fa427f88-52e1-4116-b58f-4f7845816c64">
                 <input type="hidden" name="subject" value="Заявка на замер кухни">
                 <input type="hidden" name="form_type" value="measure">
@@ -134,7 +134,10 @@
                     <label for="measureDate">Когда нужен замер</label>
                     <input type="date" id="measureDate" name="date">
                 </div>
-                <button type="submit" class="submit-btn">Отправить заявку</button>
+                <button type="submit" class="submit-btn">
+                    <span class="spinner"></span>
+                    <span class="btn-text">Отправить заявку</span>
+                </button>
             </form>
         </div>
     </div>
@@ -146,7 +149,7 @@
                 <h3>Заказать сборку</h3>
                 <span class="close" data-modal="assemblyModal">&times;</span>
             </div>
-            <form class="modal-form" id="assemblyForm" action="https://api.web3forms.com/submit" method="POST">
+            <form class="modal-form" id="assemblyForm">
                 <input type="hidden" name="access_key" value="fa427f88-52e1-4116-b58f-4f7845816c64">
                 <input type="hidden" name="subject" value="Заявка на сборку кухни">
                 <input type="hidden" name="form_type" value="assembly">
@@ -167,7 +170,10 @@
                     <label for="assemblyDate">Когда нужна сборка</label>
                     <input type="date" id="assemblyDate" name="date">
                 </div>
-                <button type="submit" class="submit-btn">Отправить заявку</button>
+                <button type="submit" class="submit-btn">
+                    <span class="spinner"></span>
+                    <span class="btn-text">Отправить заявку</span>
+                </button>
             </form>
         </div>
     </div>
@@ -432,7 +438,7 @@
                             <h5 class="form-title">ЗАПОЛНИТЕ ФОРМУ</h5>
                             <p class="form-subtitle">Введите ваши контактные данные</p>
                             
-                            <form id="giftForm" class="gift-form-content" action="https://api.web3forms.com/submit" method="POST">
+                            <form id="giftForm" class="gift-form-content">
                                 <input type="hidden" name="access_key" value="fa427f88-52e1-4116-b58f-4f7845816c64">
                                 <input type="hidden" name="subject" value="Результаты квиза дизайн-проекта кухни">
                                 <input type="hidden" name="form_type" value="quiz">
@@ -450,7 +456,10 @@
                                 <div class="form-group">
                                     <input type="tel" id="giftPhone" name="phone" placeholder="+7 (999) 999-99-99" required>
                                 </div>
-                                <button type="submit" class="gift-submit-btn">ОТПРАВИТЬ</button>
+                                <button type="submit" class="gift-submit-btn">
+                                    <span class="spinner"></span>
+                                    <span class="btn-text">ОТПРАВИТЬ</span>
+                                </button>
                                 <p class="form-disclaimer">Нажимая на кнопку, Вы даете согласие на обработку персональных данных и соглашаетесь с политикой конфиденциальности</p>
                             </form>
                         </div>

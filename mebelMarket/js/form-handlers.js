@@ -8,8 +8,8 @@ const CONFIG = {
     },
     telegram: {
         botToken: '8343811100:AAFksZstnN76FVLcutLXYWhrMhU_CiLd4PE', // Токен вашего бота
-        chatId: '955498826', // ID чата для уведомлений
-        clientChatId: 'CLIENT_CHAT_ID' // ID чата клиента (опционально)
+        chatId: '955498826', // ID чата для уведомлений (Иван)
+        clientChatId: '442591954' // ID чата заказчика (Денис)
     }
 };
 
@@ -194,8 +194,8 @@ function collectQuizResults() {
         urgency: ''
     };
     
-    // Шаг 1: Планировка
-    const selectedLayout = document.querySelector('.kviz-option[data-step="1"].selected');
+    // Шаг 1: Планировка (первый шаг)
+    const selectedLayout = document.querySelector('.kviz-step[data-step="1"] .kviz-option.selected');
     if (selectedLayout) {
         const layoutValue = selectedLayout.getAttribute('data-value');
         const layoutText = selectedLayout.querySelector('.option-text').textContent;
@@ -215,35 +215,39 @@ function collectQuizResults() {
         results.dimensions = dimensions.join(', ');
     }
     
-    // Шаг 3: Материал
-    const selectedMaterial = document.querySelector('.kviz-option[data-step="3"].selected');
+    // Шаг 3: Материал (третий шаг)
+    const selectedMaterial = document.querySelector('.kviz-step[data-step="3"] .kviz-option.selected');
     if (selectedMaterial) {
         const materialValue = selectedMaterial.getAttribute('data-value');
         const materialText = selectedMaterial.querySelector('.option-text').textContent;
         results.material = `${materialText} (${materialValue})`;
     }
     
-    // Шаг 4: Столешница
-    const selectedCountertop = document.querySelector('.kviz-option[data-step="4"].selected');
+    // Шаг 4: Столешница (четвертый шаг)
+    const selectedCountertop = document.querySelector('.kviz-step[data-step="4"] .kviz-option.selected');
     if (selectedCountertop) {
         const countertopValue = selectedCountertop.getAttribute('data-value');
         const countertopText = selectedCountertop.querySelector('.option-text').textContent;
         results.countertop = `${countertopText} (${countertopValue})`;
     }
     
-    // Шаг 5: Срочность
-    const selectedUrgency = document.querySelector('.kviz-option[data-step="5"].selected');
+    // Шаг 5: Срочность (пятый шаг)
+    const selectedUrgency = document.querySelector('.kviz-step[data-step="5"] .kviz-option.selected');
     if (selectedUrgency) {
         const urgencyValue = selectedUrgency.getAttribute('data-value');
         const urgencyText = selectedUrgency.querySelector('.option-text').textContent;
         results.urgency = `${urgencyText} (${urgencyValue})`;
     }
     
+    console.log('Собранные результаты квиза:', results);
     return results;
 }
 
 // Отправка уведомления в Telegram
 async function sendTelegramNotification(formData, formType) {
+    console.log('Отправка уведомления в Telegram для типа:', formType);
+    console.log('Данные формы:', Object.fromEntries(formData));
+    
     // Проверяем, настроен ли Telegram бот
     if (!CONFIG.telegram.botToken || !CONFIG.telegram.chatId) {
         console.warn('Telegram бот не настроен');
@@ -252,14 +256,18 @@ async function sendTelegramNotification(formData, formType) {
     
     try {
         const message = formatTelegramMessage(formData, formType);
+        console.log('Сформированное сообщение для Telegram:', message);
         
         // Отправляем уведомление администратору
-        await sendTelegramMessage(message, CONFIG.telegram.chatId);
+        const result = await sendTelegramMessage(message, CONFIG.telegram.chatId);
+        console.log('Результат отправки в Telegram:', result);
         
-        // Если есть ID чата клиента, отправляем ему подтверждение
-        if (CONFIG.telegram.clientChatId && CONFIG.telegram.clientChatId !== 'CLIENT_CHAT_ID') {
+        // Отправляем подтверждение заказчику
+        if (CONFIG.telegram.clientChatId) {
             const clientMessage = formatClientMessage(formData, formType);
+            console.log('Отправляем уведомление заказчику:', clientMessage);
             await sendTelegramMessage(clientMessage, CONFIG.telegram.clientChatId);
+            console.log('Уведомление заказчику отправлено успешно');
         }
         
     } catch (error) {
@@ -320,16 +328,33 @@ function formatClientMessage(formData, formType) {
     let message = '';
     
     if (formType === 'quiz') {
-        message = `✅ Спасибо, ${name}!\n\n`;
-        message += `Результаты вашего квиза дизайн-проекта кухни успешно получены.\n`;
-        message += `Наш дизайнер свяжется с вами в ближайшее время для расчета стоимости и обсуждения деталей.\n\n`;
-        message += `📞 По всем вопросам: +7 (980) 098-00-54`;
+        message = `🎯 НОВАЯ ЗАЯВКА: Квиз дизайн-проекта кухни\n\n`;
+        message += `👤 Имя клиента: ${name}\n`;
+        message += `📱 Телефон: ${formData.get('phone')}\n\n`;
+        message += `🏠 Планировка: ${formData.get('quiz_layout') || 'Не выбрано'}\n`;
+        message += `📏 Размеры: ${formData.get('quiz_dimensions') || 'Не указаны'}\n`;
+        message += `🪵 Материал: ${formData.get('quiz_material') || 'Не выбран'}\n`;
+        message += `🔲 Столешница: ${formData.get('quiz_countertop') || 'Не выбрана'}\n`;
+        message += `⏰ Срочность: ${formData.get('quiz_urgency') || 'Не указана'}\n\n`;
+        message += `⏰ Время: ${new Date().toLocaleString('ru-RU')}\n\n`;
+        message += `💡 Клиент ожидает обратной связи для расчета стоимости!`;
     } else {
-        const formTypeText = formType === 'measure' ? 'замер' : 'сборку';
-        message = `✅ Спасибо, ${name}!\n\n`;
-        message += `Ваша заявка на ${formTypeText} кухни успешно получена.\n`;
-        message += `Наш специалист свяжется с вами в ближайшее время для уточнения деталей.\n\n`;
-        message += `📞 По всем вопросам: +7 (980) 098-00-54`;
+        const formTypeText = formType === 'measure' ? 'ЗАМЕР' : 'СБОРКА';
+        const phone = formData.get('phone');
+        const address = formData.get('address');
+        const date = formData.get('date');
+        
+        message = `🚨 НОВАЯ ЗАЯВКА: ${formTypeText}\n\n`;
+        message += `👤 Имя клиента: ${name}\n`;
+        message += `📱 Телефон: ${phone}\n`;
+        message += `📍 Адрес: ${address}\n`;
+        
+        if (date) {
+            message += `📅 Дата: ${date}\n`;
+        }
+        
+        message += `\n⏰ Время: ${new Date().toLocaleString('ru-RU')}\n\n`;
+        message += `💡 Клиент ожидает обратной связи!`;
     }
     
     return message;
@@ -370,15 +395,24 @@ function showLoadingState(form, isLoading) {
     if (submitBtn) {
         if (isLoading) {
             submitBtn.disabled = true;
-            const originalText = submitBtn.textContent;
-            submitBtn.setAttribute('data-original-text', originalText);
-            submitBtn.textContent = 'Отправка...';
             submitBtn.classList.add('loading');
+            // Показываем спиннер и меняем текст
+            const btnText = submitBtn.querySelector('.btn-text');
+            if (btnText) {
+                btnText.textContent = 'Отправка...';
+            }
         } else {
             submitBtn.disabled = false;
-            const originalText = submitBtn.getAttribute('data-original-text') || 'Отправить заявку';
-            submitBtn.textContent = originalText;
             submitBtn.classList.remove('loading');
+            // Возвращаем оригинальный текст
+            const btnText = submitBtn.querySelector('.btn-text');
+            if (btnText) {
+                if (submitBtn.classList.contains('gift-submit-btn')) {
+                    btnText.textContent = 'ОТПРАВИТЬ';
+                } else {
+                    btnText.textContent = 'Отправить заявку';
+                }
+            }
         }
     }
 }
