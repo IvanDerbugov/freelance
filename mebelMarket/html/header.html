@@ -235,8 +235,6 @@
                         <button class="kviz-btn kviz-btn-next" disabled>СЛЕДУЮЩИЙ ШАГ</button>
                     </div>
 
-
-
                 </div>
 
                 <!-- Шаг 2: Ввод размеров -->
@@ -248,17 +246,7 @@
                     <!-- Прямая кухня -->
                     <div class="kviz-dimensions" data-layout="straight" style="display: none;">
                         <div class="kitchen-diagram straight-kitchen">
-                            <svg viewBox="0 0 300 100" fill="none">
-                                <rect x="10" y="40" width="280" height="20" fill="#e9ecef" stroke="#1F7D63"
-                                    stroke-width="2" />
-                                <circle cx="80" cy="50" r="8" fill="#1F7D63" />
-                                <circle cx="120" cy="50" r="8" fill="#1F7D63" />
-                                <circle cx="160" cy="50" r="8" fill="#1F7D63" />
-                                <circle cx="200" cy="50" r="8" fill="#1F7D63" />
-                                <rect x="220" y="35" width="40" height="30" fill="#e9ecef" stroke="#1F7D63"
-                                    stroke-width="2" />
-                                <text x="240" y="55" text-anchor="middle" fill="#1F7D63" font-size="12">❄</text>
-                            </svg>
+                            <img src="img/kviz-straight.webp" alt="Прямая кухня" style="max-width: 100%; height: auto;">
                         </div>
                         <div class="dimension-inputs">
                             <div class="input-group">
@@ -270,24 +258,17 @@
                         <div class="selected-layout">
                             <span>Прямая</span>
                         </div>
+                        <!-- Кнопки навигации -->
+                        <div class="kviz-navigation" id="test-navigation">
+                            <button class="kviz-btn kviz-btn-back" disabled>ВЕРНУТЬСЯ НАЗАД</button>
+                            <button class="kviz-btn kviz-btn-next" disabled>СЛЕДУЮЩИЙ ШАГ</button>
+                        </div>
                     </div>
 
                     <!-- Угловая кухня -->
                     <div class="kviz-dimensions" data-layout="corner" style="display: none;">
                         <div class="kitchen-diagram corner-kitchen">
-                            <svg viewBox="0 0 200 200" fill="none">
-                                <rect x="10" y="100" width="120" height="20" fill="#e9ecef" stroke="#1F7D63"
-                                    stroke-width="2" />
-                                <rect x="100" y="80" width="20" height="120" fill="#e9ecef" stroke="#1F7D63"
-                                    stroke-width="2" />
-                                <circle cx="60" cy="110" r="8" fill="#1F7D63" />
-                                <circle cx="100" cy="110" r="8" fill="#1F7D63" />
-                                <circle cx="140" cy="110" r="8" fill="#1F7D63" />
-                                <circle cx="180" cy="110" r="8" fill="#1F7D63" />
-                                <rect x="40" y="85" width="40" height="30" fill="#e9ecef" stroke="#1F7D63"
-                                    stroke-width="2" />
-                                <text x="60" y="105" text-anchor="middle" fill="#1F7D63" font-size="12">❄</text>
-                            </svg>
+                            <img src="img/kviz-angular.webp" alt="Угловая кухня" style="max-width: 100%; height: auto;">
                         </div>
                         <div class="dimension-inputs">
                             <div class="input-group">
@@ -304,26 +285,18 @@
                         <div class="selected-layout">
                             <span>Угловая</span>
                         </div>
+                        <!-- Кнопки навигации -->
+                        <div class="kviz-navigation" id="test-navigation">
+                            <button class="kviz-btn kviz-btn-back" disabled>ВЕРНУТЬСЯ НАЗАД</button>
+                            <button class="kviz-btn kviz-btn-next" disabled>СЛЕДУЮЩИЙ ШАГ</button>
+                        </div>
                     </div>
 
                     <!-- П-образная кухня -->
                     <div class="kviz-dimensions" data-layout="u-shaped" style="display: none;">
                         <div class="kitchen-diagram u-shaped-kitchen">
-                            <svg viewBox="0 0 300 200" fill="none">
-                                <rect x="10" y="100" width="280" height="20" fill="#e9ecef" stroke="#1F7D63"
-                                    stroke-width="2" />
-                                <rect x="10" y="80" width="20" height="120" fill="#e9ecef" stroke="#1F7D63"
-                                    stroke-width="2" />
-                                <rect x="270" y="80" width="20" height="120" fill="#e9ecef" stroke="#1F7D63"
-                                    stroke-width="2" />
-                                <circle cx="60" cy="110" r="8" fill="#1F7D63" />
-                                <circle cx="100" cy="110" r="8" fill="#1F7D63" />
-                                <circle cx="140" cy="110" r="8" fill="#1F7D63" />
-                                <circle cx="180" cy="110" r="8" fill="#1F7D63" />
-                                <rect x="40" y="85" width="40" height="30" fill="#e9ecef" stroke="#1F7D63"
-                                    stroke-width="2" />
-                                <text x="60" y="105" text-anchor="middle" fill="#1F7D63" font-size="12">❄</text>
-                            </svg>
+                            <img src="img/kviz-U-shaped.webp" alt="П-образная кухня"
+                                style="max-width: 100%; height: auto;">
                         </div>
                         <div class="dimension-inputs">
                             <div class="input-group">
@@ -345,10 +318,23 @@
                         <div class="selected-layout">
                             <span>П-образная</span>
                         </div>
+                        <!-- Кнопки навигации -->
+                        <div class="kviz-navigation" id="test-navigation">
+                            <button class="kviz-btn kviz-btn-back" disabled>ВЕРНУТЬСЯ НАЗАД</button>
+                            <button class="kviz-btn kviz-btn-next" disabled>СЛЕДУЮЩИЙ ШАГ</button>
+                        </div>
+
+
                     </div>
 
                     <!-- Другая планировка -->
                     <div class="kviz-dimensions" data-layout="other" style="display: none;">
+                        <div class="kitchen-diagram other-kitchen">
+                            <svg viewBox="0 0 100 60" fill="none">
+                                <circle cx="50" cy="30" r="20" fill="#ccc" stroke="#999" stroke-width="2" />
+                                <text x="50" y="35" text-anchor="middle" fill="#999" font-size="12">?</text>
+                            </svg>
+                        </div>
                         <div class="dimension-inputs">
                             <div class="input-group">
                                 <label>Общая длина гарнитура (см)</label>
@@ -359,12 +345,13 @@
                         <div class="selected-layout">
                             <span>Другая</span>
                         </div>
+                        <!-- Кнопки навигации -->
+                        <div class="kviz-navigation">
+                            <button class="kviz-btn kviz-btn-back" disabled>ВЕРНУТЬСЯ НАЗАД</button>
+                            <button class="kviz-btn kviz-btn-next" disabled>СЛЕДУЮЩИЙ ШАГ</button>
+                        </div>
                     </div>
-                    <!-- Кнопки навигации -->
-                    <div class="kviz-navigation" id="test-navigation">
-                        <button class="kviz-btn kviz-btn-back" disabled>ВЕРНУТЬСЯ НАЗАД</button>
-                        <button class="kviz-btn kviz-btn-next" disabled>СЛЕДУЮЩИЙ ШАГ</button>
-                    </div>
+
                 </div>
 
 

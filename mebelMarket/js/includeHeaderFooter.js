@@ -82,16 +82,27 @@ function initKitchenQuiz() {
         // Показываем соответствующие поля для размеров на втором шаге
         if (stepNumber === 2) {
             const selectedLayout = answers.step1;
+            console.log('=== ОТЛАДКА ВТОРОГО ШАГА ===');
+            console.log('Выбранная планировка:', selectedLayout);
+            console.log('Все элементы планировок:', document.querySelectorAll('.kviz-dimensions'));
+            
             if (selectedLayout) {
                 const layoutElements = document.querySelectorAll('.kviz-dimensions');
                 layoutElements.forEach(element => {
                     element.style.display = 'none';
+                    console.log('Скрываем элемент:', element.dataset.layout);
                 });
                 
                 const selectedElement = document.querySelector(`[data-layout="${selectedLayout}"]`);
+                console.log('Найденный элемент для показа:', selectedElement);
                 if (selectedElement) {
                     selectedElement.style.display = 'block';
+                    console.log('Показываем элемент:', selectedLayout);
+                } else {
+                    console.log('Элемент НЕ найден для планировки:', selectedLayout);
                 }
+            } else {
+                console.log('Планировка НЕ выбрана в первом шаге!');
             }
         }
         
@@ -157,7 +168,11 @@ function initKitchenQuiz() {
             this.classList.add('selected');
             
             // Сохраняем ответ
-            answers[`step${currentStep}`] = this.dataset.value;
+            const selectedValue = this.dataset.value;
+            answers[`step${currentStep}`] = selectedValue;
+            console.log('=== ВЫБОР ПЛАНИРОВКИ ===');
+            console.log('Выбрана планировка:', selectedValue);
+            console.log('Сохранено в answers:', answers);
             
             // Обновляем навигацию
             updateNavigation();
