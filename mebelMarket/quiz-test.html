@@ -881,7 +881,6 @@
     <script>
                  // Глобальная функция для открытия квиза
          window.openKitchenQuiz = function() {
-             console.log('Открываем квиз...');
              const kvizModal = document.getElementById('kvizModal');
              if (kvizModal) {
                  // Убираем все подсказки при открытии
@@ -899,13 +898,8 @@
                  
                  // Сбрасываем квиз к первому шагу
                  if (window.kitchenQuiz) {
-                     console.log('Сбрасываем квиз...');
                      window.kitchenQuiz.reset();
-                 } else {
-                     console.log('kitchenQuiz не найден!');
                  }
-             } else {
-                 console.log('kvizModal не найден!');
              }
          };
 
@@ -920,49 +914,39 @@
             }
         }
 
-        // Инициализация квиза при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM загружен, инициализируем квиз...');
-            initKitchenQuiz();
-            
-            // Инициализируем выпадающий каталог
-            if (typeof initCatalogDropdown === 'function') {
-                setTimeout(() => {
-                    initCatalogDropdown();
-                }, 100);
-            }
-            
-            // Инициализируем модальные окна
-            if (typeof initializeModals === 'function') {
-                initializeModals();
-            }
-        });
+                 // Инициализация квиза при загрузке страницы
+         document.addEventListener('DOMContentLoaded', function() {
+             initKitchenQuiz();
+             
+             // Инициализируем выпадающий каталог
+             if (typeof initCatalogDropdown === 'function') {
+                 setTimeout(() => {
+                     initCatalogDropdown();
+                 }, 100);
+             }
+             
+             // Инициализируем модальные окна
+             if (typeof initializeModals === 'function') {
+                 initializeModals();
+             }
+         });
 
-        // Функция инициализации квиза
-        function initKitchenQuiz() {
-            console.log('Инициализация квиза...');
-            let currentStep = 1;
-            const totalSteps = 6;
-            const answers = {};
-            
-            // Инициализируем answers как глобальную переменную
-            window.quizAnswers = answers;
-        
-            // Находим элементы квиза
-            const kvizModal = document.getElementById('kvizModal');
-            const progressText = document.querySelector('.progress-text');
-            const progressBars = document.querySelectorAll('.progress-bar');
-            const options = document.querySelectorAll('.kviz-option');
-            const steps = document.querySelectorAll('.kviz-step');
-            const dimensionInputs = document.querySelectorAll('.dimension-input');
-            
-            console.log('Найденные элементы:');
-            console.log('kvizModal:', !!kvizModal);
-            console.log('progressText:', !!progressText);
-            console.log('progressBars:', progressBars.length);
-            console.log('options:', options.length);
-            console.log('steps:', steps.length);
-            console.log('dimensionInputs:', dimensionInputs.length);
+                 // Функция инициализации квиза
+         function initKitchenQuiz() {
+             let currentStep = 1;
+             const totalSteps = 6;
+             const answers = {};
+             
+             // Инициализируем answers как глобальную переменную
+             window.quizAnswers = answers;
+         
+             // Находим элементы квиза
+             const kvizModal = document.getElementById('kvizModal');
+             const progressText = document.querySelector('.progress-text');
+             const progressBars = document.querySelectorAll('.progress-bar');
+             const options = document.querySelectorAll('.kviz-option');
+             const steps = document.querySelectorAll('.kviz-step');
+             const dimensionInputs = document.querySelectorAll('.dimension-input');
             
                          // Обработчик клика по крестику
              const closeBtn = document.querySelector('#kvizModal .close');
@@ -1007,8 +991,6 @@
             
             // Функция показа шага
             function showStep(stepNumber) {
-                console.log('Показываем шаг:', stepNumber);
-                
                 // Убираем все подсказки при смене шага
                 const existingHints = document.querySelectorAll('.kviz-hint');
                 existingHints.forEach(hint => hint.remove());
@@ -1020,15 +1002,11 @@
                 const currentStepElement = document.querySelector(`[data-step="${stepNumber}"]`);
                 if (currentStepElement) {
                     currentStepElement.style.display = 'block';
-                    console.log('Шаг', stepNumber, 'показан');
-                } else {
-                    console.log('Шаг', stepNumber, 'не найден!');
                 }
                 
                 // Показываем соответствующие поля для размеров на втором шаге
                 if (stepNumber === 2) {
                     const selectedLayout = answers.step1;
-                    console.log('Выбранная планировка для шага 2:', selectedLayout);
                     
                     if (selectedLayout) {
                         const layoutElements = document.querySelectorAll('.kviz-dimensions');
@@ -1039,9 +1017,6 @@
                         const selectedElement = document.querySelector(`[data-layout="${selectedLayout}"]`);
                         if (selectedElement) {
                             selectedElement.style.display = 'block';
-                            console.log('Показаны поля для планировки:', selectedLayout);
-                        } else {
-                            console.log('Поля для планировки не найдены:', selectedLayout);
                         }
                     }
                 }
@@ -1050,21 +1025,20 @@
                 updateNavigation();
             }
             
-            // Функция обновления прогресса
-            function updateProgress() {
-                console.log('Обновляем прогресс: шаг', currentStep, 'из', totalSteps);
-                if (progressText) {
-                    progressText.textContent = `Шаг ${currentStep} из ${totalSteps}`;
-                }
-                
-                progressBars.forEach((bar, index) => {
-                    if (index < currentStep) {
-                        bar.classList.add('active');
-                    } else {
-                        bar.classList.remove('active');
-                    }
-                });
-            }
+                         // Функция обновления прогресса
+             function updateProgress() {
+                 if (progressText) {
+                     progressText.textContent = `Шаг ${currentStep} из ${totalSteps}`;
+                 }
+                 
+                 progressBars.forEach((bar, index) => {
+                     if (index < currentStep) {
+                         bar.classList.add('active');
+                     } else {
+                         bar.classList.remove('active');
+                     }
+                 });
+             }
             
                          // Функция показа подсказки
              function showHint(message, type = 'warning') {
@@ -1104,12 +1078,6 @@
                  const backBtn = document.querySelector('#kvizModal .kviz-btn-back');
                  const nextBtn = document.querySelector('#kvizModal .kviz-btn-next');
                  
-                 console.log('updateNavigation вызвана');
-                 console.log('Текущий шаг:', currentStep);
-                 console.log('Ответы:', answers);
-                 console.log('Кнопка назад найдена:', !!backBtn);
-                 console.log('Кнопка вперед найдена:', !!nextBtn);
-                 
                  if (backBtn) {
                      backBtn.disabled = currentStep === 1;
                  }
@@ -1117,7 +1085,6 @@
                  if (nextBtn) {
                      // Кнопка всегда активна
                      nextBtn.disabled = false;
-                     console.log('Кнопка вперед активна');
                  }
              }
             
@@ -1137,9 +1104,6 @@
                      // Сохраняем ответ
                      const selectedValue = this.dataset.value;
                      answers[`step${currentStep}`] = selectedValue;
-                     
-                     console.log('Выбран вариант:', selectedValue);
-                     console.log('Ответы:', answers);
                      
                      // Обновляем навигацию
                      updateNavigation();
@@ -1175,76 +1139,61 @@
             
             // Обработчик кнопки "Назад"
             function handleBackClick() {
-                console.log('Кнопка "Назад" нажата, текущий шаг:', currentStep);
                 if (currentStep > 1) {
                     currentStep--;
-                    console.log('Возвращаемся к шагу:', currentStep);
                     showStep(currentStep);
                     updateProgress();
                     updateNavigation();
                     
-                                         // Восстанавливаем предыдущий выбор
-                     if (currentStep === 1) {
-                         const previousAnswer = answers[`step${currentStep}`];
-                         console.log('Восстанавливаем выбор планировки:', previousAnswer);
-                         if (previousAnswer) {
-                             const selectedOption = document.querySelector(`[data-value="${previousAnswer}"]`);
-                             if (selectedOption) {
-                                 selectedOption.classList.add('selected');
-                                 console.log('Выбор планировки восстановлен');
-                             }
-                         }
-                     } else if (currentStep === 3) {
-                         const previousAnswer = answers[`step${currentStep}`];
-                         console.log('Восстанавливаем выбор материала:', previousAnswer);
-                         if (previousAnswer) {
-                             const selectedOption = document.querySelector(`[data-step="3"] [data-value="${previousAnswer}"]`);
-                             if (selectedOption) {
-                                 selectedOption.classList.add('selected');
-                                 console.log('Выбор материала восстановлен');
-                             }
-                         }
-                     } else if (currentStep === 4) {
-                         const previousAnswer = answers[`step${currentStep}`];
-                         console.log('Восстанавливаем выбор столешницы:', previousAnswer);
-                         if (previousAnswer) {
-                             const selectedOption = document.querySelector(`[data-step="4"] [data-value="${previousAnswer}"]`);
-                             if (selectedOption) {
-                                 selectedOption.classList.add('selected');
-                                 console.log('Выбор столешницы восстановлен');
-                             }
-                         }
-                     } else if (currentStep === 5) {
-                         const previousAnswer = answers[`step${currentStep}`];
-                         console.log('Восстанавливаем выбор срочности:', previousAnswer);
-                         if (previousAnswer) {
-                             const selectedOption = document.querySelector(`[data-step="5"] [data-value="${previousAnswer}"]`);
-                             if (selectedOption) {
-                                 selectedOption.classList.add('selected');
-                                 console.log('Выбор срочности восстановлен');
-                             }
-                         }
-                     } else if (currentStep === 6) {
-                         // Восстанавливаем данные формы подарка
-                         const giftName = answers[`step6_name`];
-                         const giftPhone = answers[`step6_phone`];
-                         console.log('Восстанавливаем данные формы подарка:', { name: giftName, phone: giftPhone });
-                         
-                         const giftNameInput = document.getElementById('giftName');
-                         const giftPhoneInput = document.getElementById('giftPhone');
-                         
-                         if (giftNameInput && giftName) giftNameInput.value = giftName;
-                         if (giftPhoneInput && giftPhone) giftPhoneInput.value = giftPhone;
-                     }
-                } else {
-                    console.log('Уже на первом шаге');
+                    // Восстанавливаем предыдущий выбор
+                    if (currentStep === 1) {
+                        const previousAnswer = answers[`step${currentStep}`];
+                        if (previousAnswer) {
+                            const selectedOption = document.querySelector(`[data-value="${previousAnswer}"]`);
+                            if (selectedOption) {
+                                selectedOption.classList.add('selected');
+                            }
+                        }
+                    } else if (currentStep === 3) {
+                        const previousAnswer = answers[`step${currentStep}`];
+                        if (previousAnswer) {
+                            const selectedOption = document.querySelector(`[data-step="3"] [data-value="${previousAnswer}"]`);
+                            if (selectedOption) {
+                                selectedOption.classList.add('selected');
+                            }
+                        }
+                    } else if (currentStep === 4) {
+                        const previousAnswer = answers[`step${currentStep}`];
+                        if (previousAnswer) {
+                            const selectedOption = document.querySelector(`[data-step="4"] [data-value="${previousAnswer}"]`);
+                            if (selectedOption) {
+                                selectedOption.classList.add('selected');
+                            }
+                        }
+                    } else if (currentStep === 5) {
+                        const previousAnswer = answers[`step${currentStep}`];
+                        if (previousAnswer) {
+                            const selectedOption = document.querySelector(`[data-step="5"] [data-value="${previousAnswer}"]`);
+                            if (selectedOption) {
+                                selectedOption.classList.add('selected');
+                            }
+                        }
+                    } else if (currentStep === 6) {
+                        // Восстанавливаем данные формы подарка
+                        const giftName = answers[`step6_name`];
+                        const giftPhone = answers[`step6_phone`];
+                        
+                        const giftNameInput = document.getElementById('giftName');
+                        const giftPhoneInput = document.getElementById('giftPhone');
+                        
+                        if (giftNameInput && giftName) giftNameInput.value = giftName;
+                        if (giftPhoneInput && giftPhone) giftPhoneInput.value = giftPhone;
+                    }
                 }
             }
             
                          // Обработчик кнопки "Далее"
              function handleNextClick() {
-                 console.log('Кнопка "Далее" нажата, текущий шаг:', currentStep);
-                 
                  // Проверяем, можно ли перейти к следующему шагу
                  let canProceed = true;
                  let hintMessage = '';
@@ -1297,7 +1246,6 @@
                  
                  // Если нельзя перейти, показываем подсказку и останавливаемся
                  if (!canProceed) {
-                     console.log('Нельзя перейти дальше:', hintMessage);
                      showHint(hintMessage, 'warning');
                      return;
                  }
@@ -1305,7 +1253,6 @@
                  // Если можно перейти, переходим к следующему шагу
                  if (currentStep < totalSteps) {
                      currentStep++;
-                     console.log('Переходим к шагу:', currentStep);
                      showStep(currentStep);
                      updateProgress();
                      updateNavigation();
@@ -1313,20 +1260,17 @@
                      // Сохраняем размеры на втором шаге
                      if (currentStep === 2) {
                          const selectedLayout = answers.step1;
-                         console.log('Сохраняем размеры для планировки:', selectedLayout);
                          const currentLayoutElement = document.querySelector(`[data-layout="${selectedLayout}"]`);
                          if (currentLayoutElement) {
                              const inputs = currentLayoutElement.querySelectorAll('.dimension-input');
                              inputs.forEach(input => {
                                  answers[`step2_${input.dataset.dimension}`] = input.value;
                              });
-                             console.log('Размеры сохранены:', answers);
                          }
                      }
                      
                      // На третьем шаге сбрасываем предыдущий выбор материала
                      if (currentStep === 3) {
-                         console.log('Переходим к выбору материала');
                          // Убираем выделение со всех вариантов материалов
                          const materialOptions = document.querySelectorAll('[data-step="3"] .kviz-option');
                          materialOptions.forEach(option => option.classList.remove('selected'));
@@ -1334,7 +1278,6 @@
                      
                      // На четвёртом шаге сбрасываем предыдущий выбор столешницы
                      if (currentStep === 4) {
-                         console.log('Переходим к выбору столешницы');
                          // Убираем выделение со всех вариантов столешниц
                          const countertopOptions = document.querySelectorAll('[data-step="4"] .kviz-option');
                          countertopOptions.forEach(option => option.classList.remove('selected'));
@@ -1342,7 +1285,6 @@
                      
                      // На пятом шаге сбрасываем предыдущий выбор срочности
                      if (currentStep === 5) {
-                         console.log('Переходим к выбору срочности');
                          // Убираем выделение со всех вариантов срочности
                          const urgencyOptions = document.querySelectorAll('[data-step="5"] .kviz-option');
                          urgencyOptions.forEach(option => option.classList.remove('selected'));
@@ -1350,42 +1292,32 @@
                      
                      // На шестом шаге сбрасываем поля формы подарка
                      if (currentStep === 6) {
-                         console.log('Переходим к форме подарка');
                          // Очищаем поля формы
                          const giftNameInput = document.getElementById('giftName');
                          const giftPhoneInput = document.getElementById('giftPhone');
                          if (giftNameInput) giftNameInput.value = '';
                          if (giftPhoneInput) giftPhoneInput.value = '';
                      }
-                 } else {
-                     console.log('Достигнут последний шаг');
                  }
              }
             
-            // Добавляем обработчики для всех кнопок навигации
-            function addNavigationHandlers() {
-                // Находим все кнопки навигации в квизе
-                const allBackBtns = document.querySelectorAll('#kvizModal .kviz-btn-back');
-                const allNextBtns = document.querySelectorAll('#kvizModal .kviz-btn-next');
-                
-                console.log('Добавляем обработчики навигации:');
-                console.log('Кнопки "Назад" найдены:', allBackBtns.length);
-                console.log('Кнопки "Вперед" найдены:', allNextBtns.length);
-                
-                allBackBtns.forEach(btn => {
-                    btn.addEventListener('click', handleBackClick);
-                    console.log('Обработчик добавлен для кнопки "Назад"');
-                });
-                
-                allNextBtns.forEach(btn => {
-                    btn.addEventListener('click', handleNextClick);
-                    console.log('Обработчик добавлен для кнопки "Вперед"');
-                });
-            }
+                         // Добавляем обработчики для всех кнопок навигации
+             function addNavigationHandlers() {
+                 // Находим все кнопки навигации в квизе
+                 const allBackBtns = document.querySelectorAll('#kvizModal .kviz-btn-back');
+                 const allNextBtns = document.querySelectorAll('#kvizModal .kviz-btn-next');
+                 
+                 allBackBtns.forEach(btn => {
+                     btn.addEventListener('click', handleBackClick);
+                 });
+                 
+                 allNextBtns.forEach(btn => {
+                     btn.addEventListener('click', handleNextClick);
+                 });
+             }
             
                          // Функция сброса квиза
              function resetQuiz() {
-                 console.log('Сброс квиза...');
                  currentStep = 1;
                  answers = {};
                  
@@ -1436,11 +1368,6 @@
              if (giftForm) {
                  giftForm.addEventListener('submit', function(e) {
                      e.preventDefault();
-                     console.log('Форма подарка отправлена');
-                     console.log('Данные формы:', {
-                         name: answers[`step6_name`],
-                         phone: answers[`step6_phone`]
-                     });
                      
                      // Здесь можно добавить логику отправки данных на сервер
                      alert('Спасибо! Ваша заявка на получение подарка принята. Мы свяжемся с вами в ближайшее время.');
@@ -1457,12 +1384,10 @@
                  });
              }
             
-            // Инициализация
-            console.log('Запускаем инициализацию...');
-            showStep(currentStep);
-            updateProgress();
-            updateNavigation();
-            console.log('Инициализация завершена');
+                         // Инициализация
+             showStep(currentStep);
+             updateProgress();
+             updateNavigation();
         }
     </script>
 </body>
