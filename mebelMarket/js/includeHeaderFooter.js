@@ -3,9 +3,8 @@
 
 // Переменные для автоматического показа квиза
 let quizAutoShowTimer = null;
-let lastQuizCloseTime = 0;
 let userInteractedWithQuiz = false;
-const QUIZ_AUTO_SHOW_INTERVAL = 10 * 1000; // 10 секунд в миллисекундах (для тестирования)
+const QUIZ_AUTO_SHOW_INTERVAL = 90 * 1000; // 1.5 минуты в миллисекундах
 
 // Функции для открытия модалок (будут определены как глобальные в DOMContentLoaded)
 function openKitchenQuiz() {
@@ -105,10 +104,9 @@ function startQuizAutoShow() {
         clearTimeout(quizAutoShowTimer);
     }
     
-    // Запускаем новый таймер
+    // Запускаем новый таймер на 1.5 минуты
     quizAutoShowTimer = setTimeout(() => {
         const kvizModal = document.getElementById('kvizModal');
-        // Показываем квиз только если пользователь не взаимодействовал с ним
         if (kvizModal && !kvizModal.classList.contains('show') && !userInteractedWithQuiz) {
             openKitchenQuizModal(kvizModal);
         }
@@ -123,9 +121,9 @@ function stopQuizAutoShow() {
 }
 
 function resetQuizAutoShowTimer() {
-    lastQuizCloseTime = Date.now();
     // Сбрасываем флаг взаимодействия пользователя при закрытии квиза
     userInteractedWithQuiz = false;
+    // Запускаем таймер заново
     startQuizAutoShow();
 }
 
@@ -1056,10 +1054,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Инициализируем модалки услуг
         initServiceModals();
         
-        // Запускаем автоматический показ квиза через 10 секунд
-        setTimeout(() => {
-            startQuizAutoShow();
-        }, QUIZ_AUTO_SHOW_INTERVAL);
+        // Запускаем автоматический показ квиза через 1.5 минуты
+        startQuizAutoShow();
     });
     
     includeHTML('#footer-container', basePath + 'html/footer.html', function() {
