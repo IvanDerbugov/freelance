@@ -1,31 +1,53 @@
 // Умное подключение header.html и footer.html через fetch
 // Автоматически определяет правильные пути в зависимости от расположения страницы
 
-// Глобальная функция для открытия квиза
-window.openKitchenQuiz = function() {
-    const kvizModal = document.getElementById('kvizModal');
-    if (kvizModal) {
-        // Убираем все подсказки при открытии
-        document.querySelectorAll('.kviz-hint').forEach(hint => hint.remove());
+// Функции для открытия модалок (будут определены как глобальные в DOMContentLoaded)
+function openKitchenQuiz() {
+    // Проверяем, есть ли уже kvizModal на странице
+    let kvizModal = document.getElementById('kvizModal');
+    
+    // Если модалка еще не загружена, ждем загрузки header
+    if (!kvizModal) {
+        // Ждем появления kvizModal
+        const checkModal = setInterval(() => {
+            kvizModal = document.getElementById('kvizModal');
+            if (kvizModal) {
+                clearInterval(checkModal);
+                openKitchenQuizModal(kvizModal);
+            }
+        }, 100);
         
-        // Блокируем скролл страницы
-        document.body.style.overflow = 'hidden';
-        document.documentElement.style.overflow = 'hidden';
-        
-        kvizModal.style.display = 'block';
+        // Ограничиваем время ожидания (5 секунд)
         setTimeout(() => {
-            kvizModal.classList.add('show');
-        }, 10);
-        
-        // Сбрасываем квиз к первому шагу
-        if (window.kitchenQuiz) {
-            window.kitchenQuiz.reset();
-        }
+            clearInterval(checkModal);
+            console.error('kvizModal не найден после 5 секунд ожидания');
+        }, 5000);
+        return;
     }
-};
+    
+    openKitchenQuizModal(kvizModal);
+}
 
-// Глобальная функция для открытия модалки замера
-window.openMeasureModal = function() {
+function openKitchenQuizModal(kvizModal) {
+    // Убираем все подсказки при открытии
+    document.querySelectorAll('.kviz-hint').forEach(hint => hint.remove());
+    
+    // Блокируем скролл страницы
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    
+    kvizModal.style.display = 'block';
+    setTimeout(() => {
+        kvizModal.classList.add('show');
+    }, 10);
+    
+    // Сбрасываем квиз к первому шагу
+    if (window.kitchenQuiz) {
+        window.kitchenQuiz.reset();
+    }
+}
+
+function openMeasureModal() {
     const measureModal = document.getElementById('measureModal');
     if (measureModal) {
         // Блокируем скролл страницы
@@ -37,10 +59,9 @@ window.openMeasureModal = function() {
             measureModal.classList.add('show');
         }, 10);
     }
-};
+}
 
-// Глобальная функция для открытия модалки сборки
-window.openAssemblyModal = function() {
+function openAssemblyModal() {
     const assemblyModal = document.getElementById('assemblyModal');
     if (assemblyModal) {
         // Блокируем скролл страницы
@@ -52,10 +73,9 @@ window.openAssemblyModal = function() {
             assemblyModal.classList.add('show');
         }, 10);
     }
-};
+}
 
-// Глобальная функция для открытия модалки обратного звонка
-window.openCallbackModal = function() {
+function openCallbackModal() {
     const callbackModal = document.getElementById('callbackModal');
     if (callbackModal) {
         // Блокируем скролл страницы
@@ -67,7 +87,7 @@ window.openCallbackModal = function() {
             callbackModal.classList.add('show');
         }, 10);
     }
-};
+}
 
 // Инициализация обработчиков для модалок замера и сборки
 function initServiceModals() {
@@ -955,7 +975,11 @@ function includeHTML(selector, url, callback) {
 document.addEventListener('DOMContentLoaded', function() {
     const basePath = getBasePath();
     
-
+    // Определяем глобальные функции для модалок
+    window.openKitchenQuiz = openKitchenQuiz;
+    window.openMeasureModal = openMeasureModal;
+    window.openAssemblyModal = openAssemblyModal;
+    window.openCallbackModal = openCallbackModal;
     
     includeHTML('#header-container', basePath + 'html/header.html', function() {
         // Вызываем функцию инициализации header после загрузки
@@ -991,5 +1015,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (typeof initializeModals === 'function') {
             initializeModals();
         }
+        
+        // Инициализируем модалки услуг после загрузки footer
+        initServiceModals();
     });
 });
