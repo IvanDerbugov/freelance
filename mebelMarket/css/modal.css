@@ -241,3 +241,114 @@
 .modal-trigger:hover {
     color: #27ae60;
 }
+
+/* Стили для модалки "Обратный звонок" */
+#callbackModal .modal-content {
+    max-width: 600px;
+}
+
+#callbackModal .modal-form {
+    margin-bottom: 20px;
+}
+
+/* Стили для кнопок связи */
+.contact-buttons-small {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 20px;
+    border-top: 1px solid #e1e5e9;
+}
+
+.contact-btn-small {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.contact-btn-small:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    color: white;
+}
+
+.contact-btn-small .btn-icon {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.contact-btn-small .btn-text {
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Цвета для разных типов кнопок */
+.contact-btn-small.whatsapp {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+}
+
+.contact-btn-small.telegram {
+    background: linear-gradient(135deg, #0088cc, #005580);
+}
+
+.contact-btn-small.phone {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.contact-btn-small.email {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+/* Адаптивность для кнопок связи */
+@media (max-width: 768px) {
+    .contact-buttons-small {
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .contact-btn-small {
+        padding: 10px 12px;
+        min-width: 80px;
+        font-size: 12px;
+    }
+    
+    .contact-btn-small .btn-icon {
+        font-size: 18px;
+    }
+    
+    .contact-btn-small .btn-text {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-buttons-small {
+        gap: 8px;
+        padding: 12px;
+    }
+    
+    .contact-btn-small {
+        padding: 8px 10px;
+        min-width: 70px;
+        font-size: 11px;
+    }
+    
+    .contact-btn-small .btn-icon {
+        font-size: 16px;
+    }
+    
+    .contact-btn-small .btn-text {
+        font-size: 10px;
+    }
+}

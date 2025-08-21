@@ -40,25 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Обработчики для кнопок
-    const consultantBtn = document.querySelector('.btn-consultant-main');
-    const buyOneClickBtn = document.querySelector('.btn-buy-one-click');
-
-    // Кнопка "Помощь консультанта"
-    if (consultantBtn) {
-        consultantBtn.addEventListener('click', function() {
-            // Здесь можно добавить логику для связи с консультантом
-            alert('Спасибо! Наш консультант свяжется с вами в ближайшее время.');
-        });
-    }
-
-    // Кнопка "Купить в 1 клик"
-    if (buyOneClickBtn) {
-        buyOneClickBtn.addEventListener('click', function() {
-            // Здесь можно добавить логику для быстрой покупки
-            alert('Функция "Купить в 1 клик" будет доступна в ближайшее время.');
-        });
-    }
+    // Обработчики для кнопок больше не нужны, так как используются onclick функции
+    // Кнопка "Помощь консультанта" - использует onclick="openCallbackModal()"
+    // Кнопка "Купить в 1 клик" - использует onclick="openCallbackModal()"
 
     // Кнопка "Рассчитать стоимость" - теперь использует onclick="openKitchenQuiz()"
     // Обработчик не нужен, так как используется прямая функция

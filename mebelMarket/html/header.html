@@ -178,6 +178,54 @@
         </div>
     </div>
 
+    <!-- Модальное окно "Обратный звонок" -->
+    <div id="callbackModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Обратный звонок</h3>
+                <span class="close" data-modal="callbackModal">&times;</span>
+            </div>
+            <form class="modal-form" id="callbackForm">
+                <input type="hidden" name="access_key" value="fa427f88-52e1-4116-b58f-4f7845816c64">
+                <input type="hidden" name="subject" value="Заявка на обратный звонок">
+                <input type="hidden" name="form_type" value="callback">
+                
+                <div class="form-group">
+                    <label for="callbackName">Имя *</label>
+                    <input type="text" id="callbackName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="callbackPhone">Телефон *</label>
+                    <input type="tel" id="callbackPhone" name="phone" required>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span class="spinner"></span>
+                    <span class="btn-text">Заказать звонок</span>
+                </button>
+            </form>
+            
+            <!-- Кнопки связи -->
+            <div class="contact-buttons-small">
+                <a href="https://wa.me/79800980054" class="contact-btn-small whatsapp" target="_blank">
+                    <span class="btn-icon">📱</span>
+                    <span class="btn-text">WhatsApp</span>
+                </a>
+                <a href="https://t.me/silaperemenmos" class="contact-btn-small telegram" target="_blank">
+                    <span class="btn-icon">✈️</span>
+                    <span class="btn-text">Telegram</span>
+                </a>
+                <a href="tel:+79800980054" class="contact-btn-small phone">
+                    <span class="btn-icon">📞</span>
+                    <span class="btn-text">Позвонить</span>
+                </a>
+                <a href="mailto:hom.servis@yandex.ru" class="contact-btn-small email">
+                    <span class="btn-icon">✉️</span>
+                    <span class="btn-text">Email</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Модальное окно квиза дизайн-проекта -->
     <div id="kvizModal">
         <div class="modal-content">

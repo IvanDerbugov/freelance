@@ -37,6 +37,12 @@ function initializeFormHandlers() {
     if (giftForm) {
         giftForm.addEventListener('submit', handleQuizForm);
     }
+    
+    // Форма обратного звонка
+    const callbackForm = document.getElementById('callbackForm');
+    if (callbackForm) {
+        callbackForm.addEventListener('submit', handleCallbackForm);
+    }
 }
 
 // Обработчик формы замера
@@ -103,6 +109,44 @@ async function handleAssemblyForm(e) {
             
             // Закрываем модальное окно
             closeModal('assemblyModal');
+        } else {
+            throw new Error('Ошибка отправки через Web3Forms');
+        }
+    } catch (error) {
+        console.error('Ошибка отправки формы:', error);
+        showErrorMessage(e.target, 'Произошла ошибка при отправке заявки. Попробуйте еще раз или свяжитесь с нами по телефону.');
+    } finally {
+        // Скрываем индикатор загрузки
+        showLoadingState(e.target, false);
+    }
+}
+
+// Обработчик формы обратного звонка
+async function handleCallbackForm(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const formType = 'callback';
+    
+    try {
+        // Показываем индикатор загрузки
+        showLoadingState(e.target, true);
+        
+        // Отправляем через Web3Forms
+        const web3formsResult = await submitToWeb3Forms(formData);
+        
+        if (web3formsResult.success) {
+            // Отправляем уведомление в Telegram
+            await sendTelegramNotification(formData, formType);
+            
+            // Показываем успешное сообщение
+            showSuccessMessage(e.target, 'Заявка на обратный звонок успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+            
+            // Очищаем форму
+            e.target.reset();
+            
+            // Закрываем модальное окно
+            closeModal('callbackModal');
         } else {
             throw new Error('Ошибка отправки через Web3Forms');
         }
@@ -312,6 +356,15 @@ function formatTelegramMessage(formData, formType) {
         message += `🔲 Столешница: ${countertop || 'Не выбрана'}\n`;
         message += `⏰ Срочность: ${urgency || 'Не указана'}\n`;
         
+    } else if (formType === 'callback') {
+        // Сообщение для обратного звонка
+        const name = formData.get('name');
+        const phone = formData.get('phone');
+        
+        message = `📞 НОВАЯ ЗАЯВКА: ОБРАТНЫЙ ЗВОНОК\n\n`;
+        message += `👤 Имя: ${name}\n`;
+        message += `📱 Телефон: ${phone}\n`;
+        
     } else {
         // Сообщение для замера/сборки
         const formTypeText = formType === 'measure' ? 'ЗАМЕР' : 'СБОРКА';
@@ -351,6 +404,12 @@ function formatClientMessage(formData, formType) {
         message += `⏰ Срочность: ${formData.get('quiz_urgency') || 'Не указана'}\n\n`;
         message += `⏰ Время: ${new Date().toLocaleString('ru-RU')}\n\n`;
         message += `💡 Клиент ожидает обратной связи для расчета стоимости!`;
+    } else if (formType === 'callback') {
+        message = `📞 НОВАЯ ЗАЯВКА: ОБРАТНЫЙ ЗВОНОК\n\n`;
+        message += `👤 Имя клиента: ${name}\n`;
+        message += `📱 Телефон: ${formData.get('phone')}\n\n`;
+        message += `⏰ Время: ${new Date().toLocaleString('ru-RU')}\n\n`;
+        message += `💡 Клиент ожидает обратного звонка!`;
     } else {
         const formTypeText = formType === 'measure' ? 'ЗАМЕР' : 'СБОРКА';
         const phone = formData.get('phone');
@@ -420,11 +479,13 @@ function showLoadingState(form, isLoading) {
             // Возвращаем оригинальный текст
             const btnText = submitBtn.querySelector('.btn-text');
             if (btnText) {
-                if (submitBtn.classList.contains('gift-submit-btn')) {
-                    btnText.textContent = 'ОТПРАВИТЬ';
-                } else {
-                    btnText.textContent = 'Отправить заявку';
-                }
+                            if (submitBtn.classList.contains('gift-submit-btn')) {
+                btnText.textContent = 'ОТПРАВИТЬ';
+            } else if (submitBtn.closest('#callbackForm')) {
+                btnText.textContent = 'Заказать звонок';
+            } else {
+                btnText.textContent = 'Отправить заявку';
+            }
             }
         }
     }

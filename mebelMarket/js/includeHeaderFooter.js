@@ -54,6 +54,21 @@ window.openAssemblyModal = function() {
     }
 };
 
+// Глобальная функция для открытия модалки обратного звонка
+window.openCallbackModal = function() {
+    const callbackModal = document.getElementById('callbackModal');
+    if (callbackModal) {
+        // Блокируем скролл страницы
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+        
+        callbackModal.style.display = 'block';
+        setTimeout(() => {
+            callbackModal.classList.add('show');
+        }, 10);
+    }
+};
+
 // Инициализация обработчиков для модалок замера и сборки
 function initServiceModals() {
     // Модалка замера
@@ -133,8 +148,46 @@ function initServiceModals() {
                     document.documentElement.style.overflow = '';
                 }, 300);
             }
+            
+            if (callbackModal && callbackModal.style.display === 'block') {
+                callbackModal.classList.remove('show');
+                setTimeout(() => {
+                    callbackModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                }, 300);
+            }
         }
     });
+    
+    // Модалка обратного звонка
+    const callbackModal = document.getElementById('callbackModal');
+    const callbackCloseBtn = document.querySelector('#callbackModal .close');
+    
+    if (callbackCloseBtn && callbackModal) {
+        callbackCloseBtn.addEventListener('click', function() {
+            callbackModal.classList.remove('show');
+            setTimeout(() => {
+                callbackModal.style.display = 'none';
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
+            }, 300);
+        });
+    }
+    
+    // Закрытие по клику вне модалки обратного звонка
+    if (callbackModal) {
+        callbackModal.addEventListener('click', function(e) {
+            if (e.target === callbackModal) {
+                callbackModal.classList.remove('show');
+                setTimeout(() => {
+                    callbackModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                }, 300);
+            }
+        });
+    }
 }
 
     // Функция для инициализации квиза
