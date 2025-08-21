@@ -1054,6 +1054,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Инициализируем модалки услуг
         initServiceModals();
         
+        // Обновляем текст кнопки каталога в зависимости от размера экрана
+        updateCatalogText();
+        
+        // Дополнительно вызываем через задержку для гарантии
+        setTimeout(() => {
+            updateCatalogText();
+        }, 500);
+        
         // Запускаем автоматический показ квиза через 1.5 минуты
         startQuizAutoShow();
     });
@@ -1074,8 +1082,31 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Инициализируем обработчики для ссылок в footer
         initFooterModalLinks();
+        
+        // Добавляем обработчик изменения размера окна для обновления текста кнопки каталога
+        window.addEventListener('resize', updateCatalogText);
     });
 });
+
+// Функция для изменения текста кнопки каталога в зависимости от размера экрана
+function updateCatalogText() {
+    console.log('updateCatalogText вызвана, ширина окна:', window.innerWidth);
+    const catalogText = document.getElementById('catalog-text');
+    console.log('Найден элемент catalog-text:', catalogText);
+    
+    if (catalogText) {
+        console.log('Текущий текст:', catalogText.innerHTML);
+        if (window.innerWidth <= 1100) {
+            catalogText.innerHTML = 'Меню';
+            console.log('Изменено на "Меню"');
+        } else {
+            catalogText.innerHTML = 'Каталог';
+            console.log('Изменено на "Каталог"');
+        }
+    } else {
+        console.log('Элемент catalog-text не найден!');
+    }
+}
 
 // Инициализация обработчиков для ссылок модалок в footer
 function initFooterModalLinks() {

@@ -1,5 +1,5 @@
-header {
-    
+.display-block500 {
+    display: none;
 }
 
 .header-top {
@@ -7,7 +7,7 @@ header {
     padding: 8px 0;
 }
 
-.header-top > .container {
+.header-top>.container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -80,7 +80,7 @@ header {
     font-size: 20px;
 }
 
-.header-top-right > div {
+.header-top-right>div {
     display: flex;
     align-items: center;
 }
@@ -360,30 +360,7 @@ header {
     width: 80%;
 }
 
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
-    .header-services {
-        gap: 16px;
-        font-size: 18px;
-    }
-    
-    .header-services a {
-        padding: 6px 10px;
-    }
-}
 
-@media (max-width: 480px) {
-    .header-services {
-        gap: 12px;
-        font-size: 16px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .header-services a {
-        padding: 6px 8px;
-    }
-}
 
 /* Стили для квиза дизайн-проекта кухни */
 #kvizModal {
@@ -640,44 +617,8 @@ header {
     cursor: not-allowed;
 }
 
-/* Адаптивность для квиза */
-@media (max-width: 768px) {
-    .kviz-options {
-        gap: 20px;
-    }
-    
-    .option-image {
-        width: 80px;
-        height: 60px;
-    }
-    
-    .kviz-navigation {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .kviz-btn {
-        width: 100%;
-        min-width: auto;
-    }
-}
 
-@media (max-width: 480px) {
-    .kviz-options {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-    
-    .option-image {
-        width: 70px;
-        height: 52px;
-    }
-    
-    .kviz-option {
-        min-width: 120px;
-    }
-}
+
 
 /* Стили для шагов квиза */
 .kviz-step {
@@ -692,7 +633,8 @@ header {
 .kviz-dimensions {
     text-align: center;
     margin-bottom: 20px;
-    display: none; /* По умолчанию скрыты */
+    display: none;
+    /* По умолчанию скрыты */
 }
 
 .kitchen-diagram {
@@ -765,72 +707,9 @@ header {
     text-decoration: underline;
 }
 
-/* Адаптивность для второго шага */
-@media (max-width: 768px) {
-    .input-group {
-        max-width: 100%;
-        margin: 0 20px 20px 20px;
-    }
-    
-    .kitchen-diagram img,
-    .kitchen-diagram svg {
-        max-width: 90%;
-    }
-    
-    #kvizModal .modal-content {
-        width: 95%;
-        margin: 3% auto;
-        max-width: 600px;
-    }
-    
-    #kvizModal .modal-header h3 {
-        font-size: 1.3rem;
-    }
-    
-    #kvizModal .close {
-        right: 15px;
-        font-size: 24px;
-        width: 28px;
-        height: 28px;
-    }
-}
 
-@media (max-width: 480px) {
-    .kitchen-diagram img,
-    .kitchen-diagram svg {
-        max-width: 100%;
-    }
-    
-    .dimension-input {
-        padding: 10px 14px;
-        font-size: 0.9rem;
-    }
-    
-    #kvizModal .modal-content {
-        width: 98%;
-        margin: 5% auto;
-        border-radius: 8px;
-    }
-    
-    #kvizModal .modal-header {
-        padding: 15px;
-    }
-    
-    #kvizModal .modal-header h3 {
-        font-size: 1.1rem;
-    }
-    
-    #kvizModal .close {
-        right: 10px;
-        font-size: 20px;
-        width: 24px;
-        height: 24px;
-    }
-    
-    .kviz-content {
-        padding: 20px 15px;
-    }
-}
+
+
 
 /* Стили для шестого шага - форма подарка */
 .kviz-gift-section {
@@ -868,7 +747,7 @@ header {
     max-width: 100%;
     height: auto;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .gift-form {
@@ -993,6 +872,7 @@ header {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1040,7 +920,9 @@ header {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Скрываем спиннер по умолчанию */
@@ -1058,20 +940,200 @@ header {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* Адаптивность для мобильных устройств */
+
+@media (max-width: 1300px) {
+    .header-top-left {
+        font-size: 18px;
+        gap: 0px;
+    }
+
+    .header-top-right {
+        gap: 10px;
+        font-size: 18px;
+    }
+
+    .header-social {
+        gap: 5px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .display-none1100 {
+        display: none;
+    }
+
+    .header-top-left a {
+        padding: 5px 6px;
+    }
+
+    .header-top-left {
+        font-size: 15px;
+    }
+
+    .header-top-right {
+        gap: 7px;
+        font-size: 15px;
+    }
+
+
+}
+
 @media (max-width: 768px) {
     .kviz-gift-section {
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    
+
     .gift-form {
         padding: 20px;
+    }
+
+    .header-services {
+        gap: 16px;
+        font-size: 18px;
+    }
+
+    .header-services a {
+        padding: 6px 10px;
+    }
+
+
+    .input-group {
+        max-width: 100%;
+        margin: 0 20px 20px 20px;
+    }
+
+    .kitchen-diagram img,
+    .kitchen-diagram svg {
+        max-width: 90%;
+    }
+
+    #kvizModal .modal-content {
+        width: 95%;
+        margin: 3% auto;
+        max-width: 600px;
+    }
+
+    #kvizModal .modal-header h3 {
+        font-size: 1.3rem;
+    }
+
+    #kvizModal .close {
+        right: 15px;
+        font-size: 24px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .kviz-options {
+        gap: 20px;
+    }
+
+    .option-image {
+        width: 80px;
+        height: 60px;
+    }
+
+    .kviz-navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .kviz-btn {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 700px) {
+    .display-none700 {
+        display: none !important;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .kitchen-diagram img,
+    .kitchen-diagram svg {
+        max-width: 100%;
+    }
+
+    .dimension-input {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+
+    #kvizModal .modal-content {
+        width: 98%;
+        margin: 5% auto;
+        border-radius: 8px;
+    }
+
+    #kvizModal .modal-header {
+        padding: 15px;
+    }
+
+    #kvizModal .modal-header h3 {
+        font-size: 1.1rem;
+    }
+
+    #kvizModal .close {
+        right: 10px;
+        font-size: 20px;
+        width: 24px;
+        height: 24px;
+    }
+
+    .kviz-content {
+        padding: 20px 15px;
+    }
+
+    .kviz-options {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        min-width: 120px;
+    }
+
+    .option-image {
+        width: 70px;
+        height: 52px;
+    }
+
+    .header-services {
+        gap: 12px;
+        font-size: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .header-services a {
+        padding: 6px 8px;
+    }
+
+
+    .display-none500 {
+        display: none !important;
+    }
+
+    .display-block500 {
+        display: block;
+    }
+
+    .phoneIcon {
+        width: 26px;
+        height: 26px;
+        transform: rotate(258deg);
+    }
+
+    .header-top-right {
+        gap: 0px;
     }
 }
