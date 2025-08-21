@@ -1,5 +1,6 @@
+.display-block1100,
 .display-block500 {
-    display: none;
+    display: none !important;
 }
 
 .header-top {
@@ -162,6 +163,11 @@
     color: #FFFFFF;
 }
 
+#catalog-text:before {
+    content: "Каталог";
+}
+
+
 .catalog-dropdown.active .catalog-button::after {
     transform: rotate(180deg);
 }
@@ -199,6 +205,9 @@
     max-height: 70vh !important;
     overflow-y: auto !important;
     margin-top: 10px !important;
+}
+.dropdown-menu>div:first-of-type {
+    padding-top: 0 !important;
 }
 
 .catalog-dropdown.active .dropdown-menu {
@@ -966,7 +975,11 @@
 
 @media (max-width: 1100px) {
     .display-none1100 {
-        display: none;
+        display: none !important;
+    }
+
+    .header-top {
+        padding: 1px 0;
     }
 
     .header-top-left a {
@@ -982,7 +995,33 @@
         font-size: 15px;
     }
 
+    #catalog-text:before {
+        content: "Меню";
+    }
 
+    .display-block1100 {
+        display: block !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .header-bottom {
+        padding: 0;
+        max-height: 45px;
+    }
+    .header-bottom-left {
+        gap: 0px;
+    }
+
+    .header-services {
+        font-size: 15px;
+        gap: 0px;
+    }
+
+    .catalog-button {
+        height: 30px;
+        padding: 0 8px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -995,10 +1034,6 @@
         padding: 20px;
     }
 
-    .header-services {
-        gap: 16px;
-        font-size: 18px;
-    }
 
     .header-services a {
         padding: 6px 10px;
@@ -1059,6 +1094,13 @@
 }
 
 @media (max-width: 500px) {
+    .display-block500 {
+        display: block !important;
+    }
+
+    .display-none500 {
+        display: none !important;
+    }
 
     .kitchen-diagram img,
     .kitchen-diagram svg {
@@ -1118,15 +1160,6 @@
         padding: 6px 8px;
     }
 
-
-    .display-none500 {
-        display: none !important;
-    }
-
-    .display-block500 {
-        display: block;
-    }
-
     .phoneIcon {
         width: 26px;
         height: 26px;
@@ -1136,4 +1169,5 @@
     .header-top-right {
         gap: 0px;
     }
+   
 }

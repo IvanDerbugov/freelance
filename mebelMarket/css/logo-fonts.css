@@ -60,3 +60,11 @@
 .logo-font-5 { 
     animation: fadeInUp 0.6s ease 0.5s both; 
 }
+
+@media (max-width: 900px) {
+    .logo-font-5 {
+        font-size: 20px;
+        padding: 15px 20px;
+        min-width: auto;
+    }
+}
