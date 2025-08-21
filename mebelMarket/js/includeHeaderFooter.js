@@ -1,6 +1,12 @@
 // Умное подключение header.html и footer.html через fetch
 // Автоматически определяет правильные пути в зависимости от расположения страницы
 
+// Переменные для автоматического показа квиза
+let quizAutoShowTimer = null;
+let lastQuizCloseTime = 0;
+let userInteractedWithQuiz = false;
+const QUIZ_AUTO_SHOW_INTERVAL = 10 * 1000; // 10 секунд в миллисекундах (для тестирования)
+
 // Функции для открытия модалок (будут определены как глобальные в DOMContentLoaded)
 function openKitchenQuiz() {
     // Проверяем, есть ли уже kvizModal на странице
@@ -45,6 +51,9 @@ function openKitchenQuizModal(kvizModal) {
     if (window.kitchenQuiz) {
         window.kitchenQuiz.reset();
     }
+    
+    // Останавливаем автоматический показ квиза
+    stopQuizAutoShow();
 }
 
 function openMeasureModal() {
@@ -87,6 +96,37 @@ function openCallbackModal() {
             callbackModal.classList.add('show');
         }, 10);
     }
+}
+
+// Функции для автоматического показа квиза
+function startQuizAutoShow() {
+    // Очищаем предыдущий таймер
+    if (quizAutoShowTimer) {
+        clearTimeout(quizAutoShowTimer);
+    }
+    
+    // Запускаем новый таймер
+    quizAutoShowTimer = setTimeout(() => {
+        const kvizModal = document.getElementById('kvizModal');
+        // Показываем квиз только если пользователь не взаимодействовал с ним
+        if (kvizModal && !kvizModal.classList.contains('show') && !userInteractedWithQuiz) {
+            openKitchenQuizModal(kvizModal);
+        }
+    }, QUIZ_AUTO_SHOW_INTERVAL);
+}
+
+function stopQuizAutoShow() {
+    if (quizAutoShowTimer) {
+        clearTimeout(quizAutoShowTimer);
+        quizAutoShowTimer = null;
+    }
+}
+
+function resetQuizAutoShowTimer() {
+    lastQuizCloseTime = Date.now();
+    // Сбрасываем флаг взаимодействия пользователя при закрытии квиза
+    userInteractedWithQuiz = false;
+    startQuizAutoShow();
 }
 
 // Инициализация обработчиков для модалок замера и сборки
@@ -243,6 +283,8 @@ function initServiceModals() {
                     // Восстанавливаем скролл страницы
                     document.body.style.overflow = '';
                     document.documentElement.style.overflow = '';
+                    // Запускаем таймер для автоматического показа квиза
+                    resetQuizAutoShowTimer();
                 }, 300);
             }
         });
@@ -262,6 +304,8 @@ function initServiceModals() {
                         // Восстанавливаем скролл страницы
                         document.body.style.overflow = '';
                         document.documentElement.style.overflow = '';
+                        // Запускаем таймер для автоматического показа квиза
+                        resetQuizAutoShowTimer();
                     }, 300);
                 }
             }
@@ -396,6 +440,9 @@ function initServiceModals() {
             const selectedValue = this.dataset.value;
             answers[`step${currentStep}`] = selectedValue;
             
+            // Отмечаем, что пользователь взаимодействовал с квизом
+            userInteractedWithQuiz = true;
+            
             console.log(`Выбрана планировка: ${selectedValue}`);
             console.log('Текущие ответы:', answers);
             
@@ -407,6 +454,8 @@ function initServiceModals() {
     // Обработчик ввода размеров
     dimensionInputs.forEach(input => {
         input.addEventListener('input', function() {
+            // Отмечаем, что пользователь взаимодействовал с квизом
+            userInteractedWithQuiz = true;
             updateNavigation();
         });
     });
@@ -434,6 +483,9 @@ function initServiceModals() {
             
             // Сохраняем ответ
             answers[`step${step}`] = value;
+            
+            // Отмечаем, что пользователь взаимодействовал с квизом
+            userInteractedWithQuiz = true;
             
             console.log(`Выбрана опция: шаг ${step}, значение ${value}`);
             console.log('Текущие ответы:', answers);
@@ -1003,6 +1055,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Инициализируем модалки услуг
         initServiceModals();
+        
+        // Запускаем автоматический показ квиза через 10 секунд
+        setTimeout(() => {
+            startQuizAutoShow();
+        }, QUIZ_AUTO_SHOW_INTERVAL);
     });
     
     includeHTML('#footer-container', basePath + 'html/footer.html', function() {

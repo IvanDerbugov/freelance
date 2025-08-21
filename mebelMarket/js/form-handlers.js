@@ -544,6 +544,11 @@ function closeModal(modalId) {
             modal.style.display = 'none';
             document.body.style.overflow = '';
             document.documentElement.style.overflow = '';
+            
+            // Если закрывается квиз, запускаем таймер для автоматического показа
+            if (modalId === 'kvizModal' && typeof resetQuizAutoShowTimer === 'function') {
+                resetQuizAutoShowTimer();
+            }
         }, 300);
     }
 }
