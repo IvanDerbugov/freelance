@@ -47,6 +47,10 @@ section {
     position: relative;
 }
 
+.mb-50 {
+    margin-bottom: -50px;
+}
+
 section.carousel-bootstrap {
     padding-top: 0;
 }
@@ -788,15 +792,13 @@ section.carousel-bootstrap {
 /* Секция "Почему выбирают нас" */
 .whyChooseUs {
     border-radius: 20px;
-    margin: 40px auto;
-    padding: 60px 40px;
+    padding: 0px 40px;
 }
 
 .advantages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-    margin-top: 40px;
 }
 
 .advantage-card {
@@ -961,7 +963,7 @@ section.carousel-bootstrap {
     transition: transform 0.5s ease-in-out;
     min-width: calc(259px * 4 + 50px * 3 + 40px);
     padding-right: 20px;
-    padding: 50px 20px;
+    padding: 40px 20px;
 }
 
 /* Стрелки для отзывов */
