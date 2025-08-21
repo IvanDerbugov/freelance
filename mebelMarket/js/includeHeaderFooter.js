@@ -1018,5 +1018,45 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Инициализируем модалки услуг после загрузки footer
         initServiceModals();
+        
+        // Инициализируем обработчики для ссылок в footer
+        initFooterModalLinks();
     });
 });
+
+// Инициализация обработчиков для ссылок модалок в footer
+function initFooterModalLinks() {
+    // Находим все ссылки в footer
+    const footer = document.getElementById('footer');
+    if (!footer) return;
+    
+    // Обработчик для "Дизайн-проект"
+    const designProjectLink = footer.querySelector('a[onclick*="openKitchenQuiz"]');
+    if (designProjectLink) {
+        designProjectLink.removeAttribute('onclick');
+        designProjectLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            openKitchenQuiz();
+        });
+    }
+    
+    // Обработчик для "Замер"
+    const measureLink = footer.querySelector('a[onclick*="openMeasureModal"]');
+    if (measureLink) {
+        measureLink.removeAttribute('onclick');
+        measureLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            openMeasureModal();
+        });
+    }
+    
+    // Обработчик для "Сборка"
+    const assemblyLink = footer.querySelector('a[onclick*="openAssemblyModal"]');
+    if (assemblyLink) {
+        assemblyLink.removeAttribute('onclick');
+        assemblyLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            openAssemblyModal();
+        });
+    }
+}
