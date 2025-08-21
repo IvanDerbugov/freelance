@@ -412,7 +412,7 @@
 #kvizModal .modal-header {
     background: linear-gradient(135deg, #1F7D63, #166b54);
     color: white;
-    padding: 20px;
+    padding: 15px 32px;
     position: relative;
     text-align: center;
 }
@@ -977,6 +977,9 @@
     .display-none1100 {
         display: none !important;
     }
+    .display-block1100 {
+        display: block !important;
+    }
 
     .header-top {
         padding: 1px 0;
@@ -999,8 +1002,15 @@
         content: "Меню";
     }
 
-    .display-block1100 {
-        display: block !important;
+    
+
+    .dropdown-menu a {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .dropdown-section {
+        padding: 7px 0;
     }
 }
 
@@ -1021,6 +1031,7 @@
     .catalog-button {
         height: 30px;
         padding: 0 8px;
+        margin: 5px;
     }
 }
 
@@ -1061,10 +1072,12 @@
     }
 
     #kvizModal .close {
-        right: 15px;
-        font-size: 24px;
-        width: 28px;
-        height: 28px;
+        right: 2px;
+        top: 10px;
+        font-size: 55px;
+        width: 38px;
+        height: 58px;
+        z-index: 10000;
     }
 
     .kviz-options {
@@ -1091,6 +1104,30 @@
     .display-none700 {
         display: none !important;
     }
+
+    .header-bottom {
+        flex-direction: column;
+        max-height: none;
+        align-items: normal;
+    }
+
+    .header-bottom-left {
+        display: flex;
+        justify-content: space-between;
+        align-items: normal;
+        gap: 0px;
+        flex-direction: row-reverse;
+    }
+
+    .header-services {
+        font-size: 15px;
+        gap: 50px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    
+    
 }
 
 @media (max-width: 500px) {
@@ -1119,7 +1156,7 @@
     }
 
     #kvizModal .modal-header {
-        padding: 15px;
+        padding: 10px;
     }
 
     #kvizModal .modal-header h3 {
@@ -1134,7 +1171,14 @@
     }
 
     .kviz-content {
-        padding: 20px 15px;
+        padding: 5px 15px;
+    }
+    .progress-text {
+        margin-bottom: 7px;
+    }
+
+    .kviz-progress {
+        margin-bottom: 12px;
     }
 
     .kviz-options {
@@ -1169,5 +1213,17 @@
     .header-top-right {
         gap: 0px;
     }
-   
+}
+
+@media (max-width: 400px) {
+    .catalog-button {
+        height: 30px;
+        padding: 0 8px;
+        margin: 2px;
+    }
+
+    .dropdown-menu a {
+        padding: 5px 15px;
+        font-size: 13px;
+    }
 }

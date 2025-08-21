@@ -68,3 +68,16 @@
         min-width: auto;
     }
 }
+
+@media (max-width: 700px) {
+    .logo-font-5 {
+        padding: 3px 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo-font-5 {
+        font-size: 18px;
+        padding: 3px 6px;
+    }
+}
