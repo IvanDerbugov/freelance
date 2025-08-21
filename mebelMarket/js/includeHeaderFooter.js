@@ -252,7 +252,7 @@ function initServiceModals() {
     function initKitchenQuiz() {
         let currentStep = 1;
         const totalSteps = 6;
-        let answers = {};
+        const answers = {};
         
         // Инициализируем answers как глобальную переменную
         window.quizAnswers = answers;
@@ -1054,14 +1054,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Инициализируем модалки услуг
         initServiceModals();
         
-        // Обновляем текст кнопки каталога в зависимости от размера экрана
-        updateCatalogText();
-        
-        // Дополнительно вызываем через задержку для гарантии
-        setTimeout(() => {
-            updateCatalogText();
-        }, 500);
-        
         // Запускаем автоматический показ квиза через 1.5 минуты
         startQuizAutoShow();
     });
@@ -1082,24 +1074,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Инициализируем обработчики для ссылок в footer
         initFooterModalLinks();
-        
-        // Добавляем обработчик изменения размера окна для обновления текста кнопки каталога
-        window.addEventListener('resize', updateCatalogText);
     });
 });
-
-// Функция для изменения текста кнопки каталога в зависимости от размера экрана
-function updateCatalogText() {
-    const catalogText = document.getElementById('catalog-text');
-    
-    if (catalogText) {
-        if (window.innerWidth <= 1100) {
-            catalogText.innerHTML = 'Меню';
-        } else {
-            catalogText.innerHTML = 'Каталог';
-        }
-    }
-}
 
 // Инициализация обработчиков для ссылок модалок в footer
 function initFooterModalLinks() {
