@@ -1,0 +1,131 @@
+@media (max-width: 768px) {
+    /* Адаптив для карусели на маленьких мобильных */
+    .carousel-bootstrap .carousel-item {
+        height: 200px;
+    }
+    
+    .carousel-bootstrap .carousel-control-prev,
+    .carousel-bootstrap .carousel-control-next {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .carousel-bootstrap .carousel-control-prev-icon,
+    .carousel-bootstrap .carousel-control-next-icon {
+        width: 12px;
+        height: 12px;
+    }
+
+    .carousel-bootstrap .carousel-indicators button {
+        width: 15px;
+        height: 15px;
+        margin: 0 3px;
+    }
+
+    .carousel-bootstrap .carousel-indicators {
+        height: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Адаптив для карусели на очень маленьких экранах */
+    .carousel-bootstrap .carousel-item {
+        height: 180px;
+    }
+    
+    
+    .carousel-bootstrap .carousel-control-prev,
+    .carousel-bootstrap .carousel-control-next {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .carousel-bootstrap .carousel-control-prev-icon,
+    .carousel-bootstrap .carousel-control-next-icon {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 520px) {
+    /* Адаптив для карусели на экранах 520px и меньше */
+    .carousel-bootstrap .carousel-item {
+        height: 160px;
+    }
+   
+    
+    .carousel-bootstrap .carousel-control-prev,
+    .carousel-bootstrap .carousel-control-next {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .carousel-bootstrap .carousel-control-prev-icon,
+    .carousel-bootstrap .carousel-control-next-icon {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Адаптив для карусели на экранах 480px и меньше */
+    .carousel-bootstrap .carousel-item {
+        height: 140px;
+    }
+    
+    
+    
+    .carousel-bootstrap .carousel-control-prev,
+    .carousel-bootstrap .carousel-control-next {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .carousel-bootstrap .carousel-control-prev-icon,
+    .carousel-bootstrap .carousel-control-next-icon {
+        width: 7px;
+        height: 7px;
+    }
+}
+
+@media (max-width: 418px) {
+    /* Адаптив для карусели на экранах 418px и меньше */
+    .carousel-bootstrap .carousel-item {
+        height: 120px;
+    }
+    
+   
+    
+    .carousel-bootstrap .carousel-control-prev,
+    .carousel-bootstrap .carousel-control-next {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .carousel-bootstrap .carousel-control-prev-icon,
+    .carousel-bootstrap .carousel-control-next-icon {
+        width: 6px;
+        height: 6px;
+    }
+}
+
+@media (max-width: 360px) {
+    /* Адаптив для карусели на экранах 360px и меньше */
+    .carousel-bootstrap .carousel-item {
+        height: 100px;
+    }
+    
+    
+    .carousel-bootstrap .carousel-control-prev,
+    .carousel-bootstrap .carousel-control-next {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .carousel-bootstrap .carousel-control-prev-icon,
+    .carousel-bootstrap .carousel-control-next-icon {
+        width: 5px;
+        height: 5px;
+    }
+}
+
