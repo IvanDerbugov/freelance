@@ -252,7 +252,7 @@ function initServiceModals() {
     function initKitchenQuiz() {
         let currentStep = 1;
         const totalSteps = 6;
-        const answers = {};
+        let answers = {};
         
         // Инициализируем answers как глобальную переменную
         window.quizAnswers = answers;
@@ -1090,21 +1090,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Функция для изменения текста кнопки каталога в зависимости от размера экрана
 function updateCatalogText() {
-    console.log('updateCatalogText вызвана, ширина окна:', window.innerWidth);
     const catalogText = document.getElementById('catalog-text');
-    console.log('Найден элемент catalog-text:', catalogText);
     
     if (catalogText) {
-        console.log('Текущий текст:', catalogText.innerHTML);
         if (window.innerWidth <= 1100) {
             catalogText.innerHTML = 'Меню';
-            console.log('Изменено на "Меню"');
         } else {
             catalogText.innerHTML = 'Каталог';
-            console.log('Изменено на "Каталог"');
         }
-    } else {
-        console.log('Элемент catalog-text не найден!');
     }
 }
 

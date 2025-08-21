@@ -118,7 +118,7 @@
                 <input type="hidden" name="access_key" value="fa427f88-52e1-4116-b58f-4f7845816c64">
                 <input type="hidden" name="subject" value="Заявка на замер кухни">
                 <input type="hidden" name="form_type" value="measure">
-                
+
                 <div class="form-group">
                     <label for="measureName">Имя *</label>
                     <input type="text" id="measureName" name="name" required>
@@ -154,7 +154,7 @@
                 <input type="hidden" name="access_key" value="fa427f88-52e1-4116-b58f-4f7845816c64">
                 <input type="hidden" name="subject" value="Заявка на сборку кухни">
                 <input type="hidden" name="form_type" value="assembly">
-                
+
                 <div class="form-group">
                     <label for="assemblyName">Имя *</label>
                     <input type="text" id="assemblyName" name="name" required>
@@ -190,7 +190,7 @@
                 <input type="hidden" name="access_key" value="fa427f88-52e1-4116-b58f-4f7845816c64">
                 <input type="hidden" name="subject" value="Заявка на обратный звонок">
                 <input type="hidden" name="form_type" value="callback">
-                
+
                 <div class="form-group">
                     <label for="callbackName">Имя *</label>
                     <input type="text" id="callbackName" name="name" required>
@@ -204,7 +204,7 @@
                     <span class="btn-text">Заказать звонок</span>
                 </button>
             </form>
-            
+
             <!-- Кнопки связи -->
             <div class="contact-buttons-small">
                 <a href="https://wa.me/79800980054" class="contact-btn-small whatsapp" target="_blank">
@@ -482,34 +482,36 @@
                                 <img src="img/kviz-surprize.jpg" alt="Подарок - посудосушитель">
                             </div>
                         </div>
-                        
+
                         <div class="gift-form">
                             <h5 class="form-title">ЗАПОЛНИТЕ ФОРМУ</h5>
                             <p class="form-subtitle">Введите ваши контактные данные</p>
-                            
+
                             <form id="giftForm" class="gift-form-content">
                                 <input type="hidden" name="access_key" value="fa427f88-52e1-4116-b58f-4f7845816c64">
                                 <input type="hidden" name="subject" value="Результаты квиза дизайн-проекта кухни">
                                 <input type="hidden" name="form_type" value="quiz">
-                                
+
                                 <!-- Скрытые поля для результатов квиза -->
                                 <input type="hidden" name="quiz_layout" id="quizLayout">
                                 <input type="hidden" name="quiz_dimensions" id="quizDimensions">
                                 <input type="hidden" name="quiz_material" id="quizMaterial">
                                 <input type="hidden" name="quiz_countertop" id="quizCountertop">
                                 <input type="hidden" name="quiz_urgency" id="quizUrgency">
-                                
+
                                 <div class="form-group">
                                     <input type="text" id="giftName" name="name" placeholder="Ваше Имя" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" id="giftPhone" name="phone" placeholder="+7 (999) 999-99-99" required>
+                                    <input type="tel" id="giftPhone" name="phone" placeholder="+7 (999) 999-99-99"
+                                        required>
                                 </div>
                                 <button type="submit" class="gift-submit-btn">
                                     <span class="spinner"></span>
                                     <span class="btn-text">ОТПРАВИТЬ</span>
                                 </button>
-                                <p class="form-disclaimer">Нажимая на кнопку, Вы даете согласие на обработку персональных данных и соглашаетесь с политикой конфиденциальности</p>
+                                <p class="form-disclaimer">Нажимая на кнопку, Вы даете согласие на обработку
+                                    персональных данных и соглашаетесь с политикой конфиденциальности</p>
                             </form>
                         </div>
                     </div>
@@ -527,6 +529,3 @@
     </div>
 
 </header>
-
-<!-- Подключение обработчиков форм -->
-<script src="js/form-handlers.js"></script>
