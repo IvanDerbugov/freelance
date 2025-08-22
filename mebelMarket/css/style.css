@@ -335,6 +335,122 @@ section.carousel-bootstrap {
     padding: 0 50px; /* Обновлено: уменьшено для карточек 400px */
 }
 
+.section-title-link {
+    z-index: 10;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom: -20px;
+}
+
+.section-title-link:hover {
+    transform: scale(1.02);
+    color: #e74c3c;
+}
+
+.section-title-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(231, 76, 60, 0.3), transparent);
+    transition: left 0.8s ease;
+}
+
+.section-title-link:hover::before {
+    left: 100%;
+}
+
+/* Пульсация */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        color: #333333;
+    }
+    50% {
+        transform: scale(1.05);
+        color: #e74c3c;
+    }
+    100% {
+        transform: scale(1);
+        color: #333333;
+    }
+}
+
+.section-title-link {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.section-title-link:hover {
+    animation: none;
+}
+
+/* Стили для кнопки "Смотреть все акции" */
+.sale-all-button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.btn-sale-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Fira Sans', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-sale-all::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.btn-sale-all:hover::before {
+    left: 100%;
+}
+
+.btn-sale-all:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+    background: linear-gradient(135deg, #c0392b, #a93226);
+}
+
+.btn-sale-all svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.btn-sale-all:hover svg {
+    transform: translateX(4px);
+}
+
+.btn-sale-all span {
+    position: relative;
+    z-index: 1;
+}
+
 .best-works-carousel {
     display: flex;
     justify-content: center;
@@ -344,12 +460,12 @@ section.carousel-bootstrap {
 
 .best-works-carousel-wrapper {
     display: flex;
-    gap: 50px; /* Изменено с 80px на 50px */
+    gap: 50px;
     transition: transform 0.5s ease-in-out;
-    min-width: calc(380px * 3 + 50px * 2 + 40px); /* Обновлено для gap 50px */
+    min-width: calc(380px * 3 + 50px * 2 + 40px);
     padding-right: 20px;
-    padding: 50px 0;
-    margin-left: 40px; /* Добавлено: небольшое смещение вправо для центрирования */
+    padding: 10px 0;
+    margin-left: 40px;
 }
 
 .carousel-arrow {
