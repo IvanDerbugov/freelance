@@ -1254,4 +1254,9 @@
         padding: 5px 15px;
         font-size: 13px;
     }
+
+    .header-services {
+        gap: 5px;
+        font-size: 15px;
+    }
 }

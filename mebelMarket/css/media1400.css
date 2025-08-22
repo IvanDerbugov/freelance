@@ -1,7 +1,8 @@
 @media (max-width: 1400px) {
     .container {
         max-width: 100%;
-        padding: 0 15px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     /* Адаптив для карусели Bootstrap */
@@ -148,6 +149,13 @@
     .module-kitchens-card {
         width: clamp(280px, 25vw, 350px);
         font-size: 15px;
+    }
+
+
+    .best-card-info {
+        padding: 4px 20px;
+        height: 34px;
+        font-size: 16px;
     }
 }
 

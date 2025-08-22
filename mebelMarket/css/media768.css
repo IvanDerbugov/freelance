@@ -1,15 +1,20 @@
 @media (max-width: 768px) {
+    section {
+        padding: 30px 0;
+    }
+
+
     /* Адаптив для карусели на маленьких мобильных */
     .carousel-bootstrap .carousel-item {
         height: 200px;
     }
-    
+
     .carousel-bootstrap .carousel-control-prev,
     .carousel-bootstrap .carousel-control-next {
         width: 30px;
         height: 30px;
     }
-    
+
     .carousel-bootstrap .carousel-control-prev-icon,
     .carousel-bootstrap .carousel-control-next-icon {
         width: 12px;
@@ -25,41 +30,110 @@
     .carousel-bootstrap .carousel-indicators {
         height: 30px;
     }
+
+
+    .best-card-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .best-card-card:nth-of-type(1) {
+        grid-column: span 2;
+        order: 1;
+    }
+
+    .best-card-card:nth-of-type(2) {
+        grid-column: span 4;
+        order: 3;
+    }
+
+    .best-card-card:nth-of-type(3) {
+        grid-column: span 2;
+        order: 2;
+    }
+
+    .best-card-info {
+        padding: 2px 15px;
+        height: 27px;
+        font-size: 14px;
+    }
+
+    .best-card-info-2 {
+        padding: 0px 15px;
+        height: 43px;
+        font-size: 25px;
+    }
+}
+
+
+
+@media (max-width: 650px) {
+
+    /* Адаптив для блока "Модульные кухни под ваш размер" */
+    .module-kitchens-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .module-kitchens-card {
+        min-height: 200px;
+        width: clamp(150px, 40vw, 250px);
+    }
+
+    .module-kitchens-card div[class*="module-kitchens-card-img"] {
+        width: clamp(150px, 35vw, 250px);
+        height: clamp(120px, 20vh, 132px);
+        background-size: cover;
+        background-position: center;
+    }
+
+    .module-kitchens-card p {
+        font-size: 14px;
+        margin: 8px 0 4px 0;
+    }
+
+    .module-kitchens-card {
+        gap: 1px;
+    }
+
+    .module-kitchens-card {
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 576px) {
+
     /* Адаптив для карусели на очень маленьких экранах */
     .carousel-bootstrap .carousel-item {
         height: 180px;
     }
-    
-    
+
+
     .carousel-bootstrap .carousel-control-prev,
     .carousel-bootstrap .carousel-control-next {
         width: 25px;
         height: 25px;
     }
-    
+
     .carousel-bootstrap .carousel-control-prev-icon,
     .carousel-bootstrap .carousel-control-next-icon {
         width: 10px;
         height: 10px;
     }
-}
 
-@media (max-width: 520px) {
-    /* Адаптив для карусели на экранах 520px и меньше */
     .carousel-bootstrap .carousel-item {
         height: 160px;
     }
-   
-    
+
+
     .carousel-bootstrap .carousel-control-prev,
     .carousel-bootstrap .carousel-control-next {
         width: 22px;
         height: 22px;
     }
-    
+
     .carousel-bootstrap .carousel-control-prev-icon,
     .carousel-bootstrap .carousel-control-next-icon {
         width: 8px;
@@ -68,64 +142,137 @@
 }
 
 @media (max-width: 480px) {
-    /* Адаптив для карусели на экранах 480px и меньше */
-    .carousel-bootstrap .carousel-item {
-        height: 140px;
-    }
-    
-    
-    
-    .carousel-bootstrap .carousel-control-prev,
-    .carousel-bootstrap .carousel-control-next {
-        width: 20px;
-        height: 20px;
-    }
-    
-    .carousel-bootstrap .carousel-control-prev-icon,
-    .carousel-bootstrap .carousel-control-next-icon {
-        width: 7px;
-        height: 7px;
-    }
-}
 
-@media (max-width: 418px) {
-    /* Адаптив для карусели на экранах 418px и меньше */
+    /* Адаптив для блока "Модульные кухни под ваш размер" на очень маленьких экранах */
+    .module-kitchens-container {
+        gap: 10px;
+        padding: 0 8px;
+    }
+
+    .module-kitchens-card {
+        min-height: 180px;
+    }
+
+    .module-kitchens-card div[class*="module-kitchens-card-img"] {
+        width: clamp(120px, 40vw, 190px);
+        height: clamp(100px, 18vh, 111px);
+    }
+
+    .module-kitchens-card p {
+        font-size: 13px;
+        margin: 6px 0 3px 0;
+    }
+
+    .module-kitchens-card p {
+        font-size: 11px;
+    }
+
     .carousel-bootstrap .carousel-item {
         height: 120px;
     }
-    
-   
-    
+
+
+
     .carousel-bootstrap .carousel-control-prev,
     .carousel-bootstrap .carousel-control-next {
         width: 18px;
         height: 18px;
     }
-    
+
     .carousel-bootstrap .carousel-control-prev-icon,
     .carousel-bootstrap .carousel-control-next-icon {
         width: 6px;
         height: 6px;
     }
+
+    .carousel-bootstrap .carousel-item {
+        height: 120px;
+    }
+
+
+
+    .carousel-bootstrap .carousel-control-prev,
+    .carousel-bootstrap .carousel-control-next {
+        width: 18px;
+        height: 18px;
+    }
+
+    .carousel-bootstrap .carousel-control-prev-icon,
+    .carousel-bootstrap .carousel-control-next-icon {
+        width: 6px;
+        height: 6px;
+    }
+
+    .carousel-bootstrap .carousel-item {
+        height: 140px;
+    }
+
+
+
+    .carousel-bootstrap .carousel-control-prev,
+    .carousel-bootstrap .carousel-control-next {
+        width: 20px;
+        height: 20px;
+    }
+
+    .carousel-bootstrap .carousel-control-prev-icon,
+    .carousel-bootstrap .carousel-control-next-icon {
+        width: 7px;
+        height: 7px;
+    }
+
+
+    .best-card-container {
+        gap: 12px;
+    }
+
+    .best-card-info {
+        padding: 0px 15px 0px;
+        height: 19px;
+        font-size: 12px;
+    }
+
+    .best-card-info-2 {
+        padding: 0px 15px 0px;
+        height: 32px;
+        font-size: 18px;
+    }
+
 }
 
 @media (max-width: 360px) {
-    /* Адаптив для карусели на экранах 360px и меньше */
+
+    /* Адаптив для блока "Модульные кухни под ваш размер" на очень маленьких экранах */
+    .module-kitchens-container {
+        gap: 10px;
+        padding: 0 8px;
+        justify-content: center;
+    }
+
+    .module-kitchens-card div[class*="module-kitchens-card-img"] {
+        width: clamp(120px, 40vw, 190px);
+        height: clamp(100px, 18vh, 92px);
+    }
+
+    .module-kitchens-card p {
+        font-size: 13px;
+        margin: 6px 0 3px 0;
+    }
+
     .carousel-bootstrap .carousel-item {
         height: 100px;
     }
-    
-    
+
+
     .carousel-bootstrap .carousel-control-prev,
     .carousel-bootstrap .carousel-control-next {
         width: 16px;
         height: 16px;
     }
-    
+
     .carousel-bootstrap .carousel-control-prev-icon,
     .carousel-bootstrap .carousel-control-next-icon {
         width: 5px;
         height: 5px;
     }
 }
-

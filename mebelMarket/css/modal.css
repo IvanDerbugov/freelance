@@ -425,7 +425,7 @@ header .modal-content {
 }
 
 @media (max-width: 350px) {
-    .close {
+    .close:not(.kviz-modal-close) {
         left: 182px;
     }
 }
