@@ -283,6 +283,11 @@
     opacity: 0.8;
 }
 
+.dropdown-section-sale a {
+    font-size: 16px;
+    color: #703e50;
+}
+
 
 
 
@@ -1097,6 +1102,8 @@
         width: 100%;
         min-width: auto;
     }
+
+   
 }
 
 @media (max-width: 700px) {
@@ -1129,7 +1136,7 @@
     
 }
 
-@media (max-width: 500px) {
+@media (max-width: 505px) {
     .display-block500 {
         display: block !important;
     }

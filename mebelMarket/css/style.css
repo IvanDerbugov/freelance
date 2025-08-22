@@ -268,7 +268,6 @@ section.carousel-bootstrap {
     overflow: hidden;
 }
 .module-kitchens-card:hover {
-    font-size: 20px;
     color: #1F7D63;
     transition: all 0.3s ease;
 }
@@ -279,6 +278,15 @@ section.carousel-bootstrap {
 
 .module-kitchens-card:hover img {
     transform: scale(1.1);
+}
+
+/* Эффект увеличения для фоновых изображений */
+[class^='module-kitchens-card-img'] {
+    transition: transform 0.3s ease;
+}
+
+.module-kitchens-card:hover [class^='module-kitchens-card-img'] {
+    transform: scale(1.05);
 }
 
 
@@ -580,9 +588,9 @@ section.carousel-bootstrap {
 .cardBestWorks-img10 {
     background-image: url(../img/card10.jpeg);
 }
-.cardBestWorks-img11 {
+/* .cardBestWorks-img11 {
     background-image: url(../img/card11.jpg);
-}
+} */
 
 .cardBestWorks-info {
     display: flex;
@@ -899,6 +907,9 @@ section.carousel-bootstrap {
     flex-direction: column;
     gap: 0px;
     max-height: 143px;
+}
+.ourWorks-content .borderCard {
+    min-width: 370px;
 }
 .p-timer {
     font-size: 19px !important;
@@ -1389,7 +1400,7 @@ section.carousel-bootstrap {
     transition: transform 0.5s ease-in-out;
     min-width: calc(280px * 4 + 40px * 3 + 40px); /* Для 4 видимых карточек */
     padding-right: 20px;
-    padding: 50px 0;
+    padding: 0;
     margin-left: 40px;
 }
 
@@ -1423,7 +1434,8 @@ section.carousel-bootstrap {
     height: 692px;
 }
 
-[class^='cardOurWorks-img'] {
+[class*='cardOurWorks-img'],
+[class*='bestOffers-img'] {
     width: 280px;
     height: 285px;
     border-radius: 10px;
@@ -1431,7 +1443,6 @@ section.carousel-bootstrap {
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-    background-size: cover;
 }
 
 .cardOurWorks-img1 {
@@ -1482,6 +1493,66 @@ section.carousel-bootstrap {
 .cardOurWorks-img16 {
     background-image: url(../img/ourWorks16.jpg);
 }
+
+
+.bestOffers-img1 {
+    background-image: url(../img/bestOffers1.webp);
+}
+.bestOffers-img2 {
+    background-image: url(../img/bestOffers2.webp);
+}
+.bestOffers-img3 {
+    background-image: url(../img/bestOffers3.webp);
+}
+.bestOffers-img4 {
+    background-image: url(../img/bestOffers4.webp);
+}
+.bestOffers-img5 {
+    background-image: url(../img/bestOffers5.webp);
+}
+.bestOffers-img6 {
+    background-image: url(../img/bestOffers6.webp);
+}
+.bestOffers-img7 {
+    background-image: url(../img/bestOffers7.webp);
+}
+.bestOffers-img8 {
+    background-image: url(../img/bestOffers8.webp);
+}
+.bestOffers-img9 {
+    background-image: url(../img/bestOffers9.webp);
+}
+.bestOffers-img10 {
+    background-image: url(../img/bestOffers10.webp);
+}
+.bestOffers-img11 {
+    background-image: url(../img/bestOffers11.webp);
+}
+.bestOffers-img12 {
+    background-image: url(../img/bestOffers12.webp);
+}
+.bestOffers-img13 {
+    background-image: url(../img/bestOffers13.webp);
+}
+.bestOffers-img14 {
+    background-image: url(../img/bestOffers14.webp);
+}
+.bestOffers-img15 {
+    background-image: url(../img/bestOffers15.webp);
+}
+.bestOffers-img16 {
+    background-image: url(../img/bestOffers16.webp);
+}
+.bestOffers-img17 {
+    background-image: url(../img/bestOffers17.webp);
+}
+.bestOffers-img18 {
+    background-image: url(../img/bestOffers18.webp);
+}
+.bestOffers-img19 {
+    background-image: url(../img/bestOffers19.webp);
+}
+
 
 .cardOurWorks-info {
     display: flex;

@@ -778,7 +778,7 @@ function fixImagePaths(container, basePath) {
 
 function fixInternalLinks(container, basePath) {
     // Исправляем внутренние ссылки в зависимости от расположения страницы
-    const links = container.querySelectorAll('a[href^="aboutCompany.html"], a[href^="payment.html"], a[href^="delivery.html"], a[href^="contacts.html"], a[href^="privacyPolicy.html"], a[href^="termsOfUse.html"], a[href^="flat.html"], a[href^="fusion.html"], a[href^="mari.html"], a[href^="skala.html"], a[href^="verona.html"], a[href^="valeria.html"], a[href^="grandel.html"], a[href^="linda.html"], a[href^="praga.html"], a[href^="shale.html"], a[href^="loft.html"], a[href^="praga-"], a[href^="shale-"], a[href^="loft-"], a[href^="flat-"], a[href^="fusion-"], a[href^="mari-"], a[href^="skala-"], a[href^="verona-"], a[href^="valeria-"], a[href^="grandel-"], a[href^="linda-"], a[href^="index.html"], a[href^="#"]');
+    const links = container.querySelectorAll('a[href^="aboutCompany.html"], a[href^="payment.html"], a[href^="delivery.html"], a[href^="contacts.html"], a[href^="privacyPolicy.html"], a[href^="termsOfUse.html"], a[href^="flat.html"], a[href^="fusion.html"], a[href^="mari.html"], a[href^="skala.html"], a[href^="verona.html"], a[href^="valeria.html"], a[href^="grandel.html"], a[href^="linda.html"], a[href^="praga.html"], a[href^="shale.html"], a[href^="loft.html"], a[href^="saleMonth.html"], a[href^="bestOffers.html"], a[href^="ourWorks.html"], a[href^="praga-"], a[href^="shale-"], a[href^="loft-"], a[href^="flat-"], a[href^="fusion-"], a[href^="mari-"], a[href^="skala-"], a[href^="verona-"], a[href^="valeria-"], a[href^="grandel-"], a[href^="linda-"], a[href^="index.html"], a[href^="#"]');
     links.forEach(link => {
         const oldHref = link.getAttribute('href');
         let newHref = oldHref;
@@ -828,6 +828,12 @@ function fixInternalLinks(container, basePath) {
                 newHref = 'shale.html'; // Остается как есть
             } else if (oldHref === 'loft.html') {
                 newHref = 'loft.html'; // Остается как есть
+            } else if (oldHref === 'saleMonth.html') {
+                newHref = 'saleMonth.html'; // Остается как есть
+            } else if (oldHref === 'bestOffers.html') {
+                newHref = 'bestOffers.html'; // Остается как есть
+            } else if (oldHref === 'ourWorks.html') {
+                newHref = 'ourWorks.html'; // Остается как есть
             } else if (oldHref.startsWith('praga-')) {
                 newHref = oldHref; // Остается как есть
             } else if (oldHref.startsWith('shale-')) {
@@ -889,6 +895,12 @@ function fixInternalLinks(container, basePath) {
                 newHref = 'html/shale.html'; // В папку html
             } else if (oldHref === 'loft.html') {
                 newHref = 'html/loft.html'; // В папку html
+            } else if (oldHref === 'saleMonth.html') {
+                newHref = 'html/saleMonth.html'; // В папку html
+            } else if (oldHref === 'bestOffers.html') {
+                newHref = 'html/bestOffers.html'; // В папку html
+            } else if (oldHref === 'ourWorks.html') {
+                newHref = 'html/ourWorks.html'; // В папку html
             } else if (oldHref.startsWith('praga-')) {
                 newHref = 'html/' + oldHref; // В папку html
             } else if (oldHref.startsWith('shale-')) {
@@ -990,6 +1002,15 @@ function highlightActiveLink(container) {
                 link.classList.add('active');
 
             } else if (href.includes('linda.html') && (currentPage === 'linda.html' || currentPage.startsWith('linda-'))) {
+                link.classList.add('active');
+
+            } else if (href.includes('saleMonth.html') && currentPage === 'saleMonth.html') {
+                link.classList.add('active');
+
+            } else if (href.includes('bestOffers.html') && currentPage === 'bestOffers.html') {
+                link.classList.add('active');
+
+            } else if (href.includes('ourWorks.html') && currentPage === 'ourWorks.html') {
                 link.classList.add('active');
 
             }

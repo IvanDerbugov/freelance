@@ -28,7 +28,7 @@
 
 .kitchen-main-image img {
     width: 100%;
-    height: auto;
+    height: 423px;
     max-height: 500px;
     object-fit: cover;
     display: block;
@@ -52,7 +52,7 @@
 
 /* Название продукта - уменьшил размер */
 .product-title {
-    font-size: 22px; /* Было 28px */
+    font-size: 22px; 
     font-weight: 700;
     color: #333333;
     line-height: 1.3;

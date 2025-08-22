@@ -100,6 +100,9 @@
     display: block;
     width: 380px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .kitchen-card:hover {
@@ -144,7 +147,7 @@
     transition: all 0.3s ease;
 }
 
-.kitchen-card-image {
+.kitchen-card-image:not([class*='cardOurWorks-img']) {
     position: relative;
     width: 380px;
     height: 285px;
