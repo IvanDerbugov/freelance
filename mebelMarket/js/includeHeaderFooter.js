@@ -4,7 +4,7 @@
 // Переменные для автоматического показа квиза
 let quizAutoShowTimer = null;
 let userInteractedWithQuiz = false;
-const QUIZ_AUTO_SHOW_INTERVAL = 120 * 1000; // 2 минуты в миллисекундах
+const QUIZ_AUTO_SHOW_INTERVAL = 120000 * 1000 ; // 2 минуты в миллисекундах
 
 // Функции для открытия модалок (будут определены как глобальные в DOMContentLoaded)
 function openKitchenQuiz() {
