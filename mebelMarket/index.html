@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/media1400.css">
     <link rel="stylesheet" href="css/media768.css">
+    <link rel="stylesheet" href="css/slick-carousel.css">
 
 
     <!-- Шрифты -->
@@ -40,6 +41,10 @@
     <!-- Логотипный шрифт Merriweather для пятого варианта -->
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap"
         rel="stylesheet">
+
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
     <!-- <style>
         @media (max-width: 1400px) {
@@ -190,22 +195,7 @@
                     </h3>
                 </a>
                 <div class="best-works-container">
-                    
-                    <button class="carousel-arrow prev" id="prevBtn" disabled>
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-                        </svg>
-                    </button>
-
-                    
-                    <button class="carousel-arrow next" id="nextBtn">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-                        </svg>
-                    </button>
-
-                    <div class="best-works-carousel">
-                        <div class="best-works-carousel-wrapper">
+                    <div class="best-works-carousel slick-carousel">
                             <div class="cardBestWorks">
                                 <div class="cardBestWorks-img1">
                                     <div class="sale-badge large">-38%</div>
@@ -501,7 +491,6 @@
                                     </div>
                                 </div>
                             </div> -->
-                        </div>
                     </div>
                 </div>
                 
@@ -1690,6 +1679,12 @@
         <div id="footer-container"></div>
     </div>
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Slick Carousel JS -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -1702,7 +1697,7 @@
     <script src="js/catalog-dropdown.js"></script>
     <script src="js/carousel-enhancement.js"></script>
     <script src="js/timer.js"></script>
-    <script src="js/cards-carousel.js"></script>
+    <script src="js/slick-carousel.js"></script>
     <script src="js/reviews-carousel.js"></script>
     <script src="js/our-works-carousel.js"></script>
     <script src="js/modal.js"></script>

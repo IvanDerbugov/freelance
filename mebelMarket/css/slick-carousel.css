@@ -1,0 +1,223 @@
+/* slick-carousel.css - Стили для Slick карусели "Распродажа месяца" */
+
+/* Основной контейнер карусели */
+.best-works-container {
+    position: relative;
+    padding: 31px 60px;
+}
+
+/* Slick карусель */
+.slick-carousel {
+    margin: 0 -20px; /* Компенсируем gap между слайдами */
+    overflow: hidden !important; /* Скрываем выходящие за границы слайды */
+}
+
+/* Slick track - контейнер для всех слайдов */
+.slick-track {
+    display: flex !important;
+    align-items: flex-start;
+    transition: transform 0.3s ease;
+}
+
+/* Slick list - основной контейнер */
+.slick-list {
+    overflow: hidden !important; /* Скрываем выходящие за границы слайды */
+    position: relative;
+}
+
+/* Отдельный слайд */
+.slick-slide {
+    padding: 0 20px; /* Уменьшаем gap между слайдами */
+    outline: none; /* Убираем outline при фокусе */
+    width: 33.333% !important; /* Фиксированная ширина для 3 карточек */
+}
+
+/* Карточка товара */
+.slick-slide .cardBestWorks {
+    width: 100% !important; /* Slick сам управляет шириной */
+    height: auto;
+    min-height: 692px;
+    margin: 0; /* Убираем margin */
+    opacity: 1 !important; /* Показываем все карточки */
+    visibility: visible !important;
+    transition: transform 0.3s ease;
+}
+
+/* Изображение в карточке */
+.slick-slide .cardBestWorks [class^='cardBestWorks-img'] {
+    width: 100% !important; /* Slick сам управляет шириной */
+    height: 285px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* Стрелки Slick */
+.slick-prev,
+.slick-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(31, 125, 99, 0.9);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    z-index: 10;
+    outline: none;
+}
+
+.slick-prev {
+    left: -50px;
+}
+
+.slick-next {
+    right: -50px;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+    background: rgba(31, 125, 99, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slick-prev:disabled,
+.slick-next:disabled {
+    background: rgba(128, 128, 128, 0.5);
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(1);
+}
+
+.slick-prev:disabled:hover,
+.slick-next:disabled:hover {
+    background: rgba(128, 128, 128, 0.5);
+    transform: translateY(-50%) scale(1);
+}
+
+/* SVG иконки в стрелках */
+.slick-prev svg,
+.slick-next svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Анимация при переключении */
+.slick-slide {
+    transition: all 0.3s ease;
+}
+
+.slick-slide.slick-active {
+    transform: scale(1);
+}
+
+.slick-slide.slick-current {
+    transform: scale(1.02);
+}
+
+/* Скрываем неактивные слайды */
+.slick-slide:not(.slick-active) {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Показываем только активные слайды */
+.slick-slide.slick-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Убираем старые стили, которые конфликтуют */
+.best-works-carousel-wrapper {
+    display: block !important; /* Slick сам управляет отображением */
+    gap: 0 !important;
+    transition: none !important;
+    min-width: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Принудительно показываем все карточки в Slick */
+.slick-carousel .cardBestWorks {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    position: relative !important;
+    transform: none !important;
+}
+
+/* Убираем все старые стили для скрытия карточек */
+.slick-carousel .cardBestWorks:nth-child(n+4) {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Убираем старые стили для .visible класса */
+.slick-carousel .cardBestWorks.visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Адаптив для Slick */
+@media (max-width: 1400px) {
+    .slick-slide .cardBestWorks [class^='cardBestWorks-img'] {
+        height: 250px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .slick-slide .cardBestWorks [class^='cardBestWorks-img'] {
+        height: 220px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .slick-slide .cardBestWorks [class^='cardBestWorks-img'] {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .best-works-container {
+        padding: 0 50px;
+    }
+    
+    .slick-prev {
+        left: -40px;
+    }
+    
+    .slick-next {
+        right: -40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .best-works-container {
+        padding: 0 40px;
+    }
+    
+    .slick-prev,
+    .slick-next {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .slick-prev {
+        left: -35px;
+    }
+    
+    .slick-next {
+        right: -35px;
+    }
+}
