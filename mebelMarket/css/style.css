@@ -338,7 +338,7 @@ section.carousel-bootstrap {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow: visible;
     max-width: 100%;
     padding: 0 50px; /* Обновлено: уменьшено для карточек 400px */
 }
@@ -512,7 +512,7 @@ section.carousel-bootstrap {
 }
 
 .carousel-arrow.next {
-    right: 10px; /* Обновлено: позиция для 3 карточек */
+    right: 0px;
 }
 
 .carousel-arrow:disabled {
@@ -551,7 +551,7 @@ section.carousel-bootstrap {
 [class^='cardBestWorks-img'] {
     width: 380px;
     height: 285px;
-    border-radius: 10px;
+    border-radius: 0px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
