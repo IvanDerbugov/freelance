@@ -65,7 +65,7 @@
     }
     
     .best-works-carousel-wrapper {
-        gap: 20px;
+        gap: 32px;
     }
     
     .cardBestWorks {
@@ -96,6 +96,7 @@
     
     .cardBestWorks-info .borderCard {
         padding: 12px;
+        margin-top: -20px;
     }
     
     .cardBestWorks-info .p-timer {
@@ -141,7 +142,17 @@
     }
 
     .best-works-carousel-wrapper {
-        margin-left: 270px;
+        margin-left: 240px;
+        gap: 43px;
+    }
+
+    .borderCard {
+        max-height: 105px;
+    }
+
+    .timer {
+        margin-top: -24px;
+        margin-bottom: -11px;
     }
 }
 
@@ -165,7 +176,7 @@
 
     /* Адаптив для карусели "Распродажа месяца" */
     .cardBestWorks {
-        min-width: 300px;
+        min-width: 260px;
         max-width: 350px;
     }
     
@@ -186,7 +197,7 @@
     }
     
     .cardBestWorks-info p {
-        font-size: 15px;
+        font-size: 14px;
     }
     
     .cardBestWorks-info .borderCard {
@@ -208,6 +219,41 @@
     .cardBestWorks .btn-details {
         padding: 7px 14px;
         font-size: 12px;
+    }
+
+    .p-timer {
+        letter-spacing: 1.6px !important;
+        font-size: 15px !important;
+    }
+
+    .old-price {
+        font-size: 14px !important;
+    }
+
+    .new-price {
+        font-size: 16px !important;
+    }
+
+    .cardBestWorks-info .old-price {
+        transform: translateY(2px);
+    }
+
+    .borderCard {
+        max-height: 87px;
+    }
+
+    .cardBestWorks-info button {
+        width: 248px;
+    }
+
+    .sale-badge.large {
+        font-size: 16px;
+        padding: 10px 13px;
+    }
+
+    .best-works-carousel-wrapper {
+        margin-left: 398px;
+        gap: 43px;
     }
 }
 
@@ -233,7 +279,7 @@
 
     /* Адаптив для карусели "Распродажа месяца" */
     .cardBestWorks {
-        min-width: 280px;
+        min-width: 240px;
         max-width: 320px;
     }
     
@@ -279,7 +325,9 @@
     
     .cardBestWorks .btn-details {
         padding: 6px 12px;
-        font-size: 11px;
+    }
+    .cardBestWorks-info button {
+        width: 235px;
     }
 
     /* Адаптив для карточек модульных кухонь */
@@ -339,6 +387,24 @@
         padding: 4px 20px;
         height: 34px;
         font-size: 16px;
+    }
+
+    .cardBestWorks {
+        gap: 0px;
+    }
+
+    .p-timer {
+        letter-spacing: 1.4px !important;
+        font-size: 14px !important;
+    }
+
+    .cardBestWorks-info .timer {
+        font-size: 15px;
+    }
+
+    .best-works-carousel-wrapper {
+        margin-left: 390px;
+        gap: 81px;
     }
 }
 

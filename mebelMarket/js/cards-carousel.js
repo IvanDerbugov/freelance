@@ -9,6 +9,17 @@ class CardsCarousel {
         this.prevBtn = document.getElementById('prevBtn');
         this.nextBtn = document.getElementById('nextBtn');
         
+        // Адаптивные настройки для разных экранов
+        this.breakpoints = {
+            5000: { visibleCards: 3, cardWidth: 320, gap: 30, step: 0.75 },
+            1400: { visibleCards: 3, cardWidth: 320, gap: 30, step: 1.05 },
+            1200: { visibleCards: 3, cardWidth: 260, gap: 43, step: 0.5 },
+            1100: { visibleCards: 3, cardWidth: 280, gap: 30, step: 0.5 },
+            992: { visibleCards: 2, cardWidth: 400, gap: 30, step: 1 },
+            768: { visibleCards: 2, cardWidth: 350, gap: 25, step: 1 },
+            576: { visibleCards: 1, cardWidth: 400, gap: 20, step: 1 }
+        };
+        
         this.init();
     }
 
@@ -21,6 +32,27 @@ class CardsCarousel {
         this.updateButtons();
         this.bindEvents();
         this.updateCarousel();
+        
+        // Добавляем слушатель изменения размера окна
+        window.addEventListener('resize', () => {
+            this.updateCarousel();
+            this.updateButtons();
+        });
+    }
+
+    // Метод для получения текущих адаптивных настроек
+    getCurrentBreakpoint() {
+        const width = window.innerWidth;
+        
+        if (width >= 5000) return this.breakpoints[5000];
+        if (width >= 1400) return this.breakpoints[1400];
+        if (width >= 1200) return this.breakpoints[1200];
+        if (width >= 1100) return this.breakpoints[1100];
+        if (width >= 992) return this.breakpoints[992];
+        if (width >= 768) return this.breakpoints[768];
+        if (width >= 576) return this.breakpoints[576];
+        
+        return this.breakpoints[576]; // По умолчанию для очень маленьких экранов
     }
 
     bindEvents() {
@@ -29,30 +61,41 @@ class CardsCarousel {
     }
 
     nextSlide() {
-        if (this.currentIndex < this.totalCards - this.visibleCards) {
-            this.currentIndex++;
+        const breakpoint = this.getCurrentBreakpoint();
+        const maxIndex = this.totalCards - this.visibleCards;
+        
+        if (this.currentIndex < maxIndex) {
+            this.currentIndex = Math.min(this.currentIndex + breakpoint.step, maxIndex);
             this.updateCarousel();
             this.updateButtons();
         }
     }
 
     prevSlide() {
+        const breakpoint = this.getCurrentBreakpoint();
+        
         if (this.currentIndex > 0) {
-            this.currentIndex--;
+            this.currentIndex = Math.max(this.currentIndex - breakpoint.step, 0);
             this.updateCarousel();
             this.updateButtons();
         }
     }
 
     updateCarousel() {
-        const cardWidth = 380; // Обновлено: ширина карточки 380px
-        const gap = 50; // Обновлено: промежуток между карточками 50px
-        const translateX = -(this.currentIndex * (cardWidth + gap));
+        const breakpoint = this.getCurrentBreakpoint();
+        this.visibleCards = breakpoint.visibleCards;
+        
+        const cardWidth = breakpoint.cardWidth;
+        const gap = breakpoint.gap;
+        const step = breakpoint.step;
+        
+        // Более плавное движение с учетом step
+        const translateX = -(this.currentIndex * (cardWidth + gap) * step);
         
         this.carouselWrapper.style.transform = `translateX(${translateX}px)`;
         
-        // Обновляем видимость карточек после 3-й
-        for (let i = 3; i < this.totalCards; i++) {
+        // Обновляем видимость карточек после количества видимых
+        for (let i = this.visibleCards; i < this.totalCards; i++) {
             const card = this.carouselWrapper.querySelector(`.cardBestWorks:nth-child(${i + 1})`);
             if (card) {
                 if (this.currentIndex > 0) {
@@ -68,7 +111,7 @@ class CardsCarousel {
         // Кнопка "Назад"
         this.prevBtn.disabled = this.currentIndex === 0;
         
-        // Кнопка "Вперед" - теперь можно пролистать до 7-й позиции (чтобы показать карточки 8-10)
+        // Кнопка "Вперед" - адаптивная логика для разных экранов
         this.nextBtn.disabled = this.currentIndex >= this.totalCards - this.visibleCards;
     }
 
