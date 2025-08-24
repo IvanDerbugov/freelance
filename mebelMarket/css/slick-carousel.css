@@ -27,9 +27,10 @@
 
 /* Отдельный слайд */
 .slick-slide {
-    padding: 0 20px; /* Уменьшаем gap между слайдами */
-    outline: none; /* Убираем outline при фокусе */
-    width: 33.333% !important; /* Фиксированная ширина для 3 карточек */
+    padding: 0 15px;
+    outline: none;
+    width: 25% !important;
+    margin-right: 39px;
 }
 
 /* Карточка товара */
@@ -192,12 +193,32 @@
 }
 
 @media (max-width: 1100px) {
+    .slick-slide {
+        width: 33.333% !important; /* 3 карточки на планшетах */
+        padding: 0 20px;
+    }
+    
     .slick-slide .cardBestWorks [class^='cardBestWorks-img'] {
         height: 200px;
     }
 }
 
+@media (max-width: 992px) {
+    .slick-carousel .cardBestWorks {
+        transform: translateX(12px) !important;
+    }
+}
+
+@media (max-width: 920px) {
+
+}
+
 @media (max-width: 768px) {
+    .slick-slide {
+        width: 50% !important; /* 2 карточки на мобильных */
+        padding: 0 15px;
+    }
+    
     .best-works-container {
         padding: 0 70px !important; /* Увеличиваем padding для мобильных */
     }
@@ -212,6 +233,11 @@
 }
 
 @media (max-width: 576px) {
+    .slick-slide {
+        width: 100% !important; /* 1 карточка на маленьких экранах */
+        padding: 0 10px;
+    }
+    
     .best-works-container {
         padding: 0 60px !important; /* Увеличиваем padding для маленьких экранов */
     }
