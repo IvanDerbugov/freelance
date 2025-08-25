@@ -36,21 +36,7 @@ $(".multiple-items").slick({
     ]
   });
 
-// Автоматическое листание туда-сюда для принудительного пересчета позиций
-// setTimeout(function() {
-//     // Быстро листаем вправо на один слайд
-//     $(".multiple-items").slick('slickNext');
-    
-    // Затем сразу обратно на первый слайд
-    // setTimeout(function() {
-    //     $(".multiple-items").slick('slickGoTo', 0);
-        
-        // И еще раз нажимаем кнопку влево для полной гарантии
-//         setTimeout(function() {
-//             $(".multiple-items").slick('slickPrev');
-//         }, 500);
-//     }, 50);
-// }, 100);
+
 
 // Дополнительно делаем то же самое после полной загрузки страницы
 $(window).on('load', function() {
