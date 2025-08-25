@@ -36,19 +36,68 @@ $(".multiple-items").slick({
     ]
   });
 
+// Автоматическое листание туда-сюда для принудительного пересчета позиций
+// setTimeout(function() {
+//     // Быстро листаем вправо на один слайд
+//     $(".multiple-items").slick('slickNext');
+    
+    // Затем сразу обратно на первый слайд
+    // setTimeout(function() {
+    //     $(".multiple-items").slick('slickGoTo', 0);
+        
+        // И еще раз нажимаем кнопку влево для полной гарантии
+//         setTimeout(function() {
+//             $(".multiple-items").slick('slickPrev');
+//         }, 500);
+//     }, 50);
+// }, 100);
+
+// Дополнительно делаем то же самое после полной загрузки страницы
+$(window).on('load', function() {
+    setTimeout(function() {
+        // Снова листаем вправо и обратно для гарантии
+        $(".multiple-items").slick('slickNext');
+        
+        setTimeout(function() {
+            $(".multiple-items").slick('slickGoTo', 0);
+            
+            // И еще раз нажимаем кнопку влево
+            setTimeout(function() {
+                $(".multiple-items").slick('slickPrev');
+            }, 500);
+        }, 50);
+    }, 200);
+});
+
 // Добавляем слушатель события resize для автоматического перестроения карусели
 let resizeTimer;
 window.addEventListener('resize', function() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function() {
-        // Перестраиваем карусель при изменении размера экрана
-        $(".multiple-items").slick('setPosition');
-    }, 250); // Задержка 250мс для оптимизации производительности
+        // При изменении размера тоже делаем листание туда-сюда
+        $(".multiple-items").slick('slickNext');
+        setTimeout(function() {
+            $(".multiple-items").slick('slickGoTo', 0);
+            
+            // И еще раз нажимаем кнопку влево
+            setTimeout(function() {
+                $(".multiple-items").slick('slickPrev');
+            }, 50);
+        }, 50);
+    }, 250);
 });
 
 // Дополнительно слушаем событие orientationchange для мобильных устройств
 window.addEventListener('orientationchange', function() {
     setTimeout(function() {
-        $(".multiple-items").slick('setPosition');
-    }, 500); // Увеличенная задержка для ориентации
+        $(".multiple-items").slick('slickNext');
+        setTimeout(function() {
+            $(".multiple-items").slick('slickGoTo', 0);
+            
+            // И еще раз нажимаем кнопку влево
+            setTimeout(function() {
+                $(".multiple-items").slick('slickPrev');
+            }, 50);
+        }, 500);
+    });
 });
