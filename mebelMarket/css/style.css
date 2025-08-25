@@ -1094,30 +1094,77 @@ section.carousel-bootstrap {
 
 @media (max-width: 480px) {
     .reviews-container {
-        padding: 0 20px;
+        padding: 0 15px;
+        overflow: hidden;
     }
     
     .reviews-carousel-wrapper {
-        gap: 20px;
-        min-width: calc(220px * 2 + 20px * 1 + 40px);
+        gap: 15px;
+        min-width: calc(200px * 2 + 15px * 1 + 30px);
+        padding: 20px 15px;
+        justify-content: flex-start;
     }
     
     .review-card {
-        width: 220px;
-        min-width: 220px;
-        max-width: 220px;
-        height: 350px;
-        padding: 15px 12px;
+        width: 200px;
+        min-width: 200px;
+        max-width: 200px;
+        height: 320px;
+        padding: 12px 10px;
         flex-shrink: 0;
+        margin: 0;
+    }
+    
+    .reviewer-avatar {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .reviewer-avatar svg {
+        width: 18px;
+        height: 18px;
     }
     
     .reviewer-info h4 {
-        font-size: 14px;
+        font-size: 13px;
+        margin-bottom: 3px;
     }
     
     .review-text {
-        font-size: 12px;
-        -webkit-line-clamp: 4;
+        font-size: 11px;
+        -webkit-line-clamp: 3;
+        line-height: 1.4;
+    }
+    
+    .review-footer {
+        margin-top: auto;
+    }
+    
+    .review-date {
+        font-size: 10px;
+    }
+    
+    .review-product {
+        font-size: 11px;
+        padding: 3px 6px;
+    }
+    
+    /* Исправляем позиционирование стрелок */
+    .reviews-arrow.prev {
+        left: 5px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .reviews-arrow.next {
+        right: 5px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .reviews-arrow svg {
+        width: 16px;
+        height: 16px;
     }
 }
 
