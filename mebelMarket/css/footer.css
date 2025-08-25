@@ -4,7 +4,7 @@
 }
 
 .footer-top {
-    padding: 60px 0 40px;
+    padding: 60px 20px 40px;
 }
 
 .footer-content {
@@ -204,6 +204,10 @@
 
     .footer-section ul li {
         margin-bottom: 4px;
+    }
+
+    .footer-content {
+        padding-left: 15px;
     }
 }
 
