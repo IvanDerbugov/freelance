@@ -1,3 +1,8 @@
+body {
+    background: #3498db;
+    color: #fff;
+}
+
 .content {
     margin: 0 auto;
     padding: 30px;
@@ -29,7 +34,7 @@
 
 [class*='cardOurWorks-img'] {
     width: 280px;
-    height: 380px;
+    height: 285px;
     border-radius: 10px;
     background-size: cover;
     background-position: center;
@@ -37,57 +42,57 @@
     position: relative;
 }
 
-
 .cardOurWorks-img1 {
-    background-image: url(../img/ourWorks1.jpg);
+    background-image: url(img/ourWorks1.jpg);
 }
 .cardOurWorks-img2 {
-    background-image: url(../img/ourWorks2.jpg);
+    background-image: url(img/ourWorks2.jpg);
 }
 .cardOurWorks-img3 {
-    background-image: url(../img/ourWorks3.jpg);
+    background-image: url(img/ourWorks3.jpg);
 }
 .cardOurWorks-img4 {
-    background-image: url(../img/ourWorks4.jpg);
+    background-image: url(img/ourWorks4.jpg);
 }
 .cardOurWorks-img5 {
-    background-image: url(../img/ourWorks5.jpg);
+    background-image: url(img/ourWorks5.jpg);
 }
 .cardOurWorks-img6 {
-    background-image: url(../img/ourWorks6.jpg);
+    background-image: url(img/ourWorks6.jpg);
 }
 .cardOurWorks-img7 {
-    background-image: url(../img/ourWorks7.jpg);
+    background-image: url(img/ourWorks7.jpg);
 }
 .cardOurWorks-img8 {
-    background-image: url(../img/ourWorks8.jpg);
+    background-image: url(img/ourWorks8.jpg);
 }
 .cardOurWorks-img9 {
-    background-image: url(../img/ourWorks9.jpg);
-}
-.cardOurWorks-img10 {
-    background-image: url(../img/ourWorks10.jpg);
-}
-.cardOurWorks-img11 {
-    background-image: url(../img/ourWorks11.jpg);
-}
-.cardOurWorks-img12 {
-    background-image: url(../img/ourWorks12.jpg);
-}
-.cardOurWorks-img13 {
-    background-image: url(../img/ourWorks13.jpg);
-}
-.cardOurWorks-img14 {
-    background-image: url(../img/ourWorks14.jpg);
-}
-.cardOurWorks-img15 {
-    background-image: url(../img/ourWorks15.jpg);
-}
-.cardOurWorks-img16 {
-    background-image: url(../img/ourWorks16.jpg);
+    background-image: url(img/ourWorks9.jpg);
 }
 
+.cardOurWorks-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 9px;
+    padding: 10px;
+}
 
+.cardOurWorks-info p:nth-of-type(1) {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+    letter-spacing: 1px;
+}
+
+.ourWorks .price-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    line-height: 24px;
+}
 
 .sale-badge {
     position: absolute;
@@ -139,11 +144,12 @@
 }
 
 .borderCard > div:not(.price-container) {
-    font-size: 21px;
+    font-size: 22px;
     color: #000;
     font-weight: 600;
     display: flex;
     flex-direction: column;
+    gap: 0px;
 }
 
 .borderCard {
@@ -175,21 +181,18 @@
 
 .price-container {
     display: flex;
-    flex-direction: column;
-    gap: 0px;
-    align-items: center;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .old-price {
-    font-size: 20px !important;
-    color: #000;
+    font-size: 15px !important;
     font-weight: 500;
     text-decoration: line-through;
-    margin: -5px 0 -2px;
 }
 
 .new-price {
-    font-size: 24px !important;
+    font-size: 17px !important;
     color: #cf2c2c;
     font-weight: 600;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -199,11 +202,7 @@
 
 .slick-prev, .slick-next {
     width: 40px !important;
-    height: 40px !important;
-    background-color: #1F7D63;
-}
-.slick-prev:before, .slick-next:before {
-    font-size: 40px;
+    height: 40px !important
 }
 .slick-prev {
     left: 3px !important;
@@ -213,17 +212,6 @@
 }
 .slick-slide {
     padding: 35px 20px 0 0 !important;
-}
-
-.ourWorks-name {
-    font-size: 20px;
-    font-weight: 600;
-    color: #000;
-    margin-bottom: 10px;
-}
-
-.btn-details {
-    margin-top: 10px;
 }
 
 @media (max-width: 480px) {

@@ -527,16 +527,16 @@ section.carousel-bootstrap {
 }
 
 /* Скрываем карточки после 3-й по умолчанию */
-.cardBestWorks:nth-child(n+4) {
+/* .cardBestWorks:nth-child(n+4) {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-}
+} */
 
-.cardBestWorks:nth-child(n+4).visible {
+/* .cardBestWorks:nth-child(n+4).visible {
     opacity: 1;
     visibility: visible;
-}
+} */
 
 .cardBestWorks {
     display: flex;
@@ -611,16 +611,16 @@ section.carousel-bootstrap {
 .best-works-container .cardBestWorks-info>p {
     min-height: 60px;
 }
-.price-container {
+/* .price-container {
     display: flex;
     flex-direction: row;
     gap: 10px;
-}
-.old-price {
+} */
+/* .old-price {
     font-size: 22px !important;
     font-weight: 500;
     text-decoration: line-through;
-}
+} */
 
 
 
@@ -666,7 +666,7 @@ section.carousel-bootstrap {
 }
 
 /* Основной контейнер для скидки */
-.sale-badge {
+/* .sale-badge {
     position: absolute;
     top: -14px;
     right: -9px;
@@ -681,7 +681,7 @@ section.carousel-bootstrap {
     z-index: 10;
     transform: rotate(5deg);
     animation: salePulse 2s ease-in-out infinite;
-}
+} */
 
 /* Анимация пульсации для привлечения внимания */
 @keyframes salePulse {
@@ -696,15 +696,15 @@ section.carousel-bootstrap {
 }
 
 /* Большая скидка (от 30%) */
-.sale-badge.large {
+/* .sale-badge.large {
     font-size: 22px;
     padding: 12px 16px;
     background: linear-gradient(135deg, #ff3838, #ff0000);
     box-shadow: 0 6px 20px rgba(255, 56, 56, 0.5);
     animation: salePulseLarge 1.5s ease-in-out infinite;
-}
+} */
 
-@keyframes salePulseLarge {
+/* @keyframes salePulseLarge {
     0%, 100% {
         transform: rotate(5deg) scale(1);
         box-shadow: 0 6px 20px rgba(255, 56, 56, 0.5);
@@ -713,10 +713,10 @@ section.carousel-bootstrap {
         transform: rotate(5deg) scale(1.08);
         box-shadow: 0 8px 25px rgba(255, 56, 56, 0.7);
     }
-}
+} */
 
 /* Огромная скидка (от 50%) */
-.sale-badge.huge {
+/* .sale-badge.huge {
     font-size: 26px;
     padding: 15px 20px;
     background: linear-gradient(135deg, #ff0000, #cc0000);
@@ -734,23 +734,23 @@ section.carousel-bootstrap {
         transform: rotate(5deg) scale(1.1);
         box-shadow: 0 10px 30px rgba(255, 0, 0, 0.8);
     }
-}
+} */
 
 /* Стили для карточек товаров */
-.product-card {
+/* .product-card {
     position: relative;
     overflow: hidden;
-}
+} */
 
 /* Эффект при наведении на карточку со скидкой */
-.product-card:hover .sale-badge {
+/* .product-card:hover .sale-badge {
     animation-play-state: paused;
     transform: rotate(0deg) scale(1.1);
     transition: all 0.3s ease;
-}
+} */
 
 /* Дополнительный элемент "ХИТ" */
-.hit-badge {
+/* .hit-badge {
     position: absolute;
     top: 15px;
     left: 15px;
@@ -764,56 +764,56 @@ section.carousel-bootstrap {
     box-shadow: 0 3px 10px rgba(255, 167, 38, 0.4);
     z-index: 10;
     transform: rotate(-5deg);
-}
+} */
 
 /* Стили для цен со скидкой */
-.price-with-sale {
+/* .price-with-sale {
     display: flex;
     flex-direction: column;
     gap: 5px;
     margin: 10px 0;
-}
+} */
 
 
 
-.new-price {
+/* .new-price {
     font-size: 24px !important;
     color: #cf2c2c;
     font-weight: 600;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     letter-spacing: 1px;
-}
+} */
 
-.borderCard > div:not(.price-container) {
+/* .borderCard > div:not(.price-container) {
     font-size: 22px;
     color: #000;
     font-weight: 600;
     display: flex;
     flex-direction: column;
     gap: 0px;
-}
+} */
 
-.timer {
+/* .timer {
     font-size: 23px;
     font-weight: 400;
     position: relative;
     letter-spacing: 2px;
     margin-top: -7px;
     text-align: center;
-}
+} */
 
-.cardOurWorks .timer {
+/* .cardOurWorks .timer {
     margin-bottom: 10px;
-}
+} */
 
 /* Стили для цифр таймера */
-.timer span {
+/* .timer span {
     display: inline-block;
     transition: all 0.3s ease;
-}
+} */
 
 /* Волна по буквам "д", "ч", "мин" */
-.timer::after {
+/* .timer::after {
     content: '';
     position: absolute;
     top: 0;
@@ -822,9 +822,9 @@ section.carousel-bootstrap {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
     animation: waveFlow 3s ease-in-out infinite;
-}
+} */
 
-@keyframes waveFlow {
+/* @keyframes waveFlow {
     0% {
         left: -100%;
     }
@@ -836,7 +836,7 @@ section.carousel-bootstrap {
     }
 }
 
-/* Анимация при обновлении цифр */
+
 .timer span.updating {
     animation: numberUpdate 0.5s ease-out;
 }
@@ -860,7 +860,7 @@ section.carousel-bootstrap {
     }
 }
 
-/* Свечение активных цифр */
+
 .timer span.active {
     color: #ffeb3b;
     text-shadow: 0 0 10px rgba(255, 235, 59, 0.8);
@@ -876,7 +876,7 @@ section.carousel-bootstrap {
     }
 }
 
-/* Анимация для букв "д", "ч", "мин" */
+
 .timer .time-unit {
     display: inline-block;
     transition: all 0.3s ease;
@@ -895,12 +895,12 @@ section.carousel-bootstrap {
     }
 }
 
-/* Дополнительная анимация для привлечения внимания */
+
 .timer:hover .time-unit {
     animation: unitFloat 0.5s ease-in-out infinite;
-}
+} */
 
-.borderCard {
+/* .borderCard {
     border: 1px solid #000;
     border-radius: 10px;
     padding: 10px;
@@ -908,15 +908,15 @@ section.carousel-bootstrap {
     flex-direction: column;
     gap: 0px;
     max-height: 143px;
-}
-.ourWorks-content .borderCard {
+} */
+/* .ourWorks-content .borderCard {
     min-width: 370px;
-}
-.p-timer {
+} */
+/* .p-timer {
     font-size: 19px !important;
     font-weight: 600 !important;
     letter-spacing: 4px !important;
-}
+} */
 
 /* Секция "Почему выбирают нас" */
 .whyChooseUs {
@@ -1381,41 +1381,41 @@ section.carousel-bootstrap {
 }
 
 /* Стили для карусели "Наши работы" */
-.our-works-container {
+/* .our-works-container {
     position: relative;
     overflow: hidden;
     max-width: 100%;
-    padding: 0 50px;
-}
+    padding: 58px 50px;
+} */
 
-.our-works-carousel {
+/* .our-works-carousel {
     display: flex;
     justify-content: center;
     width: 100%;
     overflow: hidden;
-}
+} */
 
-.our-works-carousel-wrapper {
+/* .our-works-carousel-wrapper {
     display: flex;
     gap: 40px;
     transition: transform 0.5s ease-in-out;
-    min-width: calc(280px * 4 + 40px * 3 + 40px); /* Для 4 видимых карточек */
+    min-width: calc(280px * 4 + 40px * 3 + 40px); 
     padding-right: 20px;
     padding: 0;
     margin-left: 40px;
-}
+} */
 
 /* Скрываем карточки после 4-й по умолчанию */
-.cardOurWorks:nth-child(n+5) {
+/* .cardOurWorks:nth-child(n+5) {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-}
+} */
 
-.cardOurWorks:nth-child(n+5).visible {
+/* .cardOurWorks:nth-child(n+5).visible {
     opacity: 1;
     visibility: visible;
-}
+} */
 
 
 #ourWorksAnchor,
@@ -1425,7 +1425,7 @@ section.carousel-bootstrap {
     left: 0;
 }
 
-.cardOurWorks {
+/* .cardOurWorks {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1433,9 +1433,9 @@ section.carousel-bootstrap {
     gap: 12px;
     width: 280px;
     height: 692px;
-}
+} */
 
-[class*='cardOurWorks-img'],
+/* [class*='cardOurWorks-img'],
 [class*='bestOffers-img'] {
     width: 280px;
     height: 285px;
@@ -1444,9 +1444,9 @@ section.carousel-bootstrap {
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-}
+} */
 
-.cardOurWorks-img1 {
+/* .cardOurWorks-img1 {
     background-image: url(../img/ourWorks1.jpg);
 }
 .cardOurWorks-img2 {
@@ -1493,7 +1493,7 @@ section.carousel-bootstrap {
 }
 .cardOurWorks-img16 {
     background-image: url(../img/ourWorks16.jpg);
-}
+} */
 
 
 .bestOffers-img1 {
@@ -1555,34 +1555,34 @@ section.carousel-bootstrap {
 }
 
 
-.cardOurWorks-info {
+/* .cardOurWorks-info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     gap: 9px;
     padding: 10px;
-}
+} */
 
-.cardOurWorks-info p:nth-of-type(1) {
+/* .cardOurWorks-info p:nth-of-type(1) {
     font-size: 16px;
     font-weight: 400;
     color: #333333;
     letter-spacing: 1px;
-}
+} */
 
 
 
-.ourWorks .price-container {
+/* .ourWorks .price-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
     line-height: 24px;
-}
+} */
 
 /* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .our-works-container {
         padding: 0 40px;
     }
@@ -1628,4 +1628,4 @@ section.carousel-bootstrap {
         width: 220px;
         height: 165px;
     }
-}
+} */
