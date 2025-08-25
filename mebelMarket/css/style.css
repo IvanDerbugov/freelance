@@ -333,15 +333,15 @@ section.carousel-bootstrap {
 
 
 
-.best-works-container {
+/* .best-works-container {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: visible;
     max-width: 100%;
-    padding: 0 50px; /* Обновлено: уменьшено для карточек 400px */
-}
+    padding: 0 50px;
+} */
 
 .section-title-link {
     z-index: 8;
@@ -545,8 +545,8 @@ section.carousel-bootstrap {
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-    background-size: contain;
-    margin-top: 38px;
+    background-size: cover;
+    margin-top: 20px;
 }
 .cardBestWorks-img1 {
     background-image: url(../img/card1.jpg);
@@ -607,7 +607,7 @@ section.carousel-bootstrap {
     color: #333;
     text-decoration: line-through;
     font-weight: 400;
-    transform: translateY(6px);
+    transform: translateY(10px);
 }
 
 
@@ -1021,17 +1021,7 @@ section.carousel-bootstrap {
     text-align: center;
 }
 
-/* Скрываем карточки после 4-й по умолчанию */
-.review-card:nth-child(n+5) {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
 
-.review-card:nth-child(n+5).visible {
-    opacity: 1;
-    visibility: visible;
-}
 
 /* Анимация появления карточек */
 .review-card {
@@ -1100,7 +1090,7 @@ section.carousel-bootstrap {
     .reviews-carousel-wrapper {
         gap: 20px;
         min-width: calc(220px * 2 + 20px * 1 + 40px);
-        margin-left: 233px;
+        /* margin-left: 233px; */
     }
     
     .review-card {

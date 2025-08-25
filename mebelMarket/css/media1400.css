@@ -51,112 +51,12 @@
 
 
     [class^='module-kitchens-card-img'] {
-        width: clamp(280px, 22vw, 400px);    /* ✅ От 280px до 400px */
-        height: clamp(180px, 18vh, 280px);   /* ✅ От 180px до 280px */
+        width: clamp(280px, 22vw, 400px);   
+        height: clamp(180px, 18vh, 280px);  
     }
 
     .module-kitchens-card {
         width: auto;
-    }
-
-    /* Адаптив для карусели "Распродажа месяца" */
-    .best-works-container {
-        padding: 0 20px;
-    }
-    
-    .best-works-carousel-wrapper {
-        gap: 32px;
-    }
-    
-    .cardBestWorks {
-        min-width: 320px;
-        max-width: 380px;
-    }
-    
-    .cardBestWorks .cardBestWorks-img1,
-    .cardBestWorks .cardBestWorks-img2,
-    .cardBestWorks .cardBestWorks-img3,
-    .cardBestWorks .cardBestWorks-img4,
-    .cardBestWorks .cardBestWorks-img5,
-    .cardBestWorks .cardBestWorks-img6,
-    .cardBestWorks .cardBestWorks-img7,
-    .cardBestWorks .cardBestWorks-img8,
-    .cardBestWorks .cardBestWorks-img9,
-    .cardBestWorks .cardBestWorks-img10 {
-        width: clamp(280px, 25vw, 320px);
-        height: clamp(200px, 25vh, 250px);
-        background-size: cover;
-        background-position: center;
-    }
-    
-    .cardBestWorks-info p:nth-of-type(1) {
-        font-size: 14px;
-        line-height: 1.4;
-    }
-    
-    .cardBestWorks-info .borderCard {
-        padding: 12px;
-        margin-top: -20px;
-    }
-    
-    .cardBestWorks-info .p-timer {
-        font-size: 12px;
-    }
-    
-    .cardBestWorks-info .price-container {
-        margin-top: 8px;
-    }
-    
-    .cardBestWorks-info .old-price {
-        font-size: 13px;
-    }
-    
-    .cardBestWorks-info .new-price {
-        font-size: 15px;
-    }
-    
-    .cardBestWorks .btn-details {
-        padding: 8px 16px;
-        font-size: 13px;
-    }
-
-    .old-price {
-        font-size: 15px !important;
-    }
-
-    .new-price {
-        font-size: 18px !important;
-    }
-
-    .cardBestWorks-info button {
-        width: 261px;
-    }
-
-    .price-container {
-        gap: 5px;
-    }
-
-    .best-works-carousel-wrapper {
-        margin-left: 240px;
-        gap: 43px;
-    }
-
-    /* .borderCard {
-        max-height: 105px;
-    } */
-
-    .timer {
-        margin-top: -24px;
-        margin-bottom: -11px;
-    }
-
-    .p-timer {
-        letter-spacing: 1.6px !important;
-        font-size: 15px !important;
-    }
-
-    .cardBestWorks-info .old-price {
-        transform: translateY(3px);
     }
 }
 
@@ -177,92 +77,6 @@
         width: 18px;
         height: 18px;
     }
-
-    /* Адаптив для карусели "Распродажа месяца" */
-    .cardBestWorks {
-        min-width: 260px;
-        max-width: 350px;
-    }
-    
-    .cardBestWorks .cardBestWorks-img1,
-    .cardBestWorks .cardBestWorks-img2,
-    .cardBestWorks .cardBestWorks-img3,
-    .cardBestWorks .cardBestWorks-img4,
-    .cardBestWorks .cardBestWorks-img5,
-    .cardBestWorks .cardBestWorks-img6,
-    .cardBestWorks .cardBestWorks-img7,
-    .cardBestWorks .cardBestWorks-img8,
-    .cardBestWorks .cardBestWorks-img9,
-    .cardBestWorks .cardBestWorks-img10 {
-        width: clamp(260px, 23vw, 320px);
-        height: clamp(180px, 22vh, 220px);
-        background-size: cover;
-        background-position: center;
-    }
-    
-    .cardBestWorks-info p {
-        font-size: 14px;
-    }
-    
-    .cardBestWorks-info .borderCard {
-        padding: 10px;
-    }
-    
-    .cardBestWorks-info .p-timer {
-        font-size: 11px;
-    }
-    
-    .cardBestWorks-info .old-price {
-        font-size: 12px;
-    }
-    
-    .cardBestWorks-info .new-price {
-        font-size: 14px;
-    }
-    
-    .cardBestWorks .btn-details {
-        padding: 7px 14px;
-        font-size: 12px;
-    }
-
-    .p-timer {
-        letter-spacing: 1.6px !important;
-        font-size: 15px !important;
-    }
-
-    .old-price {
-        font-size: 14px !important;
-    }
-
-    .new-price {
-        font-size: 16px !important;
-    }
-
-    .cardBestWorks-info .old-price {
-        transform: translateY(2px);
-    }
-
-    .borderCard {
-        max-height: 87px;
-    }
-
-    .cardBestWorks-info button {
-        width: 248px;
-    }
-
-    .sale-badge.large {
-        font-size: 16px;
-        padding: 10px 13px;
-    }
-
-    .best-works-carousel-wrapper {
-        margin-left: 398px;
-        gap: 43px;
-    }
-
-    .cardBestWorks-info p:nth-of-type(1) {
-    font-size: 13px;
-}
 }
 
 @media (max-width: 1100px) {
@@ -283,59 +97,6 @@
     .carousel-bootstrap .carousel-control-next {
         width: 40px;
         height: 40px;
-    }
-
-    /* Адаптив для карусели "Распродажа месяца" */
-    .cardBestWorks {
-        min-width: 240px;
-        max-width: 320px;
-    }
-    
-    .cardBestWorks .cardBestWorks-img1,
-    .cardBestWorks .cardBestWorks-img2,
-    .cardBestWorks .cardBestWorks-img3,
-    .cardBestWorks .cardBestWorks-img4,
-    .cardBestWorks .cardBestWorks-img5,
-    .cardBestWorks .cardBestWorks-img6,
-    .cardBestWorks .cardBestWorks-img7,
-    .cardBestWorks .cardBestWorks-img8,
-    .cardBestWorks .cardBestWorks-img9,
-    .cardBestWorks .cardBestWorks-img10 {
-        width: clamp(240px, 20vw, 300px);
-        height: clamp(160px, 20vh, 200px);
-        background-size: cover;
-        background-position: center;
-    }
-    
-    .cardBestWorks-info p {
-        font-size: 12px;
-    }
-    
-    .cardBestWorks-info .borderCard {
-        padding: 8px;
-    }
-    
-    .cardBestWorks-info .p-timer {
-        font-size: 10px;
-    }
-    
-    .cardBestWorks-info .timer {
-        font-size: 11px;
-    }
-    
-    .cardBestWorks-info .old-price {
-        font-size: 11px;
-    }
-    
-    .cardBestWorks-info .new-price {
-        font-size: 13px;
-    }
-    
-    .cardBestWorks .btn-details {
-        padding: 6px 12px;
-    }
-    .cardBestWorks-info button {
-        width: 235px;
     }
 
     /* Адаптив для карточек модульных кухонь */
@@ -397,31 +158,7 @@
         font-size: 16px;
     }
 
-    .cardBestWorks {
-        gap: 0px;
-    }
-
-    .p-timer {
-        letter-spacing: 1.4px !important;
-        font-size: 14px !important;
-    }
-
-    .cardBestWorks-info .timer {
-        font-size: 15px;
-    }
-
-    .best-works-carousel-wrapper {
-        margin-left: 390px;
-        gap: 81px;
-    }
-
-    .cardBestWorks-info {
-        width: 250px;
-    }
-
-    .old-price {
-        font-size: 13px !important;
-    }
+    
 }
 
 @media (max-width: 992px) {
@@ -441,8 +178,6 @@
         width: 15px;
         height: 15px;
     }
-
-    
 }
 
 

@@ -37,43 +37,6 @@ $(".multiple-items").slick({
   });
 
 
-
-// Дополнительно делаем то же самое после полной загрузки страницы
-// $(window).on('load', function() {
-//     setTimeout(function() {
-//         // Снова листаем вправо и обратно для гарантии
-//         $(".multiple-items").slick('slickNext');
-        
-//         setTimeout(function() {
-//             $(".multiple-items").slick('slickGoTo', 0);
-            
-//             // И еще раз нажимаем кнопку влево
-//             setTimeout(function() {
-//                 $(".multiple-items").slick('slickPrev');
-//             }, 500);
-//         }, 50);
-//     }, 200);
-// });
-
-// Добавляем слушатель события resize для автоматического перестроения карусели
-// let resizeTimer;
-// window.addEventListener('resize', function() {
-//     clearTimeout(resizeTimer);
-//     resizeTimer = setTimeout(function() {
-//         // При изменении размера тоже делаем листание туда-сюда
-//         $(".multiple-items").slick('slickNext');
-//         setTimeout(function() {
-//             $(".multiple-items").slick('slickGoTo', 0);
-            
-//             // И еще раз нажимаем кнопку влево
-//             setTimeout(function() {
-//                 $(".multiple-items").slick('slickPrev');
-//             }, 50);
-//         }, 50);
-//     }, 250);
-// });
-
-// Добавляем слушатель изменения масштаба страницы
 let zoomTimer;
 window.addEventListener('wheel', function(e) {
     // Проверяем, что это изменение масштаба (Ctrl + колесо мыши)
@@ -120,40 +83,3 @@ function checkViewportChange() {
     }
 }
 
-// Проверяем изменения viewport каждые 100мс
-// setInterval(checkViewportChange, 100);
-
-// Добавляем слушатель для изменения масштаба через жесты на мобильных
-// let gestureTimer;
-// window.addEventListener('gesturestart', function() {
-//     clearTimeout(gestureTimer);
-// });
-
-// window.addEventListener('gestureend', function() {
-//     gestureTimer = setTimeout(function() {
-//         // При завершении жеста изменения масштаба перестраиваем карусель
-//         $(".multiple-items").slick('slickNext');
-//         setTimeout(function() {
-//             $(".multiple-items").slick('slickGoTo', 0);
-            
-//             setTimeout(function() {
-//                 $(".multiple-items").slick('slickPrev');
-//             }, 50);
-//         }, 50);
-//     }, 300);
-// });
-
-// Дополнительно слушаем событие orientationchange для мобильных устройств
-// window.addEventListener('orientationchange', function() {
-//     setTimeout(function() {
-//         $(".multiple-items").slick('slickNext');
-//         setTimeout(function() {
-//             $(".multiple-items").slick('slickGoTo', 0);
-            
-//             // И еще раз нажимаем кнопку влево
-//             setTimeout(function() {
-//                 $(".multiple-items").slick('slickPrev');
-//             }, 50);
-//         }, 500);
-//     });
-// });
