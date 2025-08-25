@@ -39,21 +39,21 @@ $(".multiple-items").slick({
 
 
 // Дополнительно делаем то же самое после полной загрузки страницы
-$(window).on('load', function() {
-    setTimeout(function() {
-        // Снова листаем вправо и обратно для гарантии
-        $(".multiple-items").slick('slickNext');
+// $(window).on('load', function() {
+//     setTimeout(function() {
+//         // Снова листаем вправо и обратно для гарантии
+//         $(".multiple-items").slick('slickNext');
         
-        setTimeout(function() {
-            $(".multiple-items").slick('slickGoTo', 0);
+//         setTimeout(function() {
+//             $(".multiple-items").slick('slickGoTo', 0);
             
-            // И еще раз нажимаем кнопку влево
-            setTimeout(function() {
-                $(".multiple-items").slick('slickPrev');
-            }, 500);
-        }, 50);
-    }, 200);
-});
+//             // И еще раз нажимаем кнопку влево
+//             setTimeout(function() {
+//                 $(".multiple-items").slick('slickPrev');
+//             }, 500);
+//         }, 50);
+//     }, 200);
+// });
 
 // Добавляем слушатель события resize для автоматического перестроения карусели
 // let resizeTimer;
@@ -144,16 +144,16 @@ function checkViewportChange() {
 // });
 
 // Дополнительно слушаем событие orientationchange для мобильных устройств
-window.addEventListener('orientationchange', function() {
-    setTimeout(function() {
-        $(".multiple-items").slick('slickNext');
-        setTimeout(function() {
-            $(".multiple-items").slick('slickGoTo', 0);
+// window.addEventListener('orientationchange', function() {
+//     setTimeout(function() {
+//         $(".multiple-items").slick('slickNext');
+//         setTimeout(function() {
+//             $(".multiple-items").slick('slickGoTo', 0);
             
-            // И еще раз нажимаем кнопку влево
-            setTimeout(function() {
-                $(".multiple-items").slick('slickPrev');
-            }, 50);
-        }, 500);
-    });
-});
+//             // И еще раз нажимаем кнопку влево
+//             setTimeout(function() {
+//                 $(".multiple-items").slick('slickPrev');
+//             }, 50);
+//         }, 500);
+//     });
+// });
