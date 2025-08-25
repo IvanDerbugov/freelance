@@ -1,6 +1,6 @@
 $(".multiple-items").slick({
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -56,22 +56,22 @@ $(window).on('load', function() {
 });
 
 // Добавляем слушатель события resize для автоматического перестроения карусели
-let resizeTimer;
-window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
-        // При изменении размера тоже делаем листание туда-сюда
-        $(".multiple-items").slick('slickNext');
-        setTimeout(function() {
-            $(".multiple-items").slick('slickGoTo', 0);
+// let resizeTimer;
+// window.addEventListener('resize', function() {
+//     clearTimeout(resizeTimer);
+//     resizeTimer = setTimeout(function() {
+//         // При изменении размера тоже делаем листание туда-сюда
+//         $(".multiple-items").slick('slickNext');
+//         setTimeout(function() {
+//             $(".multiple-items").slick('slickGoTo', 0);
             
-            // И еще раз нажимаем кнопку влево
-            setTimeout(function() {
-                $(".multiple-items").slick('slickPrev');
-            }, 50);
-        }, 50);
-    }, 250);
-});
+//             // И еще раз нажимаем кнопку влево
+//             setTimeout(function() {
+//                 $(".multiple-items").slick('slickPrev');
+//             }, 50);
+//         }, 50);
+//     }, 250);
+// });
 
 // Добавляем слушатель изменения масштаба страницы
 let zoomTimer;
