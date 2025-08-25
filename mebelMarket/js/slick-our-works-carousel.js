@@ -7,7 +7,7 @@ $(".multiple-items").slick({
     
     responsive: [
       {
-        breakpoint: 1350,
+        breakpoint: 1400,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,

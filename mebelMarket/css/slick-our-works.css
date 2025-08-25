@@ -294,15 +294,32 @@
     display: flex !important;
 }
 
+@media (max-width: 1400px) {
+    .slick-next {
+        right: 10px !important;
+    }
+}
+
+@media (max-width: 1100px) {
+    .borderCard > div:not(.price-container) {
+        font-size: 19px;
+    }
+}
+@media (max-width: 1050px) {
+    .our-works-container {
+        position: relative;
+        overflow: visible;
+        max-width: 830px;
+        width: 100%;
+        padding: 58px 50px;
+    }
+}
+
 /* Стили для мобильных устройств */
 @media (max-width: 768px) {
     .slick-prev, .slick-next {
         width: 40px !important;
         height: 40px !important;
-    }
-    
-    .slick-prev:before, .slick-next:before {
-        font-size: 20px !important;
     }
     
     .slick-prev {
@@ -311,6 +328,11 @@
     
     .slick-next {
         right: -20px !important;
+    }
+
+    .our-works-container {
+        max-width: 410px;
+        padding: 58px 50px;
     }
 }
 
@@ -332,34 +354,93 @@
 @media (max-width: 480px) {
     [class*='cardOurWorks-img'] {
         width: 183px;
-        height: 175px;
+        height: 275px;
     }
 
     .borderCard {
         max-height: 160px;
     }
 
-    .cardOurWorks-info p:nth-of-type(1) {
-        font-size: 12px;
+    .ourWorks-name {
+        font-size: 17px;
+        margin: -5px 0 7px;
+        text-align: center;
+    }
+
+    .slick-slide {
+        align-items: center;
+    }
+
+    .content {
+        padding-top: 10px;
     }
 
     .timer {
-        font-size: 16px;
+        font-size: 20px;
     }
 
     .price-container {
         display: flex;
         flex-direction: column;
         gap: 0px;
+        margin-bottom: 0;
     }
 
     .sale-badge.large {
-        font-size: 10px;
-        padding: 11px 14px;
+        font-size: 14px;
+        padding: 8px 10px;
         background: linear-gradient(135deg, #ff3838, #ff0000);
         box-shadow: 0 6px 20px rgba(255, 56, 56, 0.5);
         animation: salePulseLarge 1.5s ease-in-out infinite;
     }
 
+    .our-works-container {
+        padding: 10px;
+    }
+
+    .borderCard > div:not(.price-container) {
+        font-size: 16px;
+    }
+
+    .borderCard {
+        max-height: 160px;
+        max-width: 220px;
+    }
+
+    .btn-details {
+        width: 218px;
+    }
+
+    .slick-slide {
+        padding: 35px 20px  !important;
+    }
     
+}
+
+
+@media (max-width: 380px) {
+    .borderCard > div:not(.price-container) {
+        font-size: 13px;
+    }
+
+    .timer {
+        font-size: 17px;
+    }
+
+    .old-price {
+        font-size: 18px !important;
+        margin: -5px 0 -2px;
+    }
+
+    .new-price {
+        font-size: 20px !important;
+    }
+
+    .btn-details {
+        width: 176px;
+    }
+
+    .content {
+        padding: 10px;
+    }
 }
