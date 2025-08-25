@@ -966,6 +966,58 @@
     }
 }
 
+/* Стили для скроллбара в квизе */
+#kvizModal .modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+#kvizModal .modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+#kvizModal .modal-content::-webkit-scrollbar-thumb {
+    background: #1F7D63;
+    border-radius: 3px;
+}
+
+#kvizModal .modal-content::-webkit-scrollbar-thumb:hover {
+    background: #166b54;
+}
+
+.kviz-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.kviz-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 2px;
+}
+
+.kviz-content::-webkit-scrollbar-thumb {
+    background: #1F7D63;
+    border-radius: 2px;
+}
+
+.kviz-content::-webkit-scrollbar-thumb:hover {
+    background: #166b54;
+}
+
+/* Скрываем скроллбар на мобильных устройствах для экономии места */
+@media (max-width: 768px) {
+    #kvizModal .modal-content::-webkit-scrollbar,
+    .kviz-content::-webkit-scrollbar {
+        width: 3px;
+    }
+}
+
+@media (max-width: 505px) {
+    #kvizModal .modal-content::-webkit-scrollbar,
+    .kviz-content::-webkit-scrollbar {
+        width: 2px;
+    }
+}
+
 
 @media (max-width: 1310px) {
     .header-top-left {
@@ -1055,11 +1107,20 @@
         padding: 20px;
     }
 
+    /* Добавляем скролл для квиза на мобильных */
+    #kvizModal .modal-content {
+        max-height: 90vh;
+        overflow-y: auto;
+        margin: 2% auto;
+    }
+
+    .kviz-content {
+        padding: 20px 15px;
+    }
 
     .header-services a {
         padding: 6px 10px;
     }
-
 
     .input-group {
         max-width: 100%;
@@ -1080,8 +1141,6 @@
     #kvizModal .modal-header h3 {
         font-size: 1.3rem;
     }
-
-    
 
     .kviz-options {
         display: grid;
@@ -1145,6 +1204,21 @@
         display: none !important;
     }
 
+    /* Улучшаем скролл для квиза на маленьких экранах */
+    #kvizModal .modal-content {
+        max-height: 95vh;
+        overflow-y: auto;
+        margin: 1% auto;
+        width: 98%;
+        border-radius: 8px;
+    }
+
+    .kviz-content {
+        padding: 10px 15px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
     .kitchen-diagram img,
     .kitchen-diagram svg {
         max-width: 100%;
@@ -1153,12 +1227,6 @@
     .dimension-input {
         padding: 10px 14px;
         font-size: 0.9rem;
-    }
-
-    #kvizModal .modal-content {
-        width: 98%;
-        margin: 5% auto;
-        border-radius: 8px;
     }
 
     #kvizModal .modal-header {
@@ -1177,9 +1245,6 @@
         height: 24px;
     }
 
-    .kviz-content {
-        padding: 5px 15px;
-    }
     .progress-text {
         margin-bottom: 7px;
     }
