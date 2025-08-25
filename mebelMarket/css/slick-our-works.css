@@ -198,19 +198,91 @@
 
 
 .slick-prev, .slick-next {
-    width: 40px !important;
-    height: 40px !important;
-    background-color: #1F7D63;
+    width: 50px !important;
+    height: 50px !important;
+    background: linear-gradient(135deg, #1F7D63, #2a9d7a) !important;
+    border: none !important;
+    border-radius: 50% !important;
+    box-shadow: 0 4px 15px rgba(31, 125, 99, 0.3) !important;
+    transition: all 0.3s ease !important;
+    z-index: 10 !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
 }
+
+.slick-prev:hover, .slick-next:hover {
+    background: linear-gradient(135deg, #2a9d7a, #1F7D63) !important;
+    box-shadow: 0 6px 20px rgba(31, 125, 99, 0.5) !important;
+    transform: translateY(-50%) scale(1.1) !important;
+}
+
+.slick-prev:active, .slick-next:active {
+    transform: translateY(-50%) scale(0.95) !important;
+}
+
 .slick-prev:before, .slick-next:before {
-    font-size: 40px;
+    font-family: 'slick' !important;
+    font-size: 51px !important;
+    color: white !important;
+    opacity: 1 !important;
+    font-weight: bold !important;
+    line-height: 1 !important;
+    transform: translate(0px, -9px);
 }
+
+.slick-prev:before {
+    content: '‹' !important;
+}
+
+.slick-next:before {
+    content: '›' !important;
+}
+
 .slick-prev {
-    left: 3px !important;
+    left: -25px !important;
 }
+
 .slick-next {
-    right: -7px !important;
+    right: -9px !important;
 }
+
+/* Скрываем стандартные стрелки Slick */
+.slick-prev:after, .slick-next:after {
+    display: none !important;
+}
+
+/* Добавляем красивые стрелки с помощью CSS */
+.slick-prev:before, .slick-next:before {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+    .slick-prev, .slick-next {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .slick-prev:before, .slick-next:before {
+        font-size: 20px !important;
+    }
+    
+    .slick-prev {
+        left: -20px !important;
+    }
+    
+    .slick-next {
+        right: -20px !important;
+    }
+}
+
 .slick-slide {
     padding: 35px 20px 0 0 !important;
 }
