@@ -263,6 +263,37 @@
     justify-content: center !important;
 }
 
+/* Принудительно заставляем Slick работать в одну строку */
+.slick-track {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+}
+
+.slick-slide {
+    float: none !important;
+    display: flex !important;
+    height: auto !important;
+    padding: 35px 20px 0 0 !important;
+}
+
+.slick-list {
+    overflow: hidden !important;
+}
+
+
+.our-works-container .slider {
+    display: block !important;
+}
+
+.our-works-container .slider > * {
+    display: none !important;
+}
+
+.our-works-container .slider .slick-slide {
+    display: flex !important;
+}
+
 /* Стили для мобильных устройств */
 @media (max-width: 768px) {
     .slick-prev, .slick-next {
