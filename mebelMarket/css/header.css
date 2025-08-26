@@ -1328,7 +1328,7 @@
         margin: 0 20px 10px 0px;
     }
 
-    .kviz-options {
+    .how-fast-question {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
     }
