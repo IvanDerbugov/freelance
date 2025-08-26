@@ -157,8 +157,12 @@
         height: 34px;
         font-size: 16px;
     }
+}
 
-    
+@media (max-width: 1050px) {
+    .mb-50 {
+        margin-bottom: -90px !important;
+    }
 }
 
 @media (max-width: 992px) {
@@ -178,11 +182,19 @@
         width: 15px;
         height: 15px;
     }
+
+    .ourWorks>a{
+        transform: translateY(40px);
+    }
 }
 
 
 
 @media (max-width: 900px) {
+    .section-title {
+        margin-bottom: 0px;
+    }
+
     /* Адаптив для карточек модульных кухонь */
     .module-kitchens-container {
         grid-template-columns: repeat(4, 1fr);

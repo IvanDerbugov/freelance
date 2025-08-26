@@ -37,6 +37,19 @@ $(".reviews-carousel-wrapper").slick({
                 pauseOnHover: true,
                 pauseOnFocus: true,
             }
+        },
+        {
+            breakpoint: 500,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                infinite: true,
+                arrows: false,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                pauseOnHover: true,
+                pauseOnFocus: true,
+            }
         }
     ]
 })

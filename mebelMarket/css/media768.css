@@ -30,6 +30,10 @@
     .carousel-bootstrap .carousel-indicators {
         height: 30px;
     }
+
+    .whyChooseUs {
+        margin: 0px auto 20px;
+    }
 }
 
 @media (max-width: 720px) {
@@ -138,6 +142,9 @@
 }
 
 @media (max-width: 480px) {
+    .mb-50 {
+        margin-bottom: -22px !important;
+    }
 
     /* Адаптив для блока "Модульные кухни под ваш размер" на очень маленьких экранах */
     .module-kitchens-container {
