@@ -162,6 +162,7 @@
     height: 285px;
     overflow: hidden;
     border-radius: 10px;
+    background-size: cover;
 }
 
 .kitchen-card-image img {
