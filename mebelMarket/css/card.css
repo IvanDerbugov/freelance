@@ -92,12 +92,12 @@
     margin-right: 6px; /* Было 8px */
 }
 
-/* Цены - уменьшил размеры */
 .product-pricing {
     display: flex;
     align-items: center;
-    gap: 12px; /* Было 15px */
+    gap: 12px;
     justify-content: center;
+    flex-direction: row-reverse;
 }
 
 .current-price {
@@ -313,7 +313,132 @@
     font-family: 'Courier New', monospace;
 }
 
-/* Адаптивность для мобильных устройств */
+
+/* Стили для списка модулей кухни */
+.kitchen-modules-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.kitchen-modules-list li {
+    position: relative;
+    padding: 12px 0 12px 30px;
+    margin: 8px 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 10px;
+    border-left: 4px solid #1F7D63;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.kitchen-modules-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #27ae60;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.kitchen-modules-list li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-left-color: #1F7D63;
+}
+
+.kitchen-modules-list li:nth-child(even) {
+    border-left-color: #1F7D63;
+}
+
+.kitchen-modules-list li:nth-child(even):hover {
+    border-left-color: #1F7D63;
+}
+
+.kitchen-modules-list li:nth-child(3n) {
+    border-left-color: #1F7D63;
+}
+
+.kitchen-modules-list li:nth-child(3n):hover {
+    border-left-color: #1F7D63;
+}
+
+.kitchen-modules-list li:nth-child(4n) {
+    border-left-color: #1F7D63;
+}
+
+.kitchen-modules-list li:nth-child(4n):hover {
+    border-left-color: #1F7D63;
+}
+
+
+
+/* Стили для элементов спецификации */
+.specification-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin: 10px 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 10px;
+    border-left: 4px solid #1F7D63;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.specification-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-left-color: #2a9d7a;
+}
+
+.specification-item:nth-child(even) {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.spec-label {
+    font-weight: 600;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.spec-value {
+    font-weight: 500;
+    color: #1F7D63;
+    font-size: 15px;
+    background: rgba(31, 125, 99, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-align: center;
+    min-width: 120px;
+}
+
+@media (max-width: 1100px) {
+    .kitchen-detail-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 850px) {
+    .kitchen-info-section .timer-text {
+        font-size: 24px;
+    }
+
+    .product-pricing .old-price {
+        font-size: 21px !important;
+    }
+
+    .current-price {
+        font-size: 23px;
+    }
+}
+
 @media (max-width: 768px) {
     .kitchen-detail-grid {
         grid-template-columns: 1fr;
@@ -377,69 +502,7 @@
         order: 3;
         justify-self: center;
     }
-}
 
-/* Стили для списка модулей кухни */
-.kitchen-modules-list {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-}
-
-.kitchen-modules-list li {
-    position: relative;
-    padding: 12px 0 12px 30px;
-    margin: 8px 0;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    border-radius: 10px;
-    border-left: 4px solid #1F7D63;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-}
-
-.kitchen-modules-list li:before {
-    content: "✓";
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #27ae60;
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-.kitchen-modules-list li:hover {
-    transform: translateX(5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    border-left-color: #1F7D63;
-}
-
-.kitchen-modules-list li:nth-child(even) {
-    border-left-color: #1F7D63;
-}
-
-.kitchen-modules-list li:nth-child(even):hover {
-    border-left-color: #1F7D63;
-}
-
-.kitchen-modules-list li:nth-child(3n) {
-    border-left-color: #1F7D63;
-}
-
-.kitchen-modules-list li:nth-child(3n):hover {
-    border-left-color: #1F7D63;
-}
-
-.kitchen-modules-list li:nth-child(4n) {
-    border-left-color: #1F7D63;
-}
-
-.kitchen-modules-list li:nth-child(4n):hover {
-    border-left-color: #1F7D63;
-}
-
-/* Адаптивность для списка модулей */
-@media (max-width: 768px) {
     .kitchen-modules-list li {
         padding: 10px 0 10px 25px;
         margin: 6px 0;
@@ -450,52 +513,7 @@
         left: 8px;
         font-size: 1rem;
     }
-}
 
-/* Стили для элементов спецификации */
-.specification-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    margin: 10px 0;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    border-radius: 10px;
-    border-left: 4px solid #1F7D63;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-}
-
-.specification-item:hover {
-    transform: translateX(5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    border-left-color: #2a9d7a;
-}
-
-.specification-item:nth-child(even) {
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-}
-
-.spec-label {
-    font-weight: 600;
-    color: #333;
-    font-size: 15px;
-    line-height: 1.4;
-}
-
-.spec-value {
-    font-weight: 500;
-    color: #1F7D63;
-    font-size: 15px;
-    background: rgba(31, 125, 99, 0.1);
-    padding: 8px 16px;
-    border-radius: 20px;
-    text-align: center;
-    min-width: 120px;
-}
-
-/* Адаптивность для элементов спецификации */
-@media (max-width: 768px) {
     .specification-item {
         flex-direction: column;
         gap: 10px;
@@ -513,5 +531,81 @@
         order: 2;
         min-width: auto;
         width: 100%;
+    }
+
+
+
+    .kitchen-info-section .timer-text {
+        font-size: 36px;
+    }
+
+    .promotion-timer .timer span {
+        font-size: 32px;
+    }
+
+    .current-price {
+        font-size: 40px;
+    }
+
+    .product-pricing .old-price {
+        font-size: 35px !important;
+    }
+
+    .btn-consultant-main, .btn-buy-one-click {
+        padding: 12px 20px;
+        font-size: 22px;
+    }
+
+    .btn-calculate-cost, .btn-free-measurement {
+        padding: 10px 18px;
+        font-size: 22px;
+    }
+
+    .breadcrumbs ul {
+        flex-wrap: wrap;
+    }
+}
+
+
+@media (max-width: 550px) {
+    .kitchen-main-image img {
+        width: 300px;
+        height: 270px;
+    }
+
+    .kitchen-main-image {
+        width: 300px;
+    }
+
+    .kitchen-detail-grid {
+        justify-items: center;
+        max-width: 300px;
+    }
+
+    .kitchen-main-image .sale-badge {
+        font-size: 18px;
+    }
+
+    .kitchen-detail-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-pricing .old-price {
+        font-size: 19px !important;
+    }
+
+    .current-price {
+        font-size: 23px;
+    }
+
+    .kitchen-info-section .timer-text {
+        font-size: 23px;
+    }
+
+    .btn-calculate-cost, .btn-free-measurement {
+        padding: 10px 18px;
+        font-size: 19px;
     }
 }

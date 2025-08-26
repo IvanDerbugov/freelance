@@ -1,4 +1,12 @@
-/* Стили для страницы "Флэт от 8900р" */
+.borderCard {
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    max-height: 143px;
+}
 
 .flat-kitchens-main {
     padding: 40px 0;
@@ -87,6 +95,7 @@
     grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     gap: 30px;
     margin-top: 40px;
+    justify-items: center;
 }
 
 /* Карточки кухонь */
@@ -357,7 +366,6 @@
     }
     
     .kitchen-card {
-        width: 100%;
         height: auto;
     }
     
@@ -369,9 +377,42 @@
     .kitchen-card-info h3 {
         font-size: 18px;
     }
-    
+
+    .kitchens-grid {
+        justify-items: center;
+    }
+
+    .flat-kitchens-main {
+        padding: 20px 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .kitchen-card-image:not([class*='cardOurWorks-img']) {
+        width: 300px;
+        height: 225px;
+    }
+
+    .kitchen-card {
+        width: 300px;
+    }
+
+    .sale-badge {
+        top: -14px;
+        right: 5px;
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+
+    .kitchen-card-info h3 {
+        max-width: 274px;
+    }
+
     .btn-details {
-        width: 100%;
-        padding: 12px 20px;
+        width: 278px;
+    }
+
+    .p-timer {
+        font-size: 20px;
     }
 }

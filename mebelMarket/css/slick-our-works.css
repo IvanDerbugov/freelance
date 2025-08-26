@@ -28,65 +28,7 @@
     height: 692px;
 }
 
-[class*='cardOurWorks-img'] {
-    width: 280px;
-    height: 380px;
-    border-radius: 10px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-}
 
-
-.cardOurWorks-img1 {
-    background-image: url(../img/ourWorks1.jpg);
-}
-.cardOurWorks-img2 {
-    background-image: url(../img/ourWorks2.jpg);
-}
-.cardOurWorks-img3 {
-    background-image: url(../img/ourWorks3.jpg);
-}
-.cardOurWorks-img4 {
-    background-image: url(../img/ourWorks4.jpg);
-}
-.cardOurWorks-img5 {
-    background-image: url(../img/ourWorks5.jpg);
-}
-.cardOurWorks-img6 {
-    background-image: url(../img/ourWorks6.jpg);
-}
-.cardOurWorks-img7 {
-    background-image: url(../img/ourWorks7.jpg);
-}
-.cardOurWorks-img8 {
-    background-image: url(../img/ourWorks8.jpg);
-}
-.cardOurWorks-img9 {
-    background-image: url(../img/ourWorks9.jpg);
-}
-.cardOurWorks-img10 {
-    background-image: url(../img/ourWorks10.jpg);
-}
-.cardOurWorks-img11 {
-    background-image: url(../img/ourWorks11.jpg);
-}
-.cardOurWorks-img12 {
-    background-image: url(../img/ourWorks12.jpg);
-}
-.cardOurWorks-img13 {
-    background-image: url(../img/ourWorks13.jpg);
-}
-.cardOurWorks-img14 {
-    background-image: url(../img/ourWorks14.jpg);
-}
-.cardOurWorks-img15 {
-    background-image: url(../img/ourWorks15.jpg);
-}
-.cardOurWorks-img16 {
-    background-image: url(../img/ourWorks16.jpg);
-}
 
 
 
