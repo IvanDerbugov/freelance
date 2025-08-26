@@ -1344,8 +1344,8 @@
     .how-fast-option:nth-of-type(3) {
         grid-column: 2 / 4;
     }
-    .how-fast-option:nth-of-type(3) .option-text {
-        font-size: 1rem;
+    .option-text {
+        font-size: 0.9rem;
     }
 
     .gift-title {

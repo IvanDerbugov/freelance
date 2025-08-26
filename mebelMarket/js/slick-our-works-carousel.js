@@ -37,38 +37,5 @@ $(".multiple-items").slick({
   });
 
 
-let zoomTimer;
-window.addEventListener('wheel', function(e) {
-    // Проверяем, что это изменение масштаба (Ctrl + колесо мыши)
-    if (e.ctrlKey) {
-        clearTimeout(zoomTimer);
-        zoomTimer = setTimeout(function() {
-            // При изменении масштаба обновляем страницу
-            location.reload();
-        }, 300); // Задержка для завершения изменения масштаба
-    }
-});
 
-// Добавляем слушатель изменения viewport (видимой ширины контента)
-let viewportTimer;
-let lastViewportWidth = window.innerWidth;
-
-// Функция для проверки изменения viewport
-function checkViewportChange() {
-    const currentViewportWidth = window.innerWidth;
-    
-    // Если ширина viewport изменилась, обновляем страницу
-    if (currentViewportWidth !== lastViewportWidth) {
-        lastViewportWidth = currentViewportWidth;
-        
-        clearTimeout(viewportTimer);
-        viewportTimer = setTimeout(function() {
-            // При изменении viewport обновляем страницу
-            location.reload();
-        }, 200);
-    }
-}
-
-// Запускаем проверку изменения viewport
-setInterval(checkViewportChange, 100);
 
