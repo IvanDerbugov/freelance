@@ -43,15 +43,8 @@ window.addEventListener('wheel', function(e) {
     if (e.ctrlKey) {
         clearTimeout(zoomTimer);
         zoomTimer = setTimeout(function() {
-            // При изменении масштаба перестраиваем карусель
-            $(".multiple-items").slick('slickNext');
-            setTimeout(function() {
-                $(".multiple-items").slick('slickGoTo', 0);
-                
-                setTimeout(function() {
-                    $(".multiple-items").slick('slickPrev');
-                }, 50);
-            }, 50);
+            // При изменении масштаба обновляем страницу
+            location.reload();
         }, 300); // Задержка для завершения изменения масштаба
     }
 });
@@ -64,22 +57,18 @@ let lastViewportWidth = window.innerWidth;
 function checkViewportChange() {
     const currentViewportWidth = window.innerWidth;
     
-    // Если ширина viewport изменилась, перестраиваем карусель
+    // Если ширина viewport изменилась, обновляем страницу
     if (currentViewportWidth !== lastViewportWidth) {
         lastViewportWidth = currentViewportWidth;
         
         clearTimeout(viewportTimer);
         viewportTimer = setTimeout(function() {
-            // При изменении viewport перестраиваем карусель
-            $(".multiple-items").slick('slickNext');
-            setTimeout(function() {
-                $(".multiple-items").slick('slickGoTo', 0);
-                
-                setTimeout(function() {
-                    $(".multiple-items").slick('slickPrev');
-                }, 50);
-            }, 50);
+            // При изменении viewport обновляем страницу
+            location.reload();
         }, 200);
     }
 }
+
+// Запускаем проверку изменения viewport
+setInterval(checkViewportChange, 100);
 
