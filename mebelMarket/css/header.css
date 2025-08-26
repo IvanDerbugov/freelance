@@ -1214,19 +1214,14 @@
     }
 
     .kviz-content {
-        padding: 10px 15px;
+        padding: 8px;
         max-height: 80vh;
         overflow-y: auto;
     }
 
-    .kitchen-diagram img,
-    .kitchen-diagram svg {
-        max-width: 100%;
-    }
-
     .dimension-input {
-        padding: 10px 14px;
-        font-size: 0.9rem;
+        padding: 6px 9px;
+        font-size: 0.8rem;
     }
 
     #kvizModal .modal-header {
@@ -1256,7 +1251,7 @@
     .kviz-options {
         gap: 15px;
         margin-bottom: 10px;
-        margin-top: -18px;
+        margin-top: -0px;
     }
 
     .option-image {
@@ -1305,6 +1300,69 @@
         padding: 5px 32px;
         border-radius: 6px;
         font-size: 11px;
+    }
+
+    .kviz-question {
+        margin-bottom: 12px;
+        text-align: center;
+    }
+
+    .dimension-inputs {
+        margin: 10px 0;
+    }
+
+    .selected-layout {
+        margin-top: 0px;
+    }
+
+    .input-group {
+        margin: 0 20px 20px 0px;
+    }
+
+    .kitchen-diagram img, .kitchen-diagram svg {
+        max-width: 40% !important;
+    }
+
+    .input-group {
+        max-width: 100%;
+        margin: 0 20px 10px 0px;
+    }
+
+    .kviz-options {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .how-fast-option:nth-of-type(1) {
+        grid-column: 1 / 3;
+    }
+
+    .how-fast-option:nth-of-type(2) {
+        grid-column: 3 / 5;
+    }
+
+    .how-fast-option:nth-of-type(3) {
+        grid-column: 2 / 4;
+    }
+    .how-fast-option:nth-of-type(3) .option-text {
+        font-size: 1rem;
+    }
+
+    .gift-title {
+        margin-bottom: 6px;
+    }
+
+    .gift-description {
+        line-height: 1.3;
+        margin-bottom: 10px;
+    }
+
+    .gift-image {
+        margin-top: 10px;
+    }
+
+    .kviz-gift-section {
+        gap: 17px;
     }
 }
 
