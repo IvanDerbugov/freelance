@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест Telegram бота</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        button { padding: 10px 20px; margin: 10px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .log { background: #f8f9fa; padding: 10px; border-radius: 4px; margin: 10px 0; font-family: monospace; }
+        input { padding: 8px; margin: 5px; border: 1px solid #ccc; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Тест Telegram бота</h1>
+    
+    <div class="test-section">
+        <h3>1. Проверка конфигурации</h3>
+        <button onclick="checkConfig()">Проверить конфигурацию</button>
+        <div id="configLog" class="log"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>2. Тест отправки сообщения</h3>
+        <input type="text" id="testMessage" placeholder="Тестовое сообщение" value="🧪 Тестовое сообщение от сайта">
+        <button onclick="testTelegram()">Отправить тест</button>
+        <div id="testLog" class="log"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>3. Тест формы</h3>
+        <form id="testForm">
+            <input type="text" name="name" placeholder="Имя" value="Тест" required>
+            <input type="tel" name="phone" placeholder="Телефон" value="+7 (999) 123-45-67" required>
+            <button type="submit">Отправить форму</button>
+        </form>
+        <div id="formLog" class="log"></div>
+    </div>
+
+    <script src="js/form-handlers.js"></script>
+    <script>
+        // Функция проверки конфигурации
+        function checkConfig() {
+            const log = document.getElementById('configLog');
+            log.innerHTML = '';
+            
+            if (typeof CONFIG !== 'undefined') {
+                log.innerHTML += `✅ CONFIG загружен\n`;
+                log.innerHTML += `📱 Bot Token: ${CONFIG.telegram.botToken ? '✅ Установлен' : '❌ Отсутствует'}\n`;
+                log.innerHTML += `👥 Admin Chat ID: ${CONFIG.telegram.chatId ? '✅ Установлен' : '❌ Отсутствует'}\n`;
+                log.innerHTML += `👤 Client Chat ID: ${CONFIG.telegram.clientChatId ? '✅ Установлен' : '❌ Отсутствует'}\n`;
+                log.innerHTML += `🌐 Web3Forms Key: ${CONFIG.web3forms.accessKey ? '✅ Установлен' : '❌ Отсутствует'}\n`;
+            } else {
+                log.innerHTML += `❌ CONFIG не загружен\n`;
+            }
+        }
+        
+        // Функция тестирования Telegram
+        async function testTelegram() {
+            const log = document.getElementById('testLog');
+            const message = document.getElementById('testMessage').value;
+            log.innerHTML = '🔄 Отправка тестового сообщения...\n';
+            
+            try {
+                if (typeof sendTelegramMessage === 'function') {
+                    const result = await sendTelegramMessage(message, CONFIG.telegram.chatId);
+                    log.innerHTML += `✅ Сообщение отправлено успешно!\n`;
+                    log.innerHTML += `📤 Результат: ${JSON.stringify(result, null, 2)}\n`;
+                } else {
+                    log.innerHTML += `❌ Функция sendTelegramMessage не найдена\n`;
+                }
+            } catch (error) {
+                log.innerHTML += `❌ Ошибка: ${error.message}\n`;
+                console.error('Ошибка тестирования Telegram:', error);
+            }
+        }
+        
+        // Обработчик тестовой формы
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const log = document.getElementById('formLog');
+            log.innerHTML = '🔄 Отправка тестовой формы...\n';
+            
+            try {
+                const formData = new FormData(this);
+                formData.set('form_type', 'test');
+                
+                // Отправляем в Telegram
+                await sendTelegramNotification(formData, 'test');
+                log.innerHTML += `✅ Форма отправлена в Telegram!\n`;
+                
+                // Очищаем форму
+                this.reset();
+                
+            } catch (error) {
+                log.innerHTML += `❌ Ошибка: ${error.message}\n`;
+                console.error('Ошибка отправки формы:', error);
+            }
+        });
+        
+        // Проверяем конфигурацию при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(checkConfig, 1000);
+        });
+    </script>
+</body>
+</html>

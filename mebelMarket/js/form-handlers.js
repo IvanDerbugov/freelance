@@ -43,6 +43,12 @@ function initializeFormHandlers() {
     if (callbackForm) {
         callbackForm.addEventListener('submit', handleCallbackForm);
     }
+    
+    // Тестовая форма (для отладки)
+    const testForm = document.getElementById('testForm');
+    if (testForm) {
+        testForm.addEventListener('submit', handleTestForm);
+    }
 }
 
 // Обработчик формы замера
@@ -153,6 +159,35 @@ async function handleCallbackForm(e) {
     } catch (error) {
         console.error('Ошибка отправки формы:', error);
         showErrorMessage(e.target, 'Произошла ошибка при отправке заявки. Попробуйте еще раз или свяжитесь с нами по телефону.');
+    } finally {
+        // Скрываем индикатор загрузки
+        showLoadingState(e.target, false);
+    }
+}
+
+// Обработчик тестовой формы
+async function handleTestForm(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const formType = 'test';
+    
+    try {
+        // Показываем индикатор загрузки
+        showLoadingState(e.target, true);
+        
+        // Отправляем уведомление в Telegram
+        await sendTelegramNotification(formData, formType);
+        
+        // Показываем успешное сообщение
+        showSuccessMessage(e.target, 'Тестовая форма успешно отправлена в Telegram!');
+        
+        // Очищаем форму
+        e.target.reset();
+        
+    } catch (error) {
+        console.error('Ошибка отправки тестовой формы:', error);
+        showErrorMessage(e.target, 'Произошла ошибка при отправке. Проверьте консоль браузера.');
     } finally {
         // Скрываем индикатор загрузки
         showLoadingState(e.target, false);

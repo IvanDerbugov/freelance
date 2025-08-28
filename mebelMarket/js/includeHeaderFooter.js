@@ -1069,6 +1069,11 @@ document.addEventListener('DOMContentLoaded', function() {
             initializeModals();
         }
         
+        // Инициализируем обработчики форм после загрузки header
+        if (typeof initializeFormHandlers === 'function') {
+            initializeFormHandlers();
+        }
+        
         // Инициализируем квиз после загрузки header
         initKitchenQuiz();
         
