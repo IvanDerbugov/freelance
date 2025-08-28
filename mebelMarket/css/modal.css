@@ -351,7 +351,7 @@ header .modal-content {
 }
 
 /* Адаптивность для 380px */
-@media (max-width: 430px) {
+@media (max-width: 420px) {
     .modal-content {
         width: 95%;
         margin: 2% auto;
