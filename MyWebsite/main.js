@@ -133,27 +133,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Portfolio Project Switcher ---
     const portfolioBtns = document.querySelectorAll('.portfolio-btn');
+    const mebelmarketBlock = document.getElementById('project-mebelmarket');
     const rekordikaBlock = document.getElementById('project-rekordika');
     const nftBlock = document.getElementById('project-nft');
     const subsBlock = document.getElementById('project-subs');
     const weddingBlock = document.getElementById('project-wedding');
     const handymarkBlock = document.getElementById('project-handymark');
     
-    // Автоматически запускаем видео РЕКОРДИКА при загрузке страницы
-    if (rekordikaBlock) {
-        const rekordikaVideo = rekordikaBlock.querySelector('video');
-        if (rekordikaVideo) {
-            rekordikaVideo.play().catch(error => console.log("Video autoplay failed:", error));
-        }
+    // Автоматически показываем MebelMarket при загрузке страницы
+    if (mebelmarketBlock) {
+        mebelmarketBlock.style.display = '';
     }
     
-    if (portfolioBtns.length && rekordikaBlock && nftBlock && subsBlock && weddingBlock && handymarkBlock) {
+    if (portfolioBtns.length && mebelmarketBlock && rekordikaBlock && nftBlock && subsBlock && weddingBlock && handymarkBlock) {
         portfolioBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 portfolioBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 
                 // Скрываем все проекты
+                mebelmarketBlock.style.display = 'none';
                 rekordikaBlock.style.display = 'none';
                 nftBlock.style.display = 'none';
                 subsBlock.style.display = 'none';
@@ -169,7 +168,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (handymarkVideo) { handymarkVideo.pause(); handymarkVideo.currentTime = 0; }
                 
                 // Показываем нужный проект
-                if (btn.dataset.project === 'rekordika') {
+                if (btn.dataset.project === 'mebelmarket') {
+                    mebelmarketBlock.style.display = '';
+                } else if (btn.dataset.project === 'rekordika') {
                     rekordikaBlock.style.display = '';
                     // Запускаем видео РЕКОРДИКА
                     if (rekordikaVideo) { rekordikaVideo.play(); }
