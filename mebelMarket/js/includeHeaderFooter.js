@@ -1030,6 +1030,9 @@ function includeHTML(selector, url, callback) {
             fixImagePaths(container, basePath);
             fixInternalLinks(container, basePath);
             
+            // Заменяем все onclick атрибуты на addEventListener
+            replaceOnclickWithEventListeners(container);
+            
             // Если это header, выделяем активную ссылку
             if (selector === '#header-container') {
                 highlightActiveLink(container);
@@ -1041,6 +1044,51 @@ function includeHTML(selector, url, callback) {
             console.error('Ошибка загрузки:', error);
             document.querySelector(selector).innerHTML = '<p>Ошибка загрузки контента</p>';
         });
+}
+
+// Функция для замены onclick атрибутов на addEventListener
+function replaceOnclickWithEventListeners(container) {
+    // Находим все элементы с onclick атрибутами
+    const elementsWithOnclick = container.querySelectorAll('[onclick]');
+    
+    elementsWithOnclick.forEach(element => {
+        const onclickValue = element.getAttribute('onclick');
+        
+        // Убираем onclick атрибут
+        element.removeAttribute('onclick');
+        
+        // Добавляем обработчик события в зависимости от содержимого onclick
+        if (onclickValue.includes('openCallbackModal()')) {
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                openCallbackModal();
+            });
+        } else if (onclickValue.includes('openKitchenQuiz()')) {
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                openKitchenQuiz();
+            });
+        } else if (onclickValue.includes('openMeasureModal()')) {
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                openMeasureModal();
+            });
+        } else if (onclickValue.includes('openAssemblyModal()')) {
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                openAssemblyModal();
+            });
+        } else if (onclickValue.includes('window.location=')) {
+            // Обрабатываем переходы по ссылкам
+            const urlMatch = onclickValue.match(/window\.location='([^']+)'/);
+            if (urlMatch) {
+                element.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = urlMatch[1];
+                });
+            }
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
