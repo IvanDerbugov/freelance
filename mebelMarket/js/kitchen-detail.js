@@ -11,6 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
         kitchenImage.addEventListener('click', function() {
             imageModal.style.display = 'block';
             document.body.style.overflow = 'hidden'; // Блокируем прокрутку страницы
+            
+            // Обновляем изображение в модальном окне при открытии
+            const modalImage = document.getElementById('modalCarouselImage');
+            if (modalImage) {
+                modalImage.src = this.src;
+                modalImage.alt = this.alt;
+            }
         });
     }
 

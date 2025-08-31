@@ -14,19 +14,117 @@
     <link rel="stylesheet" href="../css/addPages.css">
     <link rel="stylesheet" href="../css/logo-fonts.css">
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=103948733', 'ym');
+    <!-- Стили для карусели изображений -->
+    <style>
+        .kitchen-image-section {
+            position: relative;
+        }
 
-    ym(103948733, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/103948733" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+        .kitchen-main-image {
+            position: relative;
+            overflow: visible;
+            border-radius: 8px;
+        }
+
+        .kitchen-image-clickable {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .kitchen-image-clickable:hover {
+            transform: scale(1.02);
+        }
+
+        .carousel-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #333;
+            transition: all 0.3s ease;
+            z-index: 8;
+        }
+
+        .carousel-arrows:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-arrow-left {
+            left: 10px;
+        }
+
+        .carousel-arrow-right {
+            right: 10px;
+        }
+
+        .carousel-arrow-left::before {
+            content: "‹";
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .carousel-arrow-right::before {
+            content: "›";
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .sale-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #ff4757;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 5;
+        }
+
+        /* Стили для модального окна */
+        .image-modal .carousel-arrows {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+        }
+
+        .image-modal .carousel-arrow-left {
+            left: 20px;
+        }
+
+        .image-modal .carousel-arrow-right {
+            right: 20px;
+        }
+    </style>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=103948733', 'ym');
+
+        ym(103948733, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", accurateTrackBounce: true, trackLinks: true });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/103948733" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
     <link rel="stylesheet" href="../css/card.css">
     <link rel="stylesheet" href="../css/modal.css">
     <link
@@ -39,8 +137,7 @@
     <link rel="apple-touch-icon" href="../img/favicon.png">
     <meta name="description"
         content="Модульная кухня Марта 3600 Горчица - качественная модульная кухня со скидкой 30%. Размеры, материалы, характеристики.">
-    <meta name="keywords"
-        content="Кухня Марта, Горчица, модульная кухня, кухня на заказ, Москва, распродажа">
+    <meta name="keywords" content="Кухня Марта, Горчица, модульная кухня, кухня на заказ, Москва, распродажа">
 </head>
 
 <body>
@@ -69,8 +166,16 @@
                         <div class="kitchen-main-image">
                             <div class="sale-badge">-30%</div>
                             <img src="../img/bestOffers3.webp" alt="Модульная кухня Марта 3600 Горчица"
-                                class="kitchen-image-clickable">
+                                class="kitchen-image-clickable" id="kitchenCarouselImage">
+
+                            <!-- Стрелки навигации -->
+                            <button class="carousel-arrows carousel-arrow-left" onclick="previousImage()"
+                                id="prevArrow"></button>
+                            <button class="carousel-arrows carousel-arrow-right" onclick="nextImage()"
+                                id="nextArrow"></button>
                         </div>
+
+
                     </div>
 
                     <!-- Модальное окно для увеличенного изображения -->
@@ -78,7 +183,13 @@
                         <div class="modal-content">
                             <span class="close-modal">&times;</span>
                             <img src="../img/bestOffers3.webp" alt="Модульная кухня Марта 3600 Горчица"
-                                class="modal-image">
+                                class="modal-image" id="modalCarouselImage">
+
+                            <!-- Стрелки навигации в модальном окне -->
+                            <button class="carousel-arrows carousel-arrow-left" onclick="previousImageModal()"
+                                id="modalPrevArrow"></button>
+                            <button class="carousel-arrows carousel-arrow-right" onclick="nextImageModal()"
+                                id="modalNextArrow"></button>
                         </div>
                     </div>
 
@@ -108,14 +219,18 @@
 
                         <!-- Кнопки действий -->
                         <div class="product-actions">
-                            <button class="btn-consultant-main" onclick="openCallbackModal(); return false;">Помощь консультанта</button>
-                            <button class="btn-buy-one-click" onclick="openCallbackModal(); return false;">Купить в 1 клик</button>
+                            <button class="btn-consultant-main" onclick="openCallbackModal(); return false;">Помощь
+                                консультанта</button>
+                            <button class="btn-buy-one-click" onclick="openCallbackModal(); return false;">Купить в 1
+                                клик</button>
                         </div>
 
                         <!-- Дополнительные кнопки -->
                         <div class="additional-actions">
-                            <button class="btn-calculate-cost" onclick="openKitchenQuiz(); return false;">Рассчитать стоимость онлайн</button>
-                            <button class="btn-free-measurement" onclick="openMeasureModal(); return false;">Заявка на бесплатный замер</button>
+                            <button class="btn-calculate-cost" onclick="openKitchenQuiz(); return false;">Рассчитать
+                                стоимость онлайн</button>
+                            <button class="btn-free-measurement" onclick="openMeasureModal(); return false;">Заявка на
+                                бесплатный замер</button>
                         </div>
                     </div>
                 </div>
@@ -124,7 +239,8 @@
                 <div class="kitchen-description-section">
                     <h3>Описание</h3>
                     <div class="description-content">
-                        <p>Кухня «Марта» — необычные фасады толщиной 19мм, итальянские тренды, выраженные в удивительных цветах и благородной текстуре «Кожа»</p>
+                        <p>Кухня «Марта» — необычные фасады толщиной 19мм, итальянские тренды, выраженные в удивительных
+                            цветах и благородной текстуре «Кожа»</p>
                         <div class="specification-item">
                             <span class="spec-label">Цвет:</span>
                             <span class="spec-value">Горчица</span>
@@ -250,7 +366,8 @@
                     <div class="description-content">
                         <div class="specification-item">
                             <span class="spec-label">Доступные оттенки:</span>
-                            <span class="spec-value">Белый Скин, Бежевый Скин, Пудра Скин, Графит Скин, Горчица Скин</span>
+                            <span class="spec-value">Белый Скин, Бежевый Скин, Пудра Скин, Графит Скин, Горчица
+                                Скин</span>
                         </div>
                     </div>
                 </div>
@@ -269,12 +386,13 @@
     <script src="../js/includeHeaderFooter.js"></script>
     <script src="../js/catalog-dropdown.js"></script>
     <script src="../js/kitchen-detail.js"></script>
+    <script src="../js/kitchen-carousel.js"></script>
     <script src="../js/timer.js"></script>
     <script src="../js/modal.js"></script>
-    
+
     <script src="../js/form-handlers.js"></script>
 
-<script src="../js/metric.js"></script>
+    <script src="../js/metric.js"></script>
 </body>
 
 </html>
