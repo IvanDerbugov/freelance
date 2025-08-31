@@ -575,7 +575,7 @@ function configureYandexMetrika() {
             });
             
             // Отключаем Webvisor для снижения нагрузки (если не нужен)
-            ym(103948733, 'webvisor', false);
+            // ym(103948733, 'webvisor', false);
             
             console.log('⚙️ Настройки Яндекс.Метрики применены');
         } catch (error) {
