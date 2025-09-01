@@ -6536,7 +6536,8 @@ body {
 }
 .popup__body {
   min-height: 100%;
-  padding: 30px 15px;
+  padding-left: 10px;
+  padding-right: 10px;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6547,7 +6548,7 @@ body {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
 }
 .popup__content {
   background-color: white;
@@ -6595,10 +6596,25 @@ body {
   margin-right: 11px;
 }
 .popup__close {
-  position: absolute;
-  top: 2px;
-  right: 8px;
+  position: sticky;
+  top: 20px;
+  right: 30px;
+  float: right;
   cursor: pointer;
+  z-index: 1002;
+  margin-bottom: 20px;
+  transform: translate(5vw, -25px);
+}
+@media (max-width: 1300px) {
+  .popup__close {
+    transform: translate(2vw, -25px);
+  }
+}
+
+img[src="img/icons/popup__close.svg"] {
+ border-radius: 50%;
+ border: 1px rgba(128, 128, 128, 0.5) solid;
+ padding: 2px;
 }
 .popup__grid {
   display: grid;
@@ -9094,16 +9110,17 @@ body {
 .lkpopup {
   position: fixed;
   left: 0px;
-  top: 0px;
+  bottom: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  -webkit-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+  height: 500px;
+  background-color: #fff;
   z-index: 1000;
   overflow: auto;
   cursor: pointer;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 1);
 }
 .lkpopup.js__popup-open {
   opacity: 0;
@@ -9134,16 +9151,32 @@ body {
   background-color: white;
   cursor: default;
   padding: 37px 65px;
-  border: 1px solid #eff0f2;
   border-radius: 5px;
   position: relative;
+}
+
+/* Стили для Lottie анимации */
+.lottie-container {
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  width: 100px; 
+  height: 100px; 
+  z-index: 10000; 
+  pointer-events: none; 
+  display: none; 
 }
 
 
 
 .lkpopup__inner {
-  padding: 50px 42px 0px 30px;
+  padding: 20px 42px 10px 30px;
+  margin-top: 50px;
+  border: 1px rgba(128, 128, 128, 0.5) solid;
+  border-bottom: none;
 }
+
 
 
 .lkpopup input,
@@ -28560,4 +28593,3 @@ a.showcase-chose-item__text::after  {
     font-size: 11px;
     line-height: 15px;
 }
-
