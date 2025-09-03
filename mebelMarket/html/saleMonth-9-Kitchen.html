@@ -69,7 +69,11 @@
                         <div class="kitchen-main-image">
                             <div class="sale-badge">-41%</div>
                             <img src="../img/card9.jpeg" alt="Кухонный Гарнитур прямой 1.6м"
-                                class="kitchen-image-clickable">
+                                class="kitchen-image-clickable" id="kitchenCarouselImage">
+                            
+                            <!-- Стрелки навигации -->
+                            <button class="carousel-arrows carousel-arrow-left" onclick="previousImage()" id="prevArrow"></button>
+                            <button class="carousel-arrows carousel-arrow-right" onclick="nextImage()" id="nextArrow"></button>
                         </div>
                     </div>
 
@@ -78,7 +82,11 @@
                         <div class="modal-content">
                             <span class="close-modal">&times;</span>
                             <img src="../img/card9.jpeg" alt="Кухонный Гарнитур прямой 1.6м"
-                                class="modal-image">
+                                class="modal-image" id="modalCarouselImage">
+                            
+                            <!-- Стрелки навигации в модальном окне -->
+                            <button class="carousel-arrows carousel-arrow-left" onclick="previousImageModal()" id="modalPrevArrow"></button>
+                            <button class="carousel-arrows carousel-arrow-right" onclick="nextImageModal()" id="modalNextArrow"></button>
                         </div>
                     </div>
 
@@ -184,6 +192,7 @@
     <script src="../js/includeHeaderFooter.js"></script>
     <script src="../js/catalog-dropdown.js"></script>
     <script src="../js/kitchen-detail.js"></script>
+    <script src="../js/kitchen-carousel.js"></script>
     <script src="../js/timer.js"></script>
     <script src="../js/modal.js"></script>
     

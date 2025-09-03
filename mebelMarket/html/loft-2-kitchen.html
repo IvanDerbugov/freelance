@@ -71,7 +71,11 @@
                     <div class="kitchen-image-section">
                         <div class="kitchen-main-image">
                             <div class="sale-badge">-27%</div>
-                            <img src="../img/card2Loft.jpg" alt="Кухня Лофт-02" class="kitchen-image-clickable">
+                            <img src="../img/card2Loft.jpg" alt="Кухня Лофт-02" class="kitchen-image-clickable" id="kitchenCarouselImage">
+                            
+                            <!-- Стрелки навигации -->
+                            <button class="carousel-arrows carousel-arrow-left" onclick="previousImage()" id="prevArrow"></button>
+                            <button class="carousel-arrows carousel-arrow-right" onclick="nextImage()" id="nextArrow"></button>
                         </div>
                     </div>
 
@@ -79,7 +83,11 @@
                     <div id="imageModal" class="image-modal">
                         <div class="modal-content">
                             <span class="close-modal">&times;</span>
-                            <img src="../img/card2Loft.jpg" alt="Кухня Лофт-02" class="modal-image">
+                            <img src="../img/card2Loft.jpg" alt="Кухня Лофт-02" class="modal-image" id="modalCarouselImage">
+                            
+                            <!-- Стрелки навигации в модальном окне -->
+                            <button class="carousel-arrows carousel-arrow-left" onclick="previousImageModal()" id="modalPrevArrow"></button>
+                            <button class="carousel-arrows carousel-arrow-right" onclick="nextImageModal()" id="modalNextArrow"></button>
                         </div>
                     </div>
 
@@ -239,6 +247,7 @@
     
     <script src="../js/modal.js"></script>
     <script src="../js/form-handlers.js"></script>
+    <script src="../js/kitchen-carousel.js"></script>
 
 <script src="../js/metric.js"></script>
 </body>
