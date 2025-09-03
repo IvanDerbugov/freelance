@@ -1703,8 +1703,12 @@ function popup() {
 
   for (let i = 0; i < js__popupClose.length; i++) {
     js__popupClose[i].addEventListener('click', (event) => {
-      popupClose(js__popupClose[i].closest('.js__popup-open'));
+      const popup = js__popupClose[i].closest('.js__popup-open');
+      if (popup) {
+        popupClose(popup);
+      }
       event.preventDefault();
+      event.stopPropagation(); // Предотвращаем всплытие события
     });
   };
 
@@ -1715,17 +1719,34 @@ function popup() {
       const popupActive = document.querySelector('.js__popup-open.open');
 
 
-      if (popupActive) {
+      // if (popupActive) {
 
-      } else {
-        bodylock();
-      }
+      // } else {
+      //   bodylock();
+      // }
 
 
+      // Добавляем класс анимации появления
+      popupCurent.classList.add('animate__backInUp');
       popupCurent.classList.add('open');
+      
+      // Запускаем анимацию загрузки
+      if (typeof showLoadingAnimation === 'function') {
+        showLoadingAnimation();
+      }
+      
+      // Добавляем обработчик для закрытия по клику вне окна
       popupCurent.addEventListener('click', (event) => {
-        if (!event.target.closest('.js__popup-content')) {
-          popupClose(event.target.closest('.js__popup-open'));
+        // Проверяем, что клик был именно по фону попапа, а не по содержимому
+        if (event.target === popupCurent || event.target.classList.contains('popup__body')) {
+          popupClose(popupCurent);
+        }
+      });
+      
+      // Добавляем обработчик для клавиши Escape
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          popupClose(popupCurent);
         }
       });
     };
@@ -1733,7 +1754,21 @@ function popup() {
 
 
   function popupClose(popupActive) {
-    popupActive.classList.remove('open');
+    // Сбрасываем состояние анимации загрузки
+    if (typeof hideLoadingAnimation === 'function') {
+      hideLoadingAnimation();
+    }
+    
+    // Добавляем анимацию исчезновения
+    popupActive.classList.remove('animate__backInUp');
+    popupActive.classList.add('animate__backOutDown');
+    
+    // Ждем окончания анимации, затем закрываем
+    setTimeout(() => {
+      popupActive.classList.remove('open');
+      popupActive.classList.remove('animate__backOutDown');
+    }, 1000); // animate.css анимация backOutDown длится 1 секунду
+    
     const popups = document.querySelectorAll('.js__popup-open');
     let placed = false;
     for (const popup of popups) {
@@ -1749,7 +1784,7 @@ function popup() {
 
 
     if (!placed) {
-      bodyUnlock();
+      // bodyUnlock(); // Убираем разблокировку скролла
     }
   };
 

@@ -1,0 +1,17 @@
+# SSH Configuration для подключения к серверу
+# Файл: C:\Users\ВашеИмя\.ssh\config
+
+Host anton-server
+    HostName 185.151.240.250
+    User root
+    Port 22
+    IdentityFile D:\мойКлючАнтонМодалка.ppk
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+
+# Инструкция по настройке:
+# 1. Создайте папку C:\Users\ВашеИмя\.ssh\ (если не существует)
+# 2. Создайте файл config в этой папке
+# 3. Скопируйте содержимое выше в файл config
+# 4. Замените "ВашеИмя" на ваше имя пользователя Windows
+# 5. Убедитесь, что путь к ключу правильный: D:\мойКлючАнтонМодалка.ppk

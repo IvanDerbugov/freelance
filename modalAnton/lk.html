@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.1/lottie.min.js"></script>
 
 </head>
 
@@ -592,7 +593,7 @@
 							<div class="details__chunk">
 								<div class="details__block">
 									<div class="details__content">
-										<div class="details__num popup__click" data-modal="#popup">7106C2<img src="img/copy.svg"
+										<div class="details__num js__popup-link" data-modal="#popup" title="Копировать номер">7106C2<img src="img/copy.svg"
 												alt="" /></div>
 										<div class="details__name">(Поперечина переднего фасада)</div>
 									</div>
@@ -633,7 +634,7 @@
 							<div class="details__chunk">
 								<div class="details__block">
 									<div class="details__content">
-										<div class="details__num popup__click" data-modal="#popup">1308СА<img src="img/copy.svg"
+										<div class="details__num js__popup-link" data-modal="#popup" title="Копировать номер">1308СА<img src="img/copy.svg"
 												alt="" /></div>
 										<div class="details__name">(Дефлектор вентилятор охл. Двиг.) </div>
 									</div>
@@ -992,13 +993,17 @@
 	</div>
 
 
-	<div data-popup="#popup" class="lkpopup js__popup-open animate__animated">
+		<div data-popup="#popup" class="lkpopup js__popup-open animate__animated">
 		<div class="popup__body">
-			<div class="lkpopup__content js__popup-content">
-				<span class="popup__close js__popup-close">
-					<img src="img/icons/popup__close.svg" alt="alt">
-				</span>
-				<div class="lkpopup__inner">
+				<div class="lkpopup__content js__popup-content">
+					<span class="popup__close js__popup-close">
+						<img src="img/icons/popup__close.svg" alt="alt">
+					</span>
+					
+					<!-- Lottie анимация -->
+					<div id="lottie-animation" class="lottie-container"></div>
+					
+					<div class="lkpopup__inner">
 
 					<h1>Бампер передний</h1>
 					<p>Запрашиваемый артикул: <strong>865841R000</strong></p>
@@ -2226,6 +2231,7 @@
 	<script src="js/jquery-ui.js"></script>
 	<script src="js/libs/swiper-bundle.min.js"></script>
 	<script src="js/scripts.js"></script>
+	<script src="js/lottie-animation.js"></script>
 </body>
 
 </html>
