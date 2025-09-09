@@ -215,7 +215,11 @@
     font-weight: 600;
     color: #cf2c2c;
 }
-
+@media (max-width: 600px) {
+    .new-price {
+        font-size: 20px;
+    }
+}
 /* Кнопки с анимациями как на главной */
 .kitchen-buttons {
     margin-top: 0;
