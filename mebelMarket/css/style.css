@@ -619,32 +619,62 @@ section.carousel-bootstrap {
 .cardBestWorks-img1 {
     background-image: url(../img/card1.jpg);
 }
+.cardBestWorks-img-new-1 {
+    background-image: url(../img/card1-new.webp);
+}
 .cardBestWorks-img2 {
     background-image: url(../img/card2.jpg);
+}
+.cardBestWorks-img-new-2 {
+    background-image: url(../img/card2-new.webp);
 }
 .cardBestWorks-img3 {
     background-image: url(../img/card3.jpg);
 }
+.cardBestWorks-img-new-3 {
+    background-image: url(../img/card3-new.webp);
+}
 .cardBestWorks-img4 {
     background-image: url(../img/card4.jpeg);
+}
+.cardBestWorks-img-new-4 {
+    background-image: url(../img/card4-new.webp);
 }
 .cardBestWorks-img5 {
     background-image: url(../img/card5.jpeg);
 }
+.cardBestWorks-img-new-5 {
+    background-image: url(../img/card5-new.webp);
+}
 .cardBestWorks-img6 {
     background-image: url(../img/card6.jpeg);
+}
+.cardBestWorks-img-new-6 {
+    background-image: url(../img/card6-new.webp);
 }
 .cardBestWorks-img7 {
     background-image: url(../img/card7.jpg);
 }
+.cardBestWorks-img-new-7 {
+    background-image: url(../img/card7-new.webp);
+}
 .cardBestWorks-img8 {
     background-image: url(../img/card8.jpeg);
+}
+.cardBestWorks-img-new-8 {
+    background-image: url(../img/card8-new.webp);
 }
 .cardBestWorks-img9 {
     background-image: url(../img/card9.jpeg);
 }
+.cardBestWorks-img-new-9 {
+    background-image: url(../img/card9-new.webp);
+}
 .cardBestWorks-img10 {
     background-image: url(../img/card10.jpeg);
+}
+.cardBestWorks-img-new-10 {
+    background-image: url(../img/card10-new.webp);
 }
 
 
@@ -664,7 +694,7 @@ section.carousel-bootstrap {
     letter-spacing: 1px;
 }
 .best-works-container .cardBestWorks-info>p {
-    min-height: 60px;
+    min-height: 85px;
 }
 
 

@@ -111,6 +111,14 @@ function detectImages() {
             '../img/card3Mari_4.webp',
             '../img/card3Mari_5.webp'
         ];
+    } else if (baseName.includes('card3-new')) {
+        images = [
+            '../img/card3-new.webp',
+            '../img/card3_2-new.webp',
+            '../img/card3_3-new.webp',
+            '../img/card3_4-new.webp',
+            '../img/card3_5-new.webp'
+        ];
     } else if (baseName.includes('card3')) {
         images = [
             '../img/card3.jpg',
@@ -154,6 +162,13 @@ function detectImages() {
             '../img/card1Mari.webp',
             '../img/card1Mari_2.webp'
         ];
+    } else if (baseName.includes('card1-new')) {
+        images = [
+            '../img/card1-new.webp',
+            '../img/card1_2-new.webp',
+            '../img/card1_3-new.webp',
+            '../img/card1_4-new.webp'
+        ];
     } else if (baseName.includes('card1')) {
         images = [
             '../img/card1.jpg',
@@ -181,6 +196,13 @@ function detectImages() {
             '../img/card2Skala_2.webp',
             '../img/card2Skala_3.webp',
             '../img/card2Skala_4.webp'
+        ];
+    } else if (baseName.includes('card2-new')) {
+        images = [
+            '../img/card2-new.webp',
+            '../img/card2_2-new.webp',
+            '../img/card2_3-new.webp',
+            '../img/card2_4-new.webp'
         ];
     } else if (baseName.includes('card2')) {
         images = [
@@ -211,6 +233,15 @@ function detectImages() {
             '../img/card4Flat_3.webp',
             '../img/card4Flat_4.webp'
         ];
+    } else if (baseName.includes('card4-new')) {
+        images = [
+            '../img/card4-new.webp',
+            '../img/card4_2-new.webp',
+            '../img/card4_3-new.webp',
+            '../img/card4_4-new.webp',
+            '../img/card4_5-new.webp',
+            '../img/card4_6-new.webp'
+        ];
     } else if (baseName.includes('card4')) {
         images = [
             '../img/card4.jpeg',
@@ -237,10 +268,26 @@ function detectImages() {
             '../img/card5Flat.webp',
             '../img/card5Flat_2.webp'
         ];
+    } else if (baseName.includes('card5-new')) {
+        images = [
+            '../img/card5-new.webp',
+            '../img/card5_2-new.webp',
+            '../img/card5_3-new.webp',
+            '../img/card5_4-new.webp'
+        ];
     } else if (baseName.includes('card5')) {
         images = [
             '../img/card5.jpeg',
             '../img/card5Flat.webp'
+        ];
+    } else if (baseName.includes('card6-new')) {
+        images = [
+            '../img/card6-new.webp',
+            '../img/card6_2-new.webp',
+            '../img/card6_3-new.webp',
+            '../img/card6_4-new.webp',
+            '../img/card6_5-new.webp',
+            '../img/card6_6-new.webp'
         ];
     } else if (baseName.includes('card6Mari')) {
         images = [
@@ -260,20 +307,42 @@ function detectImages() {
             '../img/card7Flat_4.webp',
             '../img/card7Flat_5.webp'
         ];
+    } else if (baseName.includes('card7-new')) {
+        images = [
+            '../img/card7-new.webp',
+            '../img/card7_2-new.webp',
+            '../img/card7_3-new.webp'
+        ];
     } else if (baseName.includes('card7')) {
         images = [
             '../img/card7.jpg',
             '../img/card7Flat.webp'
         ];
+    } else if (baseName.includes('card8-new')) {
+        images = [
+            '../img/card8-new.webp',
+            '../img/card8_2-new.webp'
+        ];
     } else if (baseName.includes('card8')) {
         images = [
             '../img/card8.jpeg'
+        ];
+    } else if (baseName.includes('card9-new')) {
+        images = [
+            '../img/card9-new.webp',
+            '../img/card9_2-new.webp',
+            '../img/card9_3-new.webp'
         ];
     } else if (baseName.includes('card9')) {
         images = [
             '../img/card9.jpeg',
             '../img/card9_2.webp',
             '../img/card9_3.webp'
+        ];
+    } else if (baseName.includes('card10-new')) {
+        images = [
+            '../img/card10-new.webp',
+            '../img/card10_2-new.webp'
         ];
     } else {
         // По умолчанию используем только текущее изображение
