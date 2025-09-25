@@ -531,18 +531,56 @@ function showSuccessMessage(form, message) {
     // Убираем предыдущие сообщения
     removeMessages(form);
     
+    // Отправляем цель в Яндекс.Метрику
+    if (typeof ym === 'function') {
+        const formType = form.id || 'unknown';
+        ym(103948733, 'reachGoal', 'form_success', {
+            form_type: formType,
+            page_url: window.location.href,
+            timestamp: new Date().toISOString()
+        });
+        console.log('✅ Цель "успешная отправка формы" отправлена:', formType);
+    }
+    
+    // Открываем страницу благодарности в новой вкладке
+    const thanksUrl = getThanksPageUrl();
+    window.open(thanksUrl, '_blank');
+    
+    // Показываем локальное сообщение об успехе
     const successDiv = document.createElement('div');
     successDiv.className = 'form-message form-message-success';
-    successDiv.textContent = message;
+    successDiv.innerHTML = `
+        <div style="text-align: center;">
+            <div style="font-size: 18px; font-weight: bold; color: #4CAF50; margin-bottom: 10px;">
+                ✅ Заявка отправлена!
+            </div>
+            <div style="font-size: 14px; color: #666;">
+                Откроется страница благодарности...
+            </div>
+        </div>
+    `;
     
     form.appendChild(successDiv);
     
-    // Автоматически убираем через 5 секунд
+    // Автоматически убираем через 3 секунды
     setTimeout(() => {
         if (successDiv.parentNode) {
             successDiv.remove();
         }
-    }, 5000);
+    }, 3000);
+}
+
+// Функция для получения URL страницы благодарности
+function getThanksPageUrl() {
+    const currentPath = window.location.pathname;
+    
+    // Если мы в папке html, используем относительный путь
+    if (currentPath.includes('/html/')) {
+        return 'thanks.html';
+    }
+    
+    // Если мы в корне, используем путь к папке html
+    return 'html/thanks.html';
 }
 
 // Показать сообщение об ошибке

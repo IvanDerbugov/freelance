@@ -4,7 +4,7 @@
 // Переменные для автоматического показа квиза
 let quizAutoShowTimer = null;
 let userInteractedWithQuiz = false;
-const QUIZ_AUTO_SHOW_INTERVAL = 1200 * 1000 ; // 2 минуты в миллисекундах
+const QUIZ_AUTO_SHOW_INTERVAL = 90 * 1000 ; // 1.5 минуты в миллисекундах
 
 // Функции для открытия модалок (будут определены как глобальные в DOMContentLoaded)
 function openKitchenQuiz() {
@@ -1038,6 +1038,20 @@ function includeHTML(selector, url, callback) {
                 highlightActiveLink(container);
             }
             
+            // Инициализируем метрику после замены onclick
+            if (typeof trackPhoneClicks === 'function') {
+                trackPhoneClicks();
+            }
+            if (typeof trackTelegramClicks === 'function') {
+                trackTelegramClicks();
+            }
+            if (typeof trackWhatsAppClicks === 'function') {
+                trackWhatsAppClicks();
+            }
+            if (typeof trackEmailClicks === 'function') {
+                trackEmailClicks();
+            }
+            
             if (callback) callback();
         })
         .catch(error => {
@@ -1083,7 +1097,42 @@ function replaceOnclickWithEventListeners(container) {
             const urlMatch = onclickValue.match(/window\.location='([^']+)'/);
             if (urlMatch) {
                 element.addEventListener('click', function(e) {
+                    console.log('🔥 КЛИК ПО ONCLICK ССЫЛКЕ!', this, urlMatch[1]);
+                    console.log('🔍 Проверяем ym:', typeof ym);
                     e.preventDefault();
+                    
+                    // Отправляем цель в метрику перед переходом
+                    if (typeof ym === 'function') {
+                        try {
+                            if (urlMatch[1].includes('t.me')) {
+                                ym(103948733, 'reachGoal', 'clickTelegram', {
+                                    telegram_url: urlMatch[1],
+                                    page_url: window.location.href,
+                                    timestamp: new Date().toISOString()
+                                });
+                                console.log('✅ Цель "клик по Telegram" отправлена:', urlMatch[1]);
+                            } else if (urlMatch[1].includes('wa.me')) {
+                                ym(103948733, 'reachGoal', 'clickWhatsApp', {
+                                    whatsapp_url: urlMatch[1],
+                                    page_url: window.location.href,
+                                    timestamp: new Date().toISOString()
+                                });
+                                console.log('✅ Цель "клик по WhatsApp" отправлена:', urlMatch[1]);
+                            } else if (urlMatch[1].startsWith('tel:')) {
+                                ym(103948733, 'reachGoal', 'clickPhone', {
+                                    phone_number: urlMatch[1].replace('tel:', ''),
+                                    page_url: window.location.href,
+                                    timestamp: new Date().toISOString()
+                                });
+                                console.log('✅ Цель "клик по телефону" отправлена:', urlMatch[1]);
+                            }
+                        } catch (error) {
+                            console.error('❌ Ошибка при отправке цели в метрику:', error);
+                        }
+                    } else {
+                        console.warn('⚠️ Яндекс.Метрика не загружена, цель не отправлена');
+                    }
+                    
                     window.location.href = urlMatch[1];
                 });
             }
@@ -1112,10 +1161,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 100);
         
-        // Инициализируем модальные окна после загрузки header
-        if (typeof initializeModals === 'function') {
-            initializeModals();
-        }
+        // Инициализируем модальные окна после загрузки header с задержкой
+        setTimeout(() => {
+            if (typeof initializeModals === 'function') {
+                initializeModals();
+            }
+        }, 200);
         
         // Инициализируем обработчики форм после загрузки header
         if (typeof initializeFormHandlers === 'function') {
@@ -1128,6 +1179,38 @@ document.addEventListener('DOMContentLoaded', function() {
         // Инициализируем модалки услуг
         initServiceModals();
         
+        // Запускаем отслеживание метрики после загрузки header
+        setTimeout(() => {
+            if (typeof trackPhoneClicks === 'function') {
+                trackPhoneClicks();
+            }
+            if (typeof trackTelegramClicks === 'function') {
+                trackTelegramClicks();
+            }
+            if (typeof trackWhatsAppClicks === 'function') {
+                trackWhatsAppClicks();
+            }
+            if (typeof trackEmailClicks === 'function') {
+                trackEmailClicks();
+            }
+            if (typeof trackQuizClicks === 'function') {
+                trackQuizClicks();
+            }
+            if (typeof trackMeasureAssemblyClicks === 'function') {
+                trackMeasureAssemblyClicks();
+            }
+            if (typeof trackProductCardClicks === 'function') {
+                trackProductCardClicks();
+            }
+            if (typeof trackFormSubmissions === 'function') {
+                trackFormSubmissions();
+            }
+            if (typeof trackModalForms === 'function') {
+                trackModalForms();
+            }
+            console.log('🔄 Метрика обновлена после загрузки header');
+        }, 100);
+        
         // Запускаем автоматический показ квиза через 1.5 минуты
         startQuizAutoShow();
     });
@@ -1139,15 +1222,49 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Инициализируем модальные окна после загрузки footer (если еще не инициализированы)
-        if (typeof initializeModals === 'function') {
-            initializeModals();
-        }
+        setTimeout(() => {
+            if (typeof initializeModals === 'function') {
+                initializeModals();
+            }
+        }, 200);
         
         // Инициализируем модалки услуг после загрузки footer
         initServiceModals();
         
         // Инициализируем обработчики для ссылок в footer
         initFooterModalLinks();
+        
+        // Запускаем отслеживание метрики после загрузки footer
+        setTimeout(() => {
+            if (typeof trackPhoneClicks === 'function') {
+                trackPhoneClicks();
+            }
+            if (typeof trackTelegramClicks === 'function') {
+                trackTelegramClicks();
+            }
+            if (typeof trackWhatsAppClicks === 'function') {
+                trackWhatsAppClicks();
+            }
+            if (typeof trackEmailClicks === 'function') {
+                trackEmailClicks();
+            }
+            if (typeof trackQuizClicks === 'function') {
+                trackQuizClicks();
+            }
+            if (typeof trackMeasureAssemblyClicks === 'function') {
+                trackMeasureAssemblyClicks();
+            }
+            if (typeof trackProductCardClicks === 'function') {
+                trackProductCardClicks();
+            }
+            if (typeof trackFormSubmissions === 'function') {
+                trackFormSubmissions();
+            }
+            if (typeof trackModalForms === 'function') {
+                trackModalForms();
+            }
+            console.log('🔄 Метрика обновлена после загрузки footer');
+        }, 100);
     });
 });
 

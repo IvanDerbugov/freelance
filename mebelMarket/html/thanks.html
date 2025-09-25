@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо за заявку - MebelMarket77</title>
+    <link rel="icon" href="../img/icons/logoIcon16x16.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="../img/icons/logoIcon16x16.png" type="image/png" sizes="32x32">
+    <link rel="shortcut icon" href="../img/icons/logoIcon16x16.png" type="image/png">
+    <link rel="apple-touch-icon" href="../img/icons/logoIcon16x16.png">
+    <meta name="msapplication-TileImage" content="../img/icons/logoIcon16x16.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/modal.css">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #1F7D63 0%, #166b54 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fira Sans', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .thanks-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(31, 125, 99, 0.2);
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .thanks-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #1F7D63, #166b54);
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1F7D63, #166b54);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: pulse 2s infinite;
+        }
+        
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            color: white;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(31, 125, 99, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(31, 125, 99, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(31, 125, 99, 0);
+            }
+        }
+        
+        .thanks-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333333;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .thanks-subtitle {
+            font-size: 18px;
+            color: #1F7D63;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+        
+        .thanks-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, #1F7D63, #166b54);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(31, 125, 99, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .back-button:hover::before {
+            left: 100%;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(31, 125, 99, 0.4);
+            background: linear-gradient(135deg, #166b54, #1F7D63);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        
+        .contact-info p {
+            margin: 5px 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .contact-info a {
+            color: #1F7D63;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+            color: #166b54;
+        }
+        
+        @media (max-width: 768px) {
+            .thanks-container {
+                padding: 40px 20px;
+                margin: 10px;
+            }
+            
+            .thanks-title {
+                font-size: 24px;
+            }
+            
+            .thanks-subtitle {
+                font-size: 16px;
+            }
+            
+            .thanks-description {
+                font-size: 14px;
+            }
+            
+            .back-button {
+                padding: 16px 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="thanks-container">
+        <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4"/>
+                <circle cx="12" cy="12" r="10"/>
+            </svg>
+        </div>
+        
+        <h1 class="thanks-title">Спасибо за заявку!</h1>
+        <p class="thanks-subtitle">Ваша заявка успешно отправлена</p>
+        <p class="thanks-description">
+            Мы получили вашу заявку и вскоре свяжемся с вами для уточнения деталей. 
+            Наш менеджер ответит вам в течение 15 минут в рабочее время.
+        </p>
+        
+        <a href="javascript:void(0)" class="back-button" onclick="closeThanksPage()">
+            Вернуться на сайт
+        </a>
+        
+        <div class="contact-info">
+            <p><strong>Нужна срочная консультация?</strong></p>
+            <p>Звоните: <a href="tel:+79800980054">+7 (980) 098-00-54</a></p>
+            <p>Или пишите в <a href="https://wa.me/79800980054" target="_blank">WhatsApp</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Функция для закрытия страницы благодарности
+        function closeThanksPage() {
+            // Проверяем, открыта ли страница в новой вкладке
+            if (window.opener) {
+                // Если есть opener (открыта из другой вкладки), закрываем эту вкладку
+                window.close();
+            } else {
+                // Если открыта напрямую, переходим на главную
+                window.location.href = '../index.html';
+            }
+        }
+        
+        // Автоматическое закрытие через 10 секунд (опционально)
+        // setTimeout(function() {
+        //     closeThanksPage();
+        // }, 10000);
+        
+        // Отправляем цель в Яндекс.Метрику при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof ym === 'function') {
+                ym(103948733, 'reachGoal', 'thanks_page_view', {
+                    page_url: window.location.href,
+                    timestamp: new Date().toISOString()
+                });
+                console.log('✅ Цель "просмотр страницы благодарности" отправлена');
+            }
+        });
+        
+        // Отправляем цель при клике на кнопку "Вернуться"
+        document.querySelector('.back-button').addEventListener('click', function() {
+            if (typeof ym === 'function') {
+                ym(103948733, 'reachGoal', 'thanks_page_return', {
+                    page_url: window.location.href,
+                    timestamp: new Date().toISOString()
+                });
+                console.log('✅ Цель "возврат со страницы благодарности" отправлена');
+            }
+        });
+    </script>
+</body>
+</html>

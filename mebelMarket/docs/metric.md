@@ -10,15 +10,6 @@ ym(103948733,'reachGoal','clickPhone')
 ym(103948733,'reachGoal','clickEmail')
 клик по почте
 
-ym(103948733,'reachGoal','clickKviz')
-клик по кнопкам открывающим квиз
-
-ym(103948733,'reachGoal','clickZamerOrSborka')
-клик по кнопкам открывающим замер или сборку
-
-ym(103948733,'reachGoal','clickCallback')
-клик открывающий модалку с контактами и формой
-
 ym(103948733,'reachGoal','submittingSimpleForm')
 отправка любой формы кроме формы квиза
 

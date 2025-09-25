@@ -1,5 +1,16 @@
+// Флаг инициализации модальных окон
+if (typeof window.modalsInitialized === 'undefined') {
+    window.modalsInitialized = false;
+}
+
 // Управление модальными окнами
 function initializeModals() {
+    // Проверяем, не инициализированы ли уже модальные окна
+    if (window.modalsInitialized) {
+        console.log('⚠️ Модальные окна уже инициализированы, пропускаем');
+        return;
+    }
+    
     console.log('Инициализация модальных окон...');
     
     // Получаем все элементы модальных окон
@@ -10,6 +21,12 @@ function initializeModals() {
     console.log('Найдено модальных окон:', modals.length);
     console.log('Найдено триггеров:', modalTriggers.length);
     console.log('Найдено кнопок закрытия:', closeButtons.length);
+    
+    // Если модальные окна не найдены, выходим
+    if (modals.length === 0) {
+        console.log('⚠️ Модальные окна не найдены, возможно header еще не загружен');
+        return;
+    }
     
     // Функция для открытия модального окна
     function openModal(modalId) {
@@ -197,6 +214,10 @@ function initializeModals() {
             errorElement.remove();
         }
     }
+    
+    // Отмечаем, что модальные окна инициализированы
+    window.modalsInitialized = true;
+    console.log('✅ Модальные окна успешно инициализированы');
 }
 
 // Инициализируем модальные окна при загрузке страницы (если header/footer уже загружены)
