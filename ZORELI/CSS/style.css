@@ -1,17 +1,13 @@
 html {
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 .container {
     width: 100%;
     max-width: 1200px;
-    /* padding: 0 15px; */
     margin: 0 auto;
 }
-/* section {
-    padding-left: 15px;
-    padding-right: 15px;
-} */
 
 header {
     border-bottom: 1px solid rgba(128, 128, 128, 0.3);
@@ -404,7 +400,7 @@ img[src*="kolos2"] {
     max-width: 350px;
 }
 
-.oneCard-text div {
+.oneCard-text a {
     font-family: DM Sans, sans-serif;
     font-weight: 500;
     font-size: 20px;
