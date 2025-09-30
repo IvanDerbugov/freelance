@@ -93,176 +93,286 @@
     <main>
         <section class="faq-hero">
             <div class="container">
-                <h1>FAQ - Zoreli</h1>
-                <p>Frequently Asked Questions about our business card scanning app</p>
+                <div class="faq-hero-content">
+                    <div class="faq-hero-text">
+                        <h1>FAQ - Zoreli</h1>
+                        <p>Everything you need to know about our revolutionary business card scanning app</p>
+                        <div class="faq-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">15</span>
+                                <span class="stat-label">Questions</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Support</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Privacy</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-hero-visual">
+                        <div class="floating-card">
+                            <div class="card-content">
+                                <div class="card-header"></div>
+                                <div class="card-lines">
+                                    <div class="line"></div>
+                                    <div class="line short"></div>
+                                    <div class="line"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="scan-effect"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="faq-content">
             <div class="container">
+                <div class="faq-controls">
+                    <div class="category-filters">
+                        <button class="filter-btn active" data-category="all">All</button>
+                        <button class="filter-btn" data-category="general">General</button>
+                        <button class="filter-btn" data-category="privacy">Privacy</button>
+                        <button class="filter-btn" data-category="technical">Technical</button>
+                        <button class="filter-btn" data-category="billing">Billing</button>
+                    </div>
+                </div>
                 <div class="faq-grid">
-                    <div class="faq-item">
+                    <div class="faq-item" data-category="general">
                         <div class="faq-question">
-                            <h3>What does the app do?</h3>
-                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <div class="question-content">
+                                <div class="question-category">General</div>
+                                <h3>What does the app do?</h3>
+                            </div>
+                            <div class="question-actions">
+                                <svg class="arrow-icon" width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="faq-answer">
                             <p>Our app scans business cards, extracts contact details, and provides AI-generated insights based on publicly available online data to help you secure partnership. This is the world-first business card scanning app created to convert pieces of paper into meaningful connections and build trust.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item" data-category="technical">
                         <div class="faq-question">
-                            <h3>Is the scan feature accurate?</h3>
-                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <div class="question-content">
+                                <div class="question-category">Technical</div>
+                                <h3>Is the scan feature accurate?</h3>
+                            </div>
+                            <div class="question-actions">
+                                <svg class="arrow-icon" width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="faq-answer">
                             <p>The recognition results are provided "as is" based on our best efforts. We use state-of-the-art AI models to perform recognition, but we recommend reviewing the results carefully. You can manually correct any inaccuracies.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item" data-category="technical">
                         <div class="faq-question">
-                            <h3>What kind of AI research do you perform?</h3>
-                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <div class="question-content">
+                                <div class="question-category">Technical</div>
+                                <h3>What kind of AI research do you perform?</h3>
+                            </div>
+                            <div class="question-actions">
+                                <svg class="arrow-icon" width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="faq-answer">
                             <p>We search the web for professional background, company details, and mutual connections to help you craft meaningful outreach strategies. We do using well-know commercially available state-of-the-art AI models, e.g. OpenAI API.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item" data-category="general">
                         <div class="faq-question">
-                            <h3>How do you generate the trust-building strategies?</h3>
-                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <div class="question-content">
+                                <div class="question-category">General</div>
+                                <h3>How do you generate the trust-building strategies?</h3>
+                            </div>
+                            <div class="question-actions">
+                                <svg class="arrow-icon" width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="faq-answer">
                             <p>Our AI-tool analyzes the scanned data and online information of a person and person's affiliation to suggest personalized approaches that build rapport and trust. It helps you to increase your chances of a positive response and chances of securing your partnership goals.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item" data-category="privacy">
                         <div class="faq-question">
-                            <h3>What happens to the scanned card images and data related to it?</h3>
-                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <div class="question-content">
+                                <div class="question-category">Privacy</div>
+                                <h3>What happens to the scanned card images and data related to it?</h3>
+                            </div>
+                            <div class="question-actions">
+                                <svg class="arrow-icon" width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="faq-answer">
                             <p>Card images and related data are stored securely in your private storage iCloud, unless you choose to delete them.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item" data-category="privacy">
                         <div class="faq-question">
-                            <h3>Is my data safe?</h3>
-                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <div class="question-content">
+                                <div class="question-category">Privacy</div>
+                                <h3>Is my data safe?</h3>
+                            </div>
+                            <div class="question-actions">
+                                <svg class="arrow-icon" width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="faq-answer">
                             <p>Yes. We comply with GDPR, Swiss data privacy laws, as well as applicable data protection regulations in the US and Canada. You remain in control of your data at all times.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item" data-category="privacy">
                         <div class="faq-question">
-                            <h3>Do I need to ask for consent before scanning someone's card?</h3>
-                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <div class="question-content">
+                                <div class="question-category">Privacy</div>
+                                <h3>Do I need to ask for consent before scanning someone's card?</h3>
+                            </div>
+                            <div class="question-actions">
+                                <svg class="arrow-icon" width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="faq-answer">
                             <p>Yes. You must confirm you have the right to share a third party's contact data before uploading or scanning their card.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item" data-category="privacy">
                         <div class="faq-question">
-                            <h3>Where is my data stored?</h3>
-                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <div class="question-content">
+                                <div class="question-category">Privacy</div>
+                                <h3>Where is my data stored?</h3>
+                            </div>
+                            <div class="question-actions">
+                                <svg class="arrow-icon" width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="faq-answer">
                             <p>User login information is stored in Firebase. Business card images and related data are stored in iCloud. We do not transfer data across borders. Background information about individuals and companies, as well as trust-building suggestions, may be temporarily stored for up to 30 days by third-party AI tools (e.g., OpenAI API).</p>
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item" data-category="billing">
                         <div class="faq-question">
-                            <h3>What's included in the free trial?</h3>
-                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <div class="question-content">
+                                <div class="question-category">Billing</div>
+                                <h3>What's included in the free trial?</h3>
+                            </div>
+                            <div class="question-actions">
+                                <svg class="arrow-icon" width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="faq-answer">
                             <p>The 7-day trial gives you full access to unlimited scans, AI research, and export tools.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item" data-category="billing">
                         <div class="faq-question">
-                            <h3>How can I cancel my subscription?</h3>
-                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <div class="question-content">
+                                <div class="question-category">Billing</div>
+                                <h3>How can I cancel my subscription?</h3>
+                            </div>
+                            <div class="question-actions">
+                                <svg class="arrow-icon" width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="faq-answer">
                             <p>You can cancel anytime through your Apple ID > Subscriptions. Your access remains active until the end of the billing period.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item" data-category="privacy">
                         <div class="faq-question">
-                            <h3>How do I delete my account and data?</h3>
-                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <div class="question-content">
+                                <div class="question-category">Privacy</div>
+                                <h3>How do I delete my account and data?</h3>
+                            </div>
+                            <div class="question-actions">
+                                <svg class="arrow-icon" width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="faq-answer">
                             <p>Go to <strong>Settings > Privacy & Consent</strong>, then tap "Uncheck and delete all my data."</p>
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item" data-category="technical">
                         <div class="faq-question">
-                            <h3>Can I export contacts to my CRM?</h3>
-                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <div class="question-content">
+                                <div class="question-category">Technical</div>
+                                <h3>Can I export contacts to my CRM?</h3>
+                            </div>
+                            <div class="question-actions">
+                                <svg class="arrow-icon" width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="faq-answer">
                             <p>Yes. You can export contact data in standard formats (Excel and CSV) compatible with most CRM systems.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item" data-category="technical">
                         <div class="faq-question">
-                            <h3>Can I use the app offline?</h3>
-                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <div class="question-content">
+                                <div class="question-category">Technical</div>
+                                <h3>Can I use the app offline?</h3>
+                            </div>
+                            <div class="question-actions">
+                                <svg class="arrow-icon" width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="faq-answer">
                             <p>No, you cannot use the app offline.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item" data-category="technical">
                         <div class="faq-question">
-                            <h3>Can I manually enter a business card?</h3>
-                            <svg width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <div class="question-content">
+                                <div class="question-category">Technical</div>
+                                <h3>Can I manually enter a business card?</h3>
+                            </div>
+                            <div class="question-actions">
+                                <svg class="arrow-icon" width="25" height="14" viewBox="0 0 25 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 1.75L12.5 12.25L23 1.75" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
                         </div>
                         <div class="faq-answer">
                             <p>Yes. You can manually add a new card and fill in the fields yourself.</p>
