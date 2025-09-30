@@ -1,0 +1,180 @@
+@media (max-width: 1000px) {
+    .turnBusiness h1 br {
+        display: none;
+    }
+
+    .turnBusiness-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .turnBusiness-links a:first-child {
+        width: 200px;
+        margin-left: 15px;
+    }
+    .turnBusiness-links a:last-child {
+        width: 230px;
+    }
+
+    .turnBusiness h1 {
+        font-size: 40px;
+    }
+
+    .turnBusiness {
+        gap: 35px;
+        max-width: 360px;
+    }
+    .turnBusiness>div:last-child {
+        font-size: 19px;
+        text-align: center;
+    }
+    .turnBusiness>p {
+        font-size: 19px;
+        line-height: 23px;
+    }
+
+    .mobils-block1 img:first-child {
+        width: calc(316px * 0.7);
+        height: calc(636px * 0.7);
+        top: 46px;
+    }
+
+    .mobils-block1 img:nth-child(2) {
+        width: calc(316px * 0.7);
+        height: calc(636px * 0.7);
+        top: 100px;
+        left: 129px;
+    }
+
+    .mobils-block1 img:last-child {
+        top: 78px;
+        left: 202px;
+        z-index: 0;
+        width: calc(231px * 0.7);
+        height: calc(259px * 0.7);
+    }
+
+    .turnBusiness-container {
+        gap: 50px;
+    }
+    .mobils-block1 {
+        width: 363px;
+    }
+    .turnBusiness-container {
+        margin-top: 60px;
+        margin-bottom: 80px;
+    }
+
+
+    .world-first>div:first-child {
+        font-size: 35px;
+        line-height: 42px;
+        max-width: 357px;
+        padding-left: 20px;
+    }
+
+    .world-first>div:nth-child(2) {
+        gap: 14px;
+        font-size: 28px;
+        line-height: 36px;
+        max-width: 304px;
+        padding: 24px 19px;
+        padding-left: 10px;
+    }
+
+    img[src*="kolos2"] {
+        right: 0px;
+        top: -32px;
+        width: calc(192px * 0.7);
+    }
+    img[src*="kolos1"] {
+        left: 0px;
+        top: -32px;
+        width: calc(192px * 0.7);
+    }
+    .world-first {
+        padding: 15px 0;
+    }
+
+
+    .wrapGridValueProperties {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 35px;
+    }
+
+
+    .howItWorks-item h5 span {
+        font-size: 30px;
+        margin-right: 10px;
+    }
+
+    .howItWorks-item h5 {
+        font-size: 20px;
+        margin: 20px 0 16px;
+    }
+
+    .howItWorks-item p {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .howItWorks {
+        padding: 30px 0;
+    }
+
+    .howItWorks>.container>p {
+        margin-top: 25px;
+    }
+
+
+    .oneCard-text a {
+        font-size: 16px;
+        padding: 12px 15px;
+        border-radius: 6px;
+        width: 251px;
+    }
+    .oneCard-text p {
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    /* Уменьшение карусели на 30% */
+    .carousel {
+        height: calc(617px * 0.8);
+    }
+
+    .carousel .carousel-item {
+        width: calc(285px * 0.7);
+        height: calc(617px * 0.7);
+        margin: calc(10px * 0.7);
+    }
+
+    .carousel .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: calc(12px * 2);
+    }
+
+    .carousel-oneCard {
+        width: calc(834px * 0.7);
+    }
+
+    .carousel-nav {
+        width: calc(76px * 0.7);
+        height: calc(76px * 0.7);
+    }
+
+    .carousel-nav svg {
+        width: calc(36px * 0.7);
+        height: calc(38px * 0.7);
+    }
+
+    .carousel-prev {
+        left: 65px;
+    }
+
+    .carousel-next {
+        right: 50px;
+    }
+}

@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         yearElement.textContent = `© ${currentYear} Zoreli`;
     }
     
+    // FAQ functionality for main page
     const dropdownBlocks = document.querySelectorAll('.drop-down-blocks > div');
     
     // Функция для закрытия всех блоков
@@ -43,6 +44,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 content.style.maxHeight = content.scrollHeight + 'px';
                 content.style.opacity = '1';
                 arrow.style.transform = 'rotate(180deg)';
+            }
+        });
+    });
+
+    // FAQ functionality for FAQ page
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        
+        question.addEventListener('click', function() {
+            const isActive = item.classList.contains('active');
+            
+            // Закрываем все FAQ элементы
+            faqItems.forEach(faqItem => {
+                faqItem.classList.remove('active');
+            });
+            
+            // Если текущий элемент не был активен, открываем его
+            if (!isActive) {
+                item.classList.add('active');
             }
         });
     });

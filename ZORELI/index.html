@@ -17,6 +17,8 @@
 
     <link rel="stylesheet" href="CSS/reset.css">
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/media1250.css">
+    <link rel="stylesheet" href="CSS/media1000.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <style>
@@ -29,9 +31,9 @@
 </head>
 
 <body>
-<div class="nonono" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; color: #fff; font-size: 70px; z-index: 15;">
+<!-- <div class="nonono" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; color: #fff; font-size: 70px; z-index: 15;">
     Вы пытаетесь посмотреть планшетную или мобильную версию, которые ещё не готовы. Для просмотра компьютерной версии, уменьшите масштаб или воспользуйтесь компьютером в идеале.
-</div>
+</div> -->
 
     <header>
         <div class="container">
@@ -104,7 +106,7 @@
         <section class="container turnBusiness-container">
             <div class="turnBusiness">
                 <h1>
-                    Turn Business Cards Into<br><span>Trust and Opportunity</span>
+                    Turn Business Cards Into<br> <span>Trust and Opportunity</span>
                 </h1>
 
                 <p>
@@ -1002,9 +1004,14 @@
             <img src="img/footer-center.png" alt="">
 
             <div class="footer-right">
-                <a href="">Terms of Use</a>
-                <a href="">Privacy Policy</a>
-                <a href="">Contact Us</a>
+                <div>
+                    <a href="faq.html">Faq</a>
+                    <a href="">Contact Us</a>
+                </div>
+                <div>
+                    <a href="">Terms of Use</a>
+                    <a href="">Privacy Policy</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -1019,7 +1026,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.carousel');
             var instances = M.Carousel.init(elems, {
-                indicators: true,
+                indicators: false,
                 duration: 300,
                 dist: -100,
                 padding: 10

@@ -77,7 +77,7 @@ header>.container {
 }
 
 .turnBusiness h1 {
-    font-family: Exo 2, sans-serif;
+    font-family: "Exo 2", sans-serif;
     font-weight: 800;
     font-size: 48px;
     line-height: 120%;
@@ -847,7 +847,6 @@ button:focus {
 
 
 .cancel-anytime-container {
-    margin-top: 36px;
     display: flex;
 }
 
@@ -1035,9 +1034,15 @@ footer .footer-left .turnBusiness-links a:last-child {
 
 .footer-right {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
-    width: 134px;
+    gap: 40px;
+    /* width: 134px; */
+}
+.footer-right>div {
+    display: flex;
+    flex-direction: column;
+    gap: 11.5px;
 }
 
 .footer-right a {
