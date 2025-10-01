@@ -397,7 +397,7 @@
             <div class="footer-right">
                 <div>
                     <a href="faq.html">Faq</a>
-                    <a href="contacts.html">Contact Us</a>
+                    <a href="#" id="contactModalBtn">Contact Us</a>
                 </div>
                 <div>
                     <a href="termsOfUse.html">Terms of Use</a>
@@ -407,9 +407,67 @@
         </div>
     </footer>
 
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-modal-overlay"></div>
+        <div class="contact-modal-content">
+            <div class="contact-modal-header">
+                <h2>Contact Us</h2>
+                <button class="contact-modal-close" id="contactModalClose">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="contact-modal-body">
+                <div class="contact-hero">
+                    <div class="contact-icon">💬</div>
+                    <h3>We're Here to Help!</h3>
+                    <p>Write to us about any questions, problems, or suggestions. We work for you and are always ready to assist.</p>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📧</div>
+                        <div class="contact-item-content">
+                            <h4>Email Us</h4>
+                            <p>For general inquiries, support, or feedback</p>
+                            <a href="mailto:info@zoreli.ai" class="contact-email">info@zoreli.ai</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">⚡</div>
+                        <div class="contact-item-content">
+                            <h4>Quick Response</h4>
+                            <p>We typically respond within 24 hours</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">🛠️</div>
+                        <div class="contact-item-content">
+                            <h4>Technical Support</h4>
+                            <p>Having issues with the app? We'll help you resolve them</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">💡</div>
+                        <div class="contact-item-content">
+                            <h4>Feature Requests</h4>
+                            <p>Have ideas for new features? We'd love to hear them!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-footer">
+                    <p>Thank you for choosing Zoreli. Your feedback helps us improve!</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
-    
     <script src="script.js"></script>
 </body>
 

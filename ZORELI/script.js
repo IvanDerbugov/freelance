@@ -174,4 +174,40 @@ document.addEventListener('DOMContentLoaded', function() {
         item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(item);
     });
+
+    // Contact Modal functionality
+    const contactModal = document.getElementById('contactModal');
+    const contactModalBtn = document.getElementById('contactModalBtn');
+    const contactModalClose = document.getElementById('contactModalClose');
+    const contactModalOverlay = document.querySelector('.contact-modal-overlay');
+
+    if (contactModal && contactModalBtn) {
+        // Open modal
+        contactModalBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            contactModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close modal
+        function closeModal() {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        if (contactModalClose) {
+            contactModalClose.addEventListener('click', closeModal);
+        }
+        
+        if (contactModalOverlay) {
+            contactModalOverlay.addEventListener('click', closeModal);
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    }
 });

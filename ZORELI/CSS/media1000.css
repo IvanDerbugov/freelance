@@ -8,11 +8,11 @@
         gap: 15px;
     }
 
-    .turnBusiness-links a:first-child {
-        width: 200px;
+    .turnBusiness-container .turnBusiness-links a:first-child {
+        width: 166px;
         margin-left: 15px;
     }
-    .turnBusiness-links a:last-child {
+    .turnBusiness-container .turnBusiness-links a:last-child {
         width: 230px;
     }
 
@@ -176,5 +176,63 @@
 
     .carousel-next {
         right: 50px;
+    }
+
+
+    .whoItsFor-img {
+        background-position: 0 111%;
+    }
+
+
+    .free-paind-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .cancel-anytime-container {
+        display: flex;
+        flex-direction: column;
+        width: 464px;
+        margin: 0 auto;
+        gap: 25px;
+    }
+
+    .tariffs {
+        gap: 50px;
+    }
+
+
+    .reviews-container>.container {
+        flex-direction: column;
+    }
+
+    .reviews-grid {
+        width: auto;
+    }
+
+    .qr {
+        gap: 24px;
+    }
+
+
+    footer .turnBusiness-links a:last-child {
+        padding: 8px 18px;
+    }
+    footer .apple-svg {
+        width: 29px;
+    }
+    footer .svg-text {
+        gap: 1px;
+    }
+    footer .svg-text svg:first-child {
+        width: 111px;
+    }
+    footer .svg-text svg:last-child {
+        width: 115px;
+    }
+
+    .footer-left p {
+        margin-top: 20.5px;
     }
 }

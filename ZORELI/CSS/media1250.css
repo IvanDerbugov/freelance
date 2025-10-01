@@ -1,5 +1,5 @@
 @media (max-width: 1250px) {
-    section {
+    section, header, footer {
         padding-left: 15px !important;
         padding-right: 15px !important;
     }
@@ -177,14 +177,14 @@
         width: 200px;
         padding: 10px 7px;
     }
-    .apple-svg {
+    .qr .apple-svg {
         margin-top: -2px;
         width: 33px;
     }
-    .svg-text>svg:first-child {
+    .qr .svg-text>svg:first-child {
         width: 120px;
     }
-    .svg-text>svg:last-child {
+    .qr .svg-text>svg:last-child {
         width: 140px;
     }
 
