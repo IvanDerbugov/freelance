@@ -19,6 +19,18 @@ header>.container {
     padding-top: 20px;
 }
 
+
+.iPhone-mobile, .turnBusiness-links-mobile {
+    display: none;
+}
+
+
+
+
+
+
+
+
 .header-logo {
     display: flex;
     align-items: center;
@@ -126,7 +138,7 @@ header>.container {
     background: #E96262;
 }
 
-.turnBusiness>div:last-child {
+.turnBusiness .iPhone {
     padding: 24px 24px;
     background: #F2F2F5;
     line-height: 24px;
@@ -487,10 +499,6 @@ img[src*="kolos2"] {
     z-index: 10;
 }
 
-.carousel-nav:hover {
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
 
 .carousel-nav:active {
     transform: translateY(-50%) scale(0.95);
@@ -1024,6 +1032,15 @@ footer .footer-left .turnBusiness-links a:last-child {
     background-color: #fff;
     border-radius: 12px;
 }
+
+/* Hide burger menu on desktop */
+.burger-menu-btn {
+    display: none;
+}
+
+.mobile-menu-overlay {
+    display: none;
+}
 .footer-left p {
     font-family: DM Sans, sans-serif;
     font-weight: 400;
@@ -1058,52 +1075,6 @@ footer .footer-left .turnBusiness-links a:last-child {
 }
 
 
-.links-anchor > div:hover {
-    border-bottom: 4px solid #1E1E1E;
-}
-
-/* Ховеры для красных кнопок */
-.turnBusiness-links a:last-child:hover {
-    background-color: #d54d4d;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(240, 96, 96, 0.3);
-}
-
-.oneCard-text a:hover {
-    background-color: #d54d4d;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(240, 96, 96, 0.3);
-}
-
-.subscribeNow:hover {
-    background-color: #d54d4d;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(240, 96, 96, 0.3);
-}
-
-/* Ховер для кнопки Test Now */
-.test-now:hover {
-    background-color: #d54d4d;
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(240, 96, 96, 0.3);
-}
-
-/* Ховеры для Apple Store кнопок */
-.turnBusiness-links a:first-child:hover,
-.qr .turnBusiness-links a:hover,
-.footer-left .turnBusiness-links a:last-child:hover {
-    background-color: #d54d4d;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(240, 96, 96, 0.3);
-}
-
-/* Ховеры для SVG элементов в Apple Store кнопках */
-.turnBusiness-links a:first-child:hover svg,
-.qr .turnBusiness-links a:hover svg,
-.footer-left .turnBusiness-links a:last-child:hover svg {
-    fill: #fff;
-}
 
 /* Общие стили для плавных переходов */
 .turnBusiness-links a:last-child,
@@ -1202,10 +1173,6 @@ footer .footer-left .turnBusiness-links a:last-child {
     justify-content: center;
 }
 
-.contact-modal-close:hover {
-    background: #F8F8F8;
-    transform: rotate(90deg);
-}
 
 .contact-modal-body {
     padding: 10px 30px;
@@ -1269,11 +1236,6 @@ footer .footer-left .turnBusiness-links a:last-child {
     transition: all 0.3s ease;
 }
 
-.contact-item:hover {
-    background: rgba(240, 96, 96, 0.05);
-    transform: translateX(4px);
-    box-shadow: 0 8px 20px rgba(240, 96, 96, 0.1);
-}
 
 .contact-item-icon {
     font-size: 32px;
@@ -1308,10 +1270,6 @@ footer .footer-left .turnBusiness-links a:last-child {
     display: inline-block;
 }
 
-.contact-email:hover {
-    color: #E96262;
-    transform: translateY(-2px);
-}
 
 .contact-footer {
     text-align: center;
@@ -1514,9 +1472,6 @@ footer .footer-left .turnBusiness-links a:last-child {
     font-weight: 500;
 }
 
-.privacy-section a:hover {
-    text-decoration: underline;
-}
 
 .privacy-section strong {
     color: #1E1E1E;
@@ -1816,16 +1771,6 @@ footer .footer-left .turnBusiness-links a:last-child {
     transition: left 0.5s ease;
 }
 
-.filter-btn:hover::before {
-    left: 100%;
-}
-
-.filter-btn:hover {
-    border-color: #F06060;
-    color: #F06060;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(240, 96, 96, 0.2);
-}
 
 .filter-btn.active {
     background: #F06060;
@@ -2117,4 +2062,91 @@ footer .footer-left .turnBusiness-links a:last-child {
         padding: 0 20px 20px;
         font-size: 16px;
     }
+}
+
+@media (min-width: 800px) {
+    /* Hover effects for desktop only */
+    .carousel-nav:hover {
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .links-anchor > div:hover {
+        border-bottom: 4px solid #1E1E1E;
+    }
+
+    /* Ховеры для красных кнопок */
+    .turnBusiness-links a:last-child:hover {
+        background-color: #d54d4d;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(240, 96, 96, 0.3);
+    }
+
+    .oneCard-text a:hover {
+        background-color: #d54d4d;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(240, 96, 96, 0.3);
+    }
+
+    .subscribeNow:hover {
+        background-color: #d54d4d;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(240, 96, 96, 0.3);
+    }
+
+    /* Ховер для кнопки Test Now */
+    .test-now:hover {
+        background-color: #d54d4d;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(240, 96, 96, 0.3);
+    }
+
+    /* Ховеры для Apple Store кнопок */
+    .turnBusiness-links a:first-child:hover,
+    .qr .turnBusiness-links a:hover,
+    .footer-left .turnBusiness-links a:last-child:hover {
+        background-color: #d54d4d;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(240, 96, 96, 0.3);
+    }
+
+    /* Ховеры для SVG элементов в Apple Store кнопках */
+    .turnBusiness-links a:first-child:hover svg,
+    .qr .turnBusiness-links a:hover svg,
+    .footer-left .turnBusiness-links a:last-child:hover svg {
+        fill: #fff;
+    }
+
+    .contact-modal-close:hover {
+        background: #F8F8F8;
+        transform: rotate(90deg);
+    }
+
+    .contact-item:hover {
+        background: rgba(240, 96, 96, 0.05);
+        transform: translateX(4px);
+        box-shadow: 0 8px 20px rgba(240, 96, 96, 0.1);
+    }
+
+    .contact-email:hover {
+        color: #E96262;
+        transform: translateY(-2px);
+    }
+
+    .privacy-section a:hover {
+        text-decoration: underline;
+    }
+
+    .filter-btn:hover::before {
+        left: 100%;
+    }
+
+    .filter-btn:hover {
+        border-color: #F06060;
+        color: #F06060;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(240, 96, 96, 0.2);
+    }
+
 }

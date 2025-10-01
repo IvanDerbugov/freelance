@@ -24,7 +24,7 @@
         gap: 35px;
         max-width: 360px;
     }
-    .turnBusiness>div:last-child {
+    .turnBusiness .iPhone {
         font-size: 19px;
         text-align: center;
     }
