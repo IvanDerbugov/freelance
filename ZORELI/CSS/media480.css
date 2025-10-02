@@ -3,6 +3,9 @@
         padding-left: 10px !important;
         padding-right: 10px !important;
     }
+    body {
+        overflow-x: hidden;
+    }
 
     .turnBusiness h1 {
         font-size: 20px;
@@ -67,7 +70,7 @@
     }
     .carousel:not(.carousel-reviews) {
         height: calc(600px * 0.9);
-        margin-top: -58px;
+        margin-top: -29px;
     }
 
 
@@ -115,7 +118,19 @@
     .faq-text {
         max-width: 345px;
     }
+    .carousel-oneCard {
+        width: 345px;
+    }
 
 
+    .carousel-oneCard {
+        width: 345px;
+    }
+
+    .carousel-reviews {
+        display: block;
+        margin: -89px 0 -60px;
+        width: 335px;
+    }
 
 }
