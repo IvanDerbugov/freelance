@@ -20,7 +20,7 @@ header>.container {
 }
 
 
-.iPhone-mobile, .turnBusiness-links-mobile {
+.iPhone-mobile, .turnBusiness-links-mobile, .howItWorksImgMobile, .howItWorks-item h5 div {
     display: none;
 }
 
@@ -107,7 +107,7 @@ header>.container {
     line-height: 28px;
 }
 
-.turnBusiness-links {
+.turnBusiness-links:not(.turnBusiness-links-mobile) {
     display: flex;
     gap: 24px;
 }
