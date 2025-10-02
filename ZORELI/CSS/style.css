@@ -673,7 +673,7 @@ button:focus {
 .drop-down-blocks h6 {
     font-weight: 600;
     font-size: 20px;
-    line-height: 20px;
+    line-height: 22px;
     letter-spacing: 0;
 }
 .drop-down-blocks>div>div svg {
@@ -1042,6 +1042,11 @@ footer .footer-left .turnBusiness-links a:last-child {
 }
 
 .mobile-menu-overlay {
+    display: none;
+}
+
+/* Скрываем мобильную версию отзывов на десктопе */
+.reviews-mobile-container {
     display: none;
 }
 .footer-left p {

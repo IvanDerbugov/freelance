@@ -12,9 +12,6 @@
         position: relative;
     }
 
-    .burger-menu-btn:hover {
-        /* background-color: #f5f5f5; */
-    }
 
     .mobile-menu-overlay {
         position: fixed;
@@ -465,4 +462,230 @@
     .whoItsFor-ellipse {
         display: none;
     }
+
+    .carousel-nav {
+        display: none;
+    }
+
+    .carousel .carousel-item {
+        width: calc(285px * 0.9);
+        height: calc(617px * 0.9);
+        margin: calc(10px * 0.9);
+    }
+
+    .carousel {
+        height: calc(600px * 1);
+    }
+
+    .carousel-container {
+        margin-top: -20px;
+    }
+
+    .whoItsFor {
+        display: none;
+    }
+
+    .whoItsForMobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .whoItsForMobile .bildForPeople div {
+        font-size: 16px;
+        padding: 8px 24px;
+        width: 137px;
+    }
+
+    .whoItsForMobile .bildForPeople h4 {
+        font-size: 22px;
+        line-height: 26px;
+    }
+
+    .whoItsForMobile .bildForPeople {
+        gap: 24px;
+    }
+    
+    .bildForPeople p {
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    .whoItsForMobile-content {
+        display: flex;
+        flex-direction: column;
+        margin-top: -16px;
+    }
+    .whoItsForMobile-content h6 {
+        padding-bottom: 6px;
+        border-bottom: 1px solid #F06060;
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 600;
+    }
+    .whoItsForMobile-content p {
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: 400;
+        font-family: DM Sans, sans-serif;
+        margin: 6px 0 8px;
+    }
+
+    .whoItsFor-container {
+        padding-bottom: 10px;
+    }
+
+
+
+    .faq>.container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        flex-direction: column;
+    }
+    .faq-text {
+        display: flex;
+        flex-direction: row;
+        gap: 31px;
+        max-width: 398px;
+        transform: translateY(0);
+        align-items: center;
+    }
+    .faq-text img {
+        width: 219px;
+    }
+    .faq-text h2 {
+        font-size: 22px;
+        line-height: 26px;
+    }
+    .faq {
+        padding: 24px 0;
+    }
+
+    .drop-down-blocks {
+        width: 398px;
+        gap: 12px;
+    }
+
+    .drop-down-blocks>div {
+        gap: 12px;
+        padding: 16px;
+        background-color: transparent;
+        box-shadow: none;
+        border: 1px solid #fff;
+    }
+    .drop-down-blocks>div>div svg {
+        width: 12px;
+    }
+    .drop-down-blocks p {
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+
+    .tariffs {
+        padding: 36px 0 42px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+    .tariffs>div {
+        width: 398px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 12px;
+    }
+    .startFree h4 {
+        font-weight: 800;
+        font-size: 22px;
+        line-height: 26px;
+        letter-spacing: 0;
+        margin-bottom: 24px;
+    }
+    .startFree p {
+        display: none;
+    }
+
+    .cancel-anytime-mobile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cancel-anytime-mobile-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 0;
+    }
+    .cancel-anytime-mobile-item h6 {
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+    .cancel-anytime-mobile-item p {
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: 400;
+        font-family: DM Sans, sans-serif;
+    }
+    .cancel-anytime-container {
+        display: none;
+    }
+
+    .free-paind:not(.monty-year-plan) {
+        width: 398px;
+        padding: 24px;
+        border-radius: 8px;
+    }
+
+    .plan {
+        width: 350px;
+        font-size: 20px;
+        height: 40px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .planPlus-minus {
+        gap: 7px;
+        padding: 12px 0;
+    }
+
+    .subscribeNow {
+        font-family: DM Sans;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 100%;
+        letter-spacing: 0;
+        padding: 16px 0;
+        color: #fff;
+        background: #F06060;
+        border-radius: 8px;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: 0;
+    }
+
+    .monty-year-plan {
+        display: none;
+    }
+
+    .free-paind {
+        box-shadow: none;
+        border: 1px solid #DFDFDF;
+    }
+
+
+
+    /* Скрываем десктопную версию отзывов на мобильных устройствах */
+    .reviews-container {
+        display: none;
+    }
+
+    
 }
