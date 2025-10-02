@@ -1,0 +1,121 @@
+@media (max-width: 480px) {
+    section, header, footer {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .turnBusiness h1 {
+        font-size: 20px;
+    }
+    .turnBusiness {
+        max-width: 159px;
+    }
+    .iPhone-mobile {
+        font-size: 11px;
+        padding: 0px;
+        width: auto;
+    }
+    .turnBusiness-container {
+        gap: 30px;
+    }
+
+    .mobils-block1 img:first-child {
+        width: calc(142px * 0.9);
+        height: calc(307px * 0.83);
+        top: -40px;
+    }
+    .mobils-block1 img:nth-child(2) {
+        width: calc(142px * 0.9);
+        height: calc(307px * 0.83);
+        top: -15px;
+        left: 47px;
+    }
+    .turnBusiness-container {
+        margin-top: 70px;
+        margin-bottom: 84px;
+    }
+    .turnBusiness-links a:last-child {
+        font-size: 14px;
+        padding: 17.5px 0;
+        text-align: center;
+    }
+
+
+
+    .world-first>div:nth-child(2) {
+        max-width: 188px;
+    }
+    .howItWorksImgMobile {
+        width: 345px;
+    }
+    .oneCard-text {
+        width: 345px;
+    }
+    .oneCard-text a {
+        padding: 16px 0;
+        text-align: center;
+        border-radius: 6px;
+        width: 100%;
+    }
+
+
+
+    .carousel .carousel-item:not(.carousel-reviews .carousel-item) {
+        width: calc(285px * 0.7);
+        height: calc(617px * 0.7);
+        margin: calc(10px * 0.7);
+    }
+    .carousel:not(.carousel-reviews) {
+        height: calc(600px * 0.9);
+        margin-top: -58px;
+    }
+
+
+    .tariffs>div {
+        width: 345px;
+    }
+    .free-paind:not(.monty-year-plan) {
+        width: 345px;
+    }
+    .plan {
+        width: 100%;
+    }
+
+    .carousel-reviews .carousel-item {
+        width: 226px;
+        padding: 12px 30px;
+        border-radius: 10px;
+    }
+    .carousel-reviews .carousel-item div:after {
+        right: -29px;
+        transform: scale(0.7);
+    }
+    .carousel-reviews .carousel-item div:before {
+        left: -29px;
+        transform: scale(0.7);
+    }
+    .carousel-reviews .carousel-item div {
+        padding: 12px;
+        min-height: 206px;
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    .compliance-grid {
+        max-width: 345px;
+    }
+    .compliance h3 {
+        min-width: 345px;
+    }
+
+
+    .drop-down-blocks {
+        width: 345px;
+    }
+    .faq-text {
+        max-width: 345px;
+    }
+
+
+
+}
