@@ -132,5 +132,47 @@
         margin: -89px 0 -60px;
         width: 335px;
     }
+}
 
+@media (max-width: 375px) {
+    .mobils-block1 img:first-child {
+        min-width: calc(142px * 0.9);
+        min-height: calc(307px * 0.83);
+        top: -40px;
+    }
+
+    .howItWorksImgMobile {
+        width: 320px;
+    }
+    .oneCard-text {
+        width: 290px;
+    }
+    .faq-text {
+        max-width: 320px;
+        gap: 20px;
+    }
+    .faq-text h2 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .faq-text img {
+        width: 177px;
+    }
+    .drop-down-blocks {
+        width: 320px;
+    }
+    .drop-down-blocks h6 {
+        font-size: 16px;
+        line-height: 18px;
+    }
+    .drop-down-blocks>div {
+        padding: 10px;
+    }
+    .drop-down-blocks p {
+        font-size: 13px;
+        line-height: 14px;
+    }
+    .tariffs>div {
+        width: 290px;
+    }
 }
