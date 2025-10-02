@@ -461,4 +461,8 @@
     .carousel-oneCard {
         gap: 0;
     }
+
+    .whoItsFor-ellipse {
+        display: none;
+    }
 }

@@ -474,6 +474,9 @@ img[src*="kolos2"] {
     height: 100%;
     object-fit: cover;
     border-radius: 35px;
+    border: 4px solid;
+    /* border-image-source: linear-gradient(180deg, #63686C -11.79%, #1E1E1E 83.57%); */
+    border-image-slice: 1;
 }
 
 .carousel-container {
