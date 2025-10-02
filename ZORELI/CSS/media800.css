@@ -837,7 +837,7 @@
     footer .svg-text {
         align-items: center;
     }
-    img[src*="footer-center"] {
+    img[src*="footer-center"], footer>.container>a {
         order: 1;
         height: 46px;
     }
