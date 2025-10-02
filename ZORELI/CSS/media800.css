@@ -245,7 +245,7 @@
         display: none;
     }
 
-    img[src*="kolos1"] ,img[src*="kolos2"] {
+    img[src*="kolos1"], img[src*="kolos2"] {
         width: auto;
     }
 
@@ -310,12 +310,12 @@
     .valueProperty>div:last-child {
         font-size: 20px;
     }
-    
+
     .ValueProperties {
         margin: 67px auto 18px;
         max-width: 398px;
     }
-    
+
 
     .howItWorks {
         padding: 24px 0;
@@ -344,7 +344,7 @@
         align-items: center;
         gap: 12px;
     }
-    .howItWorks-item h5 > span {
+    .howItWorks-item h5>span {
         display: none;
     }
     .howItWorks-item h5 span {
@@ -359,7 +359,7 @@
         top: 60%;
     }
 
-    .howItWorks-item > img, .howItWorks-item > svg {
+    .howItWorks-item>img, .howItWorks-item>svg {
         display: none;
     }
 
@@ -467,13 +467,13 @@
         display: none;
     }
 
-    .carousel .carousel-item {
+    .carousel .carousel-item:not(.carousel-reviews .carousel-item) {
         width: calc(285px * 0.9);
         height: calc(617px * 0.9);
         margin: calc(10px * 0.9);
     }
 
-    .carousel {
+    .carousel:not(.carousel-reviews) {
         height: calc(600px * 1);
     }
 
@@ -505,7 +505,7 @@
     .whoItsForMobile .bildForPeople {
         gap: 24px;
     }
-    
+
     .bildForPeople p {
         font-size: 16px;
         line-height: 18px;
@@ -681,11 +681,177 @@
     }
 
 
-
-    /* Скрываем десктопную версию отзывов на мобильных устройствах */
     .reviews-container {
-        display: none;
+        background-color: #fff;
+        padding: 0 !important;
     }
 
-    
+    /* Скрываем десктопную версию отзывов на мобильных устройствах */
+    .reviews-grid {
+        display: none;
+    }
+    .carousel-reviews {
+        display: block;
+        margin: -89px 0 -60px;
+    }
+
+    .carousel-reviews .carousel-item {
+        width: 266px;
+        padding: 12px 50px;
+        border: 1px solid #D4D4D4;
+        border-radius: 12px;
+        height: auto;
+        background: rgba(255, 255, 255, 0.5);
+    }
+    .carousel-reviews .carousel-item p {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 0;
+        margin-top: 12px;
+    }
+    .carousel-reviews .carousel-item div {
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 218px;
+        font-family: DM Sans;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 18px;
+        text-align: center;
+        letter-spacing: 0;
+        background-color: #F2F2F5;
+        position: relative;
+    }
+
+    .carousel-reviews .carousel-item div:before {
+        content: url('../img/quotes.svg');
+        position: absolute;
+        top: 50%;
+        left: -39px;
+        transform: translate(0, -50%);
+        width: 24px;
+        height: 24px;
+    }
+    .carousel-reviews .carousel-item div:after {
+        content: url('../img/quotes.svg');
+        position: absolute;
+        top: 50%;
+        right: -39px;
+        transform: translate(0, -50%) rotate(180deg);
+        width: 24px;
+        height: 24px;
+    }
+
+
+    .reviews-title-mobile {
+        display: block;
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 26px;
+        margin-bottom: 16px;
+        text-align: center;
+    }
+    .reviews-container>.container {
+        gap: 0;
+    }
+
+
+    .qr {
+        gap: 36px;
+        width: 251px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .qr .turnBusiness-links a:last-child {
+        font-size: 16px;
+        padding: 16.5px 21.5px 14px 20px;
+        width: 252px;
+        height: 84px;
+    }
+    .qr .apple-svg {
+        margin-top: -2px;
+        width: 39px;
+    }
+    .qr .svg-text>svg:first-child {
+        width: 145px;
+    }
+    .qr .svg-text>svg:last-child {
+        width: 158px;
+    }
+    .qr>img {
+        width: 248px;
+    }
+
+
+    .compliance h3 {
+        font-size: 22px;
+        margin-bottom: 20px;
+        max-width: 398px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .compliance-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        max-width: 398px;
+        gap: 16px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    footer>.container {
+        display: flex;
+        padding: 20px 0 23px;
+        flex-direction: column-reverse;
+    }
+    .footer-left p {
+        margin-top: 19.5px;
+        text-align: center;
+    }
+
+    footer .footer-left .turnBusiness-links a:last-child {
+        background-color: #fff;
+        border-radius: 8px;
+        width: 132px;
+        height: 44px;
+        padding: 8px 11px 7px 11px;
+        gap: 7px;
+    }
+    footer .svg-text>svg:first-child {
+        width: 76px;
+    }
+    footer .svg-text>svg:last-child {
+        width: 83px;
+        height: 17px;
+    }
+    footer .apple-svg {
+        width: 20px;
+        height: 25px;
+        margin-top: 0;
+    }
+    footer .svg-text {
+        align-items: center;
+    }
+    img[src*="footer-center"] {
+        order: 1;
+        height: 46px;
+    }
+    .footer-right {
+        flex-direction: column;
+        gap: 0;
+        margin: 4px 0 8px;
+    }
+    .footer-right>div {
+        gap: 0;
+    }
+
+
+    .free-paind-mobile {
+        display: flex;
+    }
 }

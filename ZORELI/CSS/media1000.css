@@ -143,7 +143,7 @@
         height: calc(617px * 0.8);
     }
 
-    .carousel .carousel-item {
+    .carousel .carousel-item:not(.carousel-reviews .carousel-item) {
         width: calc(285px * 0.7);
         height: calc(617px * 0.7);
         margin: calc(10px * 0.7);
@@ -193,9 +193,40 @@
     .cancel-anytime-container {
         display: flex;
         flex-direction: column;
-        width: 464px;
+        width: 573px;
         margin: 0 auto;
         gap: 25px;
+    }
+    .cancel-anytime-red {
+        background-color: #F06060;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 24px;
+        letter-spacing: 0;
+        text-align: center;
+        width: 367px;
+        height: 96px;
+        border-radius: 12px 0 0 12px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 33.5px 32px;
+        position: relative;
+    }
+    .cancel-anytime-white {
+        background-color: #fff;
+        font-family: DM Sans, sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 0;
+        text-align: center;
+        border-radius: 0 12px 12px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+        width: 221px;
     }
 
     .tariffs {
@@ -234,5 +265,13 @@
 
     .footer-left p {
         margin-top: 20.5px;
+    }
+
+
+
+    .startFree {
+        width: 573px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
