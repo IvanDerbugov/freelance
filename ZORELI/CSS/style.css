@@ -195,6 +195,7 @@ header>.container {
     text-align: center;
     color: #E96262;
     max-width: 347px;
+    padding-right: 24px;
 }
 .world-first>div:first-child span {
     color: #1E1E1E;
@@ -211,6 +212,7 @@ header>.container {
     color: #1E1E1E;
     max-width: 364px;
     padding: 24px 19px;
+    border-left: 1px solid #F06060;
 }
 .world-first>div:nth-child(2) p:before {
     content: '✦';
