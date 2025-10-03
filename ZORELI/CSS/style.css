@@ -692,6 +692,10 @@ button:focus {
     transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
+.drop-down-blocks > div.open {
+    border: 1px solid #CACACA;
+}
+
 
 .tariffs {
     padding: 111px 0;
@@ -759,11 +763,11 @@ button:focus {
 }
 .planPlus-minus p:before {
     content: url('../img/check-mark.svg');
-    margin-top: -2px;
+    margin-top: -1px;
 }
 .planPlus-minus p.cross-free:before {
     content: url('../img/check-cross.svg');
-    margin-top: 0;
+    margin-top: 1px;
 }
 
 .subscribeNow {
@@ -1300,6 +1304,15 @@ footer .footer-left .turnBusiness-links a:last-child {
     opacity: 0.8;
     margin: 0;
     line-height: 1.6;
+}
+
+.footer-center svg:first-child {
+    width: 67.75px;
+    height: 51.23px;
+}
+.footer-center svg:last-child {
+    width: 136.01px;
+    height: 29.81px;
 }
 
 /* Responsive Design for Contact Modal */

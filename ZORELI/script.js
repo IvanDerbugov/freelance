@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             content.style.maxHeight = '0';
             content.style.opacity = '0';
             arrow.style.transform = 'rotate(0deg)';
+            block.classList.remove('open'); // Убираем класс
         });
     }
     
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 content.style.maxHeight = '0';
                 content.style.opacity = '0';
                 arrow.style.transform = 'rotate(0deg)';
+                block.classList.remove('open'); // Убираем класс
             } else {
                 // Сначала закрываем все блоки, потом открываем текущий
                 closeAllBlocks();
@@ -44,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 content.style.maxHeight = content.scrollHeight + 'px';
                 content.style.opacity = '1';
                 arrow.style.transform = 'rotate(180deg)';
+                block.classList.add('open'); // Добавляем класс
             }
         });
     });
