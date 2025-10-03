@@ -859,4 +859,8 @@
     .free-paind-mobile {
         display: flex;
     }
+    
+    img[src*="startFree"] {
+        display: none;
+    }
 }
