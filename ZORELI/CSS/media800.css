@@ -267,6 +267,7 @@
         padding: 12px 0 24px;
         padding-left: 0;
         text-align: center;
+        border-left: none;
     }
 
     .world-first>div:first-child {
