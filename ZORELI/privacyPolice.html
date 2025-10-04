@@ -21,16 +21,17 @@
     <link rel="stylesheet" href="CSS/media1000.css">
     <link rel="stylesheet" href="CSS/media800.css">
     <link rel="stylesheet" href="CSS/media480.css">
+    <link rel="stylesheet" href="CSS/addPages.css">
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
 
-    
+
 </head>
 
 <body>
 
     <header>
         <div class="container">
-            <div class="header-logo">
+            <a href="index.html" class="header-logo">
                 <svg width="48" height="36" viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M0 0V13.3797C1.1526 13.3797 2.08599 12.4521 2.08599 11.3067V2.073H11.3775C12.5301 2.073 13.4635 1.14542 13.4635 0H0Z"
@@ -68,7 +69,7 @@
                     <path d="M81.4011 17.8268H91.0461V21.2771H77.4271V0.715698H81.4011V17.8268Z" fill="#E96262" />
                     <path d="M97 21.2841H93.026V0.715698H97V21.2841Z" fill="#E96262" />
                 </svg>
-            </div>
+            </a>
 
             <div class="links-anchor">
                 <div>
@@ -89,7 +90,7 @@
             <div class="mobile-menu-overlay" id="mobileMenuOverlay">
                 <div class="mobile-menu-content">
                     <div class="mobile-menu-header">
-                        <div class="header-logo">
+                        <a href="index.html" class="header-logo">
                             <svg width="48" height="36" viewBox="0 0 48 36" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -130,7 +131,7 @@
                                     fill="#E96262" />
                                 <path d="M97 21.2841H93.026V0.715698H97V21.2841Z" fill="#E96262" />
                             </svg>
-                        </div>
+                        </a>
 
                         <button class="mobile-menu-close" id="mobileMenuClose">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -172,83 +173,129 @@
             </div>
         </div>
     </header>
-    
+
     <main>
-        <div class="container" style="padding: 40px 20px; max-width: 800px; margin: 0 auto; font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+        <div class="container"
+            style="padding: 40px 20px; max-width: 800px; margin: 0 auto; font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
             <h1 style="font-size: 32px; margin-bottom: 20px; color: #000;">Privacy Policy</h1>
             <p style="font-size: 18px; margin-bottom: 10px; color: #666;">Zoreli - Business Card Scanner</p>
-            <p style="font-size: 14px; margin-bottom: 40px; color: #888;">Created: June 18th, 2025 | Last updated: June 18th, 2025</p>
+            <p style="font-size: 14px; margin-bottom: 40px; color: #888;">Created: June 18th, 2025 | Last updated: June
+                18th, 2025</p>
             <p style="font-size: 16px; margin-bottom: 30px;">
-                This Privacy Policy explains how Zoreli ("we," "us," or "Owner") collects, uses, discloses, and safeguards your personal data when you download, install, or use the Zoreli mobile application (the "App") and related services (the "Service"). By using the App, you consent to the practices described below.
+                This Privacy Policy explains how Zoreli ("we," "us," or "Owner") collects, uses, discloses, and
+                safeguards your personal data when you download, install, or use the Zoreli mobile application (the
+                "App") and related services (the "Service"). By using the App, you consent to the practices described
+                below.
             </p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">1. Data Controller</h2>
-            <p style="margin-bottom: 10px;">The individual developer ("Owner") is responsible for the collection and processing of your personal data under this Policy.</p>
-            <p style="margin-bottom: 30px;"><strong>Contact:</strong> <a href="mailto:andrews.dev.studio@gmail.com" style="color: #0066cc;">andrews.dev.studio@gmail.com</a></p>
+            <p style="margin-bottom: 10px;">The individual developer ("Owner") is responsible for the collection and
+                processing of your personal data under this Policy.</p>
+            <p style="margin-bottom: 30px;"><strong>Contact:</strong> <a href="mailto:andrews.dev.studio@gmail.com"
+                    style="color: #0066cc;">andrews.dev.studio@gmail.com</a></p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">2. Information We Collect</h2>
-            
+
             <h3 style="font-size: 20px; margin: 20px 0 10px 0; color: #000;">Account & Authentication Data</h3>
-            <p style="margin-bottom: 15px;">When you register, we collect your email address, authentication provider ID (Google, Apple, Facebook), and—if you sign up by email—a hashed password.</p>
-            
+            <p style="margin-bottom: 15px;">When you register, we collect your email address, authentication provider ID
+                (Google, Apple, Facebook), and—if you sign up by email—a hashed password.</p>
+
             <h3 style="font-size: 20px; margin: 20px 0 10px 0; color: #000;">Business-Card Data</h3>
-            <p style="margin-bottom: 15px;">When you scan or upload a business-card photo, we collect the image itself and any text fields extracted by our third-party Image Recognition Software providers (e.g., name, company, title, phone, email, etc.).</p>
-            
+            <p style="margin-bottom: 15px;">When you scan or upload a business-card photo, we collect the image itself
+                and any text fields extracted by our third-party Image Recognition Software providers (e.g., name,
+                company, title, phone, email, etc.).</p>
+
             <h3 style="font-size: 20px; margin: 20px 0 10px 0; color: #000;">Enriched Data</h3>
-            <p style="margin-bottom: 15px;">If you scan a business card or add a card text manually, we send Image Recognition Software results to AI-powered web-search APIs (including OpenAI's ChatGPT). The additional publicly-available information returned (e.g., linked profiles, company details) is stored in your account.</p>
-            
+            <p style="margin-bottom: 15px;">If you scan a business card or add a card text manually, we send Image
+                Recognition Software results to AI-powered web-search APIs (including OpenAI's ChatGPT). The additional
+                publicly-available information returned (e.g., linked profiles, company details) is stored in your
+                account.</p>
+
             <h3 style="font-size: 20px; margin: 20px 0 10px 0; color: #000;">Usage & Diagnostics</h3>
-            <p style="margin-bottom: 15px;">We automatically collect crash reports, app version, device model, and anonymized analytics (like scan counts and feature usage) via Google Firebase to help us improve stability and user experience.</p>
-            
-            <p style="margin-bottom: 30px;"><strong>All business-card images and enrichment results are stored on your device via iCloud (or equivalent) under your control.</strong></p>
+            <p style="margin-bottom: 15px;">We automatically collect crash reports, app version, device model, and
+                anonymized analytics (like scan counts and feature usage) via Google Firebase to help us improve
+                stability and user experience.</p>
+
+            <p style="margin-bottom: 30px;"><strong>All business-card images and enrichment results are stored on your
+                    device via iCloud (or equivalent) under your control.</strong></p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">3. How We Use Your Data</h2>
             <ul style="margin-bottom: 30px; padding-left: 20px;">
-                <li style="margin-bottom: 8px;"><strong>Account Management:</strong> To create, authenticate, and manage your user account.</li>
-                <li style="margin-bottom: 8px;"><strong>Scanning & Image Recognition Software:</strong> To process the images you upload and extract contact information.</li>
-                <li style="margin-bottom: 8px;"><strong>AI Enrichment:</strong> To perform web-search enrichment of extracted data via third-party AI services.</li>
-                <li style="margin-bottom: 8px;"><strong>Storage:</strong> To store your User Content on your personal iCloud (or equivalent) as you direct.</li>
-                <li style="margin-bottom: 8px;"><strong>Analytics & Improvement:</strong> To analyze anonymized usage patterns and improve the App's features and performance.</li>
-                <li style="margin-bottom: 8px;"><strong>Legal Compliance:</strong> To comply with applicable laws, respond to lawful requests, and protect our rights.</li>
+                <li style="margin-bottom: 8px;"><strong>Account Management:</strong> To create, authenticate, and manage
+                    your user account.</li>
+                <li style="margin-bottom: 8px;"><strong>Scanning & Image Recognition Software:</strong> To process the
+                    images you upload and extract contact information.</li>
+                <li style="margin-bottom: 8px;"><strong>AI Enrichment:</strong> To perform web-search enrichment of
+                    extracted data via third-party AI services.</li>
+                <li style="margin-bottom: 8px;"><strong>Storage:</strong> To store your User Content on your personal
+                    iCloud (or equivalent) as you direct.</li>
+                <li style="margin-bottom: 8px;"><strong>Analytics & Improvement:</strong> To analyze anonymized usage
+                    patterns and improve the App's features and performance.</li>
+                <li style="margin-bottom: 8px;"><strong>Legal Compliance:</strong> To comply with applicable laws,
+                    respond to lawful requests, and protect our rights.</li>
             </ul>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">4. Third-Party Services & Data Sharing</h2>
-            
-            <h3 style="font-size: 20px; margin: 20px 0 10px 0; color: #000;">Google Firebase (Authentication & Analytics)</h3>
-            <p style="margin-bottom: 10px;">We store your account credentials and analytics data in Firebase, which may replicate data across the U.S. and Europe under Google's Standard Contractual Clauses. Data at rest in Firebase is encrypted per Google's encryption-at-rest standards.</p>
-            <p style="margin-bottom: 15px;"><em>Retention:</em> Account data stored until you delete your account; analytics logs kept up to 24 months under Google's policy.</p>
-            
+
+            <h3 style="font-size: 20px; margin: 20px 0 10px 0; color: #000;">Google Firebase (Authentication &
+                Analytics)</h3>
+            <p style="margin-bottom: 10px;">We store your account credentials and analytics data in Firebase, which may
+                replicate data across the U.S. and Europe under Google's Standard Contractual Clauses. Data at rest in
+                Firebase is encrypted per Google's encryption-at-rest standards.</p>
+            <p style="margin-bottom: 15px;"><em>Retention:</em> Account data stored until you delete your account;
+                analytics logs kept up to 24 months under Google's policy.</p>
+
             <h3 style="font-size: 20px; margin: 20px 0 10px 0; color: #000;">Image Recognition Software Providers</h3>
-            <p style="margin-bottom: 10px;">Your business-card images and Image Recognition Software requests are sent to third-party Image Recognition Software services; they may retain those images and logs for up to 30 days.</p>
-            <p style="margin-bottom: 15px;"><em>Retention:</em> Images and Image Recognition Software requests retained by the provider for up to 30 days.</p>
-            
+            <p style="margin-bottom: 10px;">Your business-card images and Image Recognition Software requests are sent
+                to third-party Image Recognition Software services; they may retain those images and logs for up to 30
+                days.</p>
+            <p style="margin-bottom: 15px;"><em>Retention:</em> Images and Image Recognition Software requests retained
+                by the provider for up to 30 days.</p>
+
             <h3 style="font-size: 20px; margin: 20px 0 10px 0; color: #000;">OpenAI (ChatGPT or similar LLMs)</h3>
-            <p style="margin-bottom: 10px;">We send Image Recognition Software results to OpenAI's API for data enrichment. You acknowledge that OpenAI may retain API requests (including your business-card data) according to their data-usage and retention policies.</p>
-            <p style="margin-bottom: 15px;"><em>Retention:</em> API requests (including your data) may be retained by OpenAI in accordance with their data-usage and retention policies.</p>
-            
+            <p style="margin-bottom: 10px;">We send Image Recognition Software results to OpenAI's API for data
+                enrichment. You acknowledge that OpenAI may retain API requests (including your business-card data)
+                according to their data-usage and retention policies.</p>
+            <p style="margin-bottom: 15px;"><em>Retention:</em> API requests (including your data) may be retained by
+                OpenAI in accordance with their data-usage and retention policies.</p>
+
             <h3 style="font-size: 20px; margin: 20px 0 10px 0; color: #000;">iCloud (User Storage)</h3>
-            <p style="margin-bottom: 10px;">All processed images and enriched data are saved to your personal iCloud account under your control and deleted when you delete your data. This data is governed by Apple's iCloud terms.</p>
-            <p style="margin-bottom: 15px;"><em>Retention:</em> Data remains on your iCloud until you delete it, per Apple's policies.</p>
-            
-            <p style="margin-bottom: 10px;">We do not share your personal data with advertisers. We may disclose data only to:</p>
+            <p style="margin-bottom: 10px;">All processed images and enriched data are saved to your personal iCloud
+                account under your control and deleted when you delete your data. This data is governed by Apple's
+                iCloud terms.</p>
+            <p style="margin-bottom: 15px;"><em>Retention:</em> Data remains on your iCloud until you delete it, per
+                Apple's policies.</p>
+
+            <p style="margin-bottom: 10px;">We do not share your personal data with advertisers. We may disclose data
+                only to:</p>
             <ul style="margin-bottom: 15px; padding-left: 20px;">
                 <li style="margin-bottom: 5px;">Comply with legal obligations or lawful requests.</li>
                 <li style="margin-bottom: 5px;">Protect the rights, safety, or property of users or the Owner.</li>
             </ul>
-            
-            <p style="margin-bottom: 30px;"><strong>We do not use your data for advertising and we do not sell or rent your personal information to third parties.</strong></p>
+
+            <p style="margin-bottom: 30px;"><strong>We do not use your data for advertising and we do not sell or rent
+                    your personal information to third parties.</strong></p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">5. International Data Transfers</h2>
-            <p style="margin-bottom: 30px;">Some processing by our third-party providers (Firebase, OpenAI) occurs outside your country or the EEA. We rely on Standard Contractual Clauses and other legal safeguards to ensure these transfers comply with applicable data-protection laws. For transfers outside Switzerland/EEA, we use Standard Contractual Clauses or equivalent safeguards as required by law.</p>
+            <p style="margin-bottom: 30px;">Some processing by our third-party providers (Firebase, OpenAI) occurs
+                outside your country or the EEA. We rely on Standard Contractual Clauses and other legal safeguards to
+                ensure these transfers comply with applicable data-protection laws. For transfers outside
+                Switzerland/EEA, we use Standard Contractual Clauses or equivalent safeguards as required by law.</p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">6. Data Retention</h2>
             <ul style="margin-bottom: 30px; padding-left: 20px;">
-                <li style="margin-bottom: 8px;"><strong>Account Data:</strong> Retained until you delete your account.</li>
-                <li style="margin-bottom: 8px;"><strong>User Content:</strong> Stored in your iCloud until you remove it. We hold no additional copies.</li>
-                <li style="margin-bottom: 8px;"><strong>Image Recognition Software Logs:</strong> Retained by Image Recognition Software providers for up to 30 days.</li>
-                <li style="margin-bottom: 8px;"><strong>AI Enrichment Logs:</strong> Retained by AI providers per their policies.</li>
-                <li style="margin-bottom: 8px;"><strong>Analytics & Crash Reports:</strong> Retained for up to 24 months, then anonymized or deleted.</li>
-                <li style="margin-bottom: 8px;">We retain records of your consent and any data-access/erasure requests for a period of 2 years from the date the request is fulfilled, to demonstrate compliance.</li>
+                <li style="margin-bottom: 8px;"><strong>Account Data:</strong> Retained until you delete your account.
+                </li>
+                <li style="margin-bottom: 8px;"><strong>User Content:</strong> Stored in your iCloud until you remove
+                    it. We hold no additional copies.</li>
+                <li style="margin-bottom: 8px;"><strong>Image Recognition Software Logs:</strong> Retained by Image
+                    Recognition Software providers for up to 30 days.</li>
+                <li style="margin-bottom: 8px;"><strong>AI Enrichment Logs:</strong> Retained by AI providers per their
+                    policies.</li>
+                <li style="margin-bottom: 8px;"><strong>Analytics & Crash Reports:</strong> Retained for up to 24
+                    months, then anonymized or deleted.</li>
+                <li style="margin-bottom: 8px;">We retain records of your consent and any data-access/erasure requests
+                    for a period of 2 years from the date the request is fulfilled, to demonstrate compliance.</li>
             </ul>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">7. Your Rights</h2>
@@ -259,16 +306,25 @@
                 <li style="margin-bottom: 5px;">Request deletion of your personal data.</li>
                 <li style="margin-bottom: 5px;">Restrict or object to processing based on legitimate interests.</li>
                 <li style="margin-bottom: 5px;">Receive your data in a structured, machine-readable format.</li>
-                <li style="margin-bottom: 5px;">Withdraw any consent you've given (without affecting prior processing), such as the checkbox accepted at registration.</li>
+                <li style="margin-bottom: 5px;">Withdraw any consent you've given (without affecting prior processing),
+                    such as the checkbox accepted at registration.</li>
                 <li style="margin-bottom: 5px;">Lodge a complaint with your local data-protection authority.</li>
             </ul>
-            <p style="margin-bottom: 30px;">To exercise any right, please contact <a href="mailto:andrews.dev.studio@gmail.com" style="color: #0066cc;">andrews.dev.studio@gmail.com</a>. We will respond within the timeframe required by law.</p>
+            <p style="margin-bottom: 30px;">To exercise any right, please contact <a
+                    href="mailto:andrews.dev.studio@gmail.com" style="color: #0066cc;">andrews.dev.studio@gmail.com</a>.
+                We will respond within the timeframe required by law.</p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">8. Data Processing Agreement (DPA)</h2>
-            <p style="margin-bottom: 30px;">If you reside in the EEA or are subject to GDPR, you may request a Data Processing Agreement documenting our obligations under Article 28 GDPR. To obtain a DPA, email <a href="mailto:andrews.dev.studio@gmail.com" style="color: #0066cc;">andrews.dev.studio@gmail.com</a>.</p>
+            <p style="margin-bottom: 30px;">If you reside in the EEA or are subject to GDPR, you may request a Data
+                Processing Agreement documenting our obligations under Article 28 GDPR. To obtain a DPA, email <a
+                    href="mailto:andrews.dev.studio@gmail.com" style="color: #0066cc;">andrews.dev.studio@gmail.com</a>.
+            </p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">9. Children's Privacy</h2>
-            <p style="margin-bottom: 30px;">The App is intended for users aged 18 or older. We do not knowingly collect personal data from minors. If you believe a minor has provided us data, please contact us to request its removal. If you're a parent or guardian and believe we've collected data from a minor, please contact us to delete it.</p>
+            <p style="margin-bottom: 30px;">The App is intended for users aged 18 or older. We do not knowingly collect
+                personal data from minors. If you believe a minor has provided us data, please contact us to request its
+                removal. If you're a parent or guardian and believe we've collected data from a minor, please contact us
+                to delete it.</p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">10. Security Measures</h2>
             <p style="margin-bottom: 10px;">We implement standard security measures to protect your data, including:</p>
@@ -280,60 +336,89 @@
             </ul>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">11. Cookies & Analytics</h2>
-            <p style="margin-bottom: 30px;">We do not place cookies through the App itself. Analytics data is collected via Firebase without personal identifiers. This helps us monitor app performance and usage trends.</p>
+            <p style="margin-bottom: 30px;">We do not place cookies through the App itself. Analytics data is collected
+                via Firebase without personal identifiers. This helps us monitor app performance and usage trends.</p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">12. Export Compliance</h2>
-            <p style="margin-bottom: 30px;">You agree not to export or re-export any portion of the App or its output in violation of applicable export-control laws.</p>
+            <p style="margin-bottom: 30px;">You agree not to export or re-export any portion of the App or its output in
+                violation of applicable export-control laws.</p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">13. Data Breach Notification</h2>
-            <p style="margin-bottom: 30px;">If we become aware of a personal data breach affecting your information, we will notify you and any applicable supervisory authority without undue delay, and in any event within 72 hours, in accordance with legal requirements.</p>
+            <p style="margin-bottom: 30px;">If we become aware of a personal data breach affecting your information, we
+                will notify you and any applicable supervisory authority without undue delay, and in any event within 72
+                hours, in accordance with legal requirements.</p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">14. Changes to This Policy</h2>
-            <p style="margin-bottom: 30px;">We may update this Privacy Policy. For material changes, we'll notify you in-app or by email. Your continued use after the effective date signifies acceptance of changes.</p>
+            <p style="margin-bottom: 30px;">We may update this Privacy Policy. For material changes, we'll notify you
+                in-app or by email. Your continued use after the effective date signifies acceptance of changes.</p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">15. California Privacy Rights (CCPA)</h2>
-            <p style="margin-bottom: 10px;">If you are a California resident, you may have additional rights under the California Consumer Privacy Act (CCPA), including:</p>
+            <p style="margin-bottom: 10px;">If you are a California resident, you may have additional rights under the
+                California Consumer Privacy Act (CCPA), including:</p>
             <ul style="margin-bottom: 15px; padding-left: 20px;">
                 <li style="margin-bottom: 5px;">The right to know what personal data we collect, use, and share</li>
                 <li style="margin-bottom: 5px;">The right to request deletion of your personal data</li>
-                <li style="margin-bottom: 5px;">The right to opt out of the sale of personal data (we do <strong>not</strong> sell personal data)</li>
+                <li style="margin-bottom: 5px;">The right to opt out of the sale of personal data (we do
+                    <strong>not</strong> sell personal data)</li>
                 <li style="margin-bottom: 5px;">The right to non-discrimination for exercising your privacy rights</li>
             </ul>
-            <p style="margin-bottom: 30px;">To exercise your CCPA rights, please contact us at <a href="mailto:andrews.dev.studio@gmail.com" style="color: #0066cc;">andrews.dev.studio@gmail.com</a>. We will verify your request in accordance with applicable law.</p>
+            <p style="margin-bottom: 30px;">To exercise your CCPA rights, please contact us at <a
+                    href="mailto:andrews.dev.studio@gmail.com" style="color: #0066cc;">andrews.dev.studio@gmail.com</a>.
+                We will verify your request in accordance with applicable law.</p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">16. Legal Basis for Processing</h2>
             <ul style="margin-bottom: 15px; padding-left: 20px;">
                 <li style="margin-bottom: 5px;"><strong>Consent</strong> – for scanning and AI enrichment.</li>
-                <li style="margin-bottom: 5px;"><strong>Contract Performance</strong> – for authentication and account management.</li>
-                <li style="margin-bottom: 5px;"><strong>Legitimate Interests</strong> – for analytics and improving the App.</li>
+                <li style="margin-bottom: 5px;"><strong>Contract Performance</strong> – for authentication and account
+                    management.</li>
+                <li style="margin-bottom: 5px;"><strong>Legitimate Interests</strong> – for analytics and improving the
+                    App.</li>
             </ul>
-            <p style="margin-bottom: 30px;">Under both Swiss law and GDPR, our processing is based on your consent, contract performance, and legitimate interests.</p>
+            <p style="margin-bottom: 30px;">Under both Swiss law and GDPR, our processing is based on your consent,
+                contract performance, and legitimate interests.</p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">17. US Privacy Rights & Legal Basis</h2>
-            <p style="margin-bottom: 15px;">In addition to the rights and obligations described above, we comply with applicable U.S. federal and state privacy laws. In the United States, there is no single comprehensive data-protection statute; instead, various sectoral and state laws apply. We process personal data under the following legal bases to the extent required by such laws:</p>
-            
+            <p style="margin-bottom: 15px;">In addition to the rights and obligations described above, we comply with
+                applicable U.S. federal and state privacy laws. In the United States, there is no single comprehensive
+                data-protection statute; instead, various sectoral and state laws apply. We process personal data under
+                the following legal bases to the extent required by such laws:</p>
+
             <ul style="margin-bottom: 15px; padding-left: 20px;">
-                <li style="margin-bottom: 8px;"><strong>Consent.</strong> Where required (e.g. scanning business cards, AI enrichment), you have expressly opted in via the in-app checkbox.</li>
-                <li style="margin-bottom: 8px;"><strong>Contractual Necessity.</strong> Processing is necessary to perform the contract with you—namely, to provide authentication, scanning, enrichment, storage, and related App features.</li>
-                <li style="margin-bottom: 8px;"><strong>Legitimate Interests.</strong> We may process your data to improve app stability and security, analyze usage patterns, and develop new features—provided those interests do not override your privacy rights.</li>
+                <li style="margin-bottom: 8px;"><strong>Consent.</strong> Where required (e.g. scanning business cards,
+                    AI enrichment), you have expressly opted in via the in-app checkbox.</li>
+                <li style="margin-bottom: 8px;"><strong>Contractual Necessity.</strong> Processing is necessary to
+                    perform the contract with you—namely, to provide authentication, scanning, enrichment, storage, and
+                    related App features.</li>
+                <li style="margin-bottom: 8px;"><strong>Legitimate Interests.</strong> We may process your data to
+                    improve app stability and security, analyze usage patterns, and develop new features—provided those
+                    interests do not override your privacy rights.</li>
             </ul>
 
             <h3 style="font-size: 20px; margin: 20px 0 10px 0; color: #000;">Additional U.S. Protections</h3>
             <ul style="margin-bottom: 15px; padding-left: 20px;">
-                <li style="margin-bottom: 5px;"><strong>COPPA.</strong> We do not knowingly collect personal data from children under 13 and the App is not directed to them.</li>
-                <li style="margin-bottom: 5px;"><strong>CCPA/CPRA (California).</strong> California residents have specific rights (see Section 15).</li>
-                <li style="margin-bottom: 5px;"><strong>State Privacy Laws.</strong> Where other state laws apply (e.g., Virginia CDPA, Colorado CPA), we honor analogous rights such as access, correction, deletion, and objection.</li>
+                <li style="margin-bottom: 5px;"><strong>COPPA.</strong> We do not knowingly collect personal data from
+                    children under 13 and the App is not directed to them.</li>
+                <li style="margin-bottom: 5px;"><strong>CCPA/CPRA (California).</strong> California residents have
+                    specific rights (see Section 15).</li>
+                <li style="margin-bottom: 5px;"><strong>State Privacy Laws.</strong> Where other state laws apply (e.g.,
+                    Virginia CDPA, Colorado CPA), we honor analogous rights such as access, correction, deletion, and
+                    objection.</li>
             </ul>
-            
-            <p style="margin-bottom: 30px;">If you believe you are entitled to additional rights under U.S. law not otherwise described here, please contact us at <a href="mailto:andrews.dev.studio@gmail.com" style="color: #0066cc;">andrews.dev.studio@gmail.com</a>.</p>
+
+            <p style="margin-bottom: 30px;">If you believe you are entitled to additional rights under U.S. law not
+                otherwise described here, please contact us at <a href="mailto:andrews.dev.studio@gmail.com"
+                    style="color: #0066cc;">andrews.dev.studio@gmail.com</a>.</p>
 
             <h2 style="font-size: 24px; margin: 30px 0 15px 0; color: #000;">18. Jurisdiction & Contact</h2>
-            <p style="margin-bottom: 15px;">This Policy is governed by Swiss law (Federal Act on Data Protection). Any disputes regarding data privacy will be subject to the exclusive jurisdiction of the Swiss courts.</p>
-            
+            <p style="margin-bottom: 15px;">This Policy is governed by Swiss law (Federal Act on Data Protection). Any
+                disputes regarding data privacy will be subject to the exclusive jurisdiction of the Swiss courts.</p>
+
             <p style="margin-bottom: 15px;">For questions or requests regarding this Privacy Policy, please contact:</p>
-            <p style="margin-bottom: 30px;"><a href="mailto:andrews.dev.studio@gmail.com" style="color: #0066cc;">andrews.dev.studio@gmail.com</a></p>
-            
-            <p style="margin-top: 40px; text-align: center; font-style: italic;">Thank you for choosing Zoreli. We're committed to protecting your privacy and giving you control over your data.</p>
+            <p style="margin-bottom: 30px;"><a href="mailto:andrews.dev.studio@gmail.com"
+                    style="color: #0066cc;">andrews.dev.studio@gmail.com</a></p>
+
+            <p style="margin-top: 40px; text-align: center; font-style: italic;">Thank you for choosing Zoreli. We're
+                committed to protecting your privacy and giving you control over your data.</p>
         </div>
     </main>
 
@@ -341,7 +426,8 @@
         <div class="container">
             <div class="footer-left">
                 <div class="turnBusiness-links">
-                    <a href="https://apps.apple.com/app/business-card-scanner-zoreli/id6745472491?l=en-GB" target="_blank">
+                    <a href="https://apps.apple.com/app/business-card-scanner-zoreli/id6745472491?l=en-GB"
+                        target="_blank">
                         <svg class="apple-svg" width="39" height="48" viewBox="0 0 27 33" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -450,7 +536,8 @@
                 <h2>Contact Us</h2>
                 <button class="contact-modal-close" id="contactModalClose">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 6L6 18M6 6L18 18" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
                     </svg>
                 </button>
             </div>
@@ -458,9 +545,10 @@
                 <div class="contact-hero">
                     <div class="contact-icon">💬</div>
                     <h3>We're Here to Help!</h3>
-                    <p>Write to us about any questions, problems, or suggestions. We work for you and are always ready to assist.</p>
+                    <p>Write to us about any questions, problems, or suggestions. We work for you and are always ready
+                        to assist.</p>
                 </div>
-                
+
                 <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-item-icon">📧</div>
@@ -470,7 +558,7 @@
                             <a href="mailto:info@zoreli.ai" class="contact-email">info@zoreli.ai</a>
                         </div>
                     </div>
-                    
+
                     <div class="contact-item">
                         <div class="contact-item-icon">⚡</div>
                         <div class="contact-item-content">
@@ -478,7 +566,7 @@
                             <p>We typically respond within 24 hours</p>
                         </div>
                     </div>
-                    
+
                     <div class="contact-item">
                         <div class="contact-item-icon">🛠️</div>
                         <div class="contact-item-content">
@@ -486,7 +574,7 @@
                             <p>Having issues with the app? We'll help you resolve them</p>
                         </div>
                     </div>
-                    
+
                     <div class="contact-item">
                         <div class="contact-item-icon">💡</div>
                         <div class="contact-item-content">
@@ -495,14 +583,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="contact-footer">
                     <p>Thank you for choosing Zoreli. Your feedback helps us improve!</p>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 
