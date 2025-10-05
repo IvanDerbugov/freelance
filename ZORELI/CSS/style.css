@@ -47,13 +47,13 @@ header>.container {
     align-items: center;
     justify-content: center;
 }
-.links-anchor>div {
+.links-anchor>a {
     cursor: pointer;
     transition: all 0.3s ease;
     border-bottom: 4px solid transparent;
     padding: 27.5px 16px;
 }
-.links-anchor>div.active {
+.links-anchor>a.active {
     border-bottom: 4px solid #1E1E1E;
 }
 
@@ -2113,7 +2113,7 @@ footer .footer-left .turnBusiness-links a:last-child {
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     }
 
-    .links-anchor > div:hover {
+    .links-anchor > a:hover {
         border-bottom: 4px solid #1E1E1E;
         font-weight: 600;
     }
