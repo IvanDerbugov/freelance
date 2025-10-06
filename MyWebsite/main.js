@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portfolio Project Switcher ---
     const portfolioBtns = document.querySelectorAll('.portfolio-btn');
     const mebelmarketBlock = document.getElementById('project-mebelmarket');
+    const zoreliBlock = document.getElementById('project-zoreli');
     const rekordikaBlock = document.getElementById('project-rekordika');
     const nftBlock = document.getElementById('project-nft');
     const subsBlock = document.getElementById('project-subs');
@@ -145,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mebelmarketBlock.style.display = '';
     }
     
-    if (portfolioBtns.length && mebelmarketBlock && rekordikaBlock && nftBlock && subsBlock && weddingBlock && handymarkBlock) {
+    if (portfolioBtns.length && mebelmarketBlock && zoreliBlock && rekordikaBlock && nftBlock && subsBlock && weddingBlock && handymarkBlock) {
         portfolioBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 portfolioBtns.forEach(b => b.classList.remove('active'));
@@ -153,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Скрываем все проекты
                 mebelmarketBlock.style.display = 'none';
+                zoreliBlock.style.display = 'none';
                 rekordikaBlock.style.display = 'none';
                 nftBlock.style.display = 'none';
                 subsBlock.style.display = 'none';
@@ -170,6 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Показываем нужный проект
                 if (btn.dataset.project === 'mebelmarket') {
                     mebelmarketBlock.style.display = '';
+                } else if (btn.dataset.project === 'zoreli') {
+                    zoreliBlock.style.display = '';
                 } else if (btn.dataset.project === 'rekordika') {
                     rekordikaBlock.style.display = '';
                     // Запускаем видео РЕКОРДИКА

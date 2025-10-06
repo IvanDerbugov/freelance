@@ -666,6 +666,7 @@ html.light-theme .portfolio-intro {
     object-fit: cover;
     object-position: center;
 }
+
 @media (max-width: 900px) {
     .portfolio-item { 
         flex-direction: column; gap: 20px; 
@@ -675,6 +676,7 @@ html.light-theme .portfolio-intro {
         height: 305px;
         margin-right: 0;
     }
+    
 }
 
 .portfolio-image-container {
