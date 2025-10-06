@@ -1,0 +1,82 @@
+/* КРИТИЧЕСКИЕ СТИЛИ ДЛЯ STICKY ПОЗИЦИОНИРОВАНИЯ */
+/* Этот файл должен загружаться ПОСЛЕДНИМ */
+
+.test-sticky,
+.tableIvan .header-tableIvan,
+.tableIvan .header-tableIvan > div,
+.day-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 99999 !important;
+    background: red !important;
+    color: white !important;
+    padding: 10px !important;
+}
+
+/* Принудительно отключаем все конфликтующие стили */
+*:not(.test-sticky):not(.header-tableIvan):not(.header-tableIvan > div):not(.day-header) {
+    position: static !important;
+}
+
+/* Обеспечиваем правильную работу sticky для родительских контейнеров */
+html, body {
+    overflow: visible !important;
+}
+
+.container, .container-fluid, .right_col {
+    overflow: visible !important;
+}
+
+/* ИСПРАВЛЯЕМ ПРОБЛЕМНЫЙ КОНТЕЙНЕР */
+div[style*="overflow-x: auto"] {
+    overflow: visible !important;
+}
+
+/* Принудительно убираем overflow на всех родителях */
+.test-sticky,
+.test-sticky * {
+    overflow: visible !important;
+}
+
+/* АГРЕССИВНОЕ ИСПРАВЛЕНИЕ STICKY - убираем overflow со ВСЕХ элементов */
+* {
+    overflow: visible !important;
+}
+
+/* Специально для контейнеров таблицы */
+.tableIvan,
+.tableIvan *,
+div[class*="table"],
+div[class*="grid"] {
+    overflow: visible !important;
+}
+
+
+/* ИСПРАВЛЯЕМ ЗАГОЛОВОК ТАБЛИЦЫ - ВОЗВРАЩАЕМ STICKY */
+.tableIvan .header-tableIvan {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 99998 !important;
+    background: #db5d5d !important;
+    color: white !important;
+    padding: 10px !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+}
+
+/* ИСПРАВЛЯЕМ ДЕНЕЖНУЮ ШАПКУ ТАБЛИЦЫ - ПЕРЕЗАПИСЫВАЕМ FIXED НА STICKY */
+.day-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 99999 !important;
+    background-color: #fff !important;
+    box-shadow: 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.tableIvan .header-tableIvan > div {
+    flex: 1 !important;
+    min-width: 100px !important;
+    text-align: center !important;
+    border: 1px solid white !important;
+    padding: 5px !important;
+}

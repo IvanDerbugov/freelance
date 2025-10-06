@@ -1,0 +1,19 @@
+td {
+    border: 1px solid #000;
+    min-width: 100px;
+    height: 100px;
+    font-size: 30px;
+}
+tr.header-table {
+    background-color: #6b4848;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+table {
+    max-width: 500px;
+    max-height: 500px;
+    position: relative;
+    margin-top: 100px;
+}
