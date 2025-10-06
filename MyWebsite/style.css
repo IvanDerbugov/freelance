@@ -631,12 +631,12 @@ html.light-theme .portfolio-intro {
     justify-content: center;
 }
 .portfolio-btn {
-    padding: 10px 30px;
+    padding: 10px 20px;
     border-radius: 8px;
     background: #079e7b;
     color: #fff;
     border: none;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: background 0.2s;
 }
@@ -977,4 +977,8 @@ html.light-theme .discount-modal-content {
 @keyframes spin {
   0% { transform: rotate(0deg);}
   100% { transform: rotate(360deg);}
+}
+
+img[src="img/starvin.png"] {
+    width: auto;
 }
