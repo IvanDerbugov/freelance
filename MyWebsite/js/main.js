@@ -199,44 +199,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Discount Form Submission ---
+    // --- Discount Form Submission (Telegram) ---
     const discountForm = document.getElementById('discountForm');
     const discountSuccess = document.getElementById('discountSuccess');
     const discountLoading = document.getElementById('discountLoading');
     const discountSubmitBtn = document.getElementById('discountSubmitBtn');
 
     if (discountForm) {
-        discountForm.addEventListener('submit', function (e) {
+        discountForm.addEventListener('submit', async function (e) {
             e.preventDefault();
             discountSuccess.style.display = 'none';
             discountLoading.style.display = 'block';
             discountSubmitBtn.disabled = true;
 
+            // Получаем данные из формы
             const formData = new FormData(discountForm);
+            const project = formData.get('project');
+            const email = formData.get('email');
+            const deadline = formData.get('deadline');
+            const name = 'Заявка с портфолио'; // Можно добавить поле имени, если нужно
 
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            })
-            .then(res => res.json())
-            .then(data => {
-                discountLoading.style.display = 'none';
-                discountSubmitBtn.disabled = false;
-                if (data.success) {
-                    discountForm.style.display = 'none';
-                    discountSuccess.style.display = 'block';
-                    discountForm.reset();
-                } else {
-                    discountSuccess.textContent = data.message || 'Ошибка отправки!';
-                    discountSuccess.style.display = 'block';
-                }
-            })
-            .catch(() => {
-                discountLoading.style.display = 'none';
-                discountSubmitBtn.disabled = false;
-                discountSuccess.textContent = 'Ошибка соединения!';
+            // Отправляем в Telegram через нашу функцию
+            const result = await window.FormHandler.sendToTelegram(name, email, project, deadline);
+
+            discountLoading.style.display = 'none';
+            discountSubmitBtn.disabled = false;
+
+            if (result.success) {
+                discountForm.style.display = 'none';
+                discountSuccess.textContent = 'Спасибо! Ваша заявка отправлена. Я свяжусь с вами в течение дня и предложу скидку!';
                 discountSuccess.style.display = 'block';
-            });
+                discountForm.reset();
+            } else {
+                discountSuccess.textContent = result.message || 'Ошибка отправки!';
+                discountSuccess.style.display = 'block';
+            }
         });
     }
 }); 

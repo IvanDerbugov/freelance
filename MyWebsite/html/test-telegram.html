@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест Telegram Integration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .test-section {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .test-section h2 {
+            font-size: 18px;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            background: white;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .info-box code {
+            background: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            word-break: break-all;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+
+        .btn-info {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .result.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .result.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .result.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist li:before {
+            content: "☐ ";
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        .checklist li.checked:before {
+            content: "✓ ";
+            color: #28a745;
+        }
+
+        .links {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .links a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 600;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Тест Telegram Integration</h1>
+        <p class="subtitle">Проверка работоспособности системы отправки заявок</p>
+
+        <div class="test-section">
+            <h2>📋 Чеклист перед тестированием</h2>
+            <ul class="checklist">
+                <li id="check1">Открыт @userinfobot и получен Chat ID</li>
+                <li id="check2">Открыт @derbugov_bot и нажата кнопка START</li>
+                <li id="check3">Chat ID заменен в send-form.js</li>
+                <li id="check4">Страница перезагружена после изменений</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h2>ℹ️ Информация о конфигурации</h2>
+            <div class="info-box">
+                <strong>Бот:</strong>
+                <code id="botInfo">Loading...</code>
+            </div>
+            <div class="info-box">
+                <strong>Token:</strong>
+                <code id="tokenInfo">Loading...</code>
+            </div>
+            <div class="info-box">
+                <strong>Chat ID:</strong>
+                <code id="chatIdInfo">Loading...</code>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🚀 Тесты</h2>
+            
+            <button class="btn-info" onclick="testBotConnection()">
+                1️⃣ Проверить доступность бота
+            </button>
+            <div id="result1" class="result"></div>
+
+            <button class="btn-primary" onclick="sendTestMessage()">
+                2️⃣ Отправить тестовое сообщение
+            </button>
+            <div id="result2" class="result"></div>
+
+            <button class="btn-success" onclick="testFullForm()">
+                3️⃣ Тест полной формы (как с сайта)
+            </button>
+            <div id="result3" class="result"></div>
+        </div>
+
+        <div class="links">
+            <a href="../index.html">← Вернуться на сайт</a> |
+            <a href="admin-logs.html">📊 Админ-панель</a> |
+            <a href="../docs/README-TELEGRAM-INTEGRATION.md" target="_blank">📖 Документация</a>
+        </div>
+    </div>
+
+    <script src="../js/send-form.js"></script>
+    <script>
+        // Загружаем информацию о конфигурации
+        window.addEventListener('DOMContentLoaded', () => {
+            // Получаем значения из глобальных переменных
+            const botUsername = 'derbugov_bot';
+            const token = window.TELEGRAM_BOT_TOKEN || 'Не найден';
+            const chatId = window.TELEGRAM_CHAT_ID || 'Не найден';
+
+            document.getElementById('botInfo').textContent = `@${botUsername}`;
+            document.getElementById('tokenInfo').textContent = token;
+            document.getElementById('chatIdInfo').textContent = chatId;
+
+            // Добавляем возможность отметить пункты чеклиста
+            document.querySelectorAll('.checklist li').forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('checked');
+                });
+            });
+        });
+
+        // Тест 1: Проверка доступности бота
+        async function testBotConnection() {
+            const resultDiv = document.getElementById('result1');
+            const btn = event.target;
+            
+            btn.disabled = true;
+            resultDiv.className = 'result';
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = '⏳ Проверка соединения...';
+
+            try {
+                const response = await fetch(
+                    `https://api.telegram.org/bot${window.TELEGRAM_BOT_TOKEN}/getMe`
+                );
+                const data = await response.json();
+
+                if (data.ok) {
+                    resultDiv.className = 'result success show';
+                    resultDiv.innerHTML = `
+                        <strong>✅ Бот найден и работает!</strong><br>
+                        Имя: ${data.result.first_name}<br>
+                        Username: @${data.result.username}<br>
+                        ID: ${data.result.id}
+                    `;
+                } else {
+                    resultDiv.className = 'result error show';
+                    resultDiv.textContent = `❌ Ошибка: ${data.description}`;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error show';
+                resultDiv.textContent = `❌ Ошибка соединения: ${error.message}`;
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        // Тест 2: Отправка тестового сообщения
+        async function sendTestMessage() {
+            const resultDiv = document.getElementById('result2');
+            const btn = event.target;
+            
+            btn.disabled = true;
+            resultDiv.className = 'result';
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = '⏳ Отправка тестового сообщения...';
+
+            const testMessage = `🧪 *ТЕСТОВОЕ СООБЩЕНИЕ*
+
+Это автоматическое тестовое сообщение из test-telegram.html
+
+✅ Если вы видите это сообщение, значит интеграция работает правильно!
+
+📅 Время теста: ${new Date().toLocaleString('ru-RU')}
+🌐 User Agent: ${navigator.userAgent.substring(0, 50)}...`;
+
+            try {
+                const response = await fetch(
+                    `https://api.telegram.org/bot${window.TELEGRAM_BOT_TOKEN}/sendMessage`,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: window.TELEGRAM_CHAT_ID,
+                            text: testMessage,
+                            parse_mode: 'Markdown'
+                        })
+                    }
+                );
+
+                const data = await response.json();
+
+                if (data.ok) {
+                    resultDiv.className = 'result success show';
+                    resultDiv.innerHTML = `
+                        <strong>✅ Сообщение успешно отправлено!</strong><br>
+                        Проверьте ваш Telegram (${window.TELEGRAM_CHAT_ID})<br>
+                        Message ID: ${data.result.message_id}
+                    `;
+                } else {
+                    resultDiv.className = 'result error show';
+                    resultDiv.innerHTML = `
+                        <strong>❌ Ошибка отправки:</strong><br>
+                        ${data.description}<br><br>
+                        <strong>Возможные причины:</strong><br>
+                        • Вы не нажали START у бота @derbugov_bot<br>
+                        • Неправильный Chat ID<br>
+                        • Бот заблокирован
+                    `;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error show';
+                resultDiv.textContent = `❌ Ошибка: ${error.message}`;
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        // Тест 3: Полная форма
+        async function testFullForm() {
+            const resultDiv = document.getElementById('result3');
+            const btn = event.target;
+            
+            btn.disabled = true;
+            resultDiv.className = 'result';
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = '⏳ Отправка тестовой заявки...';
+
+            const testData = {
+                name: 'Тестовая заявка',
+                email: 'test@example.com',
+                project: 'Тестовый проект - проверка работы формы',
+                deadline: '1 день (тестовый срок)'
+            };
+
+            try {
+                const result = await window.FormHandler.sendToTelegram(
+                    testData.name,
+                    testData.email,
+                    testData.project,
+                    testData.deadline
+                );
+
+                if (result.success) {
+                    resultDiv.className = 'result success show';
+                    resultDiv.innerHTML = `
+                        <strong>✅ Тестовая заявка успешно отправлена!</strong><br>
+                        ${result.message}<br><br>
+                        <strong>Данные отправки:</strong><br>
+                        Email: ${testData.email}<br>
+                        Проект: ${testData.project}<br>
+                        Сроки: ${testData.deadline}<br><br>
+                        💡 Проверьте логи в <a href="admin-logs.html" target="_blank">админ-панели</a>
+                    `;
+                } else {
+                    resultDiv.className = 'result error show';
+                    resultDiv.innerHTML = `
+                        <strong>❌ Ошибка:</strong><br>
+                        ${result.message}
+                    `;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error show';
+                resultDiv.textContent = `❌ Ошибка: ${error.message}`;
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        // Читаем константы из send-form.js (они уже загружены)
+        // Если константы не найдены, используем значения по умолчанию
+        if (typeof TELEGRAM_BOT_TOKEN !== 'undefined') {
+            window.TELEGRAM_BOT_TOKEN = TELEGRAM_BOT_TOKEN;
+        } else {
+            window.TELEGRAM_BOT_TOKEN = '8439270981:AAFMnuowPXV9SJuu6ydkYdG2hHW4_GT2ahI';
+        }
+        
+        if (typeof TELEGRAM_CHAT_ID !== 'undefined') {
+            window.TELEGRAM_CHAT_ID = TELEGRAM_CHAT_ID;
+        } else {
+            window.TELEGRAM_CHAT_ID = '955498826'; // Ваш Chat ID
+        }
+    </script>
+</body>
+</html>
+
