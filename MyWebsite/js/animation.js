@@ -1,9 +1,10 @@
 const canvas = document.getElementById('code-animation');
 const ctx = canvas.getContext('2d');
 
-// Устанавливаем размер canvas равным его атрибутам width/height
-canvas.width = 400;
-canvas.height = 300;
+// Увеличиваем размер canvas для создания буферной зоны (отступов)
+const padding = 50; // Отступы со всех сторон
+canvas.width = 400 + padding * 2;
+canvas.height = 300 + padding * 2;
 
 const codeSymbols = ['</>', '{}', '=>', '()', '[]', '&&', '||', 'px'];
 const colorPalette = [
@@ -23,10 +24,10 @@ let pulseDirection = 1;
 function animationLoop() {
     switch (animationState) {
         case 'chaos':
-            // Через 4 секунды хаоса начинаем сборку
+            // Через 2.5 секунды хаоса/вихря начинаем сборку
             setTimeout(() => {
                 animationState = 'assembling';
-            }, 4000);
+            }, 2500);
             break;
         case 'pulsing':
             // Через 3 секунды пульсации начинаем разлет
@@ -57,7 +58,7 @@ function getTextCoordinates() {
     tempCanvas.width = canvas.width;
     tempCanvas.height = canvas.height;
 
-    // Стилизуем наш текст
+    // Стилизуем наш текст (с учетом padding текст остается в центре)
     tempCtx.fillStyle = '#fff';
     tempCtx.font = 'bold 135px "Trebuchet MS", sans-serif'; // Увеличенный шрифт
     tempCtx.textAlign = 'center';
@@ -97,18 +98,31 @@ targetCoordinates = shuffle(getTextCoordinates());
 
 // Класс для создания частиц
 class Particle {
-    constructor(target) {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+    constructor(target, index, total) {
+        // Инициализируем частицы в виде спирали в центре (для красивого начала)
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const angle = (index / total) * Math.PI * 8; // Спираль на 4 оборота
+        const radius = (index / total) * 30; // Радиус спирали от 0 до 30
+        
+        this.x = centerX + Math.cos(angle) * radius;
+        this.y = centerY + Math.sin(angle) * radius;
+        
         this.size = 12;
         this.text = codeSymbols[Math.floor(Math.random() * codeSymbols.length)];
         this.color = colorPalette[Math.floor(Math.random() * colorPalette.length)];
-        this.vx = (Math.random() - 0.5) * 1.5;
-        this.vy = (Math.random() - 0.5) * 1.5;
+        
+        // Даем начальную скорость "взрыва" от центра + вращение
+        const explosionAngle = angle + Math.random() * 0.5;
+        const explosionSpeed = 2 + Math.random() * 3;
+        this.vx = Math.cos(explosionAngle) * explosionSpeed;
+        this.vy = Math.sin(explosionAngle) * explosionSpeed;
+        
         this.targetX = target.x;
         this.targetY = target.y;
         this.disperseTargetX = 0; // Новые цели для разлета
         this.disperseTargetY = 0;
+        this.angle = angle; // Сохраняем угол для вращения
     }
 
     update() {
@@ -139,9 +153,34 @@ class Particle {
                 break;
             case 'chaos':
             default:
-                // Отскок от стен
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                // Вихревое движение с постепенным замедлением
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                
+                // Добавляем слабую силу к центру (чтобы не улетали далеко)
+                const dx = centerX - this.x;
+                const dy = centerY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance > 150) {
+                    this.vx += (dx / distance) * 0.05;
+                    this.vy += (dy / distance) * 0.05;
+                }
+                
+                // Добавляем вращательное движение (вихрь)
+                const rotationForce = 0.02;
+                this.vx += -dy * rotationForce / 100;
+                this.vy += dx * rotationForce / 100;
+                
+                // Постепенное замедление (трение)
+                this.vx *= 0.985;
+                this.vy *= 0.985;
+                
+                // Отскок от стен (мягкий)
+                if (this.x < padding) this.vx += 0.1;
+                if (this.x > canvas.width - padding) this.vx -= 0.1;
+                if (this.y < padding) this.vy += 0.1;
+                if (this.y > canvas.height - padding) this.vy -= 0.1;
                 break;
         }
 
@@ -170,8 +209,9 @@ class Particle {
 // Создаем частицы
 function init() {
     // Создаем столько частиц, сколько у нас есть целевых точек
-    for (let i = 0; i < targetCoordinates.length; i++) {
-        particles.push(new Particle(targetCoordinates[i]));
+    const total = targetCoordinates.length;
+    for (let i = 0; i < total; i++) {
+        particles.push(new Particle(targetCoordinates[i], i, total));
     }
 }
 
@@ -196,3 +236,21 @@ function animate() {
 init();
 animate();
 animationLoop(); // Запускаем первый цикл 
+
+// Функция для перезапуска анимации (вызывается при переходе на главную)
+window.restartCanvasAnimation = function() {
+    // Останавливаем текущий цикл (если он запущен)
+    animationState = 'chaos';
+    
+    // Очищаем старые частицы
+    particles = [];
+    
+    // Создаем новые частицы (они будут в центре в виде спирали)
+    const total = targetCoordinates.length;
+    for (let i = 0; i < total; i++) {
+        particles.push(new Particle(targetCoordinates[i], i, total));
+    }
+    
+    // Перезапускаем цикл анимации
+    animationLoop();
+};

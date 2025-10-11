@@ -104,21 +104,98 @@
         padding: 0 20px;
     }
 
-    /* Адаптация навигации */
+    /* === БУРГЕР-МЕНЮ === */
+    .burger-menu {
+        display: flex; /* Показываем бургер на мобильных */
+        order: 1;
+    }
+
     .top {
-        flex-direction: column-reverse;
-        gap: 25px;
-    }
-
-    .top > div:first-child {
-        display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
+        gap: 0;
     }
 
-    .top .LinkItem {
+    /* Навигация скрыта по умолчанию на мобильных */
+    .navigation {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Скрыта за экраном справа */
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 80px 30px 30px;
+        gap: 0;
+        z-index: 1000;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+    }
+
+    html.light-theme .navigation {
+        background: linear-gradient(135deg, #f7fafc 0%, #e2e8f0 100%);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Открытое состояние меню */
+    .navigation.open {
+        right: 0;
+    }
+
+    /* Оверлей для затемнения фона */
+    .menu-overlay {
+        display: block; /* Показываем оверлей на мобильных */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Стили для кнопок навигации в бургер-меню */
+    .navigation .LinkItem {
+        width: 100%;
+        text-align: left;
         margin-right: 0;
+        margin-bottom: 0;
+        padding: 15px 20px;
+        font-size: 1.3rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .navigation .LinkItem:hover,
+    .navigation .LinkItem.activeLink {
+        background: rgba(7, 158, 123, 0.1);
+        transform: translateX(10px);
+    }
+
+    html.light-theme .navigation .LinkItem:hover,
+    html.light-theme .navigation .LinkItem.activeLink {
+        background: rgba(7, 158, 123, 0.15);
+    }
+
+    /* Увеличиваем подчёркивание для активного пункта в бургер-меню */
+    .navigation .activeLink::after {
+        content: none;
+    }
+
+    /* Переключатель темы */
+    .top > div[title="Переключить тему"] {
+        order: 2;
+        margin-left: auto;
     }
 
     /* Адаптация главной страницы */
@@ -190,12 +267,7 @@
         margin-bottom: 30px;
     }
 
-    /* Перестраиваем навигацию в одну колонку */
-    .top > div:first-child {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
+    /* Навигация уже в бургер-меню, дополнительная настройка не нужна */
 
     /* Делаем шрифт навыков меньше */
     .skill-name {

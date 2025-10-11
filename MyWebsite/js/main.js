@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const clickSound = document.getElementById('click-sound');
 
+    if (clickSound) {
+        clickSound.volume = 0.25; 
+    }
+
     // Функция для проигрывания звука
     function playClickSound() {
         if (clickSound) {
@@ -10,8 +14,51 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Находим все ссылки в навигации
+    // === БУРГЕР-МЕНЮ ===
+    const burgerMenu = document.getElementById('burger-menu');
+    const navigation = document.querySelector('.navigation');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    // Функция открытия/закрытия меню
+    function toggleMenu() {
+        burgerMenu.classList.toggle('active');
+        navigation.classList.toggle('open');
+        menuOverlay.classList.toggle('active');
+        // Блокируем прокрутку body при открытом меню
+        document.body.style.overflow = navigation.classList.contains('open') ? 'hidden' : '';
+    }
+
+    // Клик по бургеру
+    if (burgerMenu) {
+        burgerMenu.addEventListener('click', toggleMenu);
+    }
+
+    // Клик по оверлею закрывает меню
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', toggleMenu);
+    }
+
+    // Закрываем меню при клике на пункт навигации (на мобильных)
     const navLinks = document.querySelectorAll('.LinkItem');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768 && navigation.classList.contains('open')) {
+                toggleMenu();
+            }
+        });
+    });
+
+    // Закрываем меню при изменении размера окна (если открыто на мобильном и перешли на десктоп)
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navigation.classList.contains('open')) {
+            burgerMenu.classList.remove('active');
+            navigation.classList.remove('open');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // === НАВИГАЦИЯ ПО СТРАНИЦАМ ===
     const pages = document.querySelectorAll('.page-content');
 
     // Функция-обработчик клика
@@ -35,6 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 page.classList.add('hidden');
             }
         });
+
+        // Перезапускаем анимацию canvas при переходе на главную
+        if (targetPageId === 'home-page' && typeof window.restartCanvasAnimation === 'function') {
+            window.restartCanvasAnimation();
+        }
     }
 
     // Добавляем слушатель клика на каждую ссылку

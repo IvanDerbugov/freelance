@@ -28,6 +28,9 @@
 
     </div>
 
+    <!-- Оверлей для затемнения при открытии бургер-меню -->
+    <div class="menu-overlay" id="menu-overlay"></div>
+
     <header>
         <div class="container">
             <h1>
@@ -41,7 +44,14 @@
     <main class="container">
         <div class="container">
             <div class="top">
-                <div>
+                <!-- Бургер-кнопка (видна только на мобильных) -->
+                <button class="burger-menu" id="burger-menu" aria-label="Открыть меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav class="navigation">
                     <button data-target="home-page" class="LinkItem activeLink">
                         Главная
                     </button>
@@ -57,7 +67,7 @@
                     <button data-target="contact-page" class="LinkItem">
                         Контакты
                     </button>
-                </div>
+                </nav>
                 <div title="Переключить тему">
                     <input type="checkbox" id="theme-toggle" class="theme-switch-input" checked>
                     <label for="theme-toggle" class="theme-switch-label">
@@ -144,6 +154,11 @@
                                 <h4>Оптимизация</h4>
                                 <p>Сделаю сайт быстрым и легким для максимального комфорта пользователей.</p>
                             </div>
+                            <div class="skill-card">
+                                <!-- Иконка -->
+                                <h4>Аналитика и реклама</h4>
+                                <p>Настрою Яндекс.Метрику, интегрирую пиксели Яндекс.Директ и Google Ads для отслеживания конверсий.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -154,6 +169,176 @@
                 <h2>Мои навыки</h2>
                 <div class="skills-list">
 
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Docker & Docker Compose</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Настройка контейнеризованных окружений для разработки и production. Работа с Docker Compose для многоконтейнерных приложений (nginx, Laravel, Redis, MySQL).</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Laravel / PHP</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Опыт работы с Laravel-проектами: интеграция фронтенда, работа с Blade-шаблонами, понимание архитектуры MVC и роутинга.</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">SSH & Удаленная разработка</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Подключение к удаленным серверам по SSH, работа с production окружением, развертывание и отладка приложений на Linux.</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Яндекс.Метрика & Аналитика</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Настройка и интеграция Яндекс.Метрики: установка счетчиков, настройка целей, webvisor, карты кликов, e-commerce. Анализ поведения пользователей.</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Работа с директологами</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Интеграция рекламных систем: Яндекс.Директ, Google Ads. Настройка пикселей отслеживания, коллбэков, передача событий для контекстной рекламы.</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">API Integration</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Интеграция внешних API: Telegram Bot API, Web3Forms, Яндекс.Метрика. Работа с REST API, обработка JSON, AJAX-запросы.</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Работа с БД (MySQL, Redis)</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Понимание принципов работы с базами данных: SQL-запросы, оптимизация, работа с Redis для кеширования данных.</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Хостинг, Домены & DNS</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Настройка хостинга и доменов: перенос сайтов, настройка DNS-записей, подключение доменов к хостингу, конфигурация .htaccess (редиректы, SEO).</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">jQuery & JavaScript библиотеки</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Работа с jQuery и популярными библиотеками: Slick Carousel, Animate.css. Создание интерактивных слайдеров, галерей и анимаций.</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Bootstrap & CSS Frameworks</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Опыт работы с CSS-фреймворками: Bootstrap 5, Materialize CSS. Кастомизация компонентов, адаптивная сетка, быстрая разработка UI.</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">PHP & Backend Integration</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Создание серверной логики на PHP: обработка форм, отправка email, интеграция с внешними API, работа с сессиями и cookies.</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Canvas API & Web Animations</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Создание интерактивных canvas-анимаций и визуальных эффектов. Работа с частицами, динамическими визуализациями и игровой графикой.</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">reCAPTCHA & Защита от ботов</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Интеграция Google reCAPTCHA v3 для защиты форм от спама и ботов. Невидимая капча, валидация на стороне сервера.</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Mobile-First подход</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Разработка сначала для мобильных устройств, затем масштабирование на десктоп. Оптимизация для touch-интерфейсов и малых экранов.</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">SVG & Векторная графика</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Работа с SVG-иконками и анимациями. Оптимизация векторных изображений, создание интерактивных иконок, CSS/JS анимации SVG.</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Командная разработка</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Опыт работы в команде с бэкендерами и дизайнерами. Code review, работа с задачами, соблюдение дедлайнов, коммуникация в проектах.</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <div class="skill-name">Telegram Bot API</div>
+                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                height="24">
+                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                            </svg>
+                        </div>
+                        <div class="skill-explanation">Создание Telegram-ботов для уведомлений о заявках, настройка webhook, работа с Telegram Bot API, интеграция с формами обратной связи.</div>
+                    </div>
                     <div class="skill-item">
                         <div class="skill-header">
                             <div class="skill-name">Адаптивная верстка</div>
@@ -282,7 +467,7 @@
             <!-- Секция "Портфолио" (по умолчанию скрыта) -->
             <div id="portfolio-page" class="page-content hidden">
                 <h2>Портфолио</h2>
-                <p class="portfolio-intro">За время обучения и практики мной было реализовано множество учебных и пет-проектов. Здесь представлены мои лучшие работы.</p>
+                <p class="portfolio-intro">За время обучения и практики мной было реализовано множество коммерческих и пет-проектов. Здесь представлены мои лучшие работы.</p>
 
                 <div class="portfolio-switcher">
                   <button class="portfolio-btn active" data-project="mebelmarket">MebelMarket</button>
@@ -368,11 +553,13 @@
                     <img src="img/starvin.png" alt="Starvin - Система подбора автозапчастей">
                     <div class="portfolio-details">
                       <h3>🔧 Starvin — Система подбора автозапчастей</h3>
-                      <p>Комплексная платформа для автоматизированного подбора OEM-деталей и узлов автомобиля. Система предназначена для автомагазинов, СТО и автомалярных мастерских, значительно сокращая время поиска запчастей через VIN-код или название детали.</p>
+                      <p>Комплексная платформа для автоматизированного подбора OEM-деталей и узлов автомобиля на Laravel. Система предназначена для автомагазинов, СТО и автомалярных мастерских, значительно сокращая время поиска запчастей через VIN-код или название детали.</p>
                       <h4>Моя роль в проекте:</h4>
-                      <p>Работал в команде с бэкендером и дизайнером, отвечая за доработку и оптимизацию фронтенда существующего проекта. Основная задача — исправление ошибок, улучшение UX и адаптация интерфейса под различные устройства.</p>
+                      <p>Работал в команде с бэкендером и дизайнером, отвечая за доработку и оптимизацию фронтенда существующего проекта. Подключался по SSH к production серверу, поднимал локальное окружение через Docker Compose (nginx, Laravel app, Redis). Основная задача — исправление ошибок, улучшение UX и адаптация интерфейса под различные устройства.</p>
                       <h4>Ключевые доработки:</h4>
                       <ul class="features-list">
+                        <li>Удаленная разработка — подключение по SSH, работа с production окружением</li>
+                        <li>Локальная разработка — настройка Docker окружения (nginx, Laravel, Redis, MySQL)</li>
                         <li>Исправление багов с модальными окнами — устранение проблем с закрытием и отображением</li>
                         <li>Оптимизация загрузки данных — скрытие кнопок при загрузке, показ после получения данных</li>
                         <li>Адаптивный дизайн — корректировка позиционирования и отступов для мобильных устройств</li>
@@ -381,19 +568,24 @@
                         <li>Визуальные улучшения — фиксированный размер спиннера, полупрозрачная анимация загрузки</li>
                         <li>Оптимизация производительности — сортировка после загрузки вместо каждых 5 секунд</li>
                         <li>Мобильная версия — адаптация таблиц и устранение дублирующих элементов</li>
-                        <li>Исправление багов — скрытие дублирующих фотографий и описаний товаров</li>
+                        <li>Работа с legacy кодом — рефакторинг и улучшение существующей кодовой базы</li>
                       </ul>
                       <h4>Технологии:</h4>
                       <div class="tech-stack">
+                        <span class="tech-tag">Docker & Docker Compose</span>
+                        <span class="tech-tag">Laravel</span>
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">SSH</span>
+                        <span class="tech-tag">Linux</span>
                         <span class="tech-tag">HTML5</span>
                         <span class="tech-tag">CSS3</span>
                         <span class="tech-tag">JavaScript ES6+</span>
-                        <span class="tech-tag">Responsive Design</span>
-                        <span class="tech-tag">Modal Windows</span>
                         <span class="tech-tag">AJAX</span>
-                        <span class="tech-tag">Mobile Optimization</span>
+                        <span class="tech-tag">Responsive Design</span>
+                        <span class="tech-tag">Team Development</span>
                         <span class="tech-tag">Bug Fixing</span>
-                        <span class="tech-tag">Legacy Code</span>
                       </div>
                       <a href="https://starvin.ru" target="_blank" class="portfolio-button">Посмотреть проект</a>
                     </div>
@@ -680,6 +872,7 @@
 
     <audio id="click-sound" src="img/perehod.mp3" preload="auto"></audio>
 
+    <script src="js/background-animation.js"></script>
     <script src="js/send-form.js"></script>
     <script src="js/animation.js"></script>
     <script src="js/main.js" defer></script>
