@@ -836,8 +836,8 @@ html.light-theme .portfolio-btn.active {
         flex-direction: column; gap: 20px; 
     }
     .portfolio-item video, .portfolio-item img {
-        width: 100%;
-        height: 305px;
+        width: auto;
+        height: auto;
         margin-right: 0;
     }
     
@@ -1145,4 +1145,174 @@ html.light-theme .discount-modal-content {
 
 img[src="img/starvin.png"] {
     width: auto;
+}
+
+/* ========================
+   Стили для секции Отзывы
+   ======================== */
+.reviews-intro {
+    color: #6b7280;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.review-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(7, 158, 123, 0.2);
+    border-color: rgba(7, 158, 123, 0.3);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.review-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #079e7b, #08b992);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.author-info h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.review-date {
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+.review-rating {
+    font-size: 1rem;
+}
+
+.review-text {
+    line-height: 1.7;
+    color: #d1d5db;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.review-author-title {
+    margin-top: 0.5rem;
+    font-style: italic;
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+.reviews-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.reviews-fl-btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #079e7b, #08b992);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(7, 158, 123, 0.3);
+}
+
+.reviews-fl-btn:hover {
+    background: linear-gradient(135deg, #08b992, #079e7b);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(7, 158, 123, 0.4);
+}
+
+/* ========================
+   Светлая тема для отзывов
+   ======================== */
+.light-theme .reviews-intro {
+    color: #4b5563;
+}
+
+.light-theme .review-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.light-theme .review-card:hover {
+    box-shadow: 0 10px 30px rgba(7, 158, 123, 0.15);
+    border-color: rgba(7, 158, 123, 0.3);
+}
+
+.light-theme .author-info h4 {
+    color: #1f2937;
+}
+
+.light-theme .review-date {
+    color: #6b7280;
+}
+
+.light-theme .review-text {
+    color: #4b5563;
+}
+
+.light-theme .review-author-title {
+    color: #6b7280;
+}
+
+/* ========================
+   Футер с копирайтом
+   ======================== */
+.site-footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 0;
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+.light-theme .site-footer {
+    border-top: 1px solid #e5e7eb;
+}
+
+.light-theme .site-footer p {
+    color: #6b7280;
 }

@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Иван Дербугов - Веб-разработчик</title>
+    <title>Иван Дербугов - Веб-разработчик | Верстка сайтов, HTML/CSS/JavaScript</title>
+    
+    <!-- SEO метаданные -->
+    <meta name="description" content="Профессиональная разработка сайтов: адаптивная верстка, интеграция API, Docker, Laravel. Опыт работы с Яндекс.Метрикой, Telegram Bot API. Портфолио реальных проектов. Москва.">
+    <meta name="keywords" content="веб-разработчик, верстка сайтов, HTML, CSS, JavaScript, React, адаптивная верстка, фронтенд разработчик, Figma, Docker, Laravel, Telegram Bot API, Яндекс.Метрика, разработка лендингов, Москва">
+    <meta name="author" content="Иван Дербугов">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph для социальных сетей -->
+    <meta property="og:title" content="Иван Дербугов - Веб-разработчик">
+    <meta property="og:description" content="Профессиональная разработка сайтов: адаптивная верстка, интеграция API, современные технологии">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
 
     <!-- Иконки для вкладки браузера и мобильных устройств -->
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml" sizes="any">
     <link rel="apple-touch-icon" href="img/favicon.svg">
+    <link rel="canonical" href="https://ivanderbugov.github.io/IvanDerbugov/">
 
     <script>
         // Этот скрипт применяет сохраненную тему до загрузки страницы, чтобы избежать мигания.
@@ -64,6 +77,9 @@
                     <button data-target="portfolio-page" class="LinkItem">
                         Портфолио
                     </button>
+                    <button data-target="reviews-page" class="LinkItem">
+                        Отзывы
+                    </button>
                     <button data-target="contact-page" class="LinkItem">
                         Контакты
                     </button>
@@ -93,7 +109,7 @@
             <div id="home-page" class="page-content">
                 <div class="about">
                     <h2>
-                        Со страстью воплощаю дизайн-макеты в жизнь
+                        С энтузиазмом воплощаю дизайн-макеты в жизнь
                     </h2>
                     <div class="wrapAnimation">
                         <canvas id="code-animation"></canvas>
@@ -110,10 +126,10 @@
             </div>
 
             <!-- Секция "Обо мне" (по умолчанию скрыта) -->
-            <div id="about-page" class="page-content hidden">
+            <section id="about-page" class="page-content hidden" aria-labelledby="about-heading">
                 <div class="about-me-grid">
                     <div class="about-me-text">
-                        <h2>Обо мне</h2>
+                        <h2 id="about-heading">Обо мне</h2>
                         <p>
                             Добрый день! Меня зовут Иван, и я – Веб-разработчик с огромным энтузиазмом и
                             желанием создавать качественные и современные веб-сайты.
@@ -162,11 +178,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <!-- Секция "Навыки" (по умолчанию скрыта) -->
-            <div id="skills-page" class="page-content hidden">
-                <h2>Мои навыки</h2>
+            <section id="skills-page" class="page-content hidden" aria-labelledby="skills-heading">
+                <h2 id="skills-heading">Мои навыки</h2>
                 <div class="skills-list">
 
                     <div class="skill-item">
@@ -462,11 +478,11 @@
                     </div>
 
                 </div>
-            </div>
+            </section>
 
             <!-- Секция "Портфолио" (по умолчанию скрыта) -->
-            <div id="portfolio-page" class="page-content hidden">
-                <h2>Портфолио</h2>
+            <section id="portfolio-page" class="page-content hidden" aria-labelledby="portfolio-heading">
+                <h2 id="portfolio-heading">Портфолио</h2>
                 <p class="portfolio-intro">За время обучения и практики мной было реализовано множество коммерческих и пет-проектов. Здесь представлены мои лучшие работы.</p>
 
                 <div class="portfolio-switcher">
@@ -747,12 +763,151 @@
                     </div>
                   </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- Секция "Отзывы" (по умолчанию скрыта) -->
+            <section id="reviews-page" class="page-content hidden" aria-labelledby="reviews-heading">
+                <h2 id="reviews-heading">Отзывы клиентов</h2>
+                <p class="reviews-intro">Вот что говорят клиенты о сотрудничестве со мной:</p>
+
+                <div class="reviews-grid">
+                    <!-- Отзыв 1 - Андрей -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="author-avatar">А</div>
+                                <div class="author-info">
+                                    <h4>Андрей</h4>
+                                    <span class="review-date">03.10.2025 в 10:30</span>
+                                </div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="review-text">Заказывал адаптивную верстку лендинга для мобильного приложения по дизайну в Figma (мобильная и десктопная версии с интерактивными элементами).<br><br>
+                        Иван сделал все раньше срока и качественно. Главное, он был проактивным. Предлагал решения, а не создавал проблемы. Объяснял тонкости работы элементов. Сам сделал планшетные версии, которые забыли сделать в макете. Бесплатно внес правки и доработал моменты, возникшие в процессе. Помог все сделать на хостинге.<br><br>
+                        Все супер, рекомендую работать с Иваном!</p>
+                    </div>
+
+                    <!-- Отзыв 2 - Антон -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="author-avatar">А</div>
+                                <div class="author-info">
+                                    <h4>Антон</h4>
+                                    <span class="review-date">02.09.2025 в 16:13</span>
+                                </div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="review-text">Искали верстальщика, который переделал бы модальное окно, принцип, вид, работу. Иван справился в отличие от 5-ти предыдущих верстальщиков – качественно интегрировал Lottie анимацию (JSON), настроил правильное позиционирование элементов, исправил CSS селекторы и медиазапросы. Всё время на связи, после сдачи разъяснил какие изменения внёс в проект нашему разработчику. Будем обращаться за подобной помощью, спасибо.</p>
+                    </div>
+
+                    <!-- Отзыв 3 - Денис -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="author-avatar">Д</div>
+                                <div class="author-info">
+                                    <h4>Денис</h4>
+                                    <span class="review-date">28.08.2025 в 09:18</span>
+                                </div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="review-text">Иван создал для нас потрясающий сайт! Заменил устаревший конструктор на современный корпоративный портал. Теперь выглядит современно, а за хостинг платим в 25 раз меньше!<br><br>
+                        Сайт работает быстро, выглядит профессионально, все формы отправляются мгновенно на почту и в телеграм. Особенно понравился квиз по расчету кухни – клиенты в восторге!<br><br>
+                        Иван не просто исполнитель, а настоящий профессионал, который думает о бизнесе клиента. Рекомендую всем!</p>
+                        <p class="review-author-title">— директор MebelMarket77</p>
+                    </div>
+
+                    <!-- Отзыв 4 - Мар -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="author-avatar">М</div>
+                                <div class="author-info">
+                                    <h4>Мар</h4>
+                                    <span class="review-date">04.08.2025 в 18:44</span>
+                                </div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="review-text">Дизайнер Григорий быстро сделал макет, моего персонажа и визитки (уже в печати!).<br>
+                        Разработчик Иван сверстал все версии (ПК, планшет, телефон), помог с хостингом и доменом, запустил сайт и настроил формы — заявки летят в Telegram и на почту.<br><br>
+                        Плюс: плавные анимации, лёгкий сайт (&lt;3 МБ), грузится мгновенно.<br>
+                        Ребята — огонь! Рекомендую.<br><br>
+                        PS (мой первый опыт с адекватными исполнителями по разработке и дизайну сайтов) так держать!</p>
+                    </div>
+
+                    <!-- Отзыв 5 - Дмитрий -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="author-avatar">Д</div>
+                                <div class="author-info">
+                                    <h4>Дмитрий</h4>
+                                    <span class="review-date">22.07.2025 в 14:12</span>
+                                </div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="review-text">Отличная работа! Разработчик качественно разработал 6 лендингов по аренде спецтехники и опубликовал на хостинге.<br>
+                        Все страницы выполнены аккуратно, с учетом технического задания. Рекомендую как ответственного и профессионального исполнителя, который всегда на связи.<br><br>
+                        Буду обращаться еще!</p>
+                    </div>
+
+                    <!-- Отзыв 6 - Макс -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="author-avatar">М</div>
+                                <div class="author-info">
+                                    <h4>Макс</h4>
+                                    <span class="review-date">17.07.2025 в 18:34</span>
+                                </div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="review-text">Потрясающий исполнитель, на всех этапах отчитывался, присылал что сделано, что поправлено и объяснял если я что то не понимал, терпеливо относился к моим бесконечным вопросам и правкам которые приходили в процессе взаимодействия! Работой безусловно доволен, результат очень порадовал! Все получилось как я хотел и даже лучше! 😍😍😍</p>
+                    </div>
+
+                    <!-- Отзыв 7 - Григорий -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="author-avatar">Г</div>
+                                <div class="author-info">
+                                    <h4>Григорий</h4>
+                                    <span class="review-date">30.06.2025 в 10:33</span>
+                                </div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="review-text">За 2,5 дня фрилансер полностью реализовал макет в жизнь. Работа выполнена точно по техническому заданию – все элементы соответствуют дизайну.<br>
+                        Адаптивность на высоте: основная десктопная версия, 3 планшетных разрешения (1800px, 1350px, 1050px) и мобильная версия (800px) работают безупречно.<br><br>
+                        Особенно впечатлили анимации и интерактивные эффекты:<br>
+                        -Плавные переходы между блоками с пагинацией<br>
+                        -Ховер эффекты<br>
+                        -Анимированные SVG иконки с различными эффектами<br>
+                        -Интерактивные экраны приложений с анимацией</p>
+                    </div>
+                </div>
+
+                <!-- Кнопка для просмотра всех отзывов на FL.ru -->
+                <div class="reviews-cta">
+                    <a href="https://www.fl.ru/users/iderbugoff2001/opinions/?sort=1&period=&author=0#op_head" 
+                       target="_blank" 
+                       class="reviews-fl-btn">
+                        Посмотреть все отзывы на FL.ru ↗
+                    </a>
+                </div>
+            </section>
 
             <!-- Секция "Контакты" (по умолчанию скрыта) -->
-            <div id="contact-page" class="page-content hidden">
+            <section id="contact-page" class="page-content hidden" aria-labelledby="contact-heading">
                 <div class="contact-wrapper">
-                    <h2>Свяжитесь со мной</h2>
+                    <h2 id="contact-heading">Свяжитесь со мной</h2>
                     <p>Я открыт для предложений и готов обсудить ваш проект. Выберите удобный для вас способ связи.</p>
                     <div class="contact-methods">
                         <a href="tel:+375447248942" class="contact-method">
@@ -832,7 +987,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <!-- Кнопка для открытия модального окна -->
             <div class="discount-btn-wrapper">
@@ -870,8 +1025,19 @@
         </div>
     </main>
 
+    <!-- Футер с копирайтом -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Иван Дербугов. Все права защищены.</p>
+        </div>
+    </footer>
+
     <audio id="click-sound" src="img/perehod.mp3" preload="auto"></audio>
 
+    <script>
+        // Автоматическая вставка текущего года
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
     <script src="js/background-animation.js"></script>
     <script src="js/send-form.js"></script>
     <script src="js/animation.js"></script>
