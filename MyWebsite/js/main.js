@@ -58,42 +58,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // === НАВИГАЦИЯ ПО СТРАНИЦАМ ===
-    const pages = document.querySelectorAll('.page-content');
-
-    // Функция-обработчик клика
-    function handleNavClick(event) {
-        playClickSound();
-
-        const targetPageId = event.currentTarget.dataset.target;
-        if (!targetPageId) return;
-        
-        // Переключение активной ссылки
-        navLinks.forEach(link => {
-            link.classList.remove('activeLink');
-        });
-        event.currentTarget.classList.add('activeLink');
-
-        // Переключение видимой страницы
-        pages.forEach(page => {
-            if (page.id === targetPageId) {
-                page.classList.remove('hidden');
-            } else {
-                page.classList.add('hidden');
-            }
-        });
-
-        // Перезапускаем анимацию canvas при переходе на главную
-        if (targetPageId === 'home-page' && typeof window.restartCanvasAnimation === 'function') {
-            window.restartCanvasAnimation();
-        }
-    }
-
-    // Добавляем слушатель клика на каждую ссылку
+    // === НАВИГАЦИЯ ПО СТРАНИЦАМ (ЯКОРНЫЕ ССЫЛКИ) ===
+    
+    // Добавляем слушатель клика на каждую якорную ссылку
     navLinks.forEach(link => {
-        // Проверяем, есть ли у кнопки цель, прежде чем вешать обработчик
-        if (link.dataset.target) {
-            link.addEventListener('click', handleNavClick);
+        if (link.classList.contains('anchor-link')) {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                playClickSound();
+                
+                // Убираем активный класс со всех ссылок
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove('activeLink');
+                });
+                
+                // Добавляем активный класс к текущей ссылке
+                link.classList.add('activeLink');
+                
+                const href = link.getAttribute('href');
+                const targetId = href.substring(1); // убираем #
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+                
+                // Перезапускаем анимацию canvas при переходе на главную
+                if (targetId === 'home-page' && typeof window.restartCanvasAnimation === 'function') {
+                    window.restartCanvasAnimation();
+                }
+            });
         }
     });
 
@@ -114,25 +108,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Кнопки "Нанять" и "Проекты" ---
+    // --- Кнопки "Нанять" и "Проекты" (теперь якорные ссылки) ---
     const hireMeBtn = document.getElementById('hire-me-btn');
     const projectsBtn = document.getElementById('projects-btn');
-    const contactLink = document.querySelector('[data-target="contact-page"]');
-    const portfolioLink = document.querySelector('[data-target="portfolio-page"]');
 
-    if (hireMeBtn && contactLink) {
+    if (hireMeBtn) {
         hireMeBtn.addEventListener('click', () => {
             playClickSound();
-            // Имитируем клик по ссылке "Контакты"
-            contactLink.click();
+            // Плавная прокрутка к секции контактов
+            const contactSection = document.getElementById('contact-page');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     }
 
-    if (projectsBtn && portfolioLink) {
+    if (projectsBtn) {
         projectsBtn.addEventListener('click', () => {
             playClickSound();
-            // Имитируем клик по ссылке "Портфолио"
-            portfolioLink.click();
+            // Плавная прокрутка к секции портфолио
+            const portfolioSection = document.getElementById('portfolio-page');
+            if (portfolioSection) {
+                portfolioSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     }
 

@@ -312,6 +312,38 @@ html.light-theme .top .activeLink {
     border-radius: 2px;
 }
 
+/* 5. Стили для якорных ссылок (отзывы и контакты) */
+.top .LinkItem.anchor-link {
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* 6. Стили для кнопок-якорей (Нанять меня, Проекты) */
+.anchor-btn {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.anchor-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* 7. Отступы между секциями лендинга */
+.page-content {
+    margin-bottom: 80px;
+    padding-top: 40px;
+}
+
+.page-content:first-of-type {
+    padding-top: 0;
+}
+
+.page-content:last-of-type {
+    margin-bottom: 0;
+}
+
 
 /* --- Theme Switch --- */
 .theme-switch-input {
@@ -652,7 +684,7 @@ html.light-theme .skill-item:hover .skill-name {
 /* Стили для страницы "Контакты" */
 #contact-page .contact-wrapper {
     text-align: center;
-    padding: 60px 0;
+    padding: 60px 0 30px;
 }
 
 #contact-page h2 {
@@ -967,13 +999,15 @@ html.light-theme .tech-tag {
 .discount-btn-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 35px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
 }
 .discount-btn {
     background-color: #079e7b;
     color: #fff;
-    font-size: 1.4rem;
-    padding: 14px 32px;
+    font-size: 1.2rem;
+    padding: 10px 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -1296,9 +1330,9 @@ img[src="img/starvin.png"] {
 /* ========================
    Футер с копирайтом
    ======================== */
-.site-footer {
+   .site-footer {
     margin-top: 4rem;
-    padding: 2rem 0;
+    padding: 2rem 0 3.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
 }
