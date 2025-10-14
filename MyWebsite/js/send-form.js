@@ -29,11 +29,15 @@ const TELEGRAM_BOT_TOKEN = '8439270981:AAFMnuowPXV9SJuu6ydkYdG2hHW4_GT2ahI';
 const TELEGRAM_CHAT_ID = '955498826'; // ✅ Ваш Chat ID (@prosto_Dvan)
 
 // Функция для отправки сообщения в Telegram
-async function sendToTelegram(name, email, project, deadline) {
+async function sendToTelegram(name, contact, project, deadline, contactType = 'email') {
+    // Определяем иконку и тип контакта
+    const contactIcon = contactType === 'phone' ? '📱' : '📧';
+    const contactLabel = contactType === 'phone' ? 'Телефон' : 'Email';
+    
     const message = `🎨 *НОВАЯ ЗАЯВКА С САЙТА-ПОРТФОЛИО*
 
 👤 *Имя:* ${name || 'Не указано'}
-📧 *Email:* ${email}
+${contactIcon} *${contactLabel}:* ${contact}
 💼 *Проект:* ${project}
 ⏰ *Сроки:* ${deadline || 'Не указаны'}
 📅 *Дата:* ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}`;
@@ -60,7 +64,8 @@ async function sendToTelegram(name, email, project, deadline) {
             logFormSubmission({
                 status: 'SUCCESS',
                 name,
-                email,
+                contact,
+                contactType,
                 project,
                 deadline,
                 timestamp: new Date().toISOString(),
@@ -72,7 +77,8 @@ async function sendToTelegram(name, email, project, deadline) {
             logFormSubmission({
                 status: 'TELEGRAM_ERROR',
                 name,
-                email,
+                contact,
+                contactType,
                 project,
                 deadline,
                 timestamp: new Date().toISOString(),
@@ -85,7 +91,8 @@ async function sendToTelegram(name, email, project, deadline) {
         logFormSubmission({
             status: 'NETWORK_ERROR',
             name,
-            email,
+            contact,
+            contactType,
             project,
             deadline,
             timestamp: new Date().toISOString(),
@@ -134,9 +141,12 @@ function logFormSubmission(logData) {
 // Функция для отправки лога на внешний сервис (опционально)
 async function sendLogToExternalService(logData) {
     // Отправляем лог как отдельное сообщение в Telegram (в отдельный чат или как файл)
+    const contactIcon = logData.contactType === 'phone' ? '📱' : '📧';
+    const contactLabel = logData.contactType === 'phone' ? 'Телефон' : 'Email';
+    
     const logMessage = `📊 *LOG ENTRY*
 Status: ${logData.status}
-Email: ${logData.email}
+${contactIcon} ${contactLabel}: ${logData.contact}
 Time: ${new Date(logData.timestamp).toLocaleString('ru-RU')}
 ${logData.error ? `Error: ${logData.error}` : ''}`;
 

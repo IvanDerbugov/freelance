@@ -93,6 +93,10 @@
         grid-template-columns: 1fr; /* Меняем 2 колонки на 1 */
         gap: 50px; /* Увеличиваем отступ между блоками */
     }
+
+    .about-me-text h2, .about-me-skills h3 {
+        font-size: 3rem;
+    }
 }
 
 
@@ -106,6 +110,11 @@
 @media (max-width: 768px) {
     body {
         margin: 30px 15px;
+    }
+
+    /* Sticky меню на мобильных */
+    .top {
+        padding: 15px 0;
     }
 
     h1 {
@@ -138,29 +147,33 @@
     .navigation {
         position: fixed;
         top: 0;
-        right: -100%; /* Скрыта за экраном справа */
-        width: 70%;
-        max-width: 300px;
-        height: 100vh;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
         background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
         flex-direction: column;
-        align-items: flex-start;
-        padding: 80px 30px 30px;
+        align-items: center;
+        padding: 100px 30px 30px;
         gap: 0;
         z-index: 1000;
-        transition: right 0.3s ease;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        transition: top 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         overflow-y: auto;
+        display: none;
+        border-radius: 7px;
     }
 
     html.light-theme .navigation {
         background: linear-gradient(135deg, #f7fafc 0%, #e2e8f0 100%);
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
     /* Открытое состояние меню */
     .navigation.open {
-        right: 0;
+        top: 0; /* Показываем меню сверху */
+        display: flex; /* Показываем навигацию при открытии */
     }
 
     /* Оверлей для затемнения фона */
@@ -185,10 +198,11 @@
 
     /* Стили для кнопок навигации в бургер-меню */
     .navigation .LinkItem {
-        width: 100%;
-        text-align: left;
+        width: 80%;
+        max-width: 300px;
+        text-align: center;
         margin-right: 0;
-        margin-bottom: 0;
+        margin-bottom: 10px;
         padding: 15px 20px;
         font-size: 1.3rem;
         border-radius: 8px;
@@ -198,7 +212,7 @@
     .navigation .LinkItem:hover,
     .navigation .LinkItem.activeLink {
         background: rgba(7, 158, 123, 0.1);
-        transform: translateX(10px);
+        transform: translateY(-2px);
     }
 
     html.light-theme .navigation .LinkItem:hover,
@@ -211,18 +225,15 @@
         content: none;
     }
 
-    /* Переключатель темы */
-    .top > div[title="Переключить тему"] {
-        order: 2;
-        margin-left: auto;
-    }
+    
+
 
     /* Адаптация главной страницы */
     .about {
         flex-direction: column;
         align-items: center;
         gap: 30px;
-        padding-top: 20px;
+        padding-top: 100px;
     }
     .about h2 {
         font-size: 2.2rem;
@@ -256,7 +267,23 @@
         font-size: 1rem;
         padding: 8px 20px;
     }
+
+    .sticky-nav {
+        margin-bottom: -72px;
+    }
+
+    .about h2 i {
+        top: -110px;
+    }
 }
+
+
+@media (max-width: 600px) {
+    .sticky-nav {
+        width: 98%;
+    }
+}
+
 
 @media (max-width: 480px) {
     /* Уменьшаем отступы для маленьких экранов */
@@ -275,7 +302,7 @@
         font-size: 1.8rem;
         margin-right: 0;
     }
-    #skills-page h2, #contact-page h2, #portfolio-page h2 {
+    #skills-page h2, #contact-page h2, #portfolio-page h2, .about-me-text h2, .about-me-skills h3 {
         font-size: 2.2rem;
         margin-bottom: 30px;
     }

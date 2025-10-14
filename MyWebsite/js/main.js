@@ -28,9 +28,55 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = navigation.classList.contains('open') ? 'hidden' : '';
     }
 
-    // Клик по бургеру
+    // Переменная для отслеживания состояния прокрутки
+    let isScrolling = false;
+
+    // Клик по бургеру с проверкой видимости h1
     if (burgerMenu) {
-        burgerMenu.addEventListener('click', toggleMenu);
+        burgerMenu.addEventListener('click', () => {
+            // Если уже идет прокрутка, игнорируем клик
+            if (isScrolling) return;
+            
+            // Проверяем, виден ли h1 элемент
+            const h1Element = document.querySelector('h1');
+            const targetElement = document.querySelector('.about h2 i');
+            
+            if (h1Element && targetElement) {
+                // Получаем позицию h1 относительно viewport
+                const h1Rect = h1Element.getBoundingClientRect();
+                
+                // Если h1 виден хотя бы частично (любая часть элемента в пределах экрана)
+                if (h1Rect.top < window.innerHeight && h1Rect.bottom > 0) {
+                    // Устанавливаем флаг прокрутки
+                    isScrolling = true;
+                    
+                    // Добавляем индикацию загрузки
+                    burgerMenu.style.opacity = '0.6';
+                    burgerMenu.style.cursor = 'wait';
+                    
+                    // Плавно прокручиваем до декоративного элемента
+                    targetElement.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Ждем завершения прокрутки, затем открываем меню
+                    setTimeout(() => {
+                        // Восстанавливаем стили кнопки
+                        burgerMenu.style.opacity = '1';
+                        burgerMenu.style.cursor = 'pointer';
+                        isScrolling = false;
+                        toggleMenu();
+                    }, 500); // 500ms - время для плавной прокрутки
+                } else {
+                    // Если h1 не виден, просто открываем меню
+                    toggleMenu();
+                }
+            } else {
+                // Если элементы не найдены, просто открываем меню
+                toggleMenu();
+            }
+        });
     }
 
     // Клик по оверлею закрывает меню
@@ -77,15 +123,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const href = link.getAttribute('href');
                 const targetId = href.substring(1); // убираем #
-                const targetSection = document.getElementById(targetId);
                 
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                }
-                
-                // Перезапускаем анимацию canvas при переходе на главную
-                if (targetId === 'home-page' && typeof window.restartCanvasAnimation === 'function') {
-                    window.restartCanvasAnimation();
+                // Специальная обработка для кнопки "Главная"
+                if (targetId === 'home-page') {
+                    const targetElement = document.querySelector('.about h2 i');
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    // Перезапускаем анимацию canvas при переходе на главную
+                    if (typeof window.restartCanvasAnimation === 'function') {
+                        window.restartCanvasAnimation();
+                    }
+                } else {
+                    // Обычная обработка для остальных секций
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
                 }
             });
         }
@@ -155,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
 
     // --- ЛОГИКА ДЛЯ ХОВЕР-ЭФФЕКТА НАВЫКОВ БОЛЬШЕ НЕ НУЖНА ---
     // Весь эффект теперь реализован на чистом CSS
@@ -255,6 +310,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const discountLoading = document.getElementById('discountLoading');
     const discountSubmitBtn = document.getElementById('discountSubmitBtn');
 
+    // Логика переключения email/телефон
+    const contactOptions = document.querySelectorAll('.contact-option');
+    const contactInput = document.getElementById('contactInput');
+    
+    
+    contactOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            // Убираем активный класс со всех опций
+            contactOptions.forEach(opt => opt.classList.remove('active'));
+            // Добавляем активный класс к выбранной опции
+            option.classList.add('active');
+            
+            const type = option.dataset.type;
+            
+            if (type === 'email') {
+                contactInput.type = 'email';
+                contactInput.name = 'email';
+                contactInput.placeholder = 'example@email.com';
+                contactInput.required = true;
+            } else if (type === 'phone') {
+                contactInput.type = 'tel';
+                contactInput.name = 'phone';
+                contactInput.placeholder = '+7 (999) 123-45-67';
+                contactInput.required = true;
+            }
+        });
+    });
+
     if (discountForm) {
         discountForm.addEventListener('submit', async function (e) {
             e.preventDefault();
@@ -266,11 +349,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(discountForm);
             const project = formData.get('project');
             const email = formData.get('email');
+            const phone = formData.get('phone');
             const deadline = formData.get('deadline');
-            const name = 'Заявка с портфолио'; // Можно добавить поле имени, если нужно
+            const name = 'Заявка с портфолио';
+            
+            // Определяем контактные данные (email или телефон)
+            const contact = email || phone;
+            const contactType = email ? 'email' : 'phone';
 
             // Отправляем в Telegram через нашу функцию
-            const result = await window.FormHandler.sendToTelegram(name, email, project, deadline);
+            const result = await window.FormHandler.sendToTelegram(name, contact, project, deadline, contactType);
 
             discountLoading.style.display = 'none';
             discountSubmitBtn.disabled = false;

@@ -17,6 +17,17 @@
     <meta property="og:description" content="Профессиональная разработка сайтов: адаптивная верстка, интеграция API, современные технологии">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ru_RU">
+    <meta property="og:url" content="https://derbugov.ru">
+    <meta property="og:image" content="https://derbugov.ru/img/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Иван Дербугов - Веб-разработчик">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Иван Дербугов - Веб-разработчик">
+    <meta name="twitter:description" content="Профессиональная разработка сайтов: адаптивная верстка, интеграция API, современные технологии">
+    <meta name="twitter:image" content="https://derbugov.ru/img/og-image.jpg">
 
     <!-- Иконки для вкладки браузера и мобильных устройств -->
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml" sizes="any">
@@ -54,7 +65,8 @@
         </div>
     </header>
 
-    <main class="container">
+    <!-- Sticky Navigation -->
+    <div class="sticky-nav">
         <div class="container">
             <div class="top">
                 <!-- Бургер-кнопка (видна только на мобильных) -->
@@ -104,12 +116,18 @@
                     </label>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="container">
 
             <!-- Секция главной страницы -->
             <div id="home-page" class="page-content">
                 <div class="about">
                     <h2>
                         С энтузиазмом воплощаю дизайн-макеты в жизнь
+                        <i></i>
                     </h2>
                     <div class="wrapAnimation">
                         <canvas id="code-animation"></canvas>
@@ -174,6 +192,11 @@
                                 <!-- Иконка -->
                                 <h4>Аналитика и реклама</h4>
                                 <p>Настрою Яндекс.Метрику, интегрирую пиксели Яндекс.Директ и Google Ads для отслеживания конверсий.</p>
+                            </div>
+                            <div class="skill-card">
+                                <!-- Иконка -->
+                                <h4>Правки по вашему проекту</h4>
+                                <p>Исправлю баги, доработаю верстку, добавлю новые функции и внесу любые изменения в уже готовый сайт.</p>
                             </div>
                         </div>
                     </div>
@@ -999,18 +1022,21 @@
               <div class="modal-content discount-modal-content">
                 <button class="modal-close" id="closeDiscountModal" title="Закрыть">&times;</button>
                 <h3>Получите скидку на первый заказ!</h3>
-                <p class="discount-desc">Оставьте заявку — и получите персональную скидку на первый проект!</p>
                 <form class="discount-form" id="discountForm" method="POST">
                   <label>
-                    Что нужно разработать?
+                    <span class="label-text">Что нужно разработать?</span>
                     <textarea name="project" required placeholder="Опишите задачу..." rows="3"></textarea>
                   </label>
+                  <div class="contact-toggle">
+                    <div class="contact-options">
+                      <span class="contact-option active" data-type="email">Ваш e-mail</span>
+                      <span class="contact-separator">ИЛИ</span>
+                      <span class="contact-option" data-type="phone">Ваш телефон</span>
+                    </div>
+                    <input type="email" name="email" id="contactInput" required placeholder="example@email.com">
+                  </div>
                   <label>
-                    Ваш e-mail
-                    <input type="email" name="email" required placeholder="example@email.com">
-                  </label>
-                  <label>
-                    Желаемые сроки
+                    <span class="label-text">Желаемые сроки</span>
                     <input type="text" name="deadline" placeholder="Например: 2 недели">
                   </label>
                   <button type="submit" id="discountSubmitBtn" class="discount-submit">Получить скидку</button>
