@@ -276,29 +276,50 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (subsVideo) { subsVideo.pause(); subsVideo.currentTime = 0; }
                 if (handymarkVideo) { handymarkVideo.pause(); handymarkVideo.currentTime = 0; }
                 
+                // Переменная для медиа-элемента
+                let mediaElement = null;
+                
                 // Показываем нужный проект
                 if (btn.dataset.project === 'mebelmarket') {
                     mebelmarketBlock.style.display = '';
+                    mediaElement = document.getElementById('media-mebelmarket');
                 } else if (btn.dataset.project === 'zoreli') {
                     zoreliBlock.style.display = '';
+                    mediaElement = document.getElementById('media-zoreli');
                 } else if (btn.dataset.project === 'starvin') {
                     starvinBlock.style.display = '';
+                    mediaElement = document.getElementById('media-starvin');
                 } else if (btn.dataset.project === 'rekordika') {
                     rekordikaBlock.style.display = '';
+                    mediaElement = document.getElementById('media-rekordika');
                     // Запускаем видео РЕКОРДИКА
                     if (rekordikaVideo) { rekordikaVideo.play(); }
                 } else if (btn.dataset.project === 'handymark') {
                     handymarkBlock.style.display = '';
+                    mediaElement = document.getElementById('media-handymark');
                     // Запускаем видео HandyMark
                     if (handymarkVideo) { handymarkVideo.play(); }
                 } else if (btn.dataset.project === 'wedding') {
                     weddingBlock.style.display = '';
+                    mediaElement = document.getElementById('media-wedding');
                 } else if (btn.dataset.project === 'subs') {
                     subsBlock.style.display = '';
+                    mediaElement = document.getElementById('media-subs');
                     // Запускаем видео SubScope
                     if (subsVideo) { subsVideo.play(); }
                 } else if (btn.dataset.project === 'nft') {
                     nftBlock.style.display = '';
+                    mediaElement = document.getElementById('media-nft');
+                }
+                
+                // Прокручиваем к медиа-элементу только на мобильных (480px и меньше)
+                if (mediaElement && window.innerWidth <= 480) {
+                    setTimeout(() => {
+                        mediaElement.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start'
+                        });
+                    }, 100);
                 }
             });
         });

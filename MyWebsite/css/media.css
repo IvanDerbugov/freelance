@@ -330,6 +330,11 @@
         max-width: 200px;
     }
 
+    /* Отступ при прокрутке к изображениям/видео портфолио */
+    .portfolio-item video, .portfolio-item img {
+        scroll-margin-top: 80px;
+    }
+
     /* Отзывы на маленьких экранах */
     .reviews-grid {
         grid-template-columns: 1fr;
