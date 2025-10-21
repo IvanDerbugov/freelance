@@ -1930,7 +1930,6 @@ footer .footer-left .turnBusiness-links a:last-child {
     max-height: 0;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    background: #F8F8F8;
 }
 
 .faq-item.active .faq-answer {
@@ -2198,4 +2197,14 @@ footer .footer-left .turnBusiness-links a:last-child {
 
 .iPhone-mobile, .turnBusiness-links-mobile, .howItWorksImgMobile, .howItWorks-item h5 div, .carousel-reviews, .reviews-title-mobile, .whoItsForMobile, .cancel-anytime-mobile, .free-paind-mobile {
     display: none;
+}
+
+/* Progressive Image Loading */
+.progressive-image {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.progressive-image.loaded {
+    opacity: 1;
 }

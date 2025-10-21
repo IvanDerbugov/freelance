@@ -216,6 +216,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+// Progressive Image Loading
+document.addEventListener('DOMContentLoaded', function() {
+    const progressiveImages = document.querySelectorAll('.progressive-image');
+    
+    progressiveImages.forEach(img => {
+        const highResImage = new Image();
+        highResImage.src = img.dataset.src;
+        
+        highResImage.onload = function() {
+            img.src = highResImage.src;
+            img.classList.add('loaded');
+        };
+        
+        // Error handling
+        highResImage.onerror = function() {
+            console.error('Failed to load high-res image:', highResImage.src);
+            img.classList.add('loaded'); // Remove blur even if error
+        };
+    });
+});
+
 // Burger Menu Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const burgerMenuBtn = document.getElementById('burgerMenuBtn');
