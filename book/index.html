@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Война и мир Толстого «Американца». Книга первая</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .litres .card-icon {
+            background: linear-gradient(135deg, #FF6B6B, #FF4757);
+        }
+
+        .ozon .card-icon {
+            background: linear-gradient(135deg, #005BFF, #0046CC);
+        }
+
+        .avito .card-icon {
+            background: linear-gradient(135deg, #00AAFF, #0088CC);
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            min-height: 52px;
+        }
+
+        .buy-button {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .litres .buy-button {
+            background: linear-gradient(135deg, #FF6B6B, #FF4757);
+        }
+
+        .litres .buy-button:hover {
+            background: linear-gradient(135deg, #FF4757, #FF2E3F);
+            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+        }
+
+        .ozon .buy-button {
+            background: linear-gradient(135deg, #005BFF, #0046CC);
+        }
+
+        .ozon .buy-button:hover {
+            background: linear-gradient(135deg, #0046CC, #003399);
+            box-shadow: 0 6px 20px rgba(0, 91, 255, 0.4);
+        }
+
+        .avito .buy-button {
+            background: linear-gradient(135deg, #00AAFF, #0088CC);
+        }
+
+        .avito .buy-button:hover {
+            background: linear-gradient(135deg, #0088CC, #006699);
+            box-shadow: 0 6px 20px rgba(0, 170, 255, 0.4);
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card {
+                padding: 30px 20px;
+            }
+
+            .card h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Война и мир Толстого «Американца»</h1>
+            <p>Книга первая — Игорь Владимирович Коровин</p>
+        </div>
+
+        <div class="cards-container">
+            <!-- ЛитРес -->
+            <div class="card litres">
+                <div class="card-icon">Л</div>
+                <h2>ЛитРес</h2>
+                <p>Скачайте электронную версию книги в формате PDF</p>
+                <div class="price">299 ₽</div>
+                <a href="https://www.litres.ru/book/igor-vladimirovich-korovin/voyna-i-mir-tolstogo-amerikanca-kniga-pervaya-72603814/"
+                    class="buy-button" target="_blank" rel="noopener noreferrer">
+                    Купить на ЛитРес
+                </a>
+            </div>
+
+            <!-- Озон -->
+            <div class="card ozon">
+                <div class="card-icon">O</div>
+                <h2>Ozon</h2>
+                <p>Закажите книгу с доставкой по всей России</p>
+                <div class="price">Узнать цену</div>
+                <a href="https://ozon.ru/t/csH0iqO" class="buy-button" target="_blank" rel="noopener noreferrer">
+                    Купить на Ozon
+                </a>
+            </div>
+
+            <!-- Авито -->
+            <div class="card avito">
+                <div class="card-icon">А</div>
+                <h2>Avito</h2>
+                <p>Приобретите книгу напрямую у продавца</p>
+                <div class="price">Договорная</div>
+                <a href="https://www.avito.ru/sankt-peterburg/knigi_i_zhurnaly/voyna_i_mir_tolstogo_amerikantsa_7734360544"
+                    class="buy-button" target="_blank" rel="noopener noreferrer">
+                    Купить на Avito
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
