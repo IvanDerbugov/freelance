@@ -1,36 +1,6 @@
-/**
- * =============================================================================
- * 📱 TELEGRAM INTEGRATION - Система отправки заявок
- * =============================================================================
- * 
- * ⚙️ НАСТРОЙКА (ОБЯЗАТЕЛЬНО!):
- * 
- * 1. Получите ваш Chat ID:
- *    - Откройте @userinfobot в Telegram
- *    - Напишите /start
- *    - Скопируйте ваш Chat ID (только цифры)
- * 
- * 2. Активируйте бота:
- *    - Откройте @derbugov_bot в Telegram
- *    - Нажмите START (или /start)
- *    - Теперь бот может отправлять вам сообщения
- * 
- * 3. Замените Chat ID ниже на ваш:
- *    const TELEGRAM_CHAT_ID = 'ВАШ_CHAT_ID';
- * 
- * 📖 Полная документация: ../docs/README-TELEGRAM-INTEGRATION.md
- * 🔧 Админ-панель для просмотра логов: ../html/admin-logs.html
- * 
- * =============================================================================
- */
-
-// Telegram Bot Configuration
 const TELEGRAM_BOT_TOKEN = '8439270981:AAFMnuowPXV9SJuu6ydkYdG2hHW4_GT2ahI';
-const TELEGRAM_CHAT_ID = '955498826'; // ✅ Ваш Chat ID (@prosto_Dvan)
-
-// Функция для отправки сообщения в Telegram
+const TELEGRAM_CHAT_ID = '955498826';
 async function sendToTelegram(name, contact, project, deadline, contactType = 'email') {
-    // Определяем иконку и тип контакта
     const contactIcon = contactType === 'phone' ? '📱' : '📧';
     const contactLabel = contactType === 'phone' ? 'Телефон' : 'Email';
     
@@ -60,7 +30,6 @@ ${contactIcon} *${contactLabel}:* ${contact}
         const data = await response.json();
         
         if (data.ok) {
-            // Логируем успешную отправку
             logFormSubmission({
                 status: 'SUCCESS',
                 name,
@@ -73,7 +42,6 @@ ${contactIcon} *${contactLabel}:* ${contact}
             });
             return { success: true, message: 'Заявка успешно отправлена!' };
         } else {
-            // Логируем ошибку API
             logFormSubmission({
                 status: 'TELEGRAM_ERROR',
                 name,
@@ -87,7 +55,6 @@ ${contactIcon} *${contactLabel}:* ${contact}
             return { success: false, message: 'Ошибка отправки в Telegram: ' + data.description };
         }
     } catch (error) {
-        // Логируем ошибку сети
         logFormSubmission({
             status: 'NETWORK_ERROR',
             name,
@@ -102,9 +69,7 @@ ${contactIcon} *${contactLabel}:* ${contact}
     }
 }
 
-// Функция логирования (сохранение в localStorage + консоль)
 function logFormSubmission(logData) {
-    // Получаем существующие логи из localStorage
     let logs = [];
     try {
         const existingLogs = localStorage.getItem('formSubmissionLogs');
@@ -115,32 +80,22 @@ function logFormSubmission(logData) {
         console.error('Error reading logs from localStorage:', e);
     }
 
-    // Добавляем новый лог
     logs.push(logData);
 
-    // Ограничиваем количество логов (храним последние 100)
     if (logs.length > 100) {
         logs = logs.slice(-100);
     }
 
-    // Сохраняем обратно в localStorage
     try {
         localStorage.setItem('formSubmissionLogs', JSON.stringify(logs));
     } catch (e) {
         console.error('Error saving logs to localStorage:', e);
     }
 
-    // Выводим в консоль для отладки
     console.log('Form Submission Log:', logData);
-
-    // Дополнительно: отправляем лог на внешний сервис (опционально)
-    // Можно использовать сервис типа webhook.site для тестирования
-    // sendLogToExternalService(logData); // ОТКЛЮЧЕНО - не нужно дублировать сообщения
 }
 
-// Функция для отправки лога на внешний сервис (опционально)
 async function sendLogToExternalService(logData) {
-    // Отправляем лог как отдельное сообщение в Telegram (в отдельный чат или как файл)
     const contactIcon = logData.contactType === 'phone' ? '📱' : '📧';
     const contactLabel = logData.contactType === 'phone' ? 'Телефон' : 'Email';
     
@@ -165,7 +120,6 @@ ${logData.error ? `Error: ${logData.error}` : ''}`;
     }
 }
 
-// Функция для получения всех логов (для просмотра)
 function getAllLogs() {
     try {
         const logs = localStorage.getItem('formSubmissionLogs');
@@ -176,7 +130,6 @@ function getAllLogs() {
     }
 }
 
-// Функция для экспорта логов в JSON файл
 function exportLogsToFile() {
     const logs = getAllLogs();
     const dataStr = JSON.stringify(logs, null, 2);
@@ -192,7 +145,6 @@ function exportLogsToFile() {
     URL.revokeObjectURL(url);
 }
 
-// Функция для очистки логов
 function clearLogs() {
     try {
         localStorage.removeItem('formSubmissionLogs');
@@ -204,7 +156,6 @@ function clearLogs() {
     }
 }
 
-// Экспортируем функции для использования в других скриптах
 window.FormHandler = {
     sendToTelegram,
     getAllLogs,

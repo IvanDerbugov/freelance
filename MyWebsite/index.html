@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Иван Дербугов - Веб-разработчик | Верстка сайтов, HTML/CSS/JavaScript</title>
     
-    <!-- SEO метаданные -->
     <meta name="description" content="Профессиональная разработка сайтов: адаптивная верстка, интеграция API, Docker, Laravel. Опыт работы с Яндекс.Метрикой, Telegram Bot API. Портфолио реальных проектов. Москва.">
     <meta name="keywords" content="веб-разработчик, верстка сайтов, HTML, CSS, JavaScript, React, адаптивная верстка, фронтенд разработчик, Figma, Docker, Laravel, Telegram Bot API, Яндекс.Метрика, разработка лендингов, Москва">
     <meta name="author" content="Иван Дербугов">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph для социальных сетей -->
     <meta property="og:title" content="Иван Дербугов - Веб-разработчик">
     <meta property="og:description" content="Профессиональная разработка сайтов: адаптивная верстка, интеграция API, современные технологии">
     <meta property="og:type" content="website">
@@ -23,25 +21,24 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Иван Дербугов - Веб-разработчик">
     
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Иван Дербугов - Веб-разработчик">
     <meta name="twitter:description" content="Профессиональная разработка сайтов: адаптивная верстка, интеграция API, современные технологии">
     <meta name="twitter:image" content="https://derbugov.ru/img/og-image.jpg">
 
-    <!-- Иконки для вкладки браузера и мобильных устройств -->
-    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" sizes="any">
-    <link rel="apple-touch-icon" href="img/favicon.svg">
+    <link rel="icon" href="img/favicon1_2.svg" type="image/svg+xml" sizes="any">
+    <link rel="apple-touch-icon" href="img/favicon1_2.svg">
     <link rel="canonical" href="https://ivanderbugov.github.io/IvanDerbugov/">
 
     <script>
-        // Этот скрипт применяет сохраненную тему до загрузки страницы, чтобы избежать мигания.
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             document.documentElement.classList.add('light-theme');
         }
-        // Если в хранилище 'dark' или ничего нет, ничего не делаем, т.к. темная тема по умолчанию.
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media.css">
 
@@ -52,7 +49,6 @@
 
     </div>
 
-    <!-- Оверлей для затемнения при открытии бургер-меню -->
     <div class="menu-overlay" id="menu-overlay"></div>
 
     <header>
@@ -65,11 +61,9 @@
         </div>
     </header>
 
-    <!-- Sticky Navigation -->
     <div class="sticky-nav">
         <div class="container">
             <div class="top">
-                <!-- Бургер-кнопка (видна только на мобильных) -->
                 <button class="burger-menu" id="burger-menu" aria-label="Открыть меню">
                     <span></span>
                     <span></span>
@@ -122,7 +116,6 @@
     <main class="container">
         <div class="container">
 
-            <!-- Секция главной страницы -->
             <div id="home-page" class="page-content">
                 <div class="about">
                     <h2>
@@ -143,7 +136,6 @@
                 </div>
             </div>
 
-            <!-- Секция "Обо мне" -->
             <section id="about-page" class="page-content" aria-labelledby="about-heading">
                 <div class="about-me-grid">
                     <div class="about-me-text">
@@ -169,32 +161,26 @@
                         <h3>Что я могу предложить:</h3>
                         <div class="skills-grid">
                             <div class="skill-card">
-                                <!-- Иконка (нужно будет добавить SVG) -->
                                 <h4>Верстка по макетам</h4>
                                 <p>Превращу ваш дизайн из Figma в чистый, валидный и адаптивный HTML/CSS код.</p>
                             </div>
                             <div class="skill-card">
-                                <!-- Иконка -->
                                 <h4>Адаптивность</h4>
                                 <p>Ваш сайт будет отлично выглядеть на любых устройствах и во всех браузерах.</p>
                             </div>
                             <div class="skill-card">
-                                <!-- Иконка -->
                                 <h4>Интерактивность</h4>
                                 <p>Добавлю на сайт анимации, слайдеры и другие элементы на JavaScript (ES6+).</p>
                             </div>
                             <div class="skill-card">
-                                <!-- Иконка -->
                                 <h4>Оптимизация</h4>
                                 <p>Сделаю сайт быстрым и легким для максимального комфорта пользователей.</p>
                             </div>
                             <div class="skill-card">
-                                <!-- Иконка -->
                                 <h4>Аналитика и реклама</h4>
                                 <p>Настрою Яндекс.Метрику, интегрирую пиксели Яндекс.Директ и Google Ads для отслеживания конверсий.</p>
                             </div>
                             <div class="skill-card">
-                                <!-- Иконка -->
                                 <h4>Правки по вашему проекту</h4>
                                 <p>Исправлю баги, доработаю верстку, добавлю новые функции и внесу любые изменения в уже готовый сайт.</p>
                             </div>
@@ -203,7 +189,6 @@
                 </div>
             </section>
 
-            <!-- Секция "Навыки" -->
             <section id="skills-page" class="page-content" aria-labelledby="skills-heading">
                 <h2 id="skills-heading">Мои навыки</h2>
                 <div class="skills-list">
@@ -340,16 +325,6 @@
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
-                            <div class="skill-name">Mobile-First подход</div>
-                            <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                                height="24">
-                                <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
-                            </svg>
-                        </div>
-                        <div class="skill-explanation">Разработка сначала для мобильных устройств, затем масштабирование на десктоп. Оптимизация для touch-интерфейсов и малых экранов.</div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
                             <div class="skill-name">SVG & Векторная графика</div>
                             <svg class="skill-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                                 height="24">
@@ -442,7 +417,7 @@
                             </svg>
                         </div>
                         <div class="skill-explanation">Применяю лучшие практики для быстрой загрузки: оптимизация
-                            изображений, минимизация кода, кеширование.</div>
+                            изображений, минимизация кода, кеширование, ленивая загрузка.</div>
                     </div>
                     <div class="skill-item">
                         <div class="skill-header">
@@ -503,7 +478,6 @@
                 </div>
             </section>
 
-            <!-- Секция "Портфолио" -->
             <section id="portfolio-page" class="page-content" aria-labelledby="portfolio-heading">
                 <h2 id="portfolio-heading">Портфолио</h2>
                 <p class="portfolio-intro">За время обучения и практики мной было реализовано множество коммерческих и пет-проектов. Здесь представлены мои лучшие работы.</p>
@@ -520,7 +494,6 @@
                 </div>
 
                 <div class="portfolio-projects">
-                  <!-- MebelMarket -->
                   <div class="portfolio-item portfolio-item-column" id="project-mebelmarket">
                     <img id="media-mebelmarket" src="img/mebelMarker.png" alt="MebelMarket - Корпоративный портал мебельной компании">
                     <div class="portfolio-details">
@@ -555,7 +528,6 @@
                       <a href="https://mebel-market77.ru" target="_blank" class="portfolio-button">Посмотреть проект</a>
                     </div>
                   </div>
-                  <!-- ZORELI -->
                   <div class="portfolio-item" id="project-zoreli" style="display:none;">
                     <img id="media-zoreli" src="img/ZORELI.png" alt="ZORELI - AI Business Card Scanner App">
                     <div class="portfolio-details">
@@ -587,7 +559,6 @@
                       <a href="https://ivanderbugov.github.io/freelance/ZORELI/index.html" target="_blank" class="portfolio-button">Посмотреть проект</a>
                     </div>
                   </div>
-                  <!-- Starvin -->
                   <div class="portfolio-item portfolio-item-column" id="project-starvin" style="display:none;">
                     <img id="media-starvin" src="img/starvin.png" alt="Starvin - Система подбора автозапчастей">
                     <div class="portfolio-details">
@@ -629,7 +600,6 @@
                       <a href="https://starvin.ru" target="_blank" class="portfolio-button">Посмотреть проект</a>
                     </div>
                   </div>
-                  <!-- РЕКОРДИКА -->
                   <div class="portfolio-item" id="project-rekordika" style="display:none;">
                     <video id="media-rekordika" src="img/recordicaMainPage.mp4" autoplay loop muted playsinline></video>
                     <div class="portfolio-details">
@@ -664,7 +634,6 @@
                       <a href="https://рекордика.рф" target="_blank" class="portfolio-button">Посмотреть проект</a>
                     </div>
                   </div>
-                  <!-- NFT Marketplace -->
                   <div class="portfolio-item portfolio-item-column" id="project-nft" style="display:none;">
                     <video id="media-nft" src="img/nfs.mp4" autoplay loop muted playsinline></video>
                     <div class="portfolio-details">
@@ -695,7 +664,6 @@
                       <a href="https://ivanderbugov.github.io/IvanDerbugov/layouts/MaketNFTs/index.html" target="_blank" class="portfolio-button">Посмотреть проект</a>
                     </div>
                   </div>
-                  <!-- SubScope -->
                   <div class="portfolio-item" id="project-subs" style="display:none;">
                     <video id="media-subs" src="img/yandex.mp4" autoplay loop muted playsinline></video>
                     <div class="portfolio-details">
@@ -721,7 +689,6 @@
                       <a href="https://ivanderbugov.github.io/IvanDerbugov/freelance/YandexMusic/index.html" target="_blank" class="portfolio-button">Посмотреть проект</a>
                     </div>
                   </div>
-                  <!-- Wedding Site -->
                   <div class="portfolio-item" id="project-wedding" style="display:none;">
                     <a href="https://ivanderbugov.github.io/IvanDerbugov/freelance/wedding/index.html" target="_blank" class="portfolio-image-link wedding-image">
                       <img id="media-wedding" src="img/screen2.png" alt="Wedding Site Project Screenshot">
@@ -753,7 +720,6 @@
                       <a href="https://thu-wedding.github.io/RONNIMAKS/" target="_blank" class="portfolio-button">Посмотреть проект</a>
                     </div>
                   </div>
-                  <!-- HandyMark -->
                   <div class="portfolio-item" id="project-handymark" style="display:none;">
                     <video id="media-handymark" src="img/RecordingHandyMark.mp4" autoplay loop muted playsinline></video>
                     <div class="portfolio-details">
@@ -788,13 +754,11 @@
                 </div>
             </section>
 
-            <!-- Секция "Отзывы" -->
             <section id="reviews-page" class="page-content" aria-labelledby="reviews-heading">
                 <h2 id="reviews-heading">Отзывы клиентов</h2>
                 <p class="reviews-intro">Вот что говорят клиенты о сотрудничестве со мной:</p>
 
                 <div class="reviews-grid">
-                    <!-- Отзыв 1 - Андрей -->
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-author">
@@ -811,7 +775,6 @@
                         Все супер, рекомендую работать с Иваном!</p>
                     </div>
 
-                    <!-- Отзыв 2 - Антон -->
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-author">
@@ -826,7 +789,6 @@
                         <p class="review-text">Искали верстальщика, который переделал бы модальное окно, принцип, вид, работу. Иван справился в отличие от 5-ти предыдущих верстальщиков – качественно интегрировал Lottie анимацию (JSON), настроил правильное позиционирование элементов, исправил CSS селекторы и медиазапросы. Всё время на связи, после сдачи разъяснил какие изменения внёс в проект нашему разработчику. Будем обращаться за подобной помощью, спасибо.</p>
                     </div>
 
-                    <!-- Отзыв 3 - Денис -->
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-author">
@@ -844,7 +806,6 @@
                         <p class="review-author-title">— директор MebelMarket77</p>
                     </div>
 
-                    <!-- Отзыв 4 - Мар -->
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-author">
@@ -863,7 +824,6 @@
                         PS (мой первый опыт с адекватными исполнителями по разработке и дизайну сайтов) так держать!</p>
                     </div>
 
-                    <!-- Отзыв 5 - Дмитрий -->
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-author">
@@ -880,7 +840,6 @@
                         Буду обращаться еще!</p>
                     </div>
 
-                    <!-- Отзыв 6 - Макс -->
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-author">
@@ -895,7 +854,6 @@
                         <p class="review-text">Потрясающий исполнитель, на всех этапах отчитывался, присылал что сделано, что поправлено и объяснял если я что то не понимал, терпеливо относился к моим бесконечным вопросам и правкам которые приходили в процессе взаимодействия! Работой безусловно доволен, результат очень порадовал! Все получилось как я хотел и даже лучше! 😍😍😍</p>
                     </div>
 
-                    <!-- Отзыв 7 - Григорий -->
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-author">
@@ -917,7 +875,6 @@
                     </div>
                 </div>
 
-                <!-- Кнопка для просмотра всех отзывов на FL.ru -->
                 <div class="reviews-cta">
                     <a href="https://www.fl.ru/users/iderbugoff2001/opinions/?sort=1&period=&author=0#op_head" 
                        target="_blank" 
@@ -927,7 +884,6 @@
                 </div>
             </section>
 
-            <!-- Секция "Контакты" -->
             <section id="contact-page" class="page-content" aria-labelledby="contact-heading">
                 <div class="contact-wrapper">
                     <h2 id="contact-heading">Свяжитесь со мной</h2>
@@ -1012,12 +968,10 @@
                 </div>
             </section>
 
-            <!-- Кнопка для открытия модального окна -->
             <div class="discount-btn-wrapper">
                 <button id="openDiscountModal" class="discount-btn">Получить скидку</button>
             </div>
 
-            <!-- Модальное окно -->
             <div class="modal-overlay" id="discountModal">
               <div class="modal-content discount-modal-content">
                 <button class="modal-close" id="closeDiscountModal" title="Закрыть">&times;</button>
@@ -1051,7 +1005,6 @@
         </div>
     </main>
 
-    <!-- Футер с копирайтом -->
     <footer class="site-footer">
         <div class="container">
             <p>&copy; <span id="currentYear"></span> Иван Дербугов. Все права защищены.</p>

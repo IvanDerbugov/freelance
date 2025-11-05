@@ -1,6 +1,4 @@
-// Фоновая анимация с пролетающими символами кода
 (function() {
-    // Создаем canvas для фоновой анимации
     const bgCanvas = document.createElement('canvas');
     bgCanvas.id = 'background-animation';
     bgCanvas.style.position = 'fixed';
@@ -10,12 +8,11 @@
     bgCanvas.style.height = '100%';
     bgCanvas.style.zIndex = '-1';
     bgCanvas.style.pointerEvents = 'none';
-    bgCanvas.style.opacity = '0.3'; // Полупрозрачность для фона
+    bgCanvas.style.opacity = '0.3';
     document.body.insertBefore(bgCanvas, document.body.firstChild);
 
     const ctx = bgCanvas.getContext('2d');
 
-    // Устанавливаем размер canvas
     function resizeCanvas() {
         bgCanvas.width = window.innerWidth;
         bgCanvas.height = window.innerHeight;
@@ -23,47 +20,43 @@
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Те же символы, что и в основной анимации
     const codeSymbols = ['</>', '{}', '=>', '()', '[]', '&&', '||', 'px', '<>', '::'];
     const colorPalette = [
-        'rgba(7, 158, 123, 0.6)',   // Акцентный зеленый
-        'rgba(255, 255, 255, 0.4)', // Белый
-        'rgba(130, 210, 255, 0.5)', // Светло-голубой
-        'rgba(0, 230, 230, 0.5)',   // Бирюзовый/Циан
-        'rgba(190, 140, 255, 0.5)'  // Светло-фиолетовый
+        'rgba(7, 158, 123, 0.6)',
+        'rgba(255, 255, 255, 0.4)',
+        'rgba(130, 210, 255, 0.5)',
+        'rgba(0, 230, 230, 0.5)',
+        'rgba(190, 140, 255, 0.5)'
     ];
 
-    // Класс для фоновых частиц
     class BackgroundParticle {
         constructor() {
             this.reset();
-            // Начальная позиция может быть где угодно на экране
             this.y = Math.random() * bgCanvas.height;
         }
 
         reset() {
-            // Стартуем с разных сторон экрана
             const side = Math.floor(Math.random() * 4);
             switch(side) {
-                case 0: // Сверху
+                case 0:
                     this.x = Math.random() * bgCanvas.width;
                     this.y = -50;
                     this.vx = (Math.random() - 0.5) * 1.5;
                     this.vy = 0.3 + Math.random() * 0.8;
                     break;
-                case 1: // Справа
+                case 1:
                     this.x = bgCanvas.width + 50;
                     this.y = Math.random() * bgCanvas.height;
                     this.vx = -(0.3 + Math.random() * 0.8);
                     this.vy = (Math.random() - 0.5) * 1.5;
                     break;
-                case 2: // Снизу
+                case 2:
                     this.x = Math.random() * bgCanvas.width;
                     this.y = bgCanvas.height + 50;
                     this.vx = (Math.random() - 0.5) * 1.5;
                     this.vy = -(0.3 + Math.random() * 0.8);
                     break;
-                case 3: // Слева
+                case 3:
                     this.x = -50;
                     this.y = Math.random() * bgCanvas.height;
                     this.vx = 0.3 + Math.random() * 0.8;
@@ -86,7 +79,6 @@
             this.rotation += this.rotationSpeed;
             this.life++;
 
-            // Если частица вышла за пределы экрана или прожила долго, сбрасываем её
             if (this.x < -100 || this.x > bgCanvas.width + 100 || 
                 this.y < -100 || this.y > bgCanvas.height + 100 ||
                 this.life > this.maxLife) {
@@ -99,7 +91,6 @@
             ctx.translate(this.x, this.y);
             ctx.rotate(this.rotation);
             
-            // Fade in/out эффект
             let alpha = 1;
             if (this.life < 30) {
                 alpha = this.life / 30;
@@ -107,7 +98,6 @@
                 alpha = (this.maxLife - this.life) / 30;
             }
 
-            // Применяем прозрачность
             const colorWithAlpha = this.color.replace(/[\d.]+\)$/g, (alpha * 0.4) + ')');
             ctx.fillStyle = colorWithAlpha;
             ctx.font = `${this.size}px monospace`;
@@ -119,13 +109,12 @@
         }
     }
 
-    // Создаем частицы (не слишком много, чтобы не отвлекать)
     const particles = [];
-    const particleCount = Math.floor((bgCanvas.width * bgCanvas.height) / 50000); // Адаптивное количество
+    const particleCount = Math.floor((bgCanvas.width * bgCanvas.height) / 50000);
     
     function initParticles() {
         particles.length = 0;
-        const count = Math.max(10, Math.min(30, particleCount)); // От 10 до 30 частиц
+        const count = Math.max(10, Math.min(30, particleCount));
         for (let i = 0; i < count; i++) {
             particles.push(new BackgroundParticle());
         }
@@ -134,7 +123,6 @@
     initParticles();
     window.addEventListener('resize', initParticles);
 
-    // Анимация
     function animate() {
         ctx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
 

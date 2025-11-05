@@ -17,10 +17,7 @@
 
 @media (max-width: 1020px) {
 
-    /* --- Адаптив для страницы "Навыки" --- */
-
     .skills-list {
-        /* Убираем лишний отступ слева на мобильных */
         margin: 0 0 50px 0;
         max-width: 100%;
     }
@@ -30,11 +27,10 @@
     }
 
     .skill-icon {
-        display: block; /* Показываем иконку */
+        display: block;
     }
 
     .skill-explanation {
-        /* Становится обычным блоком под текстом */
         position: relative;
         top: auto;
         left: auto;
@@ -43,7 +39,6 @@
         margin-top: 15px;
         text-align: left;
         
-        /* Скрываем его с помощью max-height для плавной анимации */
         max-height: 0;
         opacity: 0;
         padding-top: 0;
@@ -52,7 +47,6 @@
         transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding 0.4s ease-out;
     }
 
-    /* Убираем старую логику :hover */
     .skill-item:hover .skill-explanation {
         max-height: 0;
         opacity: 0;
@@ -61,26 +55,22 @@
         visibility: hidden;
     }
 
-    /* Логика для раскрытия по клику (через класс .open) */
     .skill-item.open .skill-explanation {
-        max-height: 300px; /* Достаточная высота для любого текста */
+        max-height: 300px;
         opacity: 1;
         padding-top: 15px;
         padding-bottom: 15px;
         visibility: visible;
     }
 
-    /* Поворачиваем иконку */
     .skill-item.open .skill-icon {
         transform: rotate(180deg);
     }
     
     .skill-item:hover .skill-name {
-        /* Отменяем сдвиг текста вправо, он больше не нужен */
         transform: none;
     }
 
-    /* Подсвечиваем активный навык */
     .skill-item.open .skill-name {
         color: #fff;
     }
@@ -88,10 +78,9 @@
         color: #079e7b;
     }
 
-    /* --- Адаптив для страницы "Обо мне" --- */
     .about-me-grid {
-        grid-template-columns: 1fr; /* Меняем 2 колонки на 1 */
-        gap: 50px; /* Увеличиваем отступ между блоками */
+        grid-template-columns: 1fr;
+        gap: 50px;
     }
 
     .about-me-text h2, .about-me-skills h3 {
@@ -112,7 +101,6 @@
         margin: 30px 15px;
     }
 
-    /* Sticky меню на мобильных */
     .top {
         padding: 15px 0;
     }
@@ -132,9 +120,8 @@
         padding: 0 20px;
     }
 
-    /* === БУРГЕР-МЕНЮ === */
     .burger-menu {
-        display: flex; /* Показываем бургер на мобильных */
+        display: flex;
         order: 1;
     }
 
@@ -143,7 +130,6 @@
         gap: 0;
     }
 
-    /* Навигация скрыта по умолчанию на мобильных */
     .navigation {
         position: fixed;
         top: 0;
@@ -170,22 +156,20 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
 
-    /* Открытое состояние меню */
     .navigation.open {
-        top: 0; /* Показываем меню сверху */
-        display: flex; /* Показываем навигацию при открытии */
+        top: 0;
+        display: flex;
     }
 
-    /* Оверлей для затемнения фона */
     .menu-overlay {
-        display: block; /* Показываем оверлей на мобильных */
+        display: block;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100vh;
         background: rgba(0, 0, 0, 0.5);
-        z-index: 999;
+        z-index: 9;
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -196,7 +180,6 @@
         visibility: visible;
     }
 
-    /* Стили для кнопок навигации в бургер-меню */
     .navigation .LinkItem {
         width: 80%;
         max-width: 300px;
@@ -220,7 +203,6 @@
         background: rgba(7, 158, 123, 0.15);
     }
 
-    /* Увеличиваем подчёркивание для активного пункта в бургер-меню */
     .navigation .activeLink::after {
         content: none;
     }
@@ -228,7 +210,6 @@
     
 
 
-    /* Адаптация главной страницы */
     .about {
         flex-direction: column;
         align-items: center;
@@ -254,7 +235,6 @@
         gap: 20px;
     }
 
-    /* Адаптация страницы портфолио */
     .portfolio-item {
         grid-template-columns: 1fr;
     }
@@ -286,7 +266,6 @@
 
 
 @media (max-width: 480px) {
-    /* Уменьшаем отступы для маленьких экранов */
     body {
         margin: 20px 10px;
     }
@@ -294,7 +273,6 @@
         padding: 0 15px;
     }
 
-    /* Уменьшаем заголовки */
     h1 {
         font-size: 2.2rem;
     }
@@ -307,19 +285,14 @@
         margin-bottom: 30px;
     }
 
-    /* Навигация уже в бургер-меню, дополнительная настройка не нужна */
-
-    /* Делаем шрифт навыков меньше */
     .skill-name {
         font-size: 1.8rem;
     }
 
-    /* Карточки на странице "Обо мне" - в одну колонку */
     .skills-grid {
         grid-template-columns: 1fr;
     }
 
-    /* Адаптация переключателя проектов для очень маленьких экранов */
     .portfolio-switcher {
         flex-direction: column;
         align-items: center;
@@ -330,12 +303,10 @@
         max-width: 200px;
     }
 
-    /* Отступ при прокрутке к изображениям/видео портфолио */
     .portfolio-item video, .portfolio-item img {
         scroll-margin-top: 80px;
     }
 
-    /* Отзывы на маленьких экранах */
     .reviews-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -373,7 +344,6 @@
     }
 }
 
-/* Дополнительные адаптации для планшетов */
 @media (max-width: 768px) {
     .reviews-grid {
         grid-template-columns: 1fr;
