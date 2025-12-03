@@ -57,7 +57,7 @@ export function Screen7() {
           </motion.div>
 
           {/* Main content - 2 columns */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-6 md:gap-8">
             {/* Left column - Price & Details */}
             <div className="space-y-6 bg-[rgba(0,0,0,0)]">
               {/* Price block */}
@@ -139,6 +139,11 @@ export function Screen7() {
                   placeholder="Ваше имя 👤"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onKeyDown={(e) => {
+                    if (e.key === " " || e.key === "Spacebar") {
+                      e.stopPropagation();
+                    }
+                  }}
                   required
                   className="border-4 border-black rounded-xl md:rounded-2xl text-[14px] md:text-[16px] px-4 md:px-5 py-3 md:py-4 h-auto"
                 />
@@ -147,6 +152,11 @@ export function Screen7() {
                   placeholder="Email 📧"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onKeyDown={(e) => {
+                    if (e.key === " " || e.key === "Spacebar") {
+                      e.stopPropagation();
+                    }
+                  }}
                   required
                   className="border-4 border-black rounded-xl md:rounded-2xl text-[14px] md:text-[16px] px-4 md:px-5 py-3 md:py-4 h-auto"
                 />
@@ -154,12 +164,22 @@ export function Screen7() {
                   placeholder="Компания 🏢"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  onKeyDown={(e) => {
+                    if (e.key === " " || e.key === "Spacebar") {
+                      e.stopPropagation();
+                    }
+                  }}
                   className="border-4 border-black rounded-xl md:rounded-2xl text-[14px] md:text-[16px] px-4 md:px-5 py-3 md:py-4 h-auto"
                 />
                 <Textarea
                   placeholder="О проекте ✏️"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onKeyDown={(e) => {
+                    if (e.key === " " || e.key === "Spacebar") {
+                      e.stopPropagation();
+                    }
+                  }}
                   rows={4}
                   className="border-4 border-black rounded-xl md:rounded-2xl text-[14px] md:text-[16px] px-4 md:px-5 py-3 md:py-4"
                 />

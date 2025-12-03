@@ -154,6 +154,11 @@ export function Screen5() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && handleSend()}
+                  onKeyDown={(e) => {
+                    if (e.key === " " || e.key === "Spacebar") {
+                      e.stopPropagation();
+                    }
+                  }}
                   placeholder="Пишите сюда... 💬"
                   className="flex-1 border-4 border-black rounded-full text-base md:text-xl px-4 md:px-6 py-3 md:py-4"
                   disabled={step === "goal" || step === "email"}

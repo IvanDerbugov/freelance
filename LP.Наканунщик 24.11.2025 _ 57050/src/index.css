@@ -1778,6 +1778,12 @@
   }
 
   @media (width >= 48rem) {
+    .md\:grid-cols-\[1\.2fr_1fr\] {
+      grid-template-columns: 1.2fr 1fr;
+    }
+  }
+
+  @media (width >= 48rem) {
     .md\:gap-3 {
       gap: calc(var(--spacing) * 3);
     }
