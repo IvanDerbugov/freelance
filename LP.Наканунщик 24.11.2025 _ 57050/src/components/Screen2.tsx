@@ -67,15 +67,15 @@ export function Screen2() {
           </motion.div>
 
           {/* Countdown */}
-          <div className="flex flex-row justify-center items-center gap-2 md:gap-4 max-w-4xl mx-auto">
+          <div className="flex flex-row justify-center items-center gap-2 md:gap-3 lg1050:gap-4 max-w-4xl mx-auto">
             {[
               { value: String(timeLeft.hours).padStart(2, '0'), label: 'часы', color: '#d4ff00' },
               { value: String(timeLeft.minutes).padStart(2, '0'), label: 'минуты', color: '#00ccff' },
               { value: String(timeLeft.seconds).padStart(2, '0'), label: 'секунды', color: '#ff6b00' },
             ].map((item, index) => (
-              <div key={item.label} className="flex flex-row items-center gap-2 md:gap-4">
+              <div key={item.label} className="flex flex-row items-center gap-2 md:gap-3 lg1050:gap-4">
                 {index > 0 && (
-                  <div className="text-3xl md:text-9xl text-white mx-0 md:mx-4">:</div>
+                  <div className="text-3xl md:text-4xl lg1050:text-9xl text-white mx-0 md:mx-2 lg1050:mx-4">:</div>
                 )}
                 <motion.div
                   initial={{ opacity: 0, y: 60 }}
@@ -92,15 +92,15 @@ export function Screen2() {
                       repeat: Infinity,
                       delay: index * 0.2
                     }}
-                    className="bg-white rounded-xl md:rounded-3xl p-2 md:p-8 shadow-2xl border-2 md:border-4 border-black relative overflow-hidden"
+                    className="bg-white rounded-xl md:rounded-2xl lg1050:rounded-3xl p-2 md:p-4 lg1050:p-8 shadow-2xl border-2 md:border-3 lg1050:border-4 border-black relative overflow-hidden"
                   >
                     <div 
-                      className="text-3xl md:text-9xl tabular-nums leading-none mb-1 md:mb-2"
+                      className="text-3xl md:text-4xl lg1050:text-9xl tabular-nums leading-none mb-1 md:mb-1.5 lg1050:mb-2"
                       style={{ color: item.color }}
                     >
                       {item.value}
                     </div>
-                    <div className="text-[10px] md:text-xl text-black tracking-wider uppercase">
+                    <div className="text-[10px] md:text-sm lg1050:text-xl text-black tracking-wider uppercase">
                       {item.label}
                     </div>
                   </motion.div>

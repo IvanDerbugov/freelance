@@ -1586,6 +1586,12 @@
   }
 
   @media (width >= 48rem) {
+    .md\:mx-2 {
+      margin-inline: calc(var(--spacing) * 2);
+    }
+  }
+
+  @media (width >= 48rem) {
     .md\:mx-4 {
       margin-inline: calc(var(--spacing) * 4);
     }
@@ -1642,6 +1648,12 @@
   @media (width >= 48rem) {
     .md\:mt-\[13px\] {
       margin-top: 13px;
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:mb-1\.5 {
+      margin-bottom: calc(var(--spacing) * 1.5);
     }
   }
 
@@ -1856,6 +1868,13 @@
   }
 
   @media (width >= 48rem) {
+    .md\:border-3 {
+      border-style: var(--tw-border-style);
+      border-width: 3px;
+    }
+  }
+
+  @media (width >= 48rem) {
     .md\:border-4 {
       border-style: var(--tw-border-style);
       border-width: 4px;
@@ -1871,6 +1890,12 @@
   @media (width >= 48rem) {
     .md\:p-6 {
       padding: calc(var(--spacing) * 6);
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:p-4 {
+      padding: calc(var(--spacing) * 4);
     }
   }
 
@@ -1968,9 +1993,47 @@
   }
 
   @media (width >= 48rem) {
-    .md\:text-9xl {
+    .md\:text-4xl {
+      font-size: var(--text-4xl);
+      line-height: var(--tw-leading, var(--text-4xl--line-height));
+      font-size: 5rem;
+    }
+  }
+
+  @media (width >= 65.625rem) {
+    .lg1050\:text-9xl {
       font-size: var(--text-9xl);
       line-height: var(--tw-leading, var(--text-9xl--line-height));
+    }
+
+    .lg1050\:p-8 {
+      padding: calc(var(--spacing) * 8);
+    }
+
+    .lg1050\:border-4 {
+      border-style: var(--tw-border-style);
+      border-width: 4px;
+    }
+
+    .lg1050\:rounded-3xl {
+      border-radius: var(--radius-3xl);
+    }
+
+    .lg1050\:gap-4 {
+      gap: calc(var(--spacing) * 4);
+    }
+
+    .lg1050\:mx-4 {
+      margin-inline: calc(var(--spacing) * 4);
+    }
+
+    .lg1050\:text-xl {
+      font-size: var(--text-xl);
+      line-height: var(--tw-leading, var(--text-xl--line-height));
+    }
+
+    .lg1050\:mb-2 {
+      margin-bottom: calc(var(--spacing) * 2);
     }
   }
 
@@ -1978,6 +2041,7 @@
     .md\:text-sm {
       font-size: var(--text-sm);
       line-height: var(--tw-leading, var(--text-sm--line-height));
+      font-size: 1.2rem;
     }
   }
 
@@ -2030,9 +2094,15 @@
     }
   }
 
+  @media (width >= 26.25rem) {
+    .text-\[47px\]-420 {
+      font-size: 47px;
+    }
+  }
+
   @media (width >= 48rem) {
-    .md\:text-\[100px\] {
-      font-size: 100px;
+    .md\:text-\[90px\] {
+      font-size: 90px;
     }
   }
 
