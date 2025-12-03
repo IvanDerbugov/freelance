@@ -69,7 +69,7 @@ export function Screen7() {
               >
                 <div className="space-y-2">
                   <motion.div 
-                    className="text-white text-[48px] md:text-[64px] lg:text-[80px] tabular-nums font-black leading-none"
+                    className="text-white text-[48px] md:text-[56px] lg:text-[80px] tabular-nums font-black leading-none"
                     animate={{ scale: [1, 1.05, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >

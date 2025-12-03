@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, Circle } from "lucide-react";
 import { PresentationContext } from "./PresentationContext";
@@ -26,19 +26,25 @@ export function PresentationLayout({ children }: PresentationLayoutProps) {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const nextSlide = () => {
-    if (currentSlide < totalSlides - 1) {
-      setDirection(1);
-      setCurrentSlide(currentSlide + 1);
-    }
-  };
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => {
+      if (prev < totalSlides - 1) {
+        setDirection(1);
+        return prev + 1;
+      }
+      return prev;
+    });
+  }, [totalSlides]);
 
-  const prevSlide = () => {
-    if (currentSlide > 0) {
-      setDirection(-1);
-      setCurrentSlide(currentSlide - 1);
-    }
-  };
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => {
+      if (prev > 0) {
+        setDirection(-1);
+        return prev - 1;
+      }
+      return prev;
+    });
+  }, []);
 
   const goToSlide = (index: number) => {
     setDirection(index > currentSlide ? 1 : -1);
@@ -46,7 +52,6 @@ export function PresentationLayout({ children }: PresentationLayoutProps) {
   };
 
   useEffect(() => {
-    // Only enable presentation navigation on desktop
     if (isMobile) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -59,13 +64,37 @@ export function PresentationLayout({ children }: PresentationLayoutProps) {
       }
     };
 
+    let wheelTimeout: NodeJS.Timeout | null = null;
+    let lastWheelTime = 0;
+    const WHEEL_THROTTLE = 250;
+    const MIN_DELTA = 30;
+
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
-      if (e.deltaY > 0) {
-        nextSlide();
-      } else if (e.deltaY < 0) {
-        prevSlide();
+      
+      const now = Date.now();
+      const deltaY = Math.abs(e.deltaY);
+      
+      if (deltaY < MIN_DELTA) {
+        return;
       }
+
+      if (now - lastWheelTime < WHEEL_THROTTLE) {
+        return;
+      }
+
+      if (wheelTimeout) {
+        clearTimeout(wheelTimeout);
+      }
+
+      wheelTimeout = setTimeout(() => {
+        lastWheelTime = now;
+        if (e.deltaY > 0) {
+          nextSlide();
+        } else if (e.deltaY < 0) {
+          prevSlide();
+        }
+      }, 30);
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -73,8 +102,11 @@ export function PresentationLayout({ children }: PresentationLayoutProps) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("wheel", handleWheel);
+      if (wheelTimeout) {
+        clearTimeout(wheelTimeout);
+      }
     };
-  }, [currentSlide, isMobile]);
+  }, [isMobile, nextSlide, prevSlide]);
 
   const slideVariants = {
     enter: (direction: number) => ({

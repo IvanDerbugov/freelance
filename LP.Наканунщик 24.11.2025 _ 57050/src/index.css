@@ -2095,8 +2095,8 @@
   }
 
   @media (width >= 48rem) {
-    .md\:text-\[64px\] {
-      font-size: 64px;
+    .md\:text-\[56px\] {
+      font-size: 56px;
     }
   }
 
