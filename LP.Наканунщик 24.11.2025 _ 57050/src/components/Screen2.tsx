@@ -8,14 +8,13 @@ import { SparkleButton } from "./SparkleButton";
 export function Screen2() {
   const { nextSlide } = usePresentationContext();
   
-  // Calculate target date: 3 days from now
   const [targetDate] = useState(() => {
-    const date = new Date();
-    date.setDate(date.getDate() + 3);
-    return date;
+    const now = new Date();
+    const newYear = new Date(now.getFullYear() + 1, 0, 1, 0, 0, 0, 0);
+    return newYear;
   });
   
-  const [timeLeft, setTimeLeft] = useState({ hours: 72, minutes: 0, seconds: 0 });
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -23,13 +22,14 @@ export function Screen2() {
       const difference = targetDate.getTime() - now.getTime();
 
       if (difference > 0) {
-        const hours = Math.floor(difference / (1000 * 60 * 60));
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-        setTimeLeft({ hours, minutes, seconds });
+        setTimeLeft({ days, hours, minutes, seconds });
       } else {
-        setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
     };
 
@@ -69,9 +69,9 @@ export function Screen2() {
           {/* Countdown */}
           <div className="flex flex-row justify-center items-center gap-2 md:gap-3 lg1050:gap-4 max-w-4xl mx-auto">
             {[
-              { value: String(timeLeft.hours).padStart(2, '0'), label: 'часы', color: '#d4ff00' },
-              { value: String(timeLeft.minutes).padStart(2, '0'), label: 'минуты', color: '#00ccff' },
-              { value: String(timeLeft.seconds).padStart(2, '0'), label: 'секунды', color: '#ff6b00' },
+              { value: String(timeLeft.days).padStart(2, '0'), label: 'дни', color: '#d4ff00' },
+              { value: String(timeLeft.hours).padStart(2, '0'), label: 'часы', color: '#00ccff' },
+              { value: String(timeLeft.minutes).padStart(2, '0'), label: 'минуты', color: '#ff6b00' },
             ].map((item, index) => (
               <div key={item.label} className="flex flex-row items-center gap-2 md:gap-3 lg1050:gap-4">
                 {index > 0 && (
