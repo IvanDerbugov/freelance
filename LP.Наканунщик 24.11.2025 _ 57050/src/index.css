@@ -1174,6 +1174,10 @@
     font-size: 28px;
   }
 
+  .text-\[30px\] {
+    font-size: 30px;
+  }
+
   .text-\[32px\] {
     font-size: 32px;
   }
@@ -2083,6 +2087,12 @@
   }
 
   @media (width >= 48rem) {
+    .md\:text-\[30px\] {
+      font-size: 30px;
+    }
+  }
+
+  @media (width >= 48rem) {
     .md\:text-\[36px\] {
       font-size: 36px;
     }
@@ -2101,14 +2111,14 @@
   }
 
   @media (width >= 26.25rem) {
-    .text-\[47px\]-420 {
-      font-size: 47px;
+    .text-\[77px\]-420 {
+      font-size: 77px;
     }
   }
 
   @media (width >= 48rem) {
-    .md\:text-\[90px\] {
-      font-size: 90px;
+    .md\:text-\[140px\] {
+      font-size: 140px;
     }
   }
 
@@ -2161,8 +2171,8 @@
   }
 
   @media (width >= 64rem) {
-    .lg\:text-\[123px\] {
-      font-size: 123px;
+    .lg\:text-\[190px\] {
+      font-size: 190px;
     }
   }
 

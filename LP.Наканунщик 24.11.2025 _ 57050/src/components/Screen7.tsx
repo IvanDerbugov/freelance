@@ -15,12 +15,37 @@ export function Screen7() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (submitted) return;
+    
     setSubmitted(true);
-    setTimeout(() => {
-      alert("🎉 ЗАЯВКА ПРИНЯТА! Свяжемся в течение часа!");
-    }, 500);
+    
+    try {
+      const dataToSend = new FormData();
+      dataToSend.append('name', formData.name);
+      dataToSend.append('email', formData.email);
+      dataToSend.append('company', formData.company || '');
+      dataToSend.append('message', formData.message || '');
+      
+      const response = await fetch('/form-handler.php', {
+        method: 'POST',
+        body: dataToSend,
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        alert("🎉 ЗАЯВКА ПРИНЯТА! Свяжемся в течение часа!");
+      } else {
+        throw new Error(result.error?.general || result.error || 'Ошибка отправки');
+      }
+    } catch (error) {
+      console.error('Ошибка отправки формы:', error);
+      alert("Произошла ошибка при отправке. Попробуйте позже.");
+      setSubmitted(false);
+    }
   };
 
   const included = [
@@ -51,7 +76,7 @@ export function Screen7() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-black text-[36px] md:text-[48px] lg:text-[56px] font-black uppercase leading-tight mx-[0px] my-[13px] mt-[60px] md:mt-[13px] mr-[4px] mb-[20px] md:mb-[37px] ml-[0px] px-4">
+            <h2 className="text-black text-[30px] md:text-[48px] lg:text-[56px] font-black uppercase leading-tight mx-[0px] my-[13px] mt-[60px] md:mt-[13px] mr-[4px] mb-[20px] md:mb-[37px] ml-[0px] px-4">
               Пакет «Успеть всё»
             </h2>
           </motion.div>
@@ -135,6 +160,7 @@ export function Screen7() {
               </div>
               
               <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
+                <input type="text" name="login" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
                 <Input
                   placeholder="Ваше имя 👤"
                   value={formData.name}

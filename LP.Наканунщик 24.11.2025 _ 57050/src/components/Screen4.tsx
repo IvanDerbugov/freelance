@@ -51,12 +51,12 @@ export function Screen4() {
           {/* Heading */}
           <div className="space-y-[60px] md:space-y-3">
             <motion.h2 
-              className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] leading-tight text-center text-[28px] md:text-[36px] lg:text-[40px] font-black uppercase px-4 md:px-[63px] py-[0px] mt-[60px] md:mt-[0px] mr-[0px] mb-[20px] md:mb-[30px] ml-[0px]"
+              className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] leading-tight text-center text-[28px] md:text-[30px] lg:text-[40px] font-black uppercase px-4 md:px-[63px] py-[0px] mt-[60px] md:mt-[0px] mr-[0px] mb-[20px] md:mb-[30px] ml-[0px]"
               initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              «Наканунщик» — самая кинетическая программа для тех, кто хочет успеть до праздников
+              «KINETICA» — самая кинетическая программа для тех, кто хочет успеть до праздников
             </motion.h2>
             <motion.p 
               className="text-white text-center text-[16px] md:text-[20px] drop-shadow-lg max-w-4xl mx-4 md:mx-[184px] leading-snug my-[0px]"

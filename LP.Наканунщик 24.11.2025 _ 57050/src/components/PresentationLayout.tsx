@@ -27,6 +27,19 @@ export function PresentationLayout({ children }: PresentationLayoutProps) {
   }, []);
 
   const nextSlide = useCallback(() => {
+    if (isMobile) {
+      setCurrentSlide((prev) => {
+        const nextIndex = prev < totalSlides - 1 ? prev + 1 : prev;
+        setTimeout(() => {
+          const nextSlideElement = document.querySelector(`[data-slide-index="${nextIndex}"]`);
+          if (nextSlideElement) {
+            nextSlideElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 0);
+        return nextIndex;
+      });
+      return;
+    }
     setCurrentSlide((prev) => {
       if (prev < totalSlides - 1) {
         setDirection(1);
@@ -34,9 +47,22 @@ export function PresentationLayout({ children }: PresentationLayoutProps) {
       }
       return prev;
     });
-  }, [totalSlides]);
+  }, [totalSlides, isMobile]);
 
   const prevSlide = useCallback(() => {
+    if (isMobile) {
+      setCurrentSlide((prev) => {
+        const prevIndex = prev > 0 ? prev - 1 : prev;
+        setTimeout(() => {
+          const prevSlideElement = document.querySelector(`[data-slide-index="${prevIndex}"]`);
+          if (prevSlideElement) {
+            prevSlideElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 0);
+        return prevIndex;
+      });
+      return;
+    }
     setCurrentSlide((prev) => {
       if (prev > 0) {
         setDirection(-1);
@@ -44,12 +70,22 @@ export function PresentationLayout({ children }: PresentationLayoutProps) {
       }
       return prev;
     });
-  }, []);
+  }, [isMobile]);
 
-  const goToSlide = (index: number) => {
+  const goToSlide = useCallback((index: number) => {
+    if (isMobile) {
+      setCurrentSlide(index);
+      setTimeout(() => {
+        const slideElement = document.querySelector(`[data-slide-index="${index}"]`);
+        if (slideElement) {
+          slideElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 0);
+      return;
+    }
     setDirection(index > currentSlide ? 1 : -1);
     setCurrentSlide(index);
-  };
+  }, [isMobile, currentSlide]);
 
   useEffect(() => {
     if (isMobile) return;
@@ -89,11 +125,11 @@ export function PresentationLayout({ children }: PresentationLayoutProps) {
 
       wheelTimeout = setTimeout(() => {
         lastWheelTime = now;
-        if (e.deltaY > 0) {
-          nextSlide();
-        } else if (e.deltaY < 0) {
-          prevSlide();
-        }
+      if (e.deltaY > 0) {
+        nextSlide();
+      } else if (e.deltaY < 0) {
+        prevSlide();
+      }
       }, 30);
     };
 
@@ -123,6 +159,31 @@ export function PresentationLayout({ children }: PresentationLayoutProps) {
     }),
   };
 
+  // Track scroll position on mobile
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const handleScroll = () => {
+      const slides = document.querySelectorAll('[data-slide-index]');
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      slides.forEach((slide, index) => {
+        const rect = slide.getBoundingClientRect();
+        const slideTop = rect.top + window.scrollY;
+        const slideBottom = slideTop + rect.height;
+
+        if (scrollPosition >= slideTop && scrollPosition < slideBottom) {
+          setCurrentSlide(index);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMobile]);
+
   // Mobile view: scrollable layout
   if (isMobile) {
     return (
@@ -138,7 +199,7 @@ export function PresentationLayout({ children }: PresentationLayoutProps) {
           }}
         >
           {children.map((child, index) => (
-            <div key={index} className="min-h-screen w-full">
+            <div key={index} data-slide-index={index} className="min-h-screen w-full">
               {child}
             </div>
           ))}

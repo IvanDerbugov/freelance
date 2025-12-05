@@ -13,7 +13,14 @@ export const PresentationContext = createContext<PresentationContextType | null>
 export function usePresentationContext() {
   const context = useContext(PresentationContext);
   if (!context) {
-    throw new Error('usePresentationContext must be used within PresentationLayout');
+    console.error('usePresentationContext must be used within PresentationLayout');
+    return {
+      nextSlide: () => console.warn('nextSlide called but context not available'),
+      prevSlide: () => console.warn('prevSlide called but context not available'),
+      goToSlide: () => console.warn('goToSlide called but context not available'),
+      currentSlide: 0,
+      totalSlides: 0,
+    };
   }
   return context;
 }

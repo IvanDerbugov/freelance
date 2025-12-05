@@ -10,8 +10,8 @@ export function Screen2() {
   
   const [targetDate] = useState(() => {
     const now = new Date();
-    const newYear = new Date(now.getFullYear() + 1, 0, 1, 0, 0, 0, 0);
-    return newYear;
+    const december15 = new Date(now.getFullYear(), 11, 15, 0, 0, 0, 0);
+    return december15;
   });
   
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -59,7 +59,7 @@ export function Screen2() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] leading-tight text-[32px] md:text-[48px] lg:text-[60px] font-bold uppercase p-[0px]">
+            <h2 className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] leading-tight text-[30px] md:text-[48px] lg:text-[60px] font-bold uppercase p-[0px]">
               До сезона<br />
               <span className="text-[#d4ff00]">«давайте уже после праздников»</span><br />
               осталось:

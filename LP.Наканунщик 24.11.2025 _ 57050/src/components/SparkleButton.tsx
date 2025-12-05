@@ -54,10 +54,18 @@ export function SparkleButton({
     return () => clearInterval(interval);
   }, []);
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (onClick && !disabled) {
+      onClick();
+    }
+  };
+
   return (
     <motion.button
       type={type}
-      onClick={onClick}
+      onClick={handleClick}
       disabled={disabled}
       className={`relative px-12 py-5 rounded-lg shadow-2xl transition-transform overflow-hidden ${className}`}
       style={{

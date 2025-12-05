@@ -143,8 +143,8 @@ export function Screen1() {
             className="space-y-[25px] md:space-y-8"
           >
             <div className="relative inline-block">
-              <h1 className="text-[rgb(0,0,0)] leading-none font-bold text-[36px] text-[47px]-420 md:text-[90px] lg:text-[123px] p-[0px] m-[0px]">
-                НАКАНУНЩИК
+              <h1 className="text-[rgb(0,0,0)] leading-none font-bold text-[36px] text-[77px]-420 md:text-[140px] lg:text-[190px] p-[0px] m-[0px]" style={{ fontWeight: 800 }}>
+                KINETICA
               </h1>
 
               {/* Sparkles on title */}

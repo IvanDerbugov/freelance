@@ -35,7 +35,7 @@ export function Screen3() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] leading-tight text-center text-[32px] md:text-[48px] lg:text-[54px] font-black uppercase px-4 mt-[60px] md:mt-0">
+            <h2 className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] leading-tight text-center text-[30px] md:text-[48px] lg:text-[54px] font-black uppercase px-4 mt-[60px] md:mt-0">
               Типичный конец года у CMO
             </h2>
           </motion.div>

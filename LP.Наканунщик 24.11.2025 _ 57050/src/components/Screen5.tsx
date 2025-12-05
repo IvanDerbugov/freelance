@@ -19,7 +19,7 @@ export function Screen5() {
   const { nextSlide } = usePresentationContext();
   const [messages, setMessages] = useState<Message[]>([
     {
-      text: "Привет! Я — AI-помощник «Наканунщика». Давайте прикинем идею для вашей праздничной рассылки? Напишите, какой у вас бизнес.",
+      text: "Привет! Я — AI-помощник «KINETICA». Давайте прикинем идею для вашей праздничной рассылки? Напишите, какой у вас бизнес.",
       isBot: true,
     },
   ]);
@@ -97,7 +97,7 @@ export function Screen5() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-black mx-4 md:mx-[39px] my-[0px] mt-[60px] md:mt-[0px] p-[0px] text-[28px] md:text-[36px] lg:text-[40px] font-black uppercase">
+            <h2 className="text-black mx-4 md:mx-[39px] my-[0px] mt-[60px] md:mt-[0px] p-[0px] text-[28px] md:text-[30px] lg:text-[40px] font-black uppercase">
               Попробуйте нашего AI-ассистента прямо сейчас!
             </h2>
           </motion.div>
@@ -117,7 +117,7 @@ export function Screen5() {
                   animate={{ scale: [1, 1.3, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
-                <span className="text-lg md:text-2xl font-bold">AI НАКАНУНЩИКА</span>
+                <span className="text-lg md:text-2xl font-bold">AI KINETICA</span>
               </div>
               <span className="text-sm md:text-xl">ОНЛАЙН 🟢</span>
             </div>
