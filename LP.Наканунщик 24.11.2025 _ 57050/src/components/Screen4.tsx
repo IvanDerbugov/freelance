@@ -41,7 +41,7 @@ export function Screen4() {
       
       <ChristmasLights position="top" />
       
-      <div className="max-w-5xl w-full relative z-10 py-8">
+      <div className="max-w-5xl w-full relative z-10">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

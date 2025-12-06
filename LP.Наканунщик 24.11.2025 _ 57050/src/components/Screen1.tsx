@@ -15,34 +15,74 @@ export function Screen1() {
   const { nextSlide } = usePresentationContext();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const rotateX = useTransform(
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 767);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const rotateXValue = useMotionValue(0);
+  const rotateYValue = useMotionValue(0);
+  const rotateZValue = useMotionValue(0);
+
+  useEffect(() => {
+    if (isMobile) {
+      rotateXValue.set(4);
+      rotateYValue.set(-1.5);
+      rotateZValue.set(-1);
+    }
+  }, [isMobile, rotateXValue, rotateYValue, rotateZValue]);
+
+  const rotateXDesktop = useTransform(
     mouseY,
     [0, window.innerHeight],
     [10, -10],
   );
-  const rotateY = useTransform(
+  const rotateYDesktop = useTransform(
     mouseX,
     [0, window.innerWidth],
     [-10, 10],
   );
-  const rotateZ = useTransform(
+  const rotateZDesktop = useTransform(
     mouseX,
     [0, window.innerWidth],
     [-5, 5],
   );
 
+  const rotateX = isMobile ? rotateXValue : rotateXDesktop;
+  const rotateY = isMobile ? rotateYValue : rotateYDesktop;
+  const rotateZ = isMobile ? rotateZValue : rotateZDesktop;
+
   // Opposite movement for character
-  const characterX = useTransform(
+  const characterXMobile = useTransform(
+    mouseX,
+    [0, window.innerWidth],
+    [5 + 5, 5 - 5],
+  );
+  const characterYMobile = useTransform(
+    mouseY,
+    [0, window.innerHeight],
+    [-9.2 + 5, -9.2 - 5],
+  );
+
+  const characterXDesktop = useTransform(
     mouseX,
     [0, window.innerWidth],
     [20, -20],
   );
-  const characterY = useTransform(
+  const characterYDesktop = useTransform(
     mouseY,
     [0, window.innerHeight],
     [20, -20],
   );
+
+  const characterX = isMobile ? characterXMobile : characterXDesktop;
+  const characterY = isMobile ? characterYMobile : characterYDesktop;
 
   const [sparkles, setSparkles] = useState<
     Array<{
@@ -72,9 +112,19 @@ export function Screen1() {
       mouseY.set(e.clientY);
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        mouseX.set(e.touches[0].clientX);
+        mouseY.set(e.touches[0].clientY);
+      }
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
-    return () =>
+    window.addEventListener("touchmove", handleTouchMove);
+    return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
   }, [mouseX, mouseY]);
 
   useEffect(() => {
@@ -186,7 +236,7 @@ export function Screen1() {
               ))}
             </div>
 
-            <h2 className="text-black max-w-4xl mx-4 md:mx-[273px] leading-tight text-[30px] md:text-[30px] lg:text-[30px] my-0 md:my-[-42px] font-black">
+            <h2 className="text-black max-w-4xl mx-4 md:mx-[273px] leading-tight text-[20px] md:text-[30px] lg:text-[30px] my-0 md:my-[-42px] font-normal md:font-black">
               Сервис скоростного запуска email-проектов для
               директоров по маркетингу от Kinetica
             </h2>

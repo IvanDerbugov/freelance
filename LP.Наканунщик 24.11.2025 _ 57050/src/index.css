@@ -2257,11 +2257,9 @@
     padding-right: 0.5rem;
   }
 
-  @media (width < 48rem) {
-    .py-65-mobile {
-      padding-top: 65px;
-      padding-bottom: 65px;
-    }
+  .py-65-mobile {
+    padding-top: 54px;
+    padding-bottom: 54px;
   }
 
   @media (width <= 25rem) {
