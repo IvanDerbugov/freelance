@@ -56,7 +56,7 @@ export function Screen7() {
   ];
 
   return (
-    <div className="w-full min-h-screen md:h-screen flex items-center justify-center px-4 md:px-8 py-12 md:py-8 overflow-hidden relative">
+    <div className="w-full min-h-screen md:h-screen flex items-center justify-center px-4 md:px-8 px-8-400 py-12 md:py-8 py-65-mobile overflow-hidden relative">
       {/* Noise Texture */}
       <NoiseTexture />
       
@@ -76,7 +76,7 @@ export function Screen7() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-black text-[30px] md:text-[48px] lg:text-[56px] font-black uppercase leading-tight mx-[0px] my-[13px] mt-[60px] md:mt-[13px] mr-[4px] mb-[20px] md:mb-[37px] ml-[0px] px-4">
+            <h2 className="text-black text-[30px] md:text-[30px] lg:text-[30px] font-black uppercase leading-tight mx-0 my-[13px] mt-[60px] md:mt-[13px] mr-[4px] mb-[20px] md:mb-[37px] ml-0 px-4">
               Пакет «Успеть всё»
             </h2>
           </motion.div>

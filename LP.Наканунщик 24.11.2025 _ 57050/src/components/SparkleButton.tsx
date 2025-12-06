@@ -67,7 +67,7 @@ export function SparkleButton({
       type={type}
       onClick={handleClick}
       disabled={disabled}
-      className={`relative px-12 py-5 rounded-lg shadow-2xl transition-transform overflow-hidden ${className}`}
+      className={`relative px-12 py-5 rounded-lg shadow-2xl transition-transform overflow-hidden px-5-460 p-15-420 button-380 ${className}`}
       style={{
         backgroundImage: `url(${glitterTexture})`,
         backgroundSize: 'cover',
@@ -115,7 +115,7 @@ export function SparkleButton({
         </motion.div>
       ))}
       
-      <span className={`relative z-10 ${textColor} font-bold text-[20px]`}>{children}</span>
+      <span className={`relative z-10 ${textColor} font-bold text-[20px] text-[17px]-375 text-[18px]-420 text-[16px]-400 text-[16px]-350`}>{children}</span>
     </motion.button>
   );
 }

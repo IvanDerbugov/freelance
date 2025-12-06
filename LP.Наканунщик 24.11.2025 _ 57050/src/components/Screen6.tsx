@@ -34,7 +34,7 @@ export function Screen6() {
   ];
 
   return (
-    <div className="w-full min-h-screen md:h-screen flex items-center justify-center bg-[#00ccff] px-4 md:px-8 py-12 md:py-8 relative overflow-hidden">
+    <div className="w-full min-h-screen md:h-screen flex items-center justify-center bg-[#00ccff] px-4 md:px-8 px-8-400 py-12 md:py-8 py-65-mobile relative overflow-hidden">
       {/* Noise Texture */}
       <NoiseTexture />
       
@@ -50,7 +50,7 @@ export function Screen6() {
           {/* Heading */}
           <div className="space-y-[60px] md:space-y-4">
             <motion.h2 
-              className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] leading-tight text-center text-[28px] md:text-[30px] lg:text-[40px] font-black uppercase px-4 mt-[60px] md:mt-0"
+              className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] leading-tight text-center text-[30px] md:text-[30px] lg:text-[30px] font-black uppercase px-4 mt-[60px] md:mt-0"
               initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}

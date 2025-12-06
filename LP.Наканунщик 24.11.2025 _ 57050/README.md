@@ -12,5 +12,5 @@ cd "LP.Наканунщик 24.11.2025 _ 57050"
 
 
 
-     npm run build
+  Run `npm run build` для прода
   

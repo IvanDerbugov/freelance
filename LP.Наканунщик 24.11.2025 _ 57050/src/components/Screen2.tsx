@@ -39,7 +39,7 @@ export function Screen2() {
   }, [targetDate]);
 
   return (
-    <div className="w-full min-h-screen md:h-screen flex items-center justify-center bg-[#ff0055] px-4 md:px-8 py-12 md:py-0 relative overflow-hidden">
+    <div className="w-full min-h-screen md:h-screen flex items-center justify-center bg-[#ff0055] px-4 md:px-8 px-8-400 py-12 md:py-0 py-65-mobile relative overflow-hidden">
       {/* Noise Texture */}
       <NoiseTexture />
       
@@ -59,7 +59,7 @@ export function Screen2() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] leading-tight text-[30px] md:text-[48px] lg:text-[60px] font-bold uppercase p-[0px]">
+            <h2 className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] leading-tight text-[30px] md:text-[30px] lg:text-[30px] font-black uppercase p-[0px]">
               До сезона<br />
               <span className="text-[#d4ff00]">«давайте уже после праздников»</span><br />
               осталось:
@@ -67,15 +67,15 @@ export function Screen2() {
           </motion.div>
 
           {/* Countdown */}
-          <div className="flex flex-row justify-center items-center gap-2 md:gap-3 lg1050:gap-4 max-w-4xl mx-auto">
+          <div className="flex flex-row justify-center items-center gap-2 sm400:gap-2.5 sm550:gap-3 sm700:gap-3.5 md:gap-3 lg1050:gap-4 max-w-4xl mx-auto">
             {[
               { value: String(timeLeft.days).padStart(2, '0'), label: 'дни', color: '#d4ff00' },
               { value: String(timeLeft.hours).padStart(2, '0'), label: 'часы', color: '#00ccff' },
               { value: String(timeLeft.minutes).padStart(2, '0'), label: 'минуты', color: '#ff6b00' },
             ].map((item, index) => (
-              <div key={item.label} className="flex flex-row items-center gap-2 md:gap-3 lg1050:gap-4">
+              <div key={item.label} className="flex flex-row items-center gap-2 sm400:gap-2.5 sm550:gap-3 sm700:gap-3.5 md:gap-3 lg1050:gap-4">
                 {index > 0 && (
-                  <div className="text-3xl md:text-4xl lg1050:text-9xl text-white mx-0 md:mx-2 lg1050:mx-4">:</div>
+                  <div className="text-3xl sm400:text-3xl sm550:text-5xl sm700:text-7xl md:text-4xl lg1050:text-9xl text-white mx-0 sm400:mx-1 sm550:mx-3 sm700:mx-3 md:mx-2 lg1050:mx-4">:</div>
                 )}
                 <motion.div
                   initial={{ opacity: 0, y: 60 }}
@@ -92,15 +92,15 @@ export function Screen2() {
                       repeat: Infinity,
                       delay: index * 0.2
                     }}
-                    className="bg-white rounded-xl md:rounded-2xl lg1050:rounded-3xl p-2 md:p-4 lg1050:p-8 shadow-2xl border-2 md:border-3 lg1050:border-4 border-black relative overflow-hidden"
+                    className="bg-white rounded-xl sm400:rounded-xl sm550:rounded-2xl sm700:rounded-2xl md:rounded-2xl lg1050:rounded-3xl p-2 sm400:p-3 sm550:p-5 sm700:p-6 md:p-4 lg1050:p-8 shadow-2xl border-2 sm400:border-2.5 sm550:border-3 sm700:border-3.5 md:border-3 lg1050:border-4 border-black relative overflow-hidden"
                   >
                     <div 
-                      className="text-3xl md:text-4xl lg1050:text-9xl tabular-nums leading-none mb-1 md:mb-1.5 lg1050:mb-2"
+                      className="text-3xl sm400:text-3xl sm550:text-5xl sm700:text-7xl md:text-4xl lg1050:text-9xl tabular-nums leading-none mb-1 sm400:mb-1 sm550:mb-1.5 sm700:mb-1.5 md:mb-1.5 lg1050:mb-2"
                       style={{ color: item.color }}
                     >
                       {item.value}
                     </div>
-                    <div className="text-[10px] md:text-sm lg1050:text-xl text-black tracking-wider uppercase">
+                    <div className="text-[10px] sm400:text-xs sm550:text-sm sm700:text-base md:text-sm lg1050:text-xl text-black tracking-wider uppercase">
                       {item.label}
                     </div>
                   </motion.div>

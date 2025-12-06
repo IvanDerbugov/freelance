@@ -121,7 +121,7 @@ export function Screen1() {
   }, []);
 
   return (
-    <div className="w-full min-h-screen md:h-screen flex items-center justify-center px-4 md:px-8 py-12 md:py-0 relative overflow-hidden">
+    <div className="w-full min-h-screen md:h-screen flex items-center justify-center px-4 md:px-8 px-8-400 py-12 md:py-0 py-65-mobile relative overflow-hidden">
       {/* Noise Texture */}
       <NoiseTexture />
 
@@ -143,7 +143,7 @@ export function Screen1() {
             className="space-y-[25px] md:space-y-8"
           >
             <div className="relative inline-block">
-              <h1 className="text-[rgb(0,0,0)] leading-none font-bold text-[36px] text-[77px]-420 md:text-[140px] lg:text-[190px] p-[0px] m-[0px]" style={{ fontWeight: 800 }}>
+              <h1 className="text-[rgb(0,0,0)] leading-none font-bold text-[55px]-380 text-[65px]-380 text-[77px]-430 md:text-[140px] lg:text-[190px] p-[0px] m-[0px]" style={{ fontWeight: 800 }}>
                 KINETICA
               </h1>
 
@@ -186,7 +186,7 @@ export function Screen1() {
               ))}
             </div>
 
-            <h2 className="text-black max-w-4xl mx-4 md:mx-[273px] leading-tight text-[16px] md:text-[20px] my-0 md:my-[-42px] font-bold">
+            <h2 className="text-black max-w-4xl mx-4 md:mx-[273px] leading-tight text-[30px] md:text-[30px] lg:text-[30px] my-0 md:my-[-42px] font-black">
               Сервис скоростного запуска email-проектов для
               директоров по маркетингу от Kinetica
             </h2>

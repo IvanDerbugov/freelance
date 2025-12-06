@@ -77,7 +77,7 @@ export function Screen5() {
   };
 
   return (
-    <div className="w-full min-h-screen md:h-screen flex items-center justify-center px-4 md:px-8 py-12 md:py-8 relative overflow-hidden">
+    <div className="w-full min-h-screen md:h-screen flex items-center justify-center px-4 md:px-8 px-8-400 py-12 md:py-8 py-65-mobile relative overflow-hidden">
       {/* Noise Texture */}
       <NoiseTexture />
       
@@ -97,7 +97,7 @@ export function Screen5() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-black mx-4 md:mx-[39px] my-[0px] mt-[60px] md:mt-[0px] p-[0px] text-[28px] md:text-[30px] lg:text-[40px] font-black uppercase">
+            <h2 className="text-black mx-4 md:mx-[39px] my-0 mt-[60px] md:mt-0 p-0 text-[30px] md:text-[30px] lg:text-[30px] font-black uppercase">
               Попробуйте нашего AI-ассистента прямо сейчас!
             </h2>
           </motion.div>
