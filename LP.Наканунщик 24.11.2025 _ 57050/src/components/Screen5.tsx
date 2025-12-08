@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Send } from "lucide-react";
 import { ChristmasLights } from "./ChristmasLights";
 import { NoiseTexture } from "./NoiseTexture";
@@ -15,16 +15,75 @@ type Message = {
 
 type ChatStep = "initial" | "business" | "goal" | "ideas" | "email";
 
+const CHAT_STORAGE_KEY = "kinetica_chat_state";
+
 export function Screen5() {
   const { nextSlide } = usePresentationContext();
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      text: "Привет! Я — AI-помощник «KINETICA». Давайте прикинем идею для вашей праздничной рассылки? Напишите, какой у вас бизнес.",
-      isBot: true,
-    },
-  ]);
-  const [input, setInput] = useState("");
-  const [step, setStep] = useState<ChatStep>("initial");
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+
+  // Load chat state from localStorage
+  const loadChatState = (): { messages: Message[]; step: ChatStep; input: string } => {
+    try {
+      const saved = localStorage.getItem(CHAT_STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return {
+          messages: parsed.messages || [],
+          step: parsed.step || "initial",
+          input: parsed.input || "",
+        };
+      }
+    } catch (e) {
+      console.error("Failed to load chat state:", e);
+    }
+    return {
+      messages: [
+        {
+          text: "Привет! Я — AI-помощник «KINETICA». Давайте прикинем идею для вашей праздничной рассылки? Напишите, какой у вас бизнес.",
+          isBot: true,
+        },
+      ],
+      step: "initial",
+      input: "",
+    };
+  };
+
+  const initialState = loadChatState();
+  const [messages, setMessages] = useState<Message[]>(initialState.messages);
+  const [input, setInput] = useState(initialState.input);
+  const [step, setStep] = useState<ChatStep>(initialState.step);
+
+  // Save chat state to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        CHAT_STORAGE_KEY,
+        JSON.stringify({
+          messages,
+          step,
+          input,
+        })
+      );
+    } catch (e) {
+      console.error("Failed to save chat state:", e);
+    }
+  }, [messages, step, input]);
+
+  // Prevent wheel event from propagating to parent (to avoid slide navigation)
+  useEffect(() => {
+    const chatContainer = chatContainerRef.current;
+    if (!chatContainer) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      e.stopPropagation();
+    };
+
+    chatContainer.addEventListener("wheel", handleWheel, { passive: false });
+    return () => {
+      chatContainer.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
 
   const handleSend = () => {
     if (!input.trim()) return;
@@ -104,6 +163,7 @@ export function Screen5() {
 
           {/* Chat interface */}
           <motion.div
+            ref={chatContainerRef}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -123,7 +183,13 @@ export function Screen5() {
             </div>
 
             {/* Messages */}
-            <div className="h-64 md:h-96 overflow-y-auto p-4 md:p-6 space-y-3 md:space-y-4 bg-gradient-to-b from-white to-gray-50">
+            <div 
+              ref={messagesContainerRef}
+              className="h-64 md:h-96 overflow-y-auto p-4 md:p-6 space-y-3 md:space-y-4 bg-gradient-to-b from-white to-gray-50"
+              onWheel={(e) => {
+                e.stopPropagation();
+              }}
+            >
               {messages.map((message, index) => (
                 <motion.div
                   key={index}
@@ -148,7 +214,12 @@ export function Screen5() {
             </div>
 
             {/* Input */}
-            <div className="p-4 md:p-6 bg-white border-t-4 border-black">
+            <div 
+              className="p-4 md:p-6 bg-white border-t-4 border-black"
+              onWheel={(e) => {
+                e.stopPropagation();
+              }}
+            >
               <div className="flex gap-2 md:gap-4">
                 <Input
                   value={input}
@@ -159,12 +230,18 @@ export function Screen5() {
                       e.stopPropagation();
                     }
                   }}
+                  onWheel={(e) => {
+                    e.stopPropagation();
+                  }}
                   placeholder="Пишите сюда... 💬"
                   className="flex-1 border-4 border-black rounded-full text-base md:text-xl px-4 md:px-6 py-3 md:py-4"
                   disabled={step === "goal" || step === "email"}
                 />
                 <Button
                   onClick={handleSend}
+                  onWheel={(e) => {
+                    e.stopPropagation();
+                  }}
                   className="bg-[#ff0055] hover:bg-[#bb00ff] text-white px-4 md:px-8 rounded-full border-4 border-black"
                   disabled={step === "goal" || step === "email"}
                 >
