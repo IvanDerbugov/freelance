@@ -56,7 +56,7 @@ export function Screen4() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              «KINETICA» — самая кинетическая программа для тех, кто хочет успеть до праздников
+              «Наканунщик» — самая кинетическая программа для тех, кто хочет успеть до праздников
             </motion.h2>
             <motion.p 
               className="text-white text-center text-[16px] md:text-[20px] drop-shadow-lg max-w-4xl mx-4 md:mx-[184px] leading-snug my-[0px]"

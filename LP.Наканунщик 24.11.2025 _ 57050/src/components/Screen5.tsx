@@ -40,7 +40,7 @@ export function Screen5() {
     return {
       messages: [
         {
-          text: "Привет! Я — AI-помощник «KINETICA». Давайте прикинем идею для вашей праздничной рассылки? Напишите, какой у вас бизнес.",
+          text: "Привет! Я — AI-помощник «Наканунщик». Давайте прикинем идею для вашей праздничной рассылки? Напишите, какой у вас бизнес.",
           isBot: true,
         },
       ],
@@ -177,7 +177,7 @@ export function Screen5() {
                   animate={{ scale: [1, 1.3, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
-                <span className="text-lg md:text-2xl font-bold">AI KINETICA</span>
+                <span className="text-lg md:text-2xl font-bold">AI Наканунщик</span>
               </div>
               <span className="text-sm md:text-xl">ОНЛАЙН 🟢</span>
             </div>

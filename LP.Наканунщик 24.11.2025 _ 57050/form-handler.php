@@ -68,7 +68,7 @@ $toEmails = [
     'i.derbugoff2001@gmail.com'
 ];
 $fromEmail = 'noreply@kinetica.su';
-$fromName = 'KINETICA - Наканунщик';
+$fromName = 'Наканунщик';
 
 // Формируем содержимое письма
 $subject = 'Новая заявка - Пакет «Успеть всё»';

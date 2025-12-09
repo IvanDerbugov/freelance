@@ -80,7 +80,7 @@ export function Screen3() {
             className="text-center"
           >
             <SparkleButton onClick={nextSlide} className="bg-[#d4ff00] text-black text-[18px] md:text-[24px] px-8 md:px-12">
-              Kinetica придумала решение
+              Наканунщик придумал решение
             </SparkleButton>
           </motion.div>
         </motion.div>

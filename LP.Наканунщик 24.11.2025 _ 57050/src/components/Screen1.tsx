@@ -193,8 +193,8 @@ export function Screen1() {
             className="space-y-[25px] md:space-y-8"
           >
             <div className="relative inline-block">
-              <h1 className="text-[rgb(0,0,0)] leading-none font-bold text-[55px]-380 text-[65px]-380 text-[77px]-430 md:text-[140px] lg:text-[190px] p-[0px] m-[0px]" style={{ fontWeight: 800 }}>
-                KINETICA
+              <h1 className="text-[rgb(0,0,0)] leading-none font-bold text-[35px]-380 text-[42px]-380 text-[49px]-430 md:text-[90px] lg:text-[120px] lg:text-[150px] p-[0px] m-[0px]" style={{ fontWeight: 800 }}>
+                НАКАНУНЩИК
               </h1>
 
               {/* Sparkles on title */}
@@ -238,7 +238,7 @@ export function Screen1() {
 
             <h2 className="text-black max-w-4xl mx-4 md:mx-[273px] leading-tight text-[20px] md:text-[30px] lg:text-[30px] my-0 md:my-[-42px] font-normal md:font-black">
               Сервис скоростного запуска email-проектов для
-              директоров по маркетингу от Kinetica
+              директоров по маркетингу от KINETICA
             </h2>
           </motion.div>
 

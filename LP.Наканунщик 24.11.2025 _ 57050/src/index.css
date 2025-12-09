@@ -824,6 +824,12 @@
     gap: calc(var(--spacing) * 2);
   }
 
+  @media (width < 25rem) {
+    .gap-2 {
+      gap: 5px;
+    }
+  }
+
   .gap-3 {
     gap: calc(var(--spacing) * 3);
   }
@@ -902,6 +908,12 @@
   .border-2 {
     border-style: var(--tw-border-style);
     border-width: 2px;
+  }
+
+  @media (width < 25rem) {
+    .border-2 {
+      border-width: 2.5px;
+    }
   }
 
   .border-4 {
@@ -1031,6 +1043,12 @@
     padding: calc(var(--spacing) * 2);
   }
 
+  @media (width < 25rem) {
+    .p-2 {
+      padding: calc(var(--spacing) * 3);
+    }
+  }
+
   .p-4 {
     padding: calc(var(--spacing) * 4);
   }
@@ -1152,6 +1170,12 @@
 
   .text-\[10px\] {
     font-size: 10px;
+  }
+
+  @media (width < 25rem) {
+    .text-\[10px\] {
+      font-size: 0.75rem;
+    }
   }
 
   .text-\[14px\] {
@@ -2054,7 +2078,8 @@
   @media (width >= 25rem) {
     .sm400\:gap-2\.5 {
       gap: calc(var(--spacing) * 2.5);
-    }
+      gap: 5px;
+  }
     .sm400\:text-3xl {
       font-size: var(--text-3xl);
       line-height: var(--tw-leading, var(--text-3xl--line-height));
@@ -2205,8 +2230,8 @@
   }
 
   @media (width <= 23.75rem) {
-    .text-\[55px\]-380 {
-      font-size: 55px;
+    .text-\[35px\]-380 {
+      font-size: 35px;
     }
     .button-380 {
       padding-right: 0.4375rem !important;
@@ -2218,15 +2243,15 @@
   }
 
   @media (width >= 23.75rem) {
-    .text-\[65px\]-380 {
-      font-size: 65px;
+    .text-\[42px\]-380 {
+      font-size: 42px;
     }
   }
 
   @media (width >= 26.875rem) {
-    .text-\[77px\]-430 {
-      font-size: 77px;
-    }
+    .text-\[49px\]-430 {
+      font-size: 49px;
+  }
   }
 
   @media (width <= 26.6875rem) {
@@ -2281,8 +2306,20 @@
   }
 
   @media (width >= 48rem) {
-    .md\:text-\[140px\] {
-      font-size: 140px;
+    .md\:text-\[90px\] {
+      font-size: 90px;
+    }
+  }
+
+  @media (width >= 65.625rem) {
+    .lg\:text-\[120px\] {
+      font-size: 120px;
+    }
+  }
+
+  @media (width > 87.5rem) {
+    .lg\:text-\[150px\] {
+      font-size: 150px;
     }
   }
 
@@ -2331,12 +2368,6 @@
   @media (width >= 64rem) {
     .lg\:text-\[80px\] {
       font-size: 80px;
-    }
-  }
-
-  @media (width >= 64rem) {
-    .lg\:text-\[190px\] {
-      font-size: 190px;
     }
   }
 
