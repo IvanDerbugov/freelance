@@ -11,6 +11,35 @@ export function Screen2() {
   const [targetDate] = useState(() => {
     const now = new Date();
     const december15 = new Date(now.getFullYear(), 11, 15, 0, 0, 0, 0);
+    
+    // Проверяем, прошло ли 15 декабря
+    if (now > december15) {
+      // Если прошло, используем логику с 72 часами от времени входа
+      const STORAGE_KEY = 'nakanunshchik_entry_time';
+      const HOURS_72 = 72 * 60 * 60 * 1000; // 72 часа в миллисекундах
+      
+      // Получаем время входа из localStorage или сохраняем текущее
+      let entryTimeStr = localStorage.getItem(STORAGE_KEY);
+      let entryTime: Date;
+      
+      if (entryTimeStr) {
+        entryTime = new Date(parseInt(entryTimeStr, 10));
+        // Проверяем, что сохраненное время валидно
+        if (isNaN(entryTime.getTime())) {
+          entryTime = new Date();
+          localStorage.setItem(STORAGE_KEY, entryTime.getTime().toString());
+        }
+      } else {
+        entryTime = new Date();
+        localStorage.setItem(STORAGE_KEY, entryTime.getTime().toString());
+      }
+      
+      // Вычисляем дату окончания (время входа + 72 часа)
+      const endDate = new Date(entryTime.getTime() + HOURS_72);
+      return endDate;
+    }
+    
+    // Если 15 декабря еще не наступило, используем старую логику
     return december15;
   });
   
