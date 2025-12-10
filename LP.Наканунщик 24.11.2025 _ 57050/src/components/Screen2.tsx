@@ -10,6 +10,14 @@ export function Screen2() {
   
   const [targetDate] = useState(() => {
     const now = new Date();
+    const december25 = new Date(now.getFullYear(), 11, 25, 0, 0, 0, 0);
+    
+    // Проверяем, наступило ли 25 декабря или позже
+    if (now >= december25) {
+      // Если 25 декабря или позже, возвращаем прошедшую дату, чтобы таймер показывал нули
+      return new Date(now.getTime() - 1000);
+    }
+    
     const december15 = new Date(now.getFullYear(), 11, 15, 0, 0, 0, 0);
     
     // Проверяем, прошло ли 15 декабря
