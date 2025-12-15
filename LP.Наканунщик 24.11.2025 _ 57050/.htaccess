@@ -3,6 +3,9 @@
   RewriteEngine On
   RewriteBase /
   
+  # Прокси для API чата - обрабатываем до React Router
+  RewriteRule ^api/chat$ api/chat.php [L]
+  
   # Если файл или директория существуют - используем их
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d

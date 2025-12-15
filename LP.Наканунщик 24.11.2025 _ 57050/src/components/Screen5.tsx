@@ -2,20 +2,19 @@ import { motion } from "motion/react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useState, useEffect, useRef } from "react";
-import { Send } from "lucide-react";
+import { Send, RotateCcw } from "lucide-react";
 import { ChristmasLights } from "./ChristmasLights";
 import { NoiseTexture } from "./NoiseTexture";
 import { SparkleButton } from "./SparkleButton";
 import { usePresentationContext } from "./PresentationContext";
+import { sendChatMessage } from "../api/chatApi";
 
 type Message = {
   text: string;
   isBot: boolean;
 };
 
-type ChatStep = "initial" | "business" | "goal" | "ideas" | "email";
-
-const CHAT_STORAGE_KEY = "kinetica_chat_state";
+const CHAT_STORAGE_KEY = "nakanunshchik_chat_state";
 
 export function Screen5() {
   const { nextSlide } = usePresentationContext();
@@ -23,14 +22,13 @@ export function Screen5() {
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
   // Load chat state from localStorage
-  const loadChatState = (): { messages: Message[]; step: ChatStep; input: string } => {
+  const loadChatState = (): { messages: Message[]; input: string } => {
     try {
       const saved = localStorage.getItem(CHAT_STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
         return {
           messages: parsed.messages || [],
-          step: parsed.step || "initial",
           input: parsed.input || "",
         };
       }
@@ -40,11 +38,10 @@ export function Screen5() {
     return {
       messages: [
         {
-          text: "Привет! Я — AI-помощник «Наканунщик». Давайте прикинем идею для вашей праздничной рассылки? Напишите, какой у вас бизнес.",
+          text: "Добрый день! Я Наканунщик из KINETICA. Рад помочь вам с идеями для спецпроекта. Расскажите, пожалуйста, чем занимается ваш бизнес?",
           isBot: true,
         },
       ],
-      step: "initial",
       input: "",
     };
   };
@@ -52,7 +49,8 @@ export function Screen5() {
   const initialState = loadChatState();
   const [messages, setMessages] = useState<Message[]>(initialState.messages);
   const [input, setInput] = useState(initialState.input);
-  const [step, setStep] = useState<ChatStep>(initialState.step);
+  const [isLoading, setIsLoading] = useState(false);
+  const [typingDots, setTypingDots] = useState(1);
 
   // Save chat state to localStorage
   useEffect(() => {
@@ -61,14 +59,13 @@ export function Screen5() {
         CHAT_STORAGE_KEY,
         JSON.stringify({
           messages,
-          step,
           input,
         })
       );
     } catch (e) {
       console.error("Failed to save chat state:", e);
     }
-  }, [messages, step, input]);
+  }, [messages, input]);
 
   // Prevent wheel event from propagating to parent (to avoid slide navigation)
   useEffect(() => {
@@ -85,54 +82,80 @@ export function Screen5() {
     };
   }, []);
 
-  const handleSend = () => {
-    if (!input.trim()) return;
+  // Auto-scroll to bottom when new messages arrive
+  useEffect(() => {
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+    }
+  }, [messages, isLoading]);
 
-    const userMessage: Message = { text: input, isBot: false };
-    setMessages((prev) => [...prev, userMessage]);
+  // Анимация точек "печатает..."
+  useEffect(() => {
+    if (!isLoading) {
+      setTypingDots(1);
+      return;
+    }
 
-    setTimeout(() => {
-      let botResponse: Message;
+    const interval = setInterval(() => {
+      setTypingDots((prev) => (prev >= 3 ? 1 : prev + 1));
+    }, 500); // Меняем каждые 500мс
 
-      switch (step) {
-        case "initial":
-          botResponse = {
-            text: `Отлично! ${input} — интересная сфера! 🎉\n\nТеперь подскажите, какая цель у праздничной рассылки?\n(привлечь новых клиентов / поздравить существующих / запустить новый продукт / другое)`,
-            isBot: true,
-          };
-          setStep("business");
-          break;
+    return () => clearInterval(interval);
+  }, [isLoading]);
 
-        case "business":
-          botResponse = {
-            text: "Супер! Сейчас подумаю и предложу идеи... 🤖✨",
-            isBot: true,
-          };
-          setStep("goal");
+  // Очистка чата
+  const handleClearChat = () => {
+    if (confirm('Очистить историю чата?')) {
+      localStorage.removeItem(CHAT_STORAGE_KEY);
+      setMessages([
+        {
+          text: "Добрый день! Я Наканунщик из KINETICA. Рад помочь вам с идеями для спецпроекта. Расскажите, пожалуйста, чем занимается ваш бизнес?",
+          isBot: true,
+        },
+      ]);
+      setInput("");
+    }
+  };
 
-          setTimeout(() => {
-            const ideas = `🎁 КРЕАТИВНЫЕ ИДЕИ ДЛЯ ВАШЕЙ РАССЫЛКИ:\n\n💡 Идея 1: "Новогодний адвент"\nСерия писем с нарастающими бонусами и сюрпризами до праздников\n\n💡 Идея 2: "Подарок под елку"\nСпециальное предложение только для подписчиков с праздничным оформлением\n\n💡 Идея 3: "История года вместе"\nТеплое письмо с достижениями компании и благодарностью клиентам\n\n📧 Хотите получить полный план рассылки на почту? Оставьте свой email.`;
-            setMessages((prev) => [...prev, { text: ideas, isBot: true }]);
-            setStep("ideas");
-          }, 2000);
-          return;
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
 
-        case "ideas":
-          botResponse = {
-            text: `Отлично! 🚀 Полный план отправлен на ${input}\n\nНаш менеджер свяжется с вами в течение часа, чтобы обсудить детали!`,
-            isBot: true,
-          };
-          setStep("email");
-          break;
-
-        default:
-          botResponse = { text: "Спасибо! 🎉", isBot: true };
-      }
-
-      setMessages((prev) => [...prev, botResponse]);
-    }, 800);
-
+    const userMessage: Message = { text: input.trim(), isBot: false };
+    
+    // Фильтруем сообщения об ошибках перед отправкой
+    const validMessages = messages.filter(msg => 
+      !msg.text.includes("Извините, произошла ошибка") && 
+      !msg.text.includes("Проверьте консоль браузера")
+    );
+    
+    const updatedMessages = [...validMessages, userMessage];
+    setMessages([...validMessages, userMessage]);
     setInput("");
+    setIsLoading(true);
+
+    try {
+      // Отправляем запрос к API
+      const botResponse = await sendChatMessage(updatedMessages);
+
+      if (botResponse) {
+        setMessages((prev) => [...prev, botResponse]);
+      } else {
+        // Обработка ошибки
+        const errorMessage: Message = {
+          text: "Извините, произошла ошибка при подключении к серверу. Попробуйте еще раз.",
+          isBot: true,
+        };
+        setMessages((prev) => [...prev, errorMessage]);
+      }
+    } catch (error) {
+      const errorMessage: Message = {
+        text: "Извините, произошла ошибка при отправке сообщения. Попробуйте еще раз.",
+        isBot: true,
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -179,7 +202,17 @@ export function Screen5() {
                 />
                 <span className="text-lg md:text-2xl font-bold">AI Наканунщик</span>
               </div>
-              <span className="text-sm md:text-xl">ОНЛАЙН 🟢</span>
+              <div className="flex items-center gap-3 md:gap-4">
+                <button
+                  onClick={handleClearChat}
+                  className="text-xs md:text-sm hover:opacity-80 transition-opacity flex items-center gap-1 md:gap-2"
+                  title="Очистить чат"
+                >
+                  <RotateCcw className="w-3 h-3 md:w-4 md:h-4" />
+                  <span className="hidden md:inline">Очистить</span>
+                </button>
+                <span className="text-sm md:text-xl">ОНЛАЙН 🟢</span>
+              </div>
             </div>
 
             {/* Messages */}
@@ -211,6 +244,19 @@ export function Screen5() {
                   </div>
                 </motion.div>
               ))}
+              {isLoading && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex justify-start"
+                >
+                  <div className="max-w-[85%] md:max-w-[80%] px-4 md:px-6 py-3 md:py-4 rounded-2xl md:rounded-3xl shadow-lg bg-gradient-to-r from-[#00ccff] to-[#0088ff] text-white">
+                    <span className="whitespace-pre-line leading-relaxed text-[14px] md:text-[16px]">
+                      печатает{'.'.repeat(typingDots)}
+                    </span>
+                  </div>
+                </motion.div>
+              )}
             </div>
 
             {/* Input */}
@@ -233,9 +279,9 @@ export function Screen5() {
                   onWheel={(e) => {
                     e.stopPropagation();
                   }}
-                  placeholder="Пишите сюда... 💬"
+                  placeholder={isLoading ? "Бот печатает..." : "Пишите сюда... 💬"}
                   className="flex-1 border-4 border-black rounded-full text-base md:text-xl px-4 md:px-6 py-3 md:py-4"
-                  disabled={step === "goal" || step === "email"}
+                  disabled={isLoading}
                 />
                 <Button
                   onClick={handleSend}
@@ -243,7 +289,7 @@ export function Screen5() {
                     e.stopPropagation();
                   }}
                   className="bg-[#ff0055] hover:bg-[#bb00ff] text-white px-4 md:px-8 rounded-full border-4 border-black"
-                  disabled={step === "goal" || step === "email"}
+                  disabled={isLoading}
                 >
                   <Send className="w-5 h-5 md:w-6 md:h-6" />
                 </Button>
