@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { useState, useEffect, useRef } from "react";
-import { Send, RotateCcw } from "lucide-react";
+import { Send } from "lucide-react";
 import { ChristmasLights } from "./ChristmasLights";
 import { NoiseTexture } from "./NoiseTexture";
 import { SparkleButton } from "./SparkleButton";
@@ -103,20 +103,6 @@ export function Screen5() {
     return () => clearInterval(interval);
   }, [isLoading]);
 
-  // Очистка чата
-  const handleClearChat = () => {
-    if (confirm('Очистить историю чата?')) {
-      localStorage.removeItem(CHAT_STORAGE_KEY);
-      setMessages([
-        {
-          text: "Добрый день! Я Наканунщик из KINETICA. Рад помочь вам с идеями для спецпроекта. Расскажите, пожалуйста, чем занимается ваш бизнес?",
-          isBot: true,
-        },
-      ]);
-      setInput("");
-    }
-  };
-
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
 
@@ -202,17 +188,7 @@ export function Screen5() {
                 />
                 <span className="text-lg md:text-2xl font-bold">AI Наканунщик</span>
               </div>
-              <div className="flex items-center gap-3 md:gap-4">
-                <button
-                  onClick={handleClearChat}
-                  className="text-xs md:text-sm hover:opacity-80 transition-opacity flex items-center gap-1 md:gap-2"
-                  title="Очистить чат"
-                >
-                  <RotateCcw className="w-3 h-3 md:w-4 md:h-4" />
-                  <span className="hidden md:inline">Очистить</span>
-                </button>
-                <span className="text-sm md:text-xl">ОНЛАЙН 🟢</span>
-              </div>
+              <span className="text-sm md:text-xl">ОНЛАЙН 🟢</span>
             </div>
 
             {/* Messages */}
