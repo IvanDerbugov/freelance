@@ -7,10 +7,23 @@
 
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
+// Быстрый ответ на preflight
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit;
+}
+
 $response = ['success' => false];
+
+// Простое логирование в файл рядом со скриптом
+function log_event(array $data): void {
+    $logFile = __DIR__ . '/form-handler.log';
+    $payload = '[' . date('Y-m-d H:i:s') . '] ' . json_encode($data, JSON_UNESCAPED_UNICODE) . PHP_EOL;
+    @file_put_contents($logFile, $payload, FILE_APPEND | LOCK_EX);
+}
 
 // Получаем данные из POST запроса
 $request = $_POST;
@@ -135,20 +148,27 @@ if (count($submissions) > 1000) {
 }
 @file_put_contents($submissionsFile, json_encode($submissions, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), LOCK_EX);
 
-// Отправляем письма на все адреса
+// Отправляем письма на все адреса и логируем результат
 $allSent = true;
+$mailDetails = [];
 foreach ($toEmails as $toEmail) {
     $mailSent = @mail($toEmail, '=?utf-8?B?' . base64_encode($subject) . '?=', $body, $headers);
+    $mailDetails[] = ['to' => $toEmail, 'sent' => (bool) $mailSent];
     if (!$mailSent) {
         $allSent = false;
     }
 }
 
-if ($allSent) {
-    $response['success'] = true;
-    $response['message'] = 'Спасибо за заявку! Мы свяжемся с вами в ближайшее время.';
-} else {
-    $response['error'] = ['general' => 'Ошибка отправки. Попробуйте позже.'];
-}
+$response['success'] = true;
+$response['message'] = $allSent
+    ? 'Спасибо за заявку! Мы свяжемся с вами в ближайшее время.'
+    : 'Заявка сохранена, но письма не отправлены. Свяжемся вручную.';
+$response['mail_sent'] = $allSent;
+
+log_event([
+    'submission' => $submission,
+    'mail' => $mailDetails,
+    'mail_all_sent' => $allSent,
+]);
 
 echo json_encode($response, JSON_UNESCAPED_UNICODE);
