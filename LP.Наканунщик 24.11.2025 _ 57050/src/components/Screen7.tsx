@@ -1,52 +1,13 @@
+import React, { useState } from "react";
 import { motion } from "motion/react";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { useState } from "react";
 import { ChristmasLights } from "./ChristmasLights";
 import { NoiseTexture } from "./NoiseTexture";
 import { SparkleButton } from "./SparkleButton";
 
 export function Screen7() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (submitted) return;
-    
-    setSubmitted(true);
-    
-    try {
-      const dataToSend = new FormData();
-      dataToSend.append('name', formData.name);
-      dataToSend.append('email', formData.email);
-      dataToSend.append('company', formData.company || '');
-      dataToSend.append('message', formData.message || '');
-      
-      const response = await fetch('/form-handler.php', {
-        method: 'POST',
-        body: dataToSend,
-      });
-      
-      const result = await response.json();
-      
-      if (result.success) {
-        alert("🎉 ЗАЯВКА ПРИНЯТА! Свяжемся в течение часа!");
-      } else {
-        throw new Error(result.error?.general || result.error || 'Ошибка отправки');
-      }
-    } catch (error) {
-      console.error('Ошибка отправки формы:', error);
-      alert("Произошла ошибка при отправке. Попробуйте позже.");
-      setSubmitted(false);
-    }
-  };
+  const [loading, setLoading] = useState(false);
 
   const included = [
     { text: "Разработка концепции и креативов", emoji: "💡" },
@@ -54,6 +15,38 @@ export function Screen7() {
     { text: "Дизайн и верстка одного письма", emoji: "🎨" },
     { text: "Подготовка и запуск рассылки", emoji: "🚀" },
   ];
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (loading) return;
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      setLoading(true);
+      const res = await fetch("./form-handler.php", { method: "POST", body: data });
+      const json = await res.json();
+
+      if (json.success) {
+        alert("🎉 Заявка отправлена! Мы свяжемся с вами в ближайшее время.");
+        form.reset();
+      } else {
+        const errMsg =
+          json.error?.general ||
+          json.error?.email ||
+          json.error?.name ||
+          json.error ||
+          "Ошибка отправки. Попробуйте позже.";
+        alert(errMsg);
+      }
+    } catch (err) {
+      console.error("Submit error", err);
+      alert("Сеть или сервер недоступны. Попробуйте позже.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="w-full min-h-screen md:h-screen flex items-center justify-center px-4 md:px-8 px-8-400 py-12 md:py-8 py-65-mobile overflow-hidden relative">
@@ -159,12 +152,16 @@ export function Screen7() {
                 <h3 className="text-[18px] md:text-[20px] text-black font-black uppercase">Оставить заявку</h3>
               </div>
               
-              <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
+              <form
+                method="post"
+                action="./form-handler.php"
+                className="space-y-3 md:space-y-4"
+                onSubmit={handleSubmit}
+              >
                 <input type="text" name="login" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
                 <Input
+                  name="name"
                   placeholder="Ваше имя 👤"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   onKeyDown={(e) => {
                     if (e.key === " " || e.key === "Spacebar") {
                       e.stopPropagation();
@@ -175,9 +172,8 @@ export function Screen7() {
                 />
                 <Input
                   type="email"
+                  name="email"
                   placeholder="Email 📧"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   onKeyDown={(e) => {
                     if (e.key === " " || e.key === "Spacebar") {
                       e.stopPropagation();
@@ -187,9 +183,8 @@ export function Screen7() {
                   className="border-4 border-black rounded-xl md:rounded-2xl text-[14px] md:text-[16px] px-4 md:px-5 py-3 md:py-4 h-auto"
                 />
                 <Input
+                  name="company"
                   placeholder="Компания 🏢"
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   onKeyDown={(e) => {
                     if (e.key === " " || e.key === "Spacebar") {
                       e.stopPropagation();
@@ -198,9 +193,8 @@ export function Screen7() {
                   className="border-4 border-black rounded-xl md:rounded-2xl text-[14px] md:text-[16px] px-4 md:px-5 py-3 md:py-4 h-auto"
                 />
                 <Textarea
+                  name="message"
                   placeholder="О проекте ✏️"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   onKeyDown={(e) => {
                     if (e.key === " " || e.key === "Spacebar") {
                       e.stopPropagation();
@@ -213,12 +207,11 @@ export function Screen7() {
                 <SparkleButton
                   type="submit"
                   className="w-full py-4 md:py-5 text-[18px] md:text-[20px]"
-                  disabled={submitted}
+                  disabled={loading}
                   textColor="text-white"
                   hoverScale={1.02}
-                >
-                  {submitted ? "✅ ОТПРАВЛЕНО!" : "🚀 ХОЧУ УСПЕТЬ!"}
-                </SparkleButton>
+                  children={loading ? "⏳ Отправляем..." : "🚀 ХОЧУ УСПЕТЬ!"}
+                />
               </form>
             </motion.div>
           </div>
