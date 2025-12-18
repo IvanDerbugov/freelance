@@ -25,20 +25,17 @@ export function Screen7() {
 
     try {
       setLoading(true);
-      const res = await fetch("./form-handler.php", { method: "POST", body: data });
+      const res = await fetch("https://api.web3forms.com/submit", { 
+        method: "POST", 
+        body: data 
+      });
       const json = await res.json();
 
       if (json.success) {
         alert("🎉 Заявка отправлена! Мы свяжемся с вами в ближайшее время.");
         form.reset();
       } else {
-        const errMsg =
-          json.error?.general ||
-          json.error?.email ||
-          json.error?.name ||
-          json.error ||
-          "Ошибка отправки. Попробуйте позже.";
-        alert(errMsg);
+        alert(json.message || "Ошибка отправки. Попробуйте позже.");
       }
     } catch (err) {
       console.error("Submit error", err);
@@ -153,12 +150,14 @@ export function Screen7() {
               </div>
               
               <form
+                action="https://api.web3forms.com/submit"
                 method="post"
-                action="./form-handler.php"
                 className="space-y-3 md:space-y-4"
                 onSubmit={handleSubmit}
               >
-                <input type="text" name="login" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+                <input type="hidden" name="access_key" value="acec3a84-ba9a-46af-8ed2-7bbb098102a7" />
+                <input type="hidden" name="to_email" value="lead@kinetica.su" />
+                <input type="hidden" name="subject" value="Новая заявка - Пакет «Успеть всё»" />
                 <Input
                   name="name"
                   placeholder="Ваше имя 👤"

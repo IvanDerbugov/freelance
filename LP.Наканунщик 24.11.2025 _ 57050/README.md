@@ -8,7 +8,7 @@ cd "LP.Наканунщик 24.11.2025 _ 57050"
 
   Run `npm i` to install the dependencies.
 
-  Run `npm run dev` to start the development server.
+  npm run dev
 
 
 
