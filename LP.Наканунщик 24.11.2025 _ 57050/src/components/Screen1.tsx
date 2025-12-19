@@ -171,14 +171,14 @@ export function Screen1() {
   }, []);
 
   return (
-    <div className="w-full min-h-screen md:h-screen flex items-center justify-center px-4 md:px-8 px-8-400 py-12 md:py-0 py-65-mobile relative overflow-hidden">
+    <div className="w-full flex items-center justify-center px-4 md:px-8 px-8-400 py-12 md:py-16 py-65-mobile relative overflow-hidden" style={{ minHeight: '100vh' }}>
       {/* Noise Texture */}
       <NoiseTexture />
 
       {/* Christmas Lights */}
       <ChristmasLights position="top" />
 
-      <div className="max-w-5xl w-full relative z-10 mt-8 md:mt-16">
+      <div className="max-w-5xl w-full relative z-10 py-8 md:py-0">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}

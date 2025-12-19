@@ -145,18 +145,18 @@ export function Screen5() {
   };
 
   return (
-    <div className="w-full min-h-screen md:h-screen flex items-center justify-center px-4 md:px-8 px-8-400 py-12 md:py-8 py-65-mobile relative overflow-hidden">
+    <div className="w-full flex items-center justify-center px-4 md:px-8 px-8-400 py-12 md:py-16 py-65-mobile relative overflow-hidden" style={{ minHeight: '100vh' }}>
       {/* Noise Texture */}
       <NoiseTexture />
       
       <ChristmasLights position="top" />
       
-      <div className="max-w-4xl w-full relative z-10">
+      <div className="max-w-4xl w-full relative z-10 py-8 md:py-0">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="space-y-[60px] md:space-y-8"
+          className="space-y-[60px] md:space-y-8 pb-8 md:pb-0"
         >
           {/* Heading */}
           <motion.div 
