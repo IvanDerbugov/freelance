@@ -50,7 +50,7 @@ export function Screen2() {
 
   return (
     <div 
-      className="w-full min-h-screen md:h-screen flex items-center justify-center px-4 md:px-8 py-12 md:py-0 relative overflow-hidden"
+      className="w-full min-h-screen flex items-center justify-center px-4 md:px-8 py-12 md:py-12 relative"
       style={{
         backgroundColor: '#ff0055'
       }}

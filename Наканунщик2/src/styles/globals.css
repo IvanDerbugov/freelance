@@ -214,3 +214,10 @@ html {
     padding-right: env(safe-area-inset-right);
   }
 }
+
+/* Screen1 grid justify-items center for screens up to 1025px */
+@media (max-width: 1025px) {
+  .screen1-grid {
+    justify-items: center;
+  }
+}

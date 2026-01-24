@@ -4,11 +4,12 @@ import {
   useTransform,
   AnimatePresence,
 } from "motion/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Send } from "lucide-react";
 import { usePresentationContext } from "./PresentationContext";
+import { sendChatMessage } from "../api/chatApi";
 import starBurst from "figma:asset/199b0c9df4900b8c0ca721bd47970251ffed136c.png";
 import christmasCharacter from "figma:asset/140cec68fe81e6fc55cc24ecfa9f4e3bd7ff0e43.png";
 import valentineCharacter from "figma:asset/d49448a11085c0433c91861fee27b73c54f3e7f8.png";
@@ -21,7 +22,7 @@ type Message = {
   isBot: boolean;
 };
 
-type ChatStep = "initial" | "business" | "goal" | "ideas" | "email";
+const CHAT_STORAGE_KEY = "nakanunshchik_chat_state";
 
 export function Screen1() {
   const { nextSlide } = usePresentationContext();
@@ -78,15 +79,84 @@ export function Screen1() {
     }>
   >([]);
 
-  // Chat state
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      text: "Привет! Я — AI-помощник «Наканунщика». Давайте прикинем идею для вашей праздничной рассылки? Напишите, какой у вас бизнес.",
-      isBot: true,
-    },
-  ]);
-  const [input, setInput] = useState("");
-  const [step, setStep] = useState<ChatStep>("initial");
+  // Load/save chat state (как в старом Наканунщике)
+  const loadChatState = (): { messages: Message[]; input: string } => {
+    try {
+      const saved = localStorage.getItem(CHAT_STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return {
+          messages: parsed.messages || [],
+          input: parsed.input || "",
+        };
+      }
+    } catch (e) {
+      console.error("Failed to load chat state:", e);
+    }
+    return {
+      messages: [
+        {
+          text: "Добрый день! Я Наканунщик из KINETICA. Рад помочь вам с идеями для спецпроекта. Расскажите, пожалуйста, чем занимается ваш бизнес?",
+          isBot: true,
+        },
+      ],
+      input: "",
+    };
+  };
+
+  const initialState = loadChatState();
+  const [messages, setMessages] = useState<Message[]>(initialState.messages);
+  const [input, setInput] = useState(initialState.input);
+  const [isLoading, setIsLoading] = useState(false);
+  const [typingDots, setTypingDots] = useState(1);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        CHAT_STORAGE_KEY,
+        JSON.stringify({ messages, input })
+      );
+    } catch (e) {
+      console.error("Failed to save chat state:", e);
+    }
+  }, [messages, input]);
+
+  useEffect(() => {
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop =
+        messagesContainerRef.current.scrollHeight;
+    }
+  }, [messages, isLoading]);
+
+  // Prevent wheel event from propagating to parent (to avoid slide navigation)
+  // Теперь это обрабатывается в PresentationLayout через data-chat-container
+  // Но оставляем stopPropagation для дополнительной защиты
+  useEffect(() => {
+    const chatContainer = chatContainerRef.current;
+    if (!chatContainer) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      e.stopPropagation();
+    };
+
+    chatContainer.addEventListener("wheel", handleWheel, { passive: false });
+    return () => {
+      chatContainer.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setTypingDots(1);
+      return;
+    }
+    const interval = setInterval(() => {
+      setTypingDots((prev) => (prev >= 3 ? 1 : prev + 1));
+    }, 500);
+    return () => clearInterval(interval);
+  }, [isLoading]);
 
   // Carousel state
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -160,59 +230,49 @@ export function Screen1() {
     return () => clearInterval(interval);
   }, [holidays.length]);
 
-  const handleSend = () => {
-    if (!input.trim()) return;
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
 
-    const userMessage: Message = { text: input, isBot: false };
-    setMessages((prev) => [...prev, userMessage]);
-
-    setTimeout(() => {
-      let botResponse: Message;
-
-      switch (step) {
-        case "initial":
-          botResponse = {
-            text: `Отлично! ${input} — интересная сфера! 🎉\n\nТеперь подскажите, какая цель у праздничной рассылки?\n(привлечь новых клиентов / поздравить существующих / запустить новый продукт / другое)`,
-            isBot: true,
-          };
-          setStep("business");
-          break;
-
-        case "business":
-          botResponse = {
-            text: "Супер! Сейчас подумаю и предложу идеи... 🤖✨",
-            isBot: true,
-          };
-          setStep("goal");
-
-          setTimeout(() => {
-            const ideas = `🎁 КРЕАТИВНЫЕ ИДЕИ ДЛЯ ВАШЕЙ РАССЫЛКИ:\n\n💡 Идея 1: "Новогодний адвент"\nСерия писем с нарастающими бонусами и сюрпризаи до праздников\n\n💡 Идея 2: "Подарок под елку"\nСпециальное предложение только для подписчиков с праздничным оформлением\n\n💡 Идея 3: "История года вместе"\nТеплое письмо с достижениями компании и благодарностью клиентам\n\n📧 Хотите получить полный план рассылки на почту? Оставьте свой email.`;
-            setMessages((prev) => [...prev, { text: ideas, isBot: true }]);
-            setStep("ideas");
-          }, 2000);
-          return;
-
-        case "ideas":
-          botResponse = {
-            text: `Отлично! 🚀 Полный план отправлен на ${input}\n\nНаш менеджер свяжется с вами в течение часа, чтобы обсудить детали!`,
-            isBot: true,
-          };
-          setStep("email");
-          break;
-
-        default:
-          botResponse = { text: "Спасибо! 🎉", isBot: true };
-      }
-
-      setMessages((prev) => [...prev, botResponse]);
-    }, 800);
-
+    const userMessage: Message = { text: input.trim(), isBot: false };
+    const validMessages = messages.filter(
+      (msg) =>
+        !msg.text.includes("Извините, произошла ошибка") &&
+        !msg.text.includes("Проверьте консоль браузера")
+    );
+    const updatedMessages = [...validMessages, userMessage];
+    setMessages(updatedMessages);
     setInput("");
+    setIsLoading(true);
+
+    try {
+      const botResponse = await sendChatMessage(updatedMessages);
+      if (botResponse) {
+        setMessages((prev) => [...prev, botResponse]);
+      } else {
+        setMessages((prev) => [
+          ...prev,
+          {
+            text: "Извините, произошла ошибка при подключении к серверу. Попробуйте еще раз.",
+            isBot: true,
+          },
+        ]);
+      }
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          text: "Извините, произошла ошибка при отправке сообщения. Попробуйте еще раз.",
+          isBot: true,
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <div
-      className="w-full min-h-screen md:h-screen flex items-center justify-center px-2 sm:px-4 md:px-8 py-3 sm:py-6 md:py-8 lg:py-0 relative overflow-hidden"
+      className="w-full min-h-screen flex items-center justify-center px-2 sm:px-4 md:px-8 py-3 sm:py-6 md:py-8 lg:py-12 relative"
       style={{
         backgroundColor: '#d4ff00',
         backgroundImage: 'none'
@@ -288,7 +348,7 @@ export function Screen1() {
         </motion.div>
 
         {/* Two column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-12 items-center screen1-grid">
           {/* Left column - Character */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -374,7 +434,7 @@ export function Screen1() {
 
             {/* Subtitle after image */}
             <div className="text-center px-2">
-              <h2 className="text-black max-w-xl mx-auto leading-tight text-[14px] sm:text-[15px] md:text-[17px] lg:text-[18px] font-bold">
+              <h2 className="text-black max-w-xl mx-auto leading-tight text-[14px] sm:text-[15px] md:text-[17px] lg:text-[18px] font-bold fast-start">
                 Быстрый запуск email-рассылок для{"\u00A0"}любимых клиентов к{"\u00A0"}праздникам!
               </h2>
               
@@ -398,9 +458,11 @@ export function Screen1() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full flex justify-start"
+            className="w-full flex justify-center"
           >
             <motion.div
+              ref={chatContainerRef}
+              data-chat-container
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -420,7 +482,13 @@ export function Screen1() {
               </div>
 
               {/* Messages */}
-              <div className="h-[217px] sm:h-[272px] md:h-[326px] overflow-y-auto p-3 md:p-4 space-y-2 md:space-y-3 bg-gradient-to-b from-white to-gray-50 mx-auto">
+              <div
+                ref={messagesContainerRef}
+                className="h-[217px] sm:h-[272px] md:h-[326px] overflow-y-auto p-3 md:p-4 space-y-2 md:space-y-3 bg-gradient-to-b from-white to-gray-50 mx-auto"
+                onWheel={(e) => {
+                  e.stopPropagation();
+                }}
+              >
                 {messages.map((message, index) => (
                   <motion.div
                     key={index}
@@ -442,23 +510,51 @@ export function Screen1() {
                     </div>
                   </motion.div>
                 ))}
+                {isLoading && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex justify-start"
+                  >
+                    <div className="max-w-[90%] sm:max-w-[85%] md:max-w-[80%] px-2.5 sm:px-3 md:px-4 py-2 md:py-3 rounded-xl md:rounded-2xl shadow-lg bg-gradient-to-r from-[#00ccff] to-[#0088ff] text-white">
+                      <span className="whitespace-pre-line leading-relaxed text-[11px] sm:text-[12px] md:text-[14px]">
+                        печатает{".".repeat(typingDots)}
+                      </span>
+                    </div>
+                  </motion.div>
+                )}
               </div>
 
               {/* Input */}
-              <div className="p-3 md:p-4 bg-white border-t-4 border-black">
+              <div
+                className="p-3 md:p-4 bg-white border-t-4 border-black"
+                onWheel={(e) => {
+                  e.stopPropagation();
+                }}
+              >
                 <div className="flex gap-2 md:gap-3">
                   <Input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyPress={(e) => e.key === "Enter" && handleSend()}
-                    placeholder="Пишите сюда... 💬"
+                    onKeyDown={(e) => {
+                      if (e.key === " " || e.key === "Spacebar") {
+                        e.stopPropagation();
+                      }
+                    }}
+                    placeholder={
+                      isLoading ? "Бот печатает..." : "Пишите сюда... 💬"
+                    }
                     className="flex-1 border-4 border-black rounded-full text-sm md:text-base px-3 md:px-4 py-2 md:py-3"
-                    disabled={step === "goal" || step === "email"}
+                    disabled={isLoading}
                   />
                   <Button
                     onClick={handleSend}
+                    onWheel={(e) => {
+                      e.stopPropagation();
+                    }}
                     className="bg-[#ff0055] hover:bg-[#bb00ff] text-white px-3 md:px-6 rounded-full border-4 border-black"
-                    disabled={step === "goal" || step === "email"}
+                    disabled={isLoading}
                   >
                     <Send className="w-4 h-4 md:w-5 md:h-5" />
                   </Button>

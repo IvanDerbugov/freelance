@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { ChevronDown, Circle } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
 import { PresentationContext } from "./PresentationContext";
 
 interface PresentationLayoutProps {
@@ -9,159 +7,89 @@ interface PresentationLayoutProps {
 
 export function PresentationLayout({ children }: PresentationLayoutProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
 
   const totalSlides = children.length;
 
-  // Detect mobile device
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => {
+      const nextIndex = prev < totalSlides - 1 ? prev + 1 : prev;
+      const nextSlideElement = document.querySelector(`[data-slide-index="${nextIndex}"]`);
+      if (nextSlideElement) {
+        nextSlideElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      return nextIndex;
+    });
+  }, [totalSlides]);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => {
+      const prevIndex = prev > 0 ? prev - 1 : prev;
+      const prevSlideElement = document.querySelector(`[data-slide-index="${prevIndex}"]`);
+      if (prevSlideElement) {
+        prevSlideElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      return prevIndex;
+    });
   }, []);
 
-  const nextSlide = () => {
-    if (currentSlide < totalSlides - 1) {
-      setDirection(1);
-      setCurrentSlide(currentSlide + 1);
-    }
-  };
-
-  const prevSlide = () => {
-    if (currentSlide > 0) {
-      setDirection(-1);
-      setCurrentSlide(currentSlide - 1);
-    }
-  };
-
-  const goToSlide = (index: number) => {
-    setDirection(index > currentSlide ? 1 : -1);
+  const goToSlide = useCallback((index: number) => {
     setCurrentSlide(index);
-  };
+    const slideElement = document.querySelector(`[data-slide-index="${index}"]`);
+    if (slideElement) {
+      slideElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, []);
 
+  // Track scroll position for all devices
   useEffect(() => {
-    // Only enable presentation navigation on desktop
-    if (isMobile) return;
+    const handleScroll = () => {
+      const slides = document.querySelectorAll('[data-slide-index]');
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (isScrolling) return;
-      
-      if (e.key === "ArrowDown" || e.key === "ArrowRight" || e.key === " ") {
-        e.preventDefault();
-        setIsScrolling(true);
-        nextSlide();
-        setTimeout(() => setIsScrolling(false), 1000);
-      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
-        e.preventDefault();
-        setIsScrolling(true);
-        prevSlide();
-        setTimeout(() => setIsScrolling(false), 1000);
-      }
-    };
+      slides.forEach((slide, index) => {
+        const rect = slide.getBoundingClientRect();
+        const slideTop = rect.top + window.scrollY;
+        const slideBottom = slideTop + rect.height;
 
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      
-      if (isScrolling) return;
-      
-      if (Math.abs(e.deltaY) > 10) {
-        setIsScrolling(true);
-        
-        if (e.deltaY > 0) {
-          nextSlide();
-        } else {
-          prevSlide();
+        if (scrollPosition >= slideTop && scrollPosition < slideBottom) {
+          setCurrentSlide(index);
         }
-        
-        setTimeout(() => setIsScrolling(false), 1000);
-      }
+      });
     };
 
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("wheel", handleWheel);
-    };
-  }, [currentSlide, isMobile, isScrolling]);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      y: direction > 0 ? "100%" : "-100%",
-      opacity: 0,
-    }),
-    center: {
-      y: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      y: direction > 0 ? "-100%" : "100%",
-      opacity: 0,
-    }),
-  };
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  // Mobile view: scrollable layout
-  if (isMobile) {
-    return (
-      <PresentationContext.Provider value={{ nextSlide, prevSlide, goToSlide, currentSlide, totalSlides }}>
-        <div 
-          className="w-full min-h-screen overflow-y-auto"
-          style={{
-            backgroundColor: '#d4ff00',
-            backgroundImage: 'none'
-          }}
-        >
-          {children.map((child, index) => (
-            <div key={index} className="min-h-screen w-full">
-              {child}
-            </div>
-          ))}
-        </div>
-      </PresentationContext.Provider>
-    );
-  }
-
-  // Desktop view: presentation mode
+  // Scrollable layout for all devices
   return (
     <PresentationContext.Provider value={{ nextSlide, prevSlide, goToSlide, currentSlide, totalSlides }}>
       <div 
-        className="relative w-full h-screen overflow-hidden"
+        className="w-full min-h-screen overflow-y-auto"
         style={{
           backgroundColor: '#d4ff00',
           backgroundImage: 'none'
         }}
       >
-        <AnimatePresence initial={false} custom={direction} mode="wait">
-          <motion.div
-            key={currentSlide}
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              y: { type: "spring", stiffness: 300, damping: 30 },
-              opacity: { duration: 0.2 },
-            }}
-            className="absolute inset-0 w-full h-full"
-          >
-            {children[currentSlide]}
-          </motion.div>
-        </AnimatePresence>
+        {children.map((child, index) => (
+          <div key={index} data-slide-index={index} className="w-full min-h-screen">
+            {child}
+          </div>
+        ))}
 
       {/* Slide indicators */}
       <div className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3 md:gap-4">
         {Array.from({ length: totalSlides }).map((_, index) => (
           <button
             key={index}
-            onClick={() => goToSlide(index)}
+            onClick={() => {
+              const slideElement = document.querySelector(`[data-slide-index="${index}"]`);
+              if (slideElement) {
+                slideElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
             className="group relative"
           >
             <div
@@ -174,8 +102,6 @@ export function PresentationLayout({ children }: PresentationLayoutProps) {
           </button>
         ))}
       </div>
-
-
       </div>
     </PresentationContext.Provider>
   );
