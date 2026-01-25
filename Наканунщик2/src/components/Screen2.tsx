@@ -81,7 +81,7 @@ export function Screen2() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] leading-tight text-[48px] font-bold uppercase p-[0px]">
+            <h2 className="text-h2 text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] leading-tight text-[48px] font-bold uppercase p-[0px]">
               До <span className="text-[#d4ff00]">Дня всех влюблённых</span><br />
               осталось:
             </h2>
@@ -137,7 +137,7 @@ export function Screen2() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <SparkleButton onClick={nextSlide} className="bg-[#d4ff00] text-black text-[16px] md:text-[20px] px-8 md:px-12">
+            <SparkleButton onClick={nextSlide} className="btn-finish bg-[#d4ff00] text-black text-[16px] md:text-[20px] px-8 md:px-12">
               Успеть до праздников
             </SparkleButton>
           </motion.div>

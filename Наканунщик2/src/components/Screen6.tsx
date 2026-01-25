@@ -122,7 +122,7 @@ export function Screen6() {
             transition={{ duration: 0.6, delay: 1.1 }}
             className="text-center mt-6"
           >
-            <SparkleButton onClick={() => goToSlide(2)} className="bg-[#d4ff00] text-black text-[16px] md:text-[20px] px-8 md:px-12">
+            <SparkleButton onClick={() => goToSlide(2)} className="btn-want bg-[#d4ff00] text-black text-[16px] md:text-[20px] px-8 md:px-12">
               Вернуться к форме
             </SparkleButton>
           </motion.div>

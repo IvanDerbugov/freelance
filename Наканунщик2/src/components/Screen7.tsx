@@ -68,7 +68,7 @@ export function Screen7() {
               >
                 <div className="space-y-2 md:space-y-3">
                   <div 
-                    className="text-white text-[22px] md:text-[32px] lg:text-[38px] font-black leading-tight"
+                    className="like-idea text-white text-[22px] md:text-[32px] lg:text-[38px] font-black leading-tight"
                   >
                     Понравились идеи нашего ИИ-ассистента?
                   </div>
@@ -100,7 +100,7 @@ export function Screen7() {
                       scale: 0.95
                     }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="absolute -top-6 -right-6 bg-gradient-to-br from-[#FF1744] to-[#FF5252] px-7 py-4 shadow-2xl border-4 border-black z-10 rounded-2xl cursor-pointer"
+                    className="price absolute -top-6 -right-6 bg-gradient-to-br from-[#FF1744] to-[#FF5252] px-7 py-4 shadow-2xl border-4 border-black z-10 rounded-2xl cursor-pointer"
                   >
                     <div className="text-center">
                       <div className="text-white text-[16px] md:text-[18px] font-bold line-through opacity-80">
@@ -186,7 +186,7 @@ export function Screen7() {
                 
                 <SparkleButton
                   type="submit"
-                  className="w-full py-3 md:py-4 text-[16px] md:text-[18px]"
+                  className="btn-want w-full py-3 md:py-4 text-[16px] md:text-[18px]"
                   disabled={submitted}
                   textColor="text-white"
                   hoverScale={1.02}

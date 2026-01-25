@@ -2825,3 +2825,30 @@ html {
     margin: 30px auto 20px;
   }
 }
+@media(max-width: 850px) {
+  .text-h2 {
+    font-size: 35px;
+  }
+}
+@media(max-width: 560px) {
+  .like-idea {
+    margin-bottom: 45px;
+  }
+  .price {
+    padding: 10px 18px;
+    right: -20px;
+    top: -50px;
+  }
+}
+@media(max-width: 410px) {
+  .btn-finish {
+    padding: 10px;
+    width: 100%;
+  }
+
+  .btn-want {
+    padding: 16px 10px;
+    width: 100%;
+  }
+}
+
