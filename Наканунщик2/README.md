@@ -5,8 +5,7 @@
 
   ## Running the code
 
-  cd
-  Наканунщик2
+  cd "Наканунщик2"
 
   Run `npm i` to install the dependencies.
 

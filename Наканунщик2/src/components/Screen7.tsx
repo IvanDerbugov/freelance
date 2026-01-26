@@ -12,13 +12,37 @@ export function Screen7() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      alert("🎉 ЗАЯВКА ПРИНЯТА! Свяжемся в течение часа!");
-    }, 500);
+    if (loading) return;
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      setLoading(true);
+      const res = await fetch("https://api.web3forms.com/submit", { 
+        method: "POST", 
+        body: data 
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        setSubmitted(true);
+        alert("🎉 Заявка отправлена! Мы свяжемся с вами в ближайшее время.");
+        form.reset();
+        setFormData({ name: "", email: "", company: "", message: "" });
+      } else {
+        alert(json.message || "Ошибка отправки. Попробуйте позже.");
+      }
+    } catch (err) {
+      console.error("Submit error", err);
+      alert("Сеть или сервер недоступны. Попробуйте позже.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const included = [
@@ -154,8 +178,17 @@ export function Screen7() {
                 <h3 className="text-[16px] md:text-[18px] text-black font-black uppercase">Оставить заявку</h3>
               </div>
               
-              <form onSubmit={handleSubmit} className="space-y-3 md:space-y-3.5 flex-1 flex flex-col">
+              <form
+                action="https://api.web3forms.com/submit"
+                method="post"
+                onSubmit={handleSubmit}
+                className="space-y-3 md:space-y-3.5 flex-1 flex flex-col"
+              >
+                <input type="hidden" name="access_key" value="acec3a84-ba9a-46af-8ed2-7bbb098102a7" />
+                <input type="hidden" name="to_email" value="lead@kinetica.su" />
+                <input type="hidden" name="subject" value="Новая заявка - Пакет «Успеть всё»" />
                 <Input
+                  name="name"
                   placeholder="Ваше имя 👤"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -164,6 +197,7 @@ export function Screen7() {
                 />
                 <Input
                   type="email"
+                  name="email"
                   placeholder="Email 📧"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -171,12 +205,14 @@ export function Screen7() {
                   className="border-4 border-black rounded-xl text-[13px] md:text-[15px] px-3 md:px-4 py-2.5 md:py-3 h-auto"
                 />
                 <Input
+                  name="company"
                   placeholder="Компания 🏢"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   className="border-4 border-black rounded-xl text-[13px] md:text-[15px] px-3 md:px-4 py-2.5 md:py-3 h-auto"
                 />
                 <Textarea
+                  name="message"
                   placeholder="О проекте ✏️"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -187,11 +223,11 @@ export function Screen7() {
                 <SparkleButton
                   type="submit"
                   className="btn-want w-full py-3 md:py-4 text-[16px] md:text-[18px]"
-                  disabled={submitted}
+                  disabled={loading || submitted}
                   textColor="text-white"
                   hoverScale={1.02}
                 >
-                  {submitted ? "✅ ОТПРАВЛЕНО!" : "🚀 ХОЧУ УСПЕТЬ!"}
+                  {loading ? "⏳ Отправляем..." : submitted ? "✅ ОТПРАВЛЕНО!" : "🚀 ХОЧУ УСПЕТЬ!"}
                 </SparkleButton>
               </form>
             </motion.div>
