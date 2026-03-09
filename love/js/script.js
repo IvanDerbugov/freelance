@@ -963,6 +963,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const gratitudeStatus = document.getElementById('gratitudeStatus');
     const gratitudeListItems = document.getElementById('gratitudeListItems');
 
+    /** Базовый URL API блокнота: если задан (напр. на сайте с GitHub), запросы идут на твой сервер derbugov.ru */
+    function getGratitudeApiBase() {
+        const base = (gratitudeForm && gratitudeForm.dataset.apiBase) ? gratitudeForm.dataset.apiBase.trim() : '';
+        return base ? base.replace(/\/$/, '') : null;
+    }
+    function gratitudeUrl(endpoint) {
+        const base = getGratitudeApiBase();
+        return base ? base + '/' + endpoint : null;
+    }
+
     function formatGratitudeDate(str) {
         if (!str) return '';
         const d = new Date(str);
@@ -977,7 +987,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadGratitudeList() {
         if (!gratitudeListItems) return;
-        const listUrl = (gratitudeForm && gratitudeForm.action) ? gratitudeForm.action.replace('save-gratitude.php', 'list-gratitude.php') : 'api/list-gratitude.php';
+        const listUrl = gratitudeUrl('list-gratitude.php') ||
+            (gratitudeForm && gratitudeForm.action ? gratitudeForm.action.replace('save-gratitude.php', 'list-gratitude.php') : 'api/list-gratitude.php');
         try {
             const res = await fetch(listUrl);
             const data = await res.json().catch(() => ({ items: [] }));
@@ -999,7 +1010,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const id = item && item.dataset.id;
                     if (!id) return;
                     e.target.disabled = true;
-                    const deleteUrl = (gratitudeForm && gratitudeForm.action) ? gratitudeForm.action.replace('save-gratitude.php', 'delete-gratitude.php') : 'api/delete-gratitude.php';
+                    const deleteUrl = gratitudeUrl('delete-gratitude.php') ||
+                        (gratitudeForm && gratitudeForm.action ? gratitudeForm.action.replace('save-gratitude.php', 'delete-gratitude.php') : 'api/delete-gratitude.php');
                     try {
                         const fd = new FormData();
                         fd.append('id', id);
@@ -1035,7 +1047,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(gratitudeForm);
             submitBtn.disabled = true;
             try {
-                const res = await fetch(gratitudeForm.action, {
+                const saveUrl = gratitudeUrl('save-gratitude.php') || gratitudeForm.action;
+                const res = await fetch(saveUrl, {
                     method: 'POST',
                     body: formData
                 });
