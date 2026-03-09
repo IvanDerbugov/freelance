@@ -972,6 +972,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const base = getGratitudeApiBase();
         return base ? base + '/' + endpoint : null;
     }
+    /** Идентификатор проекта/сайта: один блокнот на проект. Только a-z, 0-9, -, _. */
+    function getGratitudeProject() {
+        const p = (gratitudeForm && gratitudeForm.dataset.project) ? gratitudeForm.dataset.project.trim() : 'love';
+        return p.replace(/[^a-z0-9\-_]/gi, '').toLowerCase() || 'love';
+    }
 
     function formatGratitudeDate(str) {
         if (!str) return '';
@@ -987,8 +992,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadGratitudeList() {
         if (!gratitudeListItems) return;
-        const listUrl = gratitudeUrl('list-gratitude.php') ||
+        let listUrl = gratitudeUrl('list-gratitude.php') ||
             (gratitudeForm && gratitudeForm.action ? gratitudeForm.action.replace('save-gratitude.php', 'list-gratitude.php') : 'api/list-gratitude.php');
+        const project = getGratitudeProject();
+        listUrl += (listUrl.includes('?') ? '&' : '?') + 'project=' + encodeURIComponent(project);
         try {
             const res = await fetch(listUrl);
             const data = await res.json().catch(() => ({ items: [] }));
@@ -1015,6 +1022,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     try {
                         const fd = new FormData();
                         fd.append('id', id);
+                        fd.append('project', getGratitudeProject());
                         const res = await fetch(deleteUrl, { method: 'POST', body: fd });
                         const data = await res.json().catch(() => ({}));
                         if (res.ok && data.success) {
@@ -1045,6 +1053,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gratitudeStatus.textContent = '';
             gratitudeStatus.className = 'gratitude-notebook__status';
             const formData = new FormData(gratitudeForm);
+            formData.append('project', getGratitudeProject());
             submitBtn.disabled = true;
             try {
                 const saveUrl = gratitudeUrl('save-gratitude.php') || gratitudeForm.action;
