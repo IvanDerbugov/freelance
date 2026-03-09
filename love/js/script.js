@@ -998,8 +998,20 @@ document.addEventListener('DOMContentLoaded', () => {
         listUrl += (listUrl.includes('?') ? '&' : '?') + 'project=' + encodeURIComponent(project);
         try {
             const res = await fetch(listUrl);
-            const data = await res.json().catch(() => ({ items: [] }));
+            const text = await res.text();
+            let data;
+            try {
+                data = text ? JSON.parse(text) : { items: [] };
+            } catch (parseErr) {
+                if (typeof console !== 'undefined' && console.warn) {
+                    console.warn('[Блокнот] Ответ не JSON. Длина:', text.length, 'начало ответа:', text.slice(0, 150));
+                }
+                data = { items: [] };
+            }
             const items = data.items || [];
+            if (typeof console !== 'undefined' && console.debug) {
+                console.debug('[Блокнот] GET list:', listUrl, 'ok=', res.ok, 'items=', items.length, data);
+            }
             if (items.length === 0) {
                 gratitudeListItems.innerHTML = '<p class="gratitude-list__empty">Пока ни одной благодарности. Будь первым!</p>';
                 return;
@@ -1016,6 +1028,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const item = e.target.closest('.gratitude-list__item');
                     const id = item && item.dataset.id;
                     if (!id) return;
+                    if (!confirm('Удалить эту благодарность?')) return;
                     e.target.disabled = true;
                     const deleteUrl = gratitudeUrl('delete-gratitude.php') ||
                         (gratitudeForm && gratitudeForm.action ? gratitudeForm.action.replace('save-gratitude.php', 'delete-gratitude.php') : 'api/delete-gratitude.php');
