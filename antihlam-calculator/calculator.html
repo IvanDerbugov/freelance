@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор</title>
+    <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="calculator.css">
+</head>
+
+<body>
+    <div class="what-take-out container">
+        <div class="what-take-out__header">
+            <h2>
+                Что требуется вывезти?
+            </h2>
+            <div class="what-take-out__header-steps">
+                <p>Шаг <span id="number-step">1</span> из 5</p>
+                <div class="what-take-out__header-steps-lines">
+                    <div class="what-take-out__header-steps-line active"></div>
+                    <div class="what-take-out__header-steps-line"></div>
+                    <div class="what-take-out__header-steps-line"></div>
+                    <div class="what-take-out__header-steps-line"></div>
+                    <div class="what-take-out__header-steps-line"></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: none;" class="what-take-out__grid">
+            <div class="what-take-out__grid-item">
+                <h4>Вывоз старой мебели</h4>
+                <img src="img/what-take-out1.png" alt="">
+                <h5>Газель</h5>
+                <div class="what-take-out__grid-item-info">
+                    <div>Объем: 12 м³</div>
+                    <div>Вес: до 3.5 тонны</div>
+                </div>
+                <p class="what-take-out__grid-item-description">
+                    Подходит для вывоза старой мебели, ненужных вещей, хлама
+                </p>
+                <p class="what-take-out__grid-item-price">
+                    <span>от</span> 2 000 ₽
+                </p>
+            </div>
+            <div class="what-take-out__grid-item">
+                <h4>Строительный мусор</h4>
+                <img src="img/what-take-out2.png" alt="">
+                <h5>Контейнер</h5>
+                <div class="what-take-out__grid-item-info">
+                    <div>Объем: 8 м³</div>
+                    <div>Вес: до 3.5 тонны</div>
+                </div>
+                <p class="what-take-out__grid-item-description">
+                    Подходит, когда требуется вывезти тяжелый строительный мусор (до 150 мешков)
+                </p>
+                <p class="what-take-out__grid-item-price">
+                    <span>от</span> 8 000 ₽
+                </p>
+            </div>
+            <div class="what-take-out__grid-item">
+                <h4>Строительный мусор</h4>
+                <img src="img/what-take-out3.png" alt="">
+                <h5>Hyundai Porter</h5>
+                <div class="what-take-out__grid-item-info">
+                    <div>Объем: 8 м³</div>
+                    <div>Вес: до 1.2 тонны</div>
+                </div>
+                <p class="what-take-out__grid-item-description">
+                    Подходит, когда требуется вывезти доски или небольшое количество (до 60 мешков)
+                </p>
+                <p class="what-take-out__grid-item-price">
+                    <span>от</span> 6 000 ₽
+                </p>
+            </div>
+            <div class="what-take-out__grid-item">
+                <h4>Строительный мусор</h4>
+                <img src="img/what-take-out4.png" alt="">
+                <h5>Газель</h5>
+                <div class="what-take-out__grid-item-info">
+                    <div>Объем: 10 м³</div>
+                    <div>Вес: до 1.5 тонны</div>
+                </div>
+                <p class="what-take-out__grid-item-description">
+                    Подходит, когда требуется вывезти доски или небольшое количество (до 60 мешков)
+                </p>
+                <p class="what-take-out__grid-item-price">
+                    <span>от</span> 6 000 ₽
+                </p>
+            </div>
+            <div class="what-take-out__grid-item">
+                <h4>Строительный мусор</h4>
+                <img src="img/what-take-out5.png" alt="">
+                <h5>Бортовая газель для паркинга</h5>
+                <div class="what-take-out__grid-item-info">
+                    <div>Объем: 8 м³</div>
+                    <div>Вес: до 1.5 тонны</div>
+                </div>
+                <p class="what-take-out__grid-item-description">
+                    Подходит, когда требуется вывезти доски или небольшое количество (до 60 мешков)
+                </p>
+                <p class="what-take-out__grid-item-price">
+                    <span>от</span> 6 000 ₽
+                </p>
+            </div>
+            <div class="what-take-out__grid-item">
+                <h4>Строительный мусор</h4>
+                <img src="img/what-take-out6.png" alt="">
+                <h5>Лада Ларгус</h5>
+                <div class="what-take-out__grid-item-info">
+                    <div>Объем: 3 м³</div>
+                    <div>Вес: до 0.9 тонны</div>
+                </div>
+                <p class="what-take-out__grid-item-description">
+                    Подходит, когда требуется вывезти доски или небольшое количество (до 60 мешков)
+                </p>
+                <p class="what-take-out__grid-item-price">
+                    <span>от</span> 6 000 ₽
+                </p>
+            </div>
+        </div>
+
+        <div class="calculator">
+            <div class="calculator__types">
+                <div class="calculator__types-item active">Шкафы</div>
+                <div class="calculator__types-item">Мягкая мебель</div>
+                <div class="calculator__types-item">Каркасная мебель</div>
+                <div class="calculator__types-item">Окна и двери</div>
+                <div class="calculator__types-item">Строительный мусор</div>
+                <div class="calculator__types-item">Бытовая техника</div>
+            </div>
+
+            <div class="calculator__content">
+                <div class="calculator__content-item">
+                    <div class="calculator__content-item-left">
+                        <img src="img/closet1.jpg" alt="">
+                        <div class="calculator__content-item-left-info">
+                            <h5><span>Сервант</span></h5>
+                            <p>
+                                Описание типа мусора для вывоза
+                            </p>
+                        </div>
+                    </div>
+                    <div class="calculator__content-item-right">
+                        <p><span>Цена за ед.:</span> 1 000₽</p>
+                        <div class="calculator__content-item-right-input">
+                            <button class="calculator__bnt-minus">-</button>
+                            <input class="calculator__input-number" type="number" placeholder="0">
+                            <button class="calculator__bnt-plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="calculator.js"></script>
+</body>
+
+</html>
