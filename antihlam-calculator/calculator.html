@@ -17,21 +17,20 @@
                 Что требуется вывезти?
             </h2>
             <div class="what-take-out__header-steps">
-                <p>Шаг <span id="number-step">1</span> из 5</p>
+                <p>Шаг <span id="number-step">1</span> из 3</p>
                 <div class="what-take-out__header-steps-lines">
                     <div class="what-take-out__header-steps-line active"></div>
-                    <div class="what-take-out__header-steps-line"></div>
-                    <div class="what-take-out__header-steps-line"></div>
                     <div class="what-take-out__header-steps-line"></div>
                     <div class="what-take-out__header-steps-line"></div>
                 </div>
             </div>
         </div>
 
-        <div style="display: none;" class="what-take-out__grid">
-            <div class="what-take-out__grid-item">
+        <div class="what-take-out__transport-step" id="what-take-out-step">
+            <div class="what-take-out__grid" id="what-take-out-grid" role="radiogroup" aria-label="Выбор транспорта">
+            <div class="what-take-out__grid-item" data-transport-option="furniture-gazelle" role="radio" aria-checked="false" tabindex="0">
                 <h4>Вывоз старой мебели</h4>
-                <img src="img/what-take-out1.png" alt="">
+                <img src="img/what-take-out/what-take-out1.png" alt="">
                 <h5>Газель</h5>
                 <div class="what-take-out__grid-item-info">
                     <div>Объем: 12 м³</div>
@@ -44,9 +43,9 @@
                     <span>от</span> 2 000 ₽
                 </p>
             </div>
-            <div class="what-take-out__grid-item">
+            <div class="what-take-out__grid-item" data-transport-option="debris-container" role="radio" aria-checked="false" tabindex="-1">
                 <h4>Строительный мусор</h4>
-                <img src="img/what-take-out2.png" alt="">
+                <img src="img/what-take-out/what-take-out2.png" alt="">
                 <h5>Контейнер</h5>
                 <div class="what-take-out__grid-item-info">
                     <div>Объем: 8 м³</div>
@@ -59,9 +58,9 @@
                     <span>от</span> 8 000 ₽
                 </p>
             </div>
-            <div class="what-take-out__grid-item">
+            <div class="what-take-out__grid-item" data-transport-option="debris-porter" role="radio" aria-checked="false" tabindex="-1">
                 <h4>Строительный мусор</h4>
-                <img src="img/what-take-out3.png" alt="">
+                <img src="img/what-take-out/what-take-out3.png" alt="">
                 <h5>Hyundai Porter</h5>
                 <div class="what-take-out__grid-item-info">
                     <div>Объем: 8 м³</div>
@@ -74,9 +73,9 @@
                     <span>от</span> 6 000 ₽
                 </p>
             </div>
-            <div class="what-take-out__grid-item">
+            <div class="what-take-out__grid-item" data-transport-option="debris-gazelle-10" role="radio" aria-checked="false" tabindex="-1">
                 <h4>Строительный мусор</h4>
-                <img src="img/what-take-out4.png" alt="">
+                <img src="img/what-take-out/what-take-out4.png" alt="">
                 <h5>Газель</h5>
                 <div class="what-take-out__grid-item-info">
                     <div>Объем: 10 м³</div>
@@ -89,9 +88,9 @@
                     <span>от</span> 6 000 ₽
                 </p>
             </div>
-            <div class="what-take-out__grid-item">
+            <div class="what-take-out__grid-item" data-transport-option="debris-gazelle-flatbed" role="radio" aria-checked="false" tabindex="-1">
                 <h4>Строительный мусор</h4>
-                <img src="img/what-take-out5.png" alt="">
+                <img src="img/what-take-out/what-take-out5.png" alt="">
                 <h5>Бортовая газель для паркинга</h5>
                 <div class="what-take-out__grid-item-info">
                     <div>Объем: 8 м³</div>
@@ -104,9 +103,9 @@
                     <span>от</span> 6 000 ₽
                 </p>
             </div>
-            <div class="what-take-out__grid-item">
+            <div class="what-take-out__grid-item" data-transport-option="debris-largus" role="radio" aria-checked="false" tabindex="-1">
                 <h4>Строительный мусор</h4>
-                <img src="img/what-take-out6.png" alt="">
+                <img src="img/what-take-out/what-take-out6.png" alt="">
                 <h5>Лада Ларгус</h5>
                 <div class="what-take-out__grid-item-info">
                     <div>Объем: 3 м³</div>
@@ -119,42 +118,58 @@
                     <span>от</span> 6 000 ₽
                 </p>
             </div>
+            </div>
+            <div class="what-take-out__grid-footer">
+                <button type="button" class="what-take-out__continue" id="what-take-out-continue" disabled>
+                    Продолжить
+                </button>
+            </div>
         </div>
 
-        <div class="calculator">
+        <div class="calculator" id="calculator-quiz" hidden>
             <div class="calculator__types">
-                <div class="calculator__types-item active">Шкафы</div>
-                <div class="calculator__types-item">Мягкая мебель</div>
-                <div class="calculator__types-item">Каркасная мебель</div>
-                <div class="calculator__types-item">Окна и двери</div>
-                <div class="calculator__types-item">Строительный мусор</div>
-                <div class="calculator__types-item">Бытовая техника</div>
+                <div class="calculator__types-item active" data-calculator-tab="wardrobes" role="tab"
+                    aria-selected="true">Шкафы</div>
+                <div class="calculator__types-item" data-calculator-tab="soft-furniture" role="tab"
+                    aria-selected="false">Мягкая мебель</div>
+                <div class="calculator__types-item" data-calculator-tab="frame-furniture" role="tab"
+                    aria-selected="false">Каркасная мебель</div>
+                <div class="calculator__types-item" data-calculator-tab="windows-doors" role="tab"
+                    aria-selected="false">Окна и двери</div>
+                <div class="calculator__types-item" data-calculator-tab="construction-waste" role="tab"
+                    aria-selected="false">Строительный мусор</div>
+                <div class="calculator__types-item" data-calculator-tab="appliances" role="tab" aria-selected="false">
+                    Бытовая техника</div>
             </div>
 
-            <div class="calculator__content">
-                <div class="calculator__content-item">
-                    <div class="calculator__content-item-left">
-                        <img src="img/closet1.jpg" alt="">
-                        <div class="calculator__content-item-left-info">
-                            <h5><span>Сервант</span></h5>
-                            <p>
-                                Описание типа мусора для вывоза
-                            </p>
-                        </div>
+            <div class="calculator__body">
+                <div class="calculator__panels">
+                    <div class="calculator__panel calculator__panel--active" data-calculator-panel="wardrobes"
+                        role="tabpanel">
+                        <div class="calculator__wardrobes" id="wrapper-items"></div>
                     </div>
-                    <div class="calculator__content-item-right">
-                        <p><span>Цена за ед.:</span> 1 000₽</p>
-                        <div class="calculator__content-item-right-input">
-                            <button class="calculator__bnt-minus">-</button>
-                            <input class="calculator__input-number" type="number" placeholder="0">
-                            <button class="calculator__bnt-plus">+</button>
-                        </div>
+                    <div class="calculator__panel" data-calculator-panel="soft-furniture" role="tabpanel" hidden>
+                        <div class="calculator__soft-furniture" id="wrapper-soft-furniture"></div>
+                    </div>
+                    <div class="calculator__panel" data-calculator-panel="frame-furniture" role="tabpanel" hidden>
+                        <div class="calculator__frame-furniture" id="wrapper-frame-furniture"></div>
+                    </div>
+                    <div class="calculator__panel" data-calculator-panel="windows-doors" role="tabpanel" hidden>
+                        <div class="calculator__windows-doors" id="wrapper-windows-doors"></div>
+                    </div>
+                    <div class="calculator__panel" data-calculator-panel="construction-waste" role="tabpanel" hidden>
+                        <div class="calculator__building-debris" id="wrapper-building-debris"></div>
+                    </div>
+                    <div class="calculator__panel" data-calculator-panel="appliances" role="tabpanel" hidden>
+                        <div class="calculator__appliances" id="wrapper-appliances"></div>
                     </div>
                 </div>
+                <aside class="calculator__bill" id="calculator-bill" aria-label="Смета" aria-live="polite"></aside>
             </div>
         </div>
     </div>
 
+    <script src="calculator-items.js"></script>
     <script src="calculator.js"></script>
 </body>
 

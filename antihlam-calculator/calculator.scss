@@ -70,6 +70,19 @@
         }
     }
 
+    //.what-take-out__transport-step — шаг выбора транспорта (сетка + «Продолжить»)
+    &__transport-step {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        width: 100%;
+
+        // Явно скрываем после «Продолжить» (атрибут hidden + display:flex конфликтуют без !important)
+        &[hidden] {
+            display: none !important;
+        }
+    }
+
     //.what-take-out__grid
     &__grid {
         display: grid;
@@ -85,18 +98,70 @@
         }
     }
 
+    //.what-take-out__grid-footer
+    &__grid-footer {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    //.what-take-out__continue
+    &__continue {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 220px;
+        padding: 14px 32px;
+        border: none;
+        border-radius: 100px;
+        background: #FF7B00;
+        color: #FFF;
+        font-size: 16px;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        transition: background 0.2s ease, opacity 0.2s ease;
+
+        &:hover:not(:disabled) {
+            background: #e56e00;
+        }
+
+        &:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
+        &:focus-visible {
+            outline: 2px solid #FF7B00;
+            outline-offset: 3px;
+        }
+    }
+
     //.what-take-out__grid-item
     &__grid-item {
         padding: 24px;
         border-radius: 16px;
         background: #FFF;
         box-shadow: 0 12px 34px 0 rgba(0, 0, 0, 0.08);
+        border: 2px solid transparent;
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
         gap: 16px;
         justify-content: space-between;
         align-items: flex-start;
         cursor: pointer;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+        &--selected {
+            border-color: #FF7B00;
+            box-shadow: 0 12px 34px 0 rgba(255, 123, 0, 0.22);
+        }
+
+        &:focus-visible {
+            outline: 2px solid #FF7B00;
+            outline-offset: 3px;
+        }
 
         @media (max-width: 768px) {
             padding: 12px;
@@ -179,7 +244,7 @@
                 margin-bottom: -8px;
             }
         }
-
+ 
         //.what-take-out__grid-item-price
         &-price {
             color: #000;
@@ -188,7 +253,7 @@
 
             @media (max-width: 768px) {
                 font-size: 16px;
-            }
+            } 
 
             //.what-take-out__grid-item-price span
             span {
@@ -237,13 +302,60 @@
         }
     }
 
-    //.calculator__content
-    &__content {
+    // Обёртка: вкладки слева + смета справа (смета всегда видна)
+    &__body { 
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        width: 100%;
+
+        @media (max-width: 900px) {
+            flex-direction: column;
+        }
+    }
+
+    //.calculator__panels
+    &__panels {
+        flex: 1 1 0;
+        min-width: 0;
+        width: 100%;
+    }
+ 
+    //.calculator__panel
+    &__panel {
+        &[hidden] {
+            display: none;
+        }
+
+        &:not([hidden]) {
+            display: block;
+        }
+    }
+
+    //.calculator__panel-placeholder
+    &__panel-placeholder {
+        margin: 0;
+        padding: 40px 24px;
+        text-align: center;
+        color: #8E8E8E;
+        font-size: 16px;
+        font-weight: 400;
+        border-radius: 16px;
+        background: #FFF;
+        box-shadow: 0 12px 34px 0 rgba(0, 0, 0, 0.08);
+    } 
+
+    // Списки карточек позиций: шкафы, мебель, окна, строительный мусор, бытовая техника (одна сетка)
+    &__wardrobes,
+    &__soft-furniture,
+    &__frame-furniture,
+    &__windows-doors,
+    &__building-debris,
+    &__appliances {
         display: flex;
         flex-direction: column;
         gap: 10px;
 
-        //.calculator__content-item
         &-item {
             display: flex;
             align-items: center;
@@ -254,26 +366,26 @@
             background: #FFF;
             box-shadow: 0 12px 34px 0 rgba(0, 0, 0, 0.08);
 
-            //.calculator__content-item-left
             &-left {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
                 gap: 24px;
 
-                //.calculator__content-item-left img
                 img {
                     width: 35px;
                 }
 
-                //.calculator__content-item-left-info
                 &-info {
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
                     gap: 5px;
 
-                    //.calculator__content-item-left-info h5
+                    &-size {
+                        color: #8E8E8E;
+                    }
+
                     h5 {
                         font-size: 16px;
                         font-weight: 600;
@@ -292,7 +404,6 @@
                         }
                     }
 
-                    //.calculator__content-item-left-info p
                     p {
                         color: #8E8E8E;
                         font-size: 16px;
@@ -301,33 +412,121 @@
                 }
             }
 
-            //.calculator__content-item-right
             &-right {
                 display: flex;
                 align-items: center;
                 gap: 32px;
 
-                //.calculator__content-item-right p
                 p {
                     font-size: 16px;
                     font-weight: 500;
 
-                    //.calculator__content-item-right p span
                     span {
                         color: #8E8E8E;
                     }
                 }
 
-                //.calculator__content-item-right-input
                 &-input {
                     display: flex;
                     align-items: center;
                     gap: 5px;
                 }
             }
+        }
+    }
 
+    // Смета (справа от вкладок)
+    &__bill {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 380px;
+        padding: 24px;
+        border-radius: 16px;
+        background: #FFF;
+        box-shadow: 0 12px 34px 0 rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        position: sticky;
+        top: 16px;
+
+        @media (max-width: 900px) {
+            max-width: none;
+            position: static;
+        }
+    }
+
+    &__bill-empty {
+        padding: 12px 0;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #BBB;
+        border-bottom: 1px solid #F0F0F0;
+    }
+
+    &__bill-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 0;
+        font-size: 16px;
+        line-height: 1.35;
+        border-bottom: 1px solid #F0F0F0;
+
+        &:last-child {
+            border-bottom: none;
         }
 
+        &--service {
+            .calculator__bill-name {
+                color: #8E8E8E;
+                font-weight: 400;
+            }
+
+            .calculator__bill-price {
+                color: #000;
+                font-weight: 500;
+            }
+        }
+
+        &--item {
+            .calculator__bill-name {
+                color: #8E8E8E;
+                font-weight: 400;
+            }
+
+            .calculator__bill-meta {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                flex-shrink: 0;
+            }
+
+            .calculator__bill-qty {
+                color: #BBB;
+                font-weight: 400;
+            }
+
+            .calculator__bill-price {
+                color: #000;
+                font-weight: 500;
+                min-width: 4.5em;
+                text-align: right;
+            }
+        }
+
+        &--total {
+            padding-top: 18px;
+            margin-top: 4px;
+            border-bottom: none;
+
+            .calculator__bill-name,
+            .calculator__bill-price {
+                color: #000;
+                font-weight: 600;
+            }
+        }
     }
 
     //.calculator__bnt-minus, .calculator__bnt-plus
@@ -363,6 +562,6 @@
         &::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
-        }
+        } 
     }
-}
+} 
